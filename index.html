@@ -58,7 +58,7 @@
                               <a class="nav-link" href="#customer">Estilistas</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="#contact">Contactanos</a>
+                              <a class="nav-link" href="#contact">Contacto</a>
                            </li>
                         </ul>
                      </div>
@@ -434,7 +434,6 @@
                            <ul class="infometion">
                               <li><a href="#">Registrarse </a></li>
                               <li><a href="#">Iniciar Sesion</a></li>
-
                            </ul>
                         </div>
                      </div>
@@ -460,42 +459,7 @@
    <script src="js/bootstrap.bundle.min.js"></script>
    <script src="js/jquery-3.0.0.min.js"></script>
 
-   <!-- sidebar -->
-   <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
-   <script src="js/custom.js"></script>
-   <script>
-      $('a[href^="#"]').on('click', function (event) {
-
-         var target = $(this.getAttribute('href'));
-
-         if (target.length) {
-            event.preventDefault();
-            $('html, body').stop().animate({
-               scrollTop: target.offset().top
-            }, 2000);
-         }
-
-      });
-   </script>
-   <script>
-      // agrega un marcador para indicar la posición del sitio
-      function initMap() {
-         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 11,
-            center: { lat: 40.645037, lng: -73.880224 },
-         });
-
-         var image = 'images/maps-and-flags.png';
-         var beachMarker = new google.maps.Marker({
-            position: { lat: 40.645037, lng: -73.880224 },
-            map: map,
-            icon: image
-         });
-      }
-   </script>
-   <!-- google map js -->
-   <script src=""></script>
-   <!-- final google map js -->
+  
 </body>
 
 </html>
