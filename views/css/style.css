@@ -720,3 +720,125 @@ ul.email li a {
     margin-top: 30px;
 }
 
+/* CSS para el cuadro beige que se encuentra junto al logo enorme */
+
+.cuadro-beige {
+    background-color: #F7F4ED;
+    padding: 20px;
+    border-radius: 10px;
+    float: left; 
+    margin-right: 20px; 
+    clear: left; 
+    padding-right: 400px;
+    padding-bottom: 400px;
+    
+}
+
+.cuadro-beige h3 {
+    font-size: 27px;
+    margin-bottom: 10px;
+    color:#111111;
+
+}
+/* Estilos para los campos de correo y contraseña */
+.cuadro-beige .group .label{
+text-transform:uppercase;
+}
+.cuadro-beige .group{
+	margin-bottom:35px;
+}
+.cuadro-beige .group .label,
+.cuadro-beige .group .input,
+{
+	width:100%;
+	color:#fff;
+	display:block;
+}
+.cuadro-beige .group .input{
+	border:none;
+	padding:5px 50px;
+	border-radius:25px;
+    color:#aaa;
+	font-size:12px;
+}
+
+/* Estilos para los botones */
+.cuadro-beige .group .button{
+	text-transform:uppercase;
+	background:#202126;
+	border:none;
+	padding:10px 15px;
+	border-radius:25px;
+	width:100%;
+	color:#fff;
+	display:block;
+}
+
+
+/* CSS para la imagen, el nombre de esta etiqueta solo se encuentra en ciertos HTMLs por lo que no debe afectar en todo */
+.imag_medio {
+    margin-top: 80px;
+    max-width: 500px;
+    height: auto;
+}
+
+/* CSS para el bloque gris */
+
+.bloque-gris {
+    background-color: #f1f1f1; 
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 240px; 
+    margin-left: 700px;
+    text-align: right;
+}
+
+.bloque-gris p {
+    font-size: 20px;
+    margin: 0;
+    float: left;
+}
+
+/* CSS del Textarea dentro del bloque gris */
+
+.cuadro-blanco {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    margin: 10px
+}
+
+.cuadro-blanco textarea {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    resize: none; 
+}
+
+/* CSS del footer*/
+
+.footer{
+    background-color: #F7F4ED;
+    padding: 50px;
+}
+
+/* CSS del boton del  bloque gris*/
+
+.boton-siguiente {
+    background-color: black;
+    color: #fff; 
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 20px; 
+    cursor: pointer; 
+    margin-top: 5px;
+    font-size: 18px; 
+}
+
+.boton-siguiente:hover {
+    background-color: #593326; 
+}
+
