@@ -729,7 +729,7 @@ ul.email li a {
     float: left; 
     margin-right: 20px; 
     clear: left; 
-    padding-right: 400px;
+    padding-right: 200px;
     padding-bottom: 400px;
 }
 
@@ -748,6 +748,27 @@ ul.email li a {
     line-height: 27px;
     color: #876B62;
     transition: ease-in all 0.5s;
+}
+
+.cuadro-beige2 {
+    background-color: #F7F4ED;
+    padding: 20px;
+    border-radius: 10px;
+    float: left; 
+    margin-right: 20px; 
+    clear: left; 
+    padding-right: 200px;
+    padding-bottom: 570px;
+}
+
+.cuadro-beige2 h3 {
+    font-size: 27px;
+    margin-bottom: 10px;
+    color: #593326;
+}
+
+.cuadro-beige2 p {
+    font-size: 14px;
 }
 
 /* CSS para la imagen, el nombre de esta etiqueta solo se encuentra en ciertos HTMLs por lo que no debe afectar en todo */
@@ -815,4 +836,24 @@ ul.email li a {
 
 .boton-siguiente:hover {
     background-color: #593326; 
+}
+
+/* CSS para los estilistas */
+
+.estilistas .nav-item .estilista {
+    font-size: 24px;
+    line-height: 27px;
+    color: #876B62;
+    transition: ease-in all 0.5s;
+}
+
+.boton-estilista {
+    margin-left: 150px; 
+    background-color: black;
+    color: #fff; 
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 20px; 
+    cursor: pointer; 
+    font-size: 18px; 
 }
