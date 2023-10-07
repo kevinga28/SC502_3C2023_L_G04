@@ -102,39 +102,119 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="cuadro-beige2">
-                        <h3>Inicio de sesion o registro</h3>
-                        <div class="group">
-                            <label for="nombre" class="label">Nombre</label>
-                            <input id="nombre" type="text" class="input" required>
+                        <h3>Fecha y Horario</h3>
+                        <div class="calendario">
+                            <div class="mes">
+                                <span class="mes-nombre">Octubre</span>
+                                <span class="anio">2023</span>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Dom</th>
+                                        <th>Lun</th>
+                                        <th>Mar</th>
+                                        <th>Mié</th>
+                                        <th>Jue</th>
+                                        <th>Vie</th>
+                                        <th>Sáb</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>11</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>13</td>
+                                        <td>14</td>
+                                        <td>15</td>
+                                        <td>16</td>
+                                        <td>17</td>
+                                        <td>18</td>
+                                    </tr>
+                                    <tr>
+                                        <td>19</td>
+                                        <td>20</td>
+                                        <td>21</td>
+                                        <td>22</td>
+                                        <td>23</td>
+                                        <td>24</td>
+                                        <td>25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>26</td>
+                                        <td>27</td>
+                                        <td>28</td>
+                                        <td>29</td>
+                                        <td>30</td>
+                                        <td>31</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="group">
-                            <label for="apellido" class="label">Apellido</label>
-                            <input id="apellido" type="text" class="input" required>
+                        <div class="opciones-hora">
+                            <h3>Mañana</h3>
+                            <div class="opcion">
+                                <input type="radio" id="opcion1" name="hora" value="opcion1">
+                                <label for="opcion1">8:00 am</label>
+                            </div>
+                            <div class="opcion">
+                                <input type="radio" id="opcion2" name="hora" value="opcion2">
+                                <label for="opcion2">9:30 am</label>
+                            </div>
+                            <div class="opcion">
+                                <input type="radio" id="opcion3" name="hora" value="opcion3">
+                                <label for="opcion3">10:30 am</label>
+                            </div>
                         </div>
-                        <div class="group">
-                            <label for="user" class="label">Username</label>
-                            <input id="user" type="text" class="input" required>
+                        <div class="opciones-hora">
+                            <h3>Tarde</h3>
+                            <div class="opcion">
+                                <input type="radio" id="opcion1" name="hora" value="opcion1">
+                                <label for="opcion1">2:00 pm</label>
+                            </div>
+                            <div class="opcion">
+                                <input type="radio" id="opcion2" name="hora" value="opcion2">
+                                <label for="opcion2">3:00</label>
+                            </div>
+                            <div class="opcion">
+                                <input type="radio" id="opcion3" name="hora" value="opcion3">
+                                <label for="opcion3">5:00</label>
+                            </div>
                         </div>
-                        <div class="group">
-                            <label for="pass" class="label">Password</label>
-                            <input id="pass" type="password" class="input" data-type="password" required>
+                        <div class="opciones-hora">
+                            <h3>Noche</h3>
+                            <div class="opcion">
+                                <input type="radio" id="opcion1" name="hora" value="opcion1">
+                                <label for="opcion1">6:00</label>
+                            </div>
+                            <div class="opcion">
+                                <input type="radio" id="opcion2" name="hora" value="opcion2">
+                                <label for="opcion2">7:00</label>
+                            </div>
+                            <div class="opcion">
+                                <input type="radio" id="opcion3" name="hora" value="opcion3">
+                                <label for="opcion3">8:00</label>
+                            </div>
                         </div>
-                        <div class="group">
-                            <label for="telefono" class="label">Teléfono</label>
-                            <input id="telefono" type="text" class="input" required>
-                        </div>
-                        
-                        <div class="group">
-                            <label for="cumpleanos" class="label">Nacimiento</label>
-                            <input id="cumpleanos" type="text" class="input">
-                        </div>
-
-                        <div class="group">
-                            <input  href="InicioSesion.html"type="submit" class="button" value="Registrarse">
-                        </div>
-
                     </div>
-
                     <div class="titulo">
                         <a href="#"><img src="images/logo.png" alt="#" class="imag_medio"/></a>
                     </div>
@@ -143,6 +223,7 @@
                         <div class="cuadro-blanco">
                             <textarea placeholder="Introduce tu texto aquí"></textarea>
                         </div>
+                        <button class="boton-siguiente">Siguiente</button>
                     </div>
                 </div>
             </div>
