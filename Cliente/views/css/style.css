@@ -504,15 +504,15 @@ ul.email li a {
 }
 
 
-/*--------------------------------------------------------------------- Servicio section nuestros servicios ---------------------------------------------------------------------*/
+/*--------------------------------------------------------------------- Servicio section nuestros servicios botox cap, color, cortes, servicios capilares ---------------------------------------------------------------------*/
 
 
-.titulo {
+.titulo_servicio {
     text-align: center;
     padding-bottom: 60px;
 }
 
-.titulo h2 {
+.titulo_servicio h2 {
     font-size: 40px;
     color: #202126;
     line-height: 55px;
@@ -520,56 +520,25 @@ ul.email li a {
     padding: 0;
 }
 
-.titulo h2 img {
+.titulo_servicio h2 img {
     padding-bottom: 20px;
 }
 
-.d_flex {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.blu {
-    color: #0808ff;
-}
-
-.leer_mas {
-    font-size: 17px;
-    background-color: #F7F4ED;
-    color: #202126 !important;
-    padding: 13px 0px;
-    width: 100%;
-    max-width: 190px;
-    text-align: center;
-    display: inline-block;
-    transition: ease-in all 0.5s;
-    font-weight: 500;
-}
-
-.leer_mas:hover {
-    background: #bc1939;
-    color: #fff;
-    border-radius: 20px;
-    transition: ease-in all 0.5s;
-}
-
-
-.servicio {
+.nuestro_servicio {
     padding: 90px 0;
     background: #fff;
 }
 
-.servicio_box {
-    background: #fff;
+.nuestro_servicio_box {
+    background: rgba(223,221,215,100%);
     text-align: center;
-    padding: 50px 20px 25px 20px;
+    padding: 100px 20px 75px 20px;
     border: #e9e9e9 solid 1px;
     transition: ease-in all 0.5s;
     margin-bottom: 30px;
 }
 
-.servicio_box h3 {
+.nuestro_servicio_box h3 {
     color: #202126;
     font-size: 25px;
     text-transform: uppercase;
@@ -577,41 +546,47 @@ ul.email li a {
     transition: ease-in all 0.5s;
 }
 
-.servicio_box p {
+.nuestro_servicio_box p {
     font-size: 17px;
     line-height: 27px;
+    margin-top: 20px;
+    margin-bottom: 30px;
     color: #2e2e2e;
     transition: ease-in all 0.5s;
 }
 
-.servicio_box i {
-    padding-bottom: 10px;
-    display: block;
-}
-
-#hover_servicio:hover.servicio_box {
-    background: #bc1939;
-    transition: ease-in all 0.5s;
-    border-radius: 20px;
-    cursor: pointer;
-}
-
-#hover_servicio:hover.servicio_box h3 {
-    color: #fff;
-    transition: ease-in all 0.5s;
-}
-
-#hover_servicio:hover.servicio_box p {
-    color: #fff;
-    transition: ease-in all 0.5s;
-}
-
-.servicio .leer_mas {
+.boton {
+    display: flex;
+    align-items: center;
+    background-color: #202126;
+    width: 180px; 
+    height: 50px;
     margin: 0 auto;
-    display: block;
-    margin-top: 30px;
 }
 
+.boton .citas_servicio_icono i{
+    text-align: center;
+    font-size: 30px;
+    background-color: #F7F4ED;
+    color: #202126;
+    padding: 10px 25px; 
+}
+
+.boton .citas_servicio_text a{
+    text-decoration: none;
+    font-size: 17px;
+    color: #fff;
+    padding: 10px 30px; 
+    text-align: center;
+    font-weight: bold;
+}
+
+
+.boton:hover{
+    background: #bc1939;
+    color: #f9f9f9;
+    transition: ease-in all 0.5s;
+}
 
 /*---------------------------------------------------------------------  Section Servicios ---------------------------------------------------------------------*/
 
