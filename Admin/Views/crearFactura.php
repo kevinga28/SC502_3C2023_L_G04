@@ -7,8 +7,7 @@
     <title>Evolve</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -26,266 +25,27 @@
 
     <link rel="stylesheet" href="dist/css/adminlte.min.css?v=3.2.0">
 
+    <link rel="stylesheet" href="dist/css/style.css">
+
 
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
-        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-            <!-- Left navbar links -->
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-                </li>
-                <li class="nav-item d-none d-sm-inline-block">
-                    <a href="index.html" class="nav-link">Inicio</a>
-                </li>
-            </ul>
-
-            <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
-                <!-- Navbar Search -->
-                <li class="nav-item">
-                    <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-                        <i class="fas fa-search"></i>
-                    </a>
-                    <div class="navbar-search-block">
-                        <form class="form-inline">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control form-control-navbar" type="search" placeholder="Search"
-                                    aria-label="Search">
-                                <div class="input-group-append">
-                                    <button class="btn btn-navbar" type="submit">
-                                        <i class="fas fa-search"></i>
-                                    </button>
-                                    <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </li>
-
-            </ul>
+        <nav class="main-header navbar navbar-expand ">
+            <?php
+            include 'fragments/navbar.php'
+            ?>
         </nav>
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-beige-primary elevation-4">
-            <!-- Brand Logo -->
-            <a href="index.html" class="brand-link">
-                <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-                    style="opacity: .8">
-                <span class="brand-text font-weight-light">Evolve</span>
-            </a>
+        <aside class="main-sidebar elevation-4 color-custom">
 
-            <!-- Sidebar -->
-            <div class="sidebar">
-                <!-- Sidebar user (optional) -->
-                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                    <div class="image">
-                        <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                    </div>
-                    <div class="info">
-                        <a href="#" class="d-block">Administrador</a>
-                    </div>
-                </div>
-
-                <!-- SidebarSearch Form -->
-                <div class="form-inline">
-                    <div class="input-group" data-widget="sidebar-search">
-                        <input class="form-control form-control-sidebar" type="search" placeholder="Search"
-                            aria-label="Search">
-                        <div class="input-group-append">
-                            <button class="btn btn-sidebar">
-                                <i class="fas fa-search fa-fw"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Sidebar Menu -->
-                <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
-                        data-accordion="false">
-                        <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-                        <li class="nav-item ">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p>
-                                    Estadisticas
-                                    <i class="right fas fa-angle-left"></i>
-                                </p>
-                            </a>
-
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="index.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>General</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Clientes</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index3.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Estilistas</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="index3.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Inventario</p>
-                                    </a>
-                                </li>
-                            </ul>
-
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>
-                                    Citas
-                                    <i class="fas fa-angle-left right"></i>
-                                    <span class="badge badge-info right">6</span>
-                                </p>
-                            </a>
-
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="layout/top-nav.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Todas las Citas</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="layout/top-nav-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Crear Cita</p>
-                                    </a>
-                                </li>
-
-                                <li class="nav-item">
-                                    <a href="layout/top-nav-sidebar.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Historial de Citas</p>
-                                    </a>
-                                </li>
-
-
-
-                            </ul>
-
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-tree"></i>
-                                <p>
-                                    Inventario
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="UI/general.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Lista Productos</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="UI/icons.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Agregar Producto</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-edit"></i>
-                                <p>
-                                    Ventas Y Pagos
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="forms/general.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Lista de Facturas</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="forms/advanced.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Crear Pago</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="forms/editors.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Crear Factura</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-table"></i>
-                                <p>
-                                    Gestion de Empleados
-                                    <i class="fas fa-angle-left right"></i>
-                                </p>
-                            </a>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <a href="tables/simple.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Crear Empleado</p>
-                                    </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a href="tables/data.html" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
-                                        <p>Editar Empleado</p>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="nav-header">Citas</li>
-                        <li class="nav-item">
-                            <a href="calendar.html" class="nav-link">
-                                <i class="nav-icon far fa-calendar-alt"></i>
-                                <p>
-                                    Calendario
-                                    <span class="badge badge-info right">2</span>
-                                </p>
-                            </a>
-                        </li>
-
-                    </ul>
-
-                </nav>
-                <!-- /.sidebar-menu -->
-            </div>
-            <!-- /.sidebar -->
+            <?php
+            include 'fragments/aside.php'
+            ?>
         </aside>
 
         <div class="content-wrapper">
@@ -333,32 +93,32 @@
                                                             <label for="Nombre">Nombre</label>
                                                             <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Primer Nombre" required>
                                                         </div>
-                            
+
                                                         <div class="form-group">
                                                             <label for="Apellido">Apellido</label>
                                                             <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Apellido" required>
                                                         </div>
-                            
+
                                                         <div class="form-group">
                                                             <label for="correoCliente">Correo Electrónico</label>
                                                             <input type="email" class="form-control" id="correoCliente" name="correoCliente" placeholder="Ingresar Correo" required>
                                                         </div>
-                            
+
                                                         <div class="form-group">
                                                             <label for="Telefono">Teléfono</label>
                                                             <input type="tel" class="form-control" id="Telefono" name="Telefono" placeholder="Teléfono" required>
                                                         </div>
-                            
+
                                                         <div class="form-check mb-3">
                                                             <input type="checkbox" class="form-check-input" id="EmpleadoCheck" name="EmpleadoCheck">
                                                             <label class="form-check-label" for="EmpleadoCheck">Empleado</label>
                                                         </div>
-                            
+
                                                         <div class="form-group">
                                                             <label for="FechaCita">Fecha de la Cita</label>
                                                             <input type="date" class="form-control" id="FechaCita" name="FechaCita">
                                                         </div>
-                            
+
                                                         <div class="form-group">
                                                             <label for="HoraCita">Hora de la Cita</label>
                                                             <input type="time" class="form-control" id="HoraCita" name="HoraCita">
@@ -369,7 +129,7 @@
                                                             <label for="tratamiento">Tratamiento</label>
                                                             <select class="select2 select2-hidden-accessible" multiple="multiple" id="tratamiento" name="tratamiento[]" data-placeholder="Seleccionar Tratamiento" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
                                                                 <option value="CorteMujer" data-precio="30">Corte Mujer - $30</option>
-                                                                <option value="LargoLavadoMujer" data-precio="40">Largo +  Lavado Mujer - $40</option>
+                                                                <option value="LargoLavadoMujer" data-precio="40">Largo + Lavado Mujer - $40</option>
                                                                 <option value="CortoLavadoMujer" data-precio="35">Corto + Lavado Mujer - $35</option>
                                                                 <option value="LargoHombre" data-precio="25">Largo Hombre - $25</option>
                                                                 <option value="CortoHombre" data-precio="20">Corto Hombre - $20</option>
@@ -378,7 +138,7 @@
                                                                 <option value="NinioNinia" data-precio="15">Niño - Niña - $15</option>
                                                             </select>
                                                         </div>
-                            
+
                                                         <div class="form-group">
                                                             <label for="MetodoPago">Método de Pago</label>
                                                             <select class="select2 select2-hidden-accessible" id="MetodoPago" name="MetodoPago" data-placeholder="Seleccionar Pago" data-dropdown-css-class="select2-danger" style="width: 100%;" aria-hidden="true">
@@ -389,7 +149,7 @@
                                                                 <option>Otro</option>
                                                             </select>
                                                         </div>
-                            
+
                                                         <div class="form-group">
                                                             <label for="estilista">Estilista</label>
                                                             <select class="select2 select2-hidden-accessible" id="estilista" name="estilista" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
@@ -398,7 +158,7 @@
                                                                 <option>Sofia Vargas</option>
                                                             </select>
                                                         </div>
-                            
+
                                                         <div class="form-group">
                                                             <label for="total">Total a Pagar</label>
                                                             <input type="text" class="form-control" id="total" name="total" readonly>
@@ -406,7 +166,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                            
+
                                             <div class="card-footer">
                                                 <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Crear Factura</button>
                                             </div>
@@ -434,8 +194,7 @@
                                         </div>
                                         <div class="card-body">
                                             <div class="chart">
-                                                <canvas id="barChart"
-                                                    style="min-height: 320px; height: 335px; max-height: 335px; max-width: 100%;"></canvas>
+                                                <canvas id="barChart" style="min-height: 320px; height: 335px; max-height: 335px; max-width: 100%;"></canvas>
                                             </div>
                                         </div>
                                         <!-- /.card-body -->
@@ -479,16 +238,13 @@
                                                     <td>Cortes</td>
                                                     <td>prueba@hotmail.com</td>
                                                     <td>
-                                                        <button type="button" class="btn btn-danger float-right"
-                                                            style="margin-right: 8px;">
+                                                        <button type="button" class="btn btn-danger float-right" style="margin-right: 8px;">
                                                             <i class="fas fa-download"></i> Eliminar
                                                         </button>
-                                                        <button type="button" class="btn btn-success float-right"
-                                                            style="margin-right: 8px;">
+                                                        <button type="button" class="btn btn-success float-right" style="margin-right: 8px;">
                                                             <i class="fas fa-download"></i> Editar
                                                         </button>
-                                                        <button type="button" class="btn btn-primary float-right"
-                                                            style="margin-right: 8px;">
+                                                        <button type="button" class="btn btn-primary float-right" style="margin-right: 8px;">
                                                             <i class="fas fa-download"></i> Ver
                                                         </button>
                                                     </td>
@@ -510,8 +266,7 @@
 
                                 <div class="row no-print">
                                     <div class="col-12">
-                                        <button type="button" class="btn btn-primary float-right"
-                                            style="margin-right: 5px;">
+                                        <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                                             <i class="fas fa-download"></i> Generar PDF
                                         </button>
                                     </div>
@@ -554,10 +309,10 @@
 
     <script>
         // Captura el cambio en la selección de tratamientos
-        $('#tratamiento').on('change', function () {
+        $('#tratamiento').on('change', function() {
             var total = 0;
             // Suma los precios de los tratamientos seleccionados
-            $('#tratamiento option:selected').each(function () {
+            $('#tratamiento option:selected').each(function() {
                 total += parseInt($(this).data('precio'));
             });
             // Muestra el total en el campo correspondiente
@@ -567,9 +322,7 @@
 
 
     <script>
-
-
-        $(function () {
+        $(function() {
             /* ChartJS
              * -------
              * Here we will create a few charts using ChartJS
@@ -584,8 +337,7 @@
 
             var areaChartData = {
                 labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-                datasets: [
-                    {
+                datasets: [{
                         label: 'Digital Goods',
                         backgroundColor: 'rgba(60,141,188,0.9)',
                         borderColor: 'rgba(60,141,188,0.8)',
@@ -667,12 +419,10 @@
                     'Opera',
                     'Navigator',
                 ],
-                datasets: [
-                    {
-                        data: [700, 500, 400, 600, 300, 100],
-                        backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
-                    }
-                ]
+                datasets: [{
+                    data: [700, 500, 400, 600, 300, 100],
+                    backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+                }]
             }
             var donutOptions = {
                 maintainAspectRatio: false,
@@ -754,7 +504,7 @@
     </script>
 
     <script>
-        $(function () {
+        $(function() {
             //Initialize Select2 Elements
             $('.select2').select2()
 
