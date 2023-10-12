@@ -1,0 +1,15 @@
+.color-custom{
+    background-color: #F7F4ED;
+}
+
+
+a:hover {
+    color: #BC1939;
+}
+
+
+.nav-pills .nav-link:not(.active):hover {
+    color: #BC1939;
+}
+
+
