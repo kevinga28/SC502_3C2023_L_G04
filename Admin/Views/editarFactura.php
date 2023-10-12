@@ -187,7 +187,9 @@
         </div>
 
         <footer class="main-footer no-print">
-            <strong>Copyright &copy; 2023 Evolve Admin</a>.</strong> Derechos Reservados.
+            <?php
+            include 'fragments/footer.php'
+            ?>
         </footer>
 
         <!-- Control Sidebar -->

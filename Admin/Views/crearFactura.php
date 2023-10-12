@@ -238,15 +238,17 @@
                                                     <td>Cortes</td>
                                                     <td>prueba@hotmail.com</td>
                                                     <td>
+
                                                         <button type="button" class="btn btn-danger float-right" style="margin-right: 8px;">
-                                                            <i class="fas fa-download"></i> Eliminar
+                                                        <i class="fas fa-download"> <a href="eliminarFactura.php">Eliminar</a></i>  
                                                         </button>
                                                         <button type="button" class="btn btn-success float-right" style="margin-right: 8px;">
-                                                            <i class="fas fa-download"></i> Editar
+                                                        <i class="fas fa-download"> <a href="editarFactura.php">Editar</a></i>  
                                                         </button>
                                                         <button type="button" class="btn btn-primary float-right" style="margin-right: 8px;">
-                                                            <i class="fas fa-download"></i> Ver
+                                                            <i class="fas fa-download"> <a href="verFactura.php">Ver</a></i>  
                                                         </button>
+                                                        
                                                     </td>
                                                 </tr>
 
@@ -281,7 +283,9 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer no-print">
-            <strong>Copyright &copy; 2023 Evolve Admin</a>.</strong> Derechos Reservados.
+            <?php
+            include 'fragments/footer.php'
+            ?>
         </footer>
 
         <!-- Control Sidebar -->
