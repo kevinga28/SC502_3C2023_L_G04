@@ -1,0 +1,148 @@
+
+/* CSS para el cuadro beige que se encuentra junto al logo enorme */
+
+.cuadro-beige2 {
+    background-color: #F7F4ED;
+    padding: 20px;
+    border-radius: 10px;
+    float: left; 
+    margin-right: 20px; 
+    clear: left; 
+    padding-right: 200px;
+    padding-bottom: 570px;
+}
+
+.cuadro-beige2 h3 {
+    font-size: 27px;
+    margin-bottom: 10px;
+    color:#111111;
+    padding-left: 150px;
+
+}
+/* Estilos para los campos de correo y contraseña */
+
+.cuadro-beige2 .group .label{
+text-transform:uppercase;
+}
+.cuadro-beige2 .group{
+	margin-bottom:35px;
+    padding-left: 150px;
+}
+.cuadro-beige2 .group .label,
+.cuadro-beige2 .group .input
+{
+	width:100%;
+	color:#fff;
+
+}
+.cuadro-beige2 .group .input{
+	border:none;
+	padding:5px 50px;
+	border-radius:25px;
+    color:#aaa;
+	font-size:12px;
+}
+
+/* Estilos para los botones */
+.cuadro-beige2 .group .button{
+
+	background:#202126;
+	border:none;
+	padding:10px 15px;
+	border-radius:25px;
+	width:100%;
+	color:#fff;
+	
+
+}
+
+/* CSS para la imagen, el nombre de esta etiqueta solo se encuentra en ciertos HTMLs por lo que no debe afectar en todo */
+.imag_medio {
+    margin-top: 80px;
+    max-width: 500px;
+    height: auto;
+}
+
+/* CSS para el bloque gris */
+
+.bloque-gris {
+    background-color: #f1f1f1; 
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 240px; 
+    margin-left: 700px;
+    text-align: right;
+}
+
+.bloque-gris p {
+    font-size: 20px;
+    margin: 0;
+    float: left;
+}
+
+/* CSS del Textarea dentro del bloque gris */
+
+.cuadro-blanco {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    margin: 10px
+}
+
+.cuadro-blanco textarea {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    resize: none; 
+}
+
+
+/* CSS del boton del  bloque gris*/
+
+.boton-siguiente {
+    background-color: black;
+    color: #fff; 
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 20px; 
+    cursor: pointer; 
+    margin-top: 5px;
+    font-size: 18px; 
+}
+
+.boton-siguiente:hover {
+    background-color: #593326; 
+}
+
+
+------------------------------------------- Selector de hora ----------------------------
+.opciones-hora {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.opciones-hora h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.opcion {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.opcion input[type="radio"] {
+    margin-right: 10px;
+}
+
+.opcion label {
+    font-size: 16px;
+    cursor: pointer;
+}
+
