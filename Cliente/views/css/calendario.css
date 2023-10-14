@@ -43,3 +43,24 @@ table td:nth-child(1) {
 table td:nth-child(7) {
     color: #00f;
 }
+.opciones-hora {
+    margin: 10px;
+}
+
+.opcion {
+    display: inline-block;
+    margin: 5px;
+}
+
+.opcion button {
+    background-color: #F7F4ED
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px; 
+    cursor: pointer;
+}
+
+.opcion button:focus {
+    background-color:#F7F4ED
+}

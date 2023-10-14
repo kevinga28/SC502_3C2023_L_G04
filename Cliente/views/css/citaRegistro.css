@@ -19,6 +19,13 @@
     padding-left: 150px;
 
 }
+.cuadro-beige2 a {
+    font-size: 27px;
+    margin-bottom: 10px;
+    color:#111111;
+    padding-left: 150px;
+
+}
 /* Estilos para los campos de correo y contraseña */
 
 .cuadro-beige2 .group .label{
@@ -32,7 +39,7 @@ text-transform:uppercase;
 .cuadro-beige2 .group .input
 {
 	width:100%;
-	color:#fff;
+	color:#1a1818;
 
 }
 .cuadro-beige2 .group .input{
