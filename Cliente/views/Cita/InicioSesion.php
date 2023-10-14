@@ -89,7 +89,7 @@
             <div class="container-fluid">
                 <div class="col-md-12">
                     <div class="text-bg-nosotros">
-                        <h1>Agenda de citas</h1>
+                        <h1>Agenda de citas</h1> 
                     </div>
                 </div>
             </div>

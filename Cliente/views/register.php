@@ -40,10 +40,13 @@
           <div class="text-bg-nosotros">
             <div class="box-log">
               <form class="">
-                <h2>Registrar o Iniciar Sesion</h2>
-                <h3>Crear una cuenta</h3>
+                <h2>Registrar</h2>
+
+
+
 
                 <div class="input-box">
+                  <h3>Campos Requeridos</h3>
                   <input type="text" placeholder="Nombre*">
                 </div>
 
@@ -64,7 +67,7 @@
                   <input type="text" placeholder="Telefono*">
                 </div>
 
-                <div class="input-box">
+                <div class="input-box-fechas">
                   <h3>Fecha de nacimiento </h3>
                   <div class="fecha_nacimiento">
                     <input type="text" placeholder="Dia">
@@ -76,6 +79,9 @@
                 <div class="input-box">
                   <button type="submit" class="btn">Registrar</button>
                 </div>
+
+                <p id="parrafo">
+                  Al continuar, acepta las Política de privacidad. </p>
               </form>
 
               <p>
@@ -87,7 +93,6 @@
       </div>
     </div>
   </section>
-
 
   <footer id="contacto">
     <?php
