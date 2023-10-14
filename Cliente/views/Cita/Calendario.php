@@ -9,19 +9,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Salon Evolve</title>
+    <title>Salon Evolve - Estilos</title>
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- style css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="../css/calendario.css">
+     <!-- style css -->
+     <link rel="stylesheet" href="../css/citaRegistro.css">
     <!-- Responsive-->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="../images/fevicon.png" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-
-
+    <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
 </head>
 
 
@@ -64,7 +66,7 @@
                         <div class="full">
                             <div class="center-desk">
                                 <div class="logo">
-                                    <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                                    <a href="index.html"><img src="../images/logo.png" alt="#" /></a>
                                 </div>
                             </div>
                         </div>
@@ -89,16 +91,7 @@
             <div class="container-fluid">
                 <div class="col-md-12">
                     <div class="text-bg-nosotros">
-                        <h1>Sobre Nosotros</h1>
-                        <p>
-                            Potenciar tu confianza a través de servicios capilares excepcionales.
-                            Creemos en la importancia de escuchar a nuestros clientes,
-                            comprender sus deseos y necesidades, y trabajar juntos para lograr
-                            resultados sorprendentes. Ya sea que estés buscando un cambio de imagen
-                            completo, un corte de pelo elegante, un tratamiento de color personalizado o un
-                            peinado para una ocasión especial,
-                            estamos aquí para satisfacer todas tus necesidades capilares.
-                        </p>
+                        <h1>Agenda de citas</h1>
                     </div>
                 </div>
             </div>
@@ -112,53 +105,122 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <div class="cuadro-beige2">
+                        <h3>Fecha y Horario</h3>
+                        <div class="calendario">
+                            <div class="mes">
+                                <span class="mes-nombre">Octubre</span>
+                                <span class="anio">2023</span>
+                            </div>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Dom</th>
+                                        <th>Lun</th>
+                                        <th>Mar</th>
+                                        <th>Mié</th>
+                                        <th>Jue</th>
+                                        <th>Vie</th>
+                                        <th>Sáb</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>1</td>
+                                        <td>2</td>
+                                        <td>3</td>
+                                        <td>4</td>
+                                    </tr>
+                                    <tr>
+                                        <td>5</td>
+                                        <td>6</td>
+                                        <td>7</td>
+                                        <td>8</td>
+                                        <td>9</td>
+                                        <td>10</td>
+                                        <td>11</td>
+                                    </tr>
+                                    <tr>
+                                        <td>12</td>
+                                        <td>13</td>
+                                        <td>14</td>
+                                        <td>15</td>
+                                        <td>16</td>
+                                        <td>17</td>
+                                        <td>18</td>
+                                    </tr>
+                                    <tr>
+                                        <td>19</td>
+                                        <td>20</td>
+                                        <td>21</td>
+                                        <td>22</td>
+                                        <td>23</td>
+                                        <td>24</td>
+                                        <td>25</td>
+                                    </tr>
+                                    <tr>
+                                        <td>26</td>
+                                        <td>27</td>
+                                        <td>28</td>
+                                        <td>29</td>
+                                        <td>30</td>
+                                        <td>31</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="opciones-hora">
+                            <h3>Mañana</h3>
+                            <div class="opcion">
+                                <button type="button" value="8:00 am">8:00 am</button>
+                            </div>
+                            <div class="opcion">
+                                <button type="button" value="9:30 am">9:30 am</button>
+                            </div>
+                            <div class="opcion">
+                                <button type="button" value="10:30 am">10:30 am</button>
+                            </div>
+                        </div>
+                        <div class="opciones-hora">
+                            <h3>Tarde</h3>
+                            <div class="opcion">
+                                <button type="button" value="2:00 pm">2:00 pm</button>
+                            </div>
+                            <div class="opcion">
+                                <button type="button" value="3:00 pm">3:00 pm</button>
+                            </div>
+                            <div class="opcion">
+                                <button type="button" value="5:00 pm">5:00 pm</button>
+                            </div>
+                        </div>
+                        <div class="opciones-hora">
+                            <h3>Noche</h3>
+                            <div class="opcion">
+                                <button type="button" value="6:00 pm">6:00 pm</button>
+                            </div>
+                            <div class="opcion">
+                                <button type="button" value="7:00 pm">7:00 pm</button>
+                            </div>
+                            <div class="opcion">
+                                <button type="button" value="8:00 pm">8:00 pm</button>
+                            </div>
+                        </div>
+                    </div>
                     <div class="titulo">
-                        <h2> <img src="images/head.png" alt="#" />Nuestros Servicios</h2>
+                        <a href="#"><img src="../images/logo.png" alt="#" class="imag_medio" /></a>
+                    </div>
+                    <div class="bloque-gris">
+                        <p>Servicios</p>
+                        <div class="cuadro-blanco">
+                            <textarea placeholder="Introduce tu texto aquí"></textarea>
+                        </div>
+                        <button class="boton-siguiente">Siguiente</button>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div id="hover_servicio" class="servicio_box">
-                        <i><img src="images/thr.png" alt="#" /></i>
-                        <h3>Cortes de cabello</h3>
-                        <p>some form, by injected humour, or randomised words which don't look even slightly believable.
-                            If
-                            you are </p>
-                    </div>
-                    <a class="leer_mas" href="#">Ver</a>
-                </div>
-
-                <div class="col-md-4">
-                    <div id="hover_servicio" class="servicio_box">
-                        <i><img src="images/thr1.png" alt="#" /></i>
-                        <h3>Color</h3>
-                        <p>some form, by injected humour, or randomised words which don't look even slightly believable.
-                            If
-                            you are </p>
-                    </div>
-                    <a class="leer_mas" href="#">Ver</a>
-                </div>
-
-                <div class="col-md-4">
-                    <div id="hover_servicio" class="servicio_box">
-                        <i><img src="images/thr2.png" alt="#" /></i>
-                        <h3>Capilares</h3>
-                        <p>some form, by injected humour, or randomised words which don't look even slightle </p>
-                    </div>
-                    <a class="leer_mas" href="#">Ver</a>
-                </div>
-
-                <div class="col-md-4 mt-5">
-                    <div id="hover_servicio" class="servicio_box">
-                        <i><img src="images/thr2.png" alt="#" /></i>
-                        <h3>Botox Capilar</h3>
-                        <p>some form, by injected humour, or randomised words which don't look even slightle </p>
-                    </div>
-                    <a class="leer_mas" href="#">Ver</a>
-                </div>
-
-
             </div>
         </div>
     </div>
@@ -173,7 +235,7 @@
                         <div class="row">
                             <div class="col-md-7 padd_bottom">
                                 <div class="heading3">
-                                    <a href="#"><img src="images/logo.png" alt="#" /></a>
+                                    <a href="#"><img src="../images/logo.png" alt="#" /></a>
                                     <p>
                                         Evolve es un salón de belleza especializado en cuidado capilar que se destaca
                                         por ofrecer

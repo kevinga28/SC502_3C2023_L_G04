@@ -943,6 +943,7 @@ ul.informacion li a {
 
 ul.informacion li a:hover {
     color: #bc1939;
+<<<<<<< HEAD
 }
 
 .copyright {
@@ -965,3 +966,6 @@ ul.informacion li a:hover {
 .copyright a:hover {
     color: #bc1939;
 }
+=======
+}
+>>>>>>> 106a33a24371bdc9aa04d69771f5c394afd1131f
