@@ -9,19 +9,19 @@
                      <div class="collapse navbar-collapse" id="navbarEvolve">
                         <ul class="navbar-nav mr-auto">
                            <li class="nav-item active">
-                              <a class="nav-link" href="index.html">Inicio</a>
+                              <a class="nav-link" href="index.php">Inicio</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="#about">Nosotros</a>
+                              <a class="nav-link" href="nosotros.php">Nosotros</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="#servicio">Servicios</a>
+                              <a class="nav-link" href="servicios.php">Servicios</a>
                            </li>
                            <li class="nav-item">
                               <a class="nav-link" href="#estilista">Estilistas</a>
                            </li>
                            <li class="nav-item">
-                              <a class="nav-link" href="#contacto">contacto</a>
+                              <a class="nav-link" href="#contacto">Contacto</a>
                            </li>
                         </ul>
                      </div>

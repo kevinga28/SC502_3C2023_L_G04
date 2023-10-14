@@ -10,17 +10,17 @@
     <!-- site metas -->
     <title>Login</title>
     <!-- bootstrap css -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- style css -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <!-- style css -->
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../css/login.css">
     <!-- Responsive-->
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="../css/responsive.css">
     <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+    <link rel="icon" href="../images/fevicon.png" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
-    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
         <!-- header inicio-->
 
         <?php
-        include 'fragments/header.php'
+        include '../fragments/header.php'
         ?>
     </header>
 
@@ -62,7 +62,7 @@
 
     <footer id="contacto">
         <?php
-        include 'fragments/footer.php'
+        include '../fragments/footer.php'
         ?>
     </footer>
 

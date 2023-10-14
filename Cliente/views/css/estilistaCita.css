@@ -8,7 +8,7 @@
     float: left; 
     margin-right: 20px; 
     clear: left; 
-    padding-right: 200px;
+    padding-right: 400px;
     padding-bottom: 400px;
 }
 
@@ -129,4 +129,11 @@
     padding: 10px 20px; 
     cursor: pointer; 
     font-size: 18px; 
+}
+
+.estilistasJD .nav-item .estilistaJD {
+    font-size: 24px;
+    line-height: 27px;
+    color: #876B62;
+    transition: ease-in all 0.5s;
 }
