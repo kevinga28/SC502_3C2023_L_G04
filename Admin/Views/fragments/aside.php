@@ -139,7 +139,7 @@
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="producto/producto.php" class="nav-link">
+                         <a href="producto/productos.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Agregar Producto</p>
                          </a>

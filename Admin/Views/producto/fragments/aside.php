@@ -133,13 +133,13 @@
                  </a>
                  <ul class="nav nav-treeview">
                      <li class="nav-item">
-                         <a href="listaProducto.php" class="nav-link">
+                         <a href="productos.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Lista Productos</p>
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="producto.php" class="nav-link">
+                         <a href="crearProducto.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Agregar Producto</p>
                          </a>
