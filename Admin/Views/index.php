@@ -79,8 +79,7 @@
               <!-- small box -->
               <div class="small-box bg-info">
                 <div class="inner">
-                  <h3>150</h3>
-
+                  <h3><?php echo $numeroCitas; ?></h3>
                   <p>Nuevas Citas</p>
                 </div>
                 <div class="icon">
@@ -94,14 +93,14 @@
               <!-- small box -->
               <div class="small-box bg-success">
                 <div class="inner">
-                  <h3>53<sup style="font-size: 20px">%</sup></h3>
+                  <h3><?php echo $numeroClientes; ?> <sup style="font-size: 20px">%</sup></h3>
 
                   <p>Clientes</p>
                 </div>
                 <div class="icon">
                   <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#" class="small-box-footer">Ver Clientes <i class="fas fa-arrow-circle-right"></i></a>
+                <a href="clientes.php" class="small-box-footer">Ver Clientes <i class="fas fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
@@ -109,7 +108,7 @@
               <!-- small box -->
               <div class="small-box bg-warning">
                 <div class="inner">
-                  <h3>44</h3>
+                  <h3><?php echo $numeroEstilistas; ?></h3>
 
                   <p>Estilistas</p>
                 </div>
@@ -124,8 +123,7 @@
               <!-- small box -->
               <div class="small-box bg-danger">
                 <div class="inner">
-                  <h3>65</h3>
-
+                  <h3><?php echo $numeroProductos; ?></h3>
                   <p>Inventario</p>
                 </div>
                 <div class="icon">
@@ -181,20 +179,28 @@
                     <i class="ion ion-clipboard mr-1"></i>
                     Inventario
                   </h3>
+                  <div class="card-body">
+                    <table id="elementosTable" class="table table-bordered">
+                     
+                      <tbody>
+                        <!-- Aquí se mostrarán los elementos -->
+                      </tbody>
+                    </table>
 
-                  <div class="card-tools">
-                    <ul class="pagination pagination-sm">
-                      <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
-                      <li class="page-item"><a href="#" class="page-link">1</a></li>
-                      <li class="page-item"><a href="#" class="page-link">2</a></li>
-                      <li class="page-item"><a href="#" class="page-link">3</a></li>
-                      <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
-                    </ul>
+
+                    <div class="card-tools">
+                      <ul class="pagination pagination-sm">
+                        <li class="page-item"><a href="#" class="page-link">&laquo;</a></li>
+                        <li class="page-item"><a href="#" class="page-link">1</a></li>
+                        <li class="page-item"><a href="#" class="page-link">2</a></li>
+                        <li class="page-item"><a href="#" class="page-link">3</a></li>
+                        <li class="page-item"><a href="#" class="page-link">&raquo;</a></li>
+                      </ul>
+                    </div>
                   </div>
-                </div>
-                <!-- /.card-header -->
+                  <!-- /.card-header -->
 
-                <!-- /.card -->
+                  <!-- /.card -->
             </section>
             <!-- /.Left col -->
             <!-- right col (We are only adding the ID to make the widgets sortable)-->
@@ -342,7 +348,7 @@
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer no-print">
-    <?php
+      <?php
       include 'fragments/footer.php'
       ?>
     </footer>

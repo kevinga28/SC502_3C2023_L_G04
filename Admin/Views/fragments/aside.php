@@ -17,9 +17,25 @@
      </div>
 
      <!-- SidebarSearch Form -->
+     <style>
+         /* Cambiar el color del texto de búsqueda en la lista de resultados */
+         .sidebar-search-results .list-group-item {
+             color: #8B5C4A;
+         }
+
+         .sidebar-search-results .list-group-item:hover {
+             color: #BC1939;
+         }
+
+         strong.text-light {
+             color: #202126 !important;
+
+         }
+     </style>
+
      <div class="form-inline">
          <div class="input-group" data-widget="sidebar-search">
-             <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+             <input class="form-control form-control-sidebar" type="search" placeholder="Buscar" aria-label="Search">
              <div class="input-group-append">
                  <button class="btn btn-sidebar">
                      <i class="fas fa-search fa-fw"></i>
@@ -29,9 +45,17 @@
      </div>
 
      <!-- Sidebar Menu -->
+
+      <style>
+         /* Cambiar el color del icono y lista */
+         .nav-pills .nav-link {
+             color: #202126;
+         }
+     </style>
+     
      <nav class="mt-2">
          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          
+
              <li class="nav-item">
                  <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -82,9 +106,9 @@
 
                  <ul class="nav nav-treeview">
                      <li class="nav-item">
-                         <a href="citas.php" class="nav-link">
+                         <a href="layout/top-nav-sidebar.html" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
-                             <p>Todas las Citas</p>
+                             <p>Historial de Citas</p>
                          </a>
                      </li>
 
@@ -94,15 +118,6 @@
                              <p>Crear Cita</p>
                          </a>
                      </li>
-
-                     <li class="nav-item">
-                         <a href="layout/top-nav-sidebar.html" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Historial de Citas</p>
-                         </a>
-                     </li>
-
-
 
                  </ul>
 
@@ -133,11 +148,11 @@
                  </ul>
              </li>
 
-             <li class="nav-item">
+             <li class="nav-item">  
                  <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-edit"></i>
                      <p>
-                         Ventas Y Pagos
+                         Facturas
                          <i class="fas fa-angle-left right"></i>
                      </p>
                  </a>
@@ -148,7 +163,7 @@
                              <p>Lista de Facturas</p>
                          </a>
                      </li>
-                   
+
                      <li class="nav-item">
                          <a href="crearFactura.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
@@ -171,13 +186,14 @@
                      <li class="nav-item">
                          <a href="tables/simple.html" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
-                             <p>Crear Empleado</p>
+                             <p>Lista de Empleados</p>
                          </a>
                      </li>
+
                      <li class="nav-item">
-                         <a href="../tables/data.html" class="nav-link">
+                         <a href="tables/simple.html" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
-                             <p>Editar Empleado</p>
+                             <p>Crear Empleado</p>
                          </a>
                      </li>
 
