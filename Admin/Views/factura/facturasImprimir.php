@@ -30,7 +30,7 @@
     <aside class="main-sidebar elevation-4 color-custom">
 
       <?php
-      include '../fragments/aside.php'
+      include 'fragments/aside.php'
       ?>
     </aside>
 
@@ -217,7 +217,7 @@
     <!-- /.content-wrapper -->
     <footer class="main-footer no-print">
       <?php
-      include '../fragments/footer.php'
+      include 'fragments/footer.php'
       ?>
     </footer>
 

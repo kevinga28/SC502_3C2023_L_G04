@@ -9,13 +9,13 @@
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- fullCalendar -->
-  <link rel="stylesheet" href="plugins/fullcalendar/main.css">
+  <link rel="stylesheet" href="../plugins/fullcalendar/main.css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-  <link rel="stylesheet" href="dist/css/style.css">
+  <link rel="stylesheet" href="../dist/css/style.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -147,18 +147,18 @@
   <!-- ./wrapper -->
 
   <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
+  <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap -->
-  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
   <!-- jQuery UI -->
-  <script src="plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
   <!-- AdminLTE App -->
-  <script src="dist/js/adminlte.min.js"></script>
+  <script src="../dist/js/adminlte.min.js"></script>
   <!-- fullCalendar 2.2.5 -->
-  <script src="plugins/moment/moment.min.js"></script>
-  <script src="plugins/fullcalendar/main.js"></script>
+  <script src="../plugins/moment/moment.min.js"></script>
+  <script src="../plugins/fullcalendar/main.js"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="dist/js/demo.js"></script>
+  <script src="../dist/js/demo.js"></script>
 
   <script>
     $(function() {

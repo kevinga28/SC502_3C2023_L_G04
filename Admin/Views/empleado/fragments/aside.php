@@ -1,6 +1,6 @@
  <!-- Brand Logo -->
  <a href="index.html" class="brand-link">
-     <img src="dist/img/AdminLTELogo.png" alt="Evolve_Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+     <img src="../dist/img/AdminLTELogo.png" alt="Evolve_Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
      <span class="brand-text font-weight-light">Evolve</span>
  </a>
 
@@ -9,7 +9,7 @@
      <!-- USUARIO ADMIN O ESTILISTA -->
      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
          <div class="image">
-             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+             <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
          </div>
          <div class="info">
              <a href="#" class="d-block">Administrador</a>
@@ -73,19 +73,19 @@
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="clientes.php" class="nav-link">
+                         <a href="../cliente/clientes.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Clientes</p>
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="estilistas.php" class="nav-link">
+                         <a href="empleados.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
-                             <p>Estilistas</p>
+                             <p>Empleados</p>
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="inventario.php" class="nav-link">
+                         <a href="../producto/producto.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Inventario</p>
                          </a>
@@ -106,14 +106,14 @@
 
                  <ul class="nav nav-treeview">
                      <li class="nav-item">
-                         <a href="layout/top-nav-sidebar.html" class="nav-link">
+                         <a href="../cita/historialCitas.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Historial de Citas</p>
                          </a>
                      </li>
 
                      <li class="nav-item">
-                         <a href="layout/top-nav-sidebar.html" class="nav-link">
+                         <a href="../cita/crearCita.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Crear Cita</p>
                          </a>
@@ -133,13 +133,13 @@
                  </a>
                  <ul class="nav nav-treeview">
                      <li class="nav-item">
-                         <a href="UI/general.html" class="nav-link">
+                         <a href="../producto/listaProducto.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Lista Productos</p>
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="UI/icons.html" class="nav-link">
+                         <a href="../producto/producto.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Agregar Producto</p>
                          </a>
@@ -158,13 +158,13 @@
                  </a>
                  <ul class="nav nav-treeview">
                      <li class="nav-item">
-                         <a href="listaFacturas.php" class="nav-link">
+                         <a href="../factura/listaFactura.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Lista de Facturas</p>
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="crearFactura.php" class="nav-link">
+                         <a href="../factura/facturas.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Crear Factura</p>
                          </a>
@@ -183,14 +183,14 @@
                  </a>
                  <ul class="nav nav-treeview">
                      <li class="nav-item">
-                         <a href="tables/simple.html" class="nav-link">
+                         <a href="listaEmpleado.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Lista de Empleados</p>
                          </a>
                      </li>
 
                      <li class="nav-item">
-                         <a href="tables/simple.html" class="nav-link">
+                         <a href="empleados.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Crear Empleado</p>
                          </a>
