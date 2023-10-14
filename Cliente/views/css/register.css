@@ -14,7 +14,7 @@
 }
 
 .input-box input{
-    width:70%;
+    width:88%;
     border-style: initial;
     border-radius:8px;
     padding:10px;
@@ -34,6 +34,36 @@
     width:30%;
     color:white;
     background-color:#202126;
+    margin-top:50px;
 
+}
+
+.input-box h3{
+    display:block;
+    margin-right: 265px;
+}
+.input-box-fechas{
+    display:flex;
+    align-items: center;
+}
+
+.input-box-fechas h3{
+    white-space: nowrap;
+
+
+    margin-left:40px;
+    margin-right:70px
+
+
+
+}
+
+.fecha_nacimiento input{
+    width:22%;
+    border: 0px;
+
+}
+#parrafo{
+    color:black;
 }
 
