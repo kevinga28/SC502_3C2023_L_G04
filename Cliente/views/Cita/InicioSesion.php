@@ -15,7 +15,7 @@
     <!-- style css -->
     <link rel="stylesheet" href="../css/style.css">
     <!-- style css -->
-    <link rel="stylesheet" href="../css/citaRegistro.css">
+    <link rel="stylesheet" href="css/citaRegistro.css">
     <!-- Responsive-->
     <link rel="stylesheet" href="../css/responsive.css">
     <!-- fevicon -->

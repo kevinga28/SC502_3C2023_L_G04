@@ -17,7 +17,7 @@
     <!-- CSS DEL CALENDARIO-->
     <link rel="stylesheet" href="css/calendar.css">
     <!-- style css -->
-    <link rel="stylesheet" href="../css/citaRegistro.css">
+    <link rel="stylesheet" href="css/citaRegistro.css">
     <!-- Responsive-->
     <link rel="stylesheet" href="../css/responsive.css">
     <!-- fevicon -->
@@ -200,7 +200,6 @@
     </div>
     <!-- final servicios -->
 
-    <!--  footer -->
     <!--  footer -->
     <footer id="contacto">
         <?php
