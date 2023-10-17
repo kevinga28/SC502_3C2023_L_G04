@@ -29,40 +29,38 @@
         <!-- header inicio-->
 
         <?php
-        include '../fragments/header.php'
+        include 'fragments/header.php'
         ?>
     </header>
 
 
-    <section class="banner_nosotros">
-        <div class="carousel-inner-nosotros">
+    <section class="banner_logueo">
+        <div>
             <div class="container-fluid">
                 <div class="col-md-12">
-                    <div class="text-bg-nosotros">
-                        <div class="box-log">
-                            <form class="">
-                                <h2>Registrar o Iniciar Sesion</h2>
-                                <h3>Crear una cuenta</h3>
-                                <div class="input-box">
-                                    <input type="email" placeholder="Correo Electronico">
-                                </div>
-                                <div class="input-box">
-                                    <input type="password" placeholder="Contraseña">
-                                </div>
-                                <div class="input-box">
-                                    <button type="submit" class="btn">Iniciar Sesion</button>
-                                </div>
-                            </form>
-                        </div>
+                    <div class="box-log text-bg-logueo">
+                        <form>
+                            <h2>Registrar o Iniciar Sesion</h2>
+                            <a class="registrarse" href="register.php">Crear una cuenta</a>
+                            <div class="input-box">
+                                <input type="email" name="correo" placeholder="Correo Electronico">
+                            </div>
+                            <div class="input-box">
+                                <input type="password" name="contrasena" placeholder="Contraseña">
+                            </div>
+                            <div class="input-box">
+                                <button type="submit" class="btn">Iniciar Sesion</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        </div>
+            <div>
     </section>
 
     <footer id="contacto">
         <?php
-        include '../fragments/footer.php'
+        include 'fragments/footer.php'
         ?>
     </footer>
 

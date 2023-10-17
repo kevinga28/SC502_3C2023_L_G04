@@ -470,6 +470,58 @@ ul.email li a {
     display: block;
 }
 
+/*--------------------------------------------------------------------- banner Section Citas ---------------------------------------------------------------------*/
+
+.banner_citas {
+    background: url(../images/banner.jpg);
+    background-repeat: no-repeat;
+    padding-top: 160px;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+
+.text-bg-citas {
+    text-align: center;
+}
+
+.text-bg-citas h1 {
+    color: #fff;
+    font-size: 40px;
+    line-height: 90px;
+    font-weight: bold;
+    padding-bottom: 30px;
+}
+
+
+/*--------------------------------------------------------------------- Fondo Logueo y registro ---------------------------------------------------------------------*/
+
+.banner_logueo{
+    background: url(../images/banner.jpg);
+    background-repeat: no-repeat;
+    padding-top: 130px;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+
+.text-bg-logueo {
+    text-align: center;
+}
+
+
+.text-bg-logueo h2 {
+    color: #202126;
+    font-size: 25px;
+    line-height: 90px;
+    font-weight: bold;
+}
 
 /*--------------------------------------------------------------------- banner Section Servicios ---------------------------------------------------------------------*/
 
