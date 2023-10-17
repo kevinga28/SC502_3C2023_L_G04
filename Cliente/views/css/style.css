@@ -360,18 +360,13 @@ ul.email li a {
     display: block;
 }
 
-.text-bg figure img {
-    width: 100%;
-    padding-top: 70px;
-    padding-left: 40px;
-}
 
 .text_img figure {
     margin: 0;
 }
 
 .text_img figure img {
-    width: 100%;
+    width: 50%;
 }
 
 .carousel-caption {

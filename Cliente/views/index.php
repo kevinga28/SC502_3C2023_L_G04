@@ -28,8 +28,8 @@
 <body class="main-layout">
    <!-- header -->
    <header>
-      
-    <?php
+
+      <?php
       include 'fragments/header.php'
       ?>
    </header>
@@ -60,7 +60,7 @@
                                  de belleza y tratamientos personalizados para que te sientas renovada y radiante.
                                  Ven y déjate consentir en un ambiente de lujo y tranquilidad.
                               </p>
-                              <a href="#">Leer Más </a> <a href="#">Servicios</a>
+                              <a href="Nosotros.php">Leer Más </a> <a href="servicios.php">Servicios</a>
                            </div>
                         </div>
                         <div class="col-md-6">
@@ -88,7 +88,7 @@
                                  de belleza y tratamientos personalizados para que te sientas renovada y radiante.
                                  Ven y déjate consentir en un ambiente de lujo y tranquilidad.
                               </p>
-                              <a href="#">Leer Más </a> <a href="#">Servicios</a>
+                              <a href="Nosotros.php">Leer Más </a> <a href="servicios.php">Servicios</a>
                            </div>
                         </div>
                         <div class="col-md-6">
@@ -116,7 +116,7 @@
                                  de belleza y tratamientos personalizados para que te sientas renovada y radiante.
                                  Ven y déjate consentir en un ambiente de lujo y tranquilidad.
                               </p>
-                              <a href="#">Leer Más </a> <a href="#">Servicios</a>
+                              <a href="Nosotros.php">Leer Más </a> <a href="servicios.php">Servicios</a>
                            </div>
                         </div>
                         <div class="col-md-6">
@@ -145,7 +145,7 @@
          <div class="row">
             <div class="col-md-12">
                <div class="titulo">
-                  <h2> <img src="images/head.png" alt="#" />Nuestros Servicios</h2>
+                  <h2> <img src="images/head.png" alt="#"/>Nuestros Servicios</h2>
                </div>
             </div>
          </div>
@@ -154,8 +154,13 @@
                <div id="hover_servicio" class="servicio_box">
                   <i><img src="images/thr.png" alt="#" /></i>
                   <h3>Cortes de cabello</h3>
-                  <p>some form, by injected humour, or randomised words which don't look even slightly believable. If
-                     you are </p>
+                  <p> Descubre un oasis de belleza y relajación en nuestro salón de belleza. Nuestros
+                     expertos estilistas
+                     y esteticistas están dedicados a realzar tu belleza natural. Te ofrecemos una amplia
+                     gama de servicios
+                     de belleza y tratamientos personalizados para que te sientas renovada y radiante.
+                     Ven y déjate consentir en un ambiente de lujo y tranquilidad.
+                  </p>
                </div>
                <a class="leer_mas" href="#">Ver</a>
             </div>
@@ -164,8 +169,13 @@
                <div id="hover_servicio" class="servicio_box">
                   <i><img src="images/thr1.png" alt="#" /></i>
                   <h3>Color</h3>
-                  <p>some form, by injected humour, or randomised words which don't look even slightly believable. If
-                     you are </p>
+                  <p> Descubre un oasis de belleza y relajación en nuestro salón de belleza. Nuestros
+                     expertos estilistas
+                     y esteticistas están dedicados a realzar tu belleza natural. Te ofrecemos una amplia
+                     gama de servicios
+                     de belleza y tratamientos personalizados para que te sientas renovada y radiante.
+                     Ven y déjate consentir en un ambiente de lujo y tranquilidad.
+                  </p>
                </div>
                <a class="leer_mas" href="#">Ver</a>
             </div>
@@ -174,7 +184,13 @@
                <div id="hover_servicio" class="servicio_box">
                   <i><img src="images/thr2.png" alt="#" /></i>
                   <h3>Capilares</h3>
-                  <p>some form, by injected humour, or randomised words which don't look even slightle </p>
+                  <p> Descubre un oasis de belleza y relajación en nuestro salón de belleza. Nuestros
+                     expertos estilistas
+                     y esteticistas están dedicados a realzar tu belleza natural. Te ofrecemos una amplia
+                     gama de servicios
+                     de belleza y tratamientos personalizados para que te sientas renovada y radiante.
+                     Ven y déjate consentir en un ambiente de lujo y tranquilidad.
+                  </p>
                </div>
                <a class="leer_mas" href="#">Ver</a>
             </div>
@@ -184,7 +200,13 @@
             <div id="hover_servicio" class="servicio_box">
                <i><img src="images/thr2.png" alt="#" /></i>
                <h3>Botox Capilar</h3>
-               <p>some form, by injected humour, or randomised words which don't look even slightle </p>
+               <p> Descubre un oasis de belleza y relajación en nuestro salón de belleza. Nuestros
+                  expertos estilistas
+                  y esteticistas están dedicados a realzar tu belleza natural. Te ofrecemos una amplia
+                  gama de servicios
+                  de belleza y tratamientos personalizados para que te sientas renovada y radiante.
+                  Ven y déjate consentir en un ambiente de lujo y tranquilidad.
+               </p>
             </div>
             <a class="leer_mas" href="#">Ver</a>
          </div>
@@ -338,7 +360,7 @@
 
    <!--  footer -->
    <footer id="contacto">
-   <?php
+      <?php
       include 'fragments/footer.php'
       ?>
    </footer>

@@ -5,7 +5,7 @@
                   <div class="row">
                      <div class="col-md-7 padd_bottom">
                         <div class="heading3">
-                           <a href="#"><img src="images/logo.png" alt="#" /></a>
+                           <a href="index.php"><img src="images/logo.png" alt="#" /></a>
                            <p>
                               Evolve es un salón de belleza especializado en cuidado capilar que se destaca por ofrecer
                               una amplia gama de servicios de alta calidad.
