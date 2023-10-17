@@ -65,36 +65,36 @@
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="Cedula">Cédula de Identidad</label>
-                                            <input type="number" class="form-control" id="Cedula"
+                                            <input type="number" class="form-control" name="Cedula"
                                                 placeholder="Número de cédula" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="Nombre">Nombre Completo</label>
-                                            <input type="text" class="form-control" id="Nombre"
+                                            <input type="text" class="form-control" name="Nombre"
                                                 placeholder="Nombre completo" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="Telefono">Teléfono</label>
-                                            <input type="tel" class="form-control" id="Telefono" placeholder="Teléfono"
+                                            <input type="tel" class="form-control" name="Telefono" placeholder="Teléfono"
                                                 required>
                                         </div>
                                         <div class="form-group">
                                             <label for="Email">Correo Electrónico</label>
-                                            <input type="email" class="form-control" id="Email"
+                                            <input type="email" class="form-control" name="Email"
                                                 placeholder="nombre@ejemplo.com" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="Fecha">Fecha de la Cita</label>
-                                            <input type="date" class="form-control" id="Fecha" required>
+                                            <input type="date" class="form-control" name="Fecha" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="Edad">Edad</label>
-                                            <input type="number" class="form-control" id="Edad" placeholder="Edad"
+                                            <input type="number" class="form-control" name="Edad" placeholder="Edad"
                                                 required>
                                         </div>
                                         <div class="form-group">
                                             <label for="Direccion">Dirección de Residencia</label>
-                                            <input type="text" class="form-control" id="Direccion"
+                                            <input type="text" class="form-control" name="Direccion"
                                                 placeholder="Dirección" required>
                                         </div>
                                     </div>
@@ -103,6 +103,8 @@
                                             style="background-color: #202126; color: #F7F4ED;">
                                             Agendar Cita
                                         </button>
+
+
                                     </div>
                                 </form>
                             </div>
@@ -112,7 +114,7 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th>ID</th>
+                                                <th><input id="my-input" class="form-control" type="text" name=""></th>
                                                 <th>Nombre del Cliente</th>
                                                 <th>Fecha</th>
                                                 <th>Hora</th>
@@ -134,38 +136,42 @@
                                                     <button type="button" class="btn btn-success" id="editarButton">
                                                         <i class="fas fa-edit"></i> Editar
                                                     </button>
-                                                    <button type="button" class="btn btn-primary">
+                                                    <button type="button" class="btn btn-primary"
+                                                        onclick="redireccionar()">
                                                         <i class="fas fa-eye"></i> Ver
                                                     </button>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                    <br>
-                                    <table class="table table-striped">
-                                    </table>
-                                </div>
-                                <!-- /.col -->
-                            </div>
-                            <!-- /.row -->
-                            <div class="row no-print">
-                                <div class="col-12">
-                                    <button type="button" class="btn btn-primary float-right"
-                                        style="margin-right: 5px;">
-                                        <i class="fas fa-download"></i> Generar PDF
-                                    </button>
                                 </div>
                             </div>
+
+                            </button>
+                            </td>
+                            </tr>
+                            </tbody>
+                            </table>
+                            <br>
+                            <table class="table table-striped">
+                            </table>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                    <div class="row no-print">
+                        <div class="col-12">
+                            <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
+                                <i class="fas fa-download"></i> Generar PDF
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
-            <!-- /.content -->
         </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer no-print">
-            <?php include 'fragments/footer.php'; ?>
-        </footer>
+    </div>
+    </section>
+    <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer no-print">
+        <?php include 'fragments/footer.php'; ?>
+    </footer>
     </div>
     <!-- ./wrapper -->
 
@@ -181,8 +187,16 @@
     <!-- Page specific script -->
     <script>
     $(function() {
-        // Your JavaScript code here
+
+
     });
+    </script>
+
+    <script>
+    function redireccionar() {
+        // Redirige a la página deseada
+        window.location.href = 'http://localhost/proyecto_ambiente_web/Admin/Views/cita/verCita.php';
+    }
     </script>
 </body>
 
