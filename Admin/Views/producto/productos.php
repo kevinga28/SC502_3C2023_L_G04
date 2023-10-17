@@ -83,28 +83,37 @@
                       <thead>
                         <tr>
                           <th>ID</th>
-                          <th>Codigo</th>
                           <th>Nombre</th>
                           <th>Descripción</th>
                           <th>Cantidad</th>
+                          <th>Categoría</th>
                           <th>Precio</th>
+                          <th>Imagen Referencia</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
                           <td>1</td>
-                          <td>CD-302</td>
-                          <td>Coca Cola</td>
-                          <td>2L, Regular</td>
+                          <td>Miuumi's Red Velvet </td>
+                          <td>Tinte de pelo color terciopelo rojo de la empresa Miuumi's Fashion</td>
                           <td>20</td>
+                          <td>Cabello</td>
                           <td>$2300</td>
+                          <td><img src="Ejemplo.png" alt="#"></td>
                           <td>
                             <button type="button" class="btn btn-danger float-right" style="margin-right: 8px;">
                               <i class="fas fa-download"></i> Eliminar
                             </button>
-                            <button type="button" class="btn btn-success float-right" style="margin-right: 8px;">
+                            <button type="button" class="btn btn-success float-right" style="margin-right: 8px;" id="editarProductos">
                               <i class="fas fa-download"></i> Editar
                             </button>
+
+                            <script>
+                                 document.getElementById("editarProductos").addEventListener("click", function() {
+                                window.location.href = "editarProducto.php";
+                                });
+                            </script>
+
                             <button type="button" class="btn btn-primary float-right" style="margin-right: 8px;">
                               <i class="fas fa-download"></i> Ver
                             </button>

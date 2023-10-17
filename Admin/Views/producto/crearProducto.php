@@ -77,11 +77,6 @@
                       <div class="card-body">
 
                         <div class="form-group">
-                          <label for="Codigo">Codigo</label>
-                          <input type="text" class="form-control" id="Codigo" placeholder="Codigo Producto">
-                        </div>
-
-                        <div class="form-group">
                           <label for="Nombre">Nombre</label>
                           <input type="text" class="form-control" id="Nombre" placeholder="Nombre Producto">
                         </div>
@@ -90,16 +85,34 @@
                           <label for="Descripción">Descripción</label>
                           <input type="text" class="form-control" id="Descripción" placeholder="Descripción Producto">
                         </div>
+
                         <div class="form-group">
                           <label for="Cantidad">Cantidad</label>
                           <input type="text" class="form-control" id="Cantidad" placeholder="Cantidad Producto">
                         </div>
 
                         <div class="form-group">
+                          <label for="Categoría">Categoría</label>
+                          <select class="form-control" id="Categoría">
+                            <option value="categoria0">Seleccione una categoría...</option>
+                            <option value="categoria1">Cabello</option>
+                            <option value="categoria2">Tratamientos Faciales</option>
+                            <option value="categoria3">Uñas</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
                           <label for="Precio">Precio</label>
                           <input type="text" class="form-control" id="Precio" placeholder="Precio">
                         </div>
+
+                        <div class="form-group">
+                          <label for="Imagen">Imagen Referencia</label>
+                          <input type="text" class="form-control" id="Imagen" placeholder="URL de la imagen">
+                        </div>
                       </div>
+
+                      
 
                       <!-- /.card-body -->
 
