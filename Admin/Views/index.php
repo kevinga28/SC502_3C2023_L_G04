@@ -70,7 +70,8 @@
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid">
-          <!-- Small boxes (Stat box) -->
+
+          <!-- Small boxes (CARTAS DE ESTADISTICAS GENERAL box) -->
           <div class="row">
             <?php
             include 'fragments/smallBox.php'
@@ -94,6 +95,7 @@
 
             </section>
             <!-- /.Left col -->
+
             <!-- right col (We are only adding the ID to make the widgets sortable)-->
             <section class="col-lg-3 connectedSortable">
 
@@ -133,7 +135,7 @@
     </footer>
 
   </div>
-  <!-- ./wrapper -->
+
 
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
