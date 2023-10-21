@@ -46,53 +46,16 @@
 
      <!-- Sidebar Menu -->
 
-      <style>
+     <style>
          /* Cambiar el color del icono y lista */
          .nav-pills .nav-link {
              color: #202126;
          }
      </style>
-     
+
      <nav class="mt-2">
          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-             <li class="nav-item">
-                 <a href=".." class="nav-link">
-                     <i class="nav-icon fas fa-tachometer-alt"></i>
-                     <p>
-                         Estadisticas
-                         <i class="right fas fa-angle-left"></i>
-                     </p>
-                 </a>
-
-                 <ul class="nav nav-treeview">
-                     <li class="nav-item">
-                         <a href="" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>General</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="cliente/clientes.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Clientes</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="empleado/empleados.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Empleados</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="producto/producto.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Inventario</p>
-                         </a>
-                     </li>
-                 </ul>
-
-             </li>
 
              <li class="nav-item">
                  <a href="" class="nav-link">
@@ -123,32 +86,9 @@
 
              </li>
 
+
+
              <li class="nav-item">
-                 <a href="#" class="nav-link">
-                     <i class="nav-icon fas fa-tree"></i>
-                     <p>
-                         Inventario
-                         <i class="fas fa-angle-left right"></i>
-                     </p>
-                 </a>
-                 <ul class="nav nav-treeview">
-                     <li class="nav-item">
-                         <a href="producto/listaProducto.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Lista Productos</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="producto/productos.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Agregar Producto</p>
-                         </a>
-                     </li>
-
-                 </ul>
-             </li>
-
-             <li class="nav-item">  
                  <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-edit"></i>
                      <p>
@@ -173,31 +113,7 @@
                  </ul>
              </li>
 
-             <li class="nav-item">
-                 <a href="#" class="nav-link">
-                     <i class="nav-icon fas fa-table"></i>
-                     <p>
-                         Gestion de Empleados
-                         <i class="fas fa-angle-left right"></i>
-                     </p>
-                 </a>
-                 <ul class="nav nav-treeview">
-                     <li class="nav-item">
-                         <a href="empleado/listaEmpleado.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Lista de Empleados</p>
-                         </a>
-                     </li>
 
-                     <li class="nav-item">
-                         <a href="empleado/empleados.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Crear Empleado</p>
-                         </a>
-                     </li>
-
-                 </ul>
-             </li>
 
              <li class="nav-header">Citas</li>
              <li class="nav-item">

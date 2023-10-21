@@ -1,6 +1,6 @@
 <div class="col-lg-3 col-6">
     <!-- small box -->
-    <div class="small-box bg-info">
+    <div class="small-box bg-dark">
         <div class="inner">
             <h3><?php echo $numeroCitas; ?></h3>
             <p>Nuevas Citas</p>
@@ -14,7 +14,7 @@
 <!-- ./col -->
 <div class="col-lg-3 col-6">
     <!-- small box -->
-    <div class="small-box bg-success">
+    <div class="small-box bg-dark">
         <div class="inner">
             <h3><?php echo $numeroClientes; ?> <sup style="font-size: 20px">%</sup></h3>
             <p>Clientes</p>
@@ -28,7 +28,7 @@
 <!-- ./col -->
 <div class="col-lg-3 col-6">
     <!-- small box -->
-    <div class="small-box bg-warning">
+    <div class="small-box bg-dark">
         <div class="inner">
             <h3><?php echo $numeroEstilistas; ?></h3>
             <p>Estilistas</p>
@@ -42,7 +42,7 @@
 <!-- ./col -->
 <div class="col-lg-3 col-6">
     <!-- small box -->
-    <div class="small-box bg-danger">
+    <div class="small-box bg-dark">
         <div class="inner">
             <h3><?php echo $numeroProductos; ?></h3>
             <p>Inventario</p>
