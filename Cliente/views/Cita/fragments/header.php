@@ -9,13 +9,13 @@
                <div class="collapse navbar-collapse" id="navbarEvolve">
                   <ul class="navbar-nav mr-auto">
                      <li class="nav-item active">
-                        <a class="nav-link" href="index.php">Inicio</a>
+                        <a class="nav-link" href="../index.php">Inicio</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="nosotros.php">Nosotros</a>
+                        <a class="nav-link" href="../nosotros.php">Nosotros</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="servicios.php">Servicios</a>
+                        <a class="nav-link" href="../servicios.php">Servicios</a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="#estilista">Estilistas</a>
@@ -31,7 +31,7 @@
             <div class="full">
                <div class="center-desk">
                   <div class="logo">
-                     <a href="index.php"><img src="images/logo.png" alt="#" /></a>
+                     <a href="../index.php"><img src="../images/logo.png" alt="#" /></a>
                   </div>
                </div>
             </div>
@@ -41,13 +41,6 @@
                <li><a href="#">Telefono: (+506) 0000-3211</a></li>
                <li><a href="#">Correo: evolvecitas@gmail.com</a></li>
                <li>
-
-
-                  <a href="#" data-bs-toggle="modal" data-bs-target="#myModal">
-                     <i class="fas fa-user-circle fa-lg"></i>
-                  </a>
-
-                  <!-- 
                   <?php
                   session_start(); // iniciar la sesión 
                   if (isset($_SESSION['usuario_logueado'])) {
@@ -55,20 +48,15 @@
                      echo '<a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fas fa-user-circle fa-lg"></i></a>';
                   } else {
                      // El usuario no ha iniciado sesión, muestra un enlace de inicio de sesión en su lugar.
-                     echo '<a href="login/login.php"><i class="fas fa-user-circle fa-lg"></i></a>';
+                     echo '<a href="../login/login.php"><i class="fas fa-user-circle fa-lg"></i></a>';
                   }
-
                   ?>
-                  -->
-
                </li>
             </ul>
          </div>
       </div>
    </div>
 </div>
-
-
 
 <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
    <div class="modal-dialog">

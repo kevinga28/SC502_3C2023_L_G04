@@ -20,6 +20,8 @@
    <link rel="icon" href="images/fevicon.png" type="image/gif" />
    <!-- Scrollbar Custom CSS -->
    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 
 
 </head>
@@ -157,7 +159,7 @@
                   <p>some form, by injected humour, or randomised words which don't look even slightly believable. If
                      you are </p>
                </div>
-               <a class="leer_mas" href="#">Ver</a>
+               <a class="leer_mas" href="">Ver</a>
             </div>
 
             <div class="col-md-4">
@@ -205,7 +207,7 @@
                      Con un equipo de talentosos estilistas y una pasión por la belleza, te damos la bienvenida a
                      nuestra casa de la elegancia y la creatividad.
                   </p>
-                  <a class="leer_mas" href="#">Leer Más</a>
+                  <a class="leer_mas" href="Nosotros.php">Leer Más</a>
                </div>
             </div>
          </div>
