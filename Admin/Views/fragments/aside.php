@@ -56,43 +56,41 @@
      <nav class="mt-2">
          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-             <li class="nav-item">
-                 <a href=".." class="nav-link">
-                     <i class="nav-icon fas fa-tachometer-alt"></i>
+         <li class="nav-item">
+                 <a href="index.php" class="nav-link">
+                     <i class="nav-icon fas fa-home"></i>
                      <p>
-                         Estadisticas
-                         <i class="right fas fa-angle-left"></i>
+                         Inicio
                      </p>
                  </a>
+             </li>
 
+             <li class="nav-item">
+                 <a href="#" class="nav-link">
+                     <i class="nav-icon fas fa-user"></i>
+                     <p>
+                        Clientes
+                         <i class="fas fa-angle-left right"></i>
+                     </p>
+                 </a>
                  <ul class="nav nav-treeview">
                      <li class="nav-item">
-                         <a href="" class="nav-link">
+                         <a href="cliente/listaClientes.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
-                             <p>General</p>
+                             <p>Lista de Clientes</p>
                          </a>
                      </li>
+
                      <li class="nav-item">
                          <a href="cliente/clientes.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
-                             <p>Clientes</p>
+                             <p>Crear Clientes</p>
                          </a>
                      </li>
-                     <li class="nav-item">
-                         <a href="empleado/empleados.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Empleados</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="producto/producto.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Inventario</p>
-                         </a>
-                     </li>
-                 </ul>
 
+                 </ul>
              </li>
+
 
              <li class="nav-item">
                  <a href="" class="nav-link">

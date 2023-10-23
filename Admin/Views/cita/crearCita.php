@@ -7,12 +7,18 @@
     <title>Evolve</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+
+    <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
+
     <link rel="stylesheet" href="../dist/css/style.css">
 </head>
 
@@ -61,119 +67,107 @@
                                 <div class="card-header" style="background-color: #F7F4ED; color: #202126;">
                                     <h3 class="card-title">Crear Cita</h3>
                                 </div>
-                                <form>
+                                <!-- EMPIEZA EL FORMULARIO -->
+                                <form method="POST" action="guardar_factura.php">
                                     <div class="card-body">
-                                        <div class="form-group">
-                                            <label for="Cedula">Cédula de Identidad</label>
-                                            <input type="number" class="form-control" name="Cedula"
-                                                placeholder="Número de cédula" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Nombre">Nombre Completo</label>
-                                            <input type="text" class="form-control" name="Nombre"
-                                                placeholder="Nombre completo" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Telefono">Teléfono</label>
-                                            <input type="tel" class="form-control" name="Telefono" placeholder="Teléfono"
-                                                required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Email">Correo Electrónico</label>
-                                            <input type="email" class="form-control" name="Email"
-                                                placeholder="nombre@ejemplo.com" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Fecha">Fecha de la Cita</label>
-                                            <input type="date" class="form-control" name="Fecha" required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Edad">Edad</label>
-                                            <input type="number" class="form-control" name="Edad" placeholder="Edad"
-                                                required>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="Direccion">Dirección de Residencia</label>
-                                            <input type="text" class="form-control" name="Direccion"
-                                                placeholder="Dirección" required>
+                                        <div class="row">
+                                            <div class="col-md-6">
+
+                                                <div class="form-group">
+                                                    <label for="BusquedaCliente">Buscar Cliente</label>
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" id="BusquedaCliente" name="BusquedaCliente" placeholder="Cedula Cliente">
+                                                        <div class="input-group-append">
+                                                            <button type="button" class="btn btn-primary" id="BuscarCliente">Buscar</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="Nombre">Nombre</label>
+                                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre" readonly>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="apellido">Apellido</label>
+                                                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" readonly>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="correo">Correo Electrónico</label>
+                                                    <input type="email" class="form-control" id="correo" name="correo" placeholder="correo" readonly>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="tratamiento">Tratamiento</label>
+                                                    <select class="select2 select2-hidden-accessible" multiple="multiple" id="tratamiento" name="tratamiento[]" data-placeholder="Seleccionar Tratamiento" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
+                                                        <option value="CorteMujer" data-precio="30">Corte Mujer - $30</option>
+                                                        <option value="LargoLavadoMujer" data-precio="40">Largo + Lavado Mujer - $40</option>
+                                                        <option value="CortoLavadoMujer" data-precio="35">Corto + Lavado Mujer - $35</option>
+                                                        <option value="LargoHombre" data-precio="25">Largo Hombre - $25</option>
+                                                        <option value="CortoHombre" data-precio="20">Corto Hombre - $20</option>
+                                                        <option value="LargoLavadoHombre" data-precio="30">Largo + Lavado Hombre - $30 </option>
+                                                        <option value="CortoLavadoHombre" data-precio="25">Corto + Lavado Hombre - $25</option>
+                                                        <option value="NinioNinia" data-precio="15">Niño - Niña - $15</option>
+                                                    </select>
+                                                </div>
+
+
+                                            </div>
+                                            <div class=" col-md-6">
+
+                                                <div class="form-group">
+                                                    <label for="estilista">Estilista</label>
+                                                    <select class="select2 select2-hidden-accessible" id="estilista" name="estilista" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
+                                                        <option>Carol Mejias</option>
+                                                        <option>Marta Delgado</option>
+                                                        <option>Sofia Vargas</option>
+                                                    </select>
+                                                </div>
+
+
+
+                                                <div class="form-group">
+                                                    <label for="fechaCita">Fecha de la Cita</label>
+                                                    <input type="date" class="form-control" id="fechaCita" name="fechaCita">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="horaCita">Hora de la Cita</label>
+                                                    <input type="time" class="form-control" id="horaCita" name="horaCita">
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="pagoTotal">Total a Pagar</label>
+                                                    <input type="text" class="form-control" id="pagoTotal" name="pagoTotal" readonly>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+
                                     <div class="card-footer">
-                                        <button type="submit" class="btn"
-                                            style="background-color: #202126; color: #F7F4ED;">
-                                            Agendar Cita
-                                        </button>
-
-
+                                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Crear Cita</button>
                                     </div>
                                 </form>
+
                             </div>
 
-                            <div class="row">
-                                <div class="col-12 table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th><input id="my-input" class="form-control" type="text" name=""></th>
-                                                <th>Nombre del Cliente</th>
-                                                <th>Fecha</th>
-                                                <th>Hora</th>
-                                                <th>Servicio</th>
-                                                <th>Acciones</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>1</td>
-                                                <td>Stephanie</td>
-                                                <td>2023-10-15</td>
-                                                <td>14:30</td>
-                                                <td>Corte de Pelo</td>
-                                                <td>
-                                                    <button type="button" class="btn btn-danger">
-                                                        <i class="fas fa-trash"></i> Eliminar
-                                                    </button>
-                                                    <button type="button" class="btn btn-success" id="editarButton">
-                                                        <i class="fas fa-edit"></i> Editar
-                                                    </button>
-                                                    <button type="button" class="btn btn-primary"
-                                                        onclick="redireccionar()">
-                                                        <i class="fas fa-eye"></i> Ver
-                                                    </button>
-                                </div>
-                            </div>
+                        </div>
 
-                            </button>
-                            </td>
-                            </tr>
-                            </tbody>
-                            </table>
-                            <br>
-                            <table class="table table-striped">
-                            </table>
-                        </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                    <div class="row no-print">
-                        <div class="col-12">
-                            <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                                <i class="fas fa-download"></i> Generar PDF
-                            </button>
-                        </div>
                     </div>
                 </div>
         </div>
-    </div>
-    </section>
-    <!-- /.content -->
+        </section>
+       
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer no-print">
-        <?php include 'fragments/footer.php'; ?>
+        <?php 
+        include 'fragments/footer.php'; 
+        ?>
     </footer>
     </div>
-    <!-- ./wrapper -->
+
 
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
@@ -184,20 +178,34 @@
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
 
-    <!-- Page specific script -->
-    <script>
-    $(function() {
+    <script src="../plugins/select2/js/select2.full.min.js"></script>
 
+   
 
-    });
-    </script>
 
     <script>
-    function redireccionar() {
-        // Redirige a la página deseada
-        window.location.href = 'http://localhost/proyecto_ambiente_web/Admin/Views/cita/verCita.php';
-    }
+        // Captura el cambio en la selección de tratamientos
+        $('#tratamiento').on('change', function() {
+            var total = 0;
+            // Suma los precios de los tratamientos seleccionados
+            $('#tratamiento option:selected').each(function() {
+                total += parseInt($(this).data('precio'));
+            });
+            // Muestra el total en el campo correspondiente
+            $('#total').val('$' + total);
+        });
     </script>
+
+
+    <script>
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+        })
+    </script>
+
+
 </body>
 
 </html>

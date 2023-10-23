@@ -6,15 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Evolve</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-  <link rel="stylesheet" href="../dist/css/style.css">
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
+    <link rel="stylesheet" href="../dist/css/style.css">
 
 </head>
 
@@ -73,43 +74,76 @@
                       <h3 class="card-title">Agregar Cliente</h3>
                     </div>
                     <!-- EMPIEZA EL FORMULARIO -->
-                    <form>
+                    <form method="POST" action="guardar_factura.php">
                       <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-6">
 
-                        <div class="form-group">
-                          <label for="Nombre">Nombre</label>
-                          <input type="text" class="form-control" id="Nombre" placeholder="Primer Nombre">
-                        </div>
+                            <div class="form-group">
+                              <label for="Nombre">Nombre</label>
+                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre">
+                            </div>
 
-                        <div class="form-group">
-                          <label for="Apellidos">Apellidos</label>
-                          <input type="text" class="form-control" id="Apellidos" placeholder="Apellidos">
-                        </div>
+                            <div class="form-group">
+                              <label for="apellido">Apellido</label>
+                              <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
+                            </div>
 
-                        <div class="form-group">
-                          <label for="exampleInputEmail1">Correo Electronico</label>
-                          <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Ingresar Correo">
-                        </div>
-                        <div class="form-group">
-                          <label for="exampleInputPassword1">Contraseña</label>
-                          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
-                        </div>
+                            <div class="form-group">
+                              <label for="correo">Correo Electrónico</label>
+                              <input type="email" class="form-control" id="correo" name="correo" placeholder="correo">
+                            </div>
 
-                        <div class="form-group">
-                          <label for="Telefono">Telefono</label>
-                          <input type="text" class="form-control" id="Telefono" placeholder="Telefono">
-                        </div>
+                            <div class="form-group">
+                              <label for="contraseña">Contraseña</label>
+                              <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Contraseña">
+                            </div>
 
-                        <div class="form-check">
-                          <input type="checkbox" class="form-check-input" id="EmpleadoCheck">
-                          <label class="form-check-label" for="EmpleadoCheck">Empleado</label>
+                            <div class="form-group">
+                              <label for="telefono">Telefono</label>
+                              <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono">
+                            </div>
+
+
+
+                          </div>
+                          <div class=" col-md-6">
+
+
+
+
+                            <div class="form-group">
+                              <label for="fechaCita">Provincia</label>
+                              <input type="text" class="form-control" id="fechaCita" name="fechaCita" placeholder="Provincia">
+                            </div>
+
+                            <div class="form-group">
+                              <label for="distrito">Distrito</label>
+                              <input type="text" class="form-control" id="distrito" name="distrito" placeholder="Distrito">
+                            </div>
+
+                            <div class="form-group">
+                              <label for="canton">Canton</label>
+                              <input type="text" class="form-control" id="canton" name="canton" placeholder="Canton">
+                            </div>
+
+
+                            <div class="form-group">
+                              <label for="otros">Otros</label>
+                              <input type="text" class="form-control" id="otros" name="otros" placeholder="Otras Señales">
+                            </div>
+
+                            <div class="form-check">
+                              <input type="checkbox" class="form-check-input" id="EmpleadoCheck">
+                              <label class="form-check-label" for="EmpleadoCheck">Empleado</label>
+                            </div>
+
+                          </div>
                         </div>
                       </div>
-                      <!-- /.card-body -->
 
                       <div class="card-footer">
-                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Agregar
-                          Cliente</button>
+                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Agregar Cliente</button>
                       </div>
                     </form>
 
@@ -178,15 +212,15 @@
                           <td>Alajuela</td>
                           <td>prueba@hotmail.com</td>
                           <td>
-                            <button type="button" class="btn btn-danger float-right" style="margin-right: 8px;">
-                              <i class="fas fa-download"></i> Eliminar
-                            </button>
-                            <button type="button" class="btn btn-success float-right" style="margin-right: 8px;">
-                              <i class="fas fa-download"></i> Editar
-                            </button>
-                            <button type="button" class="btn btn-primary float-right" style="margin-right: 8px;">
-                              <i class="fas fa-download"></i> Ver
-                            </button>
+                          <a type="button" class="btn btn-danger float-right" style="margin-right: 8px;" href="eliminar.php">
+                        <i class="fas fa-download"></i> Eliminar
+                      </a>
+                      <a type="button" class="btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php">
+                        <i class="fas fa-download"></i> Editar
+                      </a>
+                      <a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php">
+                        <i class="fas fa-download"></i> Ver
+                      </a>
                           </td>
                         </tr>
 
@@ -194,15 +228,10 @@
                       </tbody>
                     </table>
                     <br>
-                    <table class="table table-striped">
-
-                    </table>
+                    <table class="table table-striped"></table>
                   </div>
-                  <!-- /.col -->
+
                 </div>
-                <!-- /.row -->
-
-
 
                 <div class="row no-print">
                   <div class="col-12">
@@ -211,28 +240,23 @@
                     </button>
                   </div>
                 </div>
-              </div>
 
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
-      <!-- /.content -->
+
     </div>
-    <!-- /.content-wrapper -->
+
     <footer class="main-footer no-print">
-    <?php
+      <?php
       include 'fragments/footer.php'
       ?>
     </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+
   </div>
-  <!-- ./wrapper -->
 
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
@@ -242,141 +266,11 @@
   <script src="../plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="../dist/js/demo.js"></script>
+
+
   <!-- Page specific script -->
   <script>
     $(function() {
-      /* ChartJS
-       * -------
-       * Here we will create a few charts using ChartJS
-       */
-
-      //--------------
-      //- AREA CHART -
-      //--------------
-
-      // Get context with jQuery - using jQuery's .get() method.
-      var areaChartCanvas = $('#areaChart').get(0).getContext('2d')
-
-      var areaChartData = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [{
-            label: 'Digital Goods',
-            backgroundColor: 'rgba(60,141,188,0.9)',
-            borderColor: 'rgba(60,141,188,0.8)',
-            pointRadius: false,
-            pointColor: '#3b8bba',
-            pointStrokeColor: 'rgba(60,141,188,1)',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(60,141,188,1)',
-            data: [28, 48, 40, 19, 86, 27, 90]
-          },
-          {
-            label: 'Electronics',
-            backgroundColor: 'rgba(210, 214, 222, 1)',
-            borderColor: 'rgba(210, 214, 222, 1)',
-            pointRadius: false,
-            pointColor: 'rgba(210, 214, 222, 1)',
-            pointStrokeColor: '#c1c7d1',
-            pointHighlightFill: '#fff',
-            pointHighlightStroke: 'rgba(220,220,220,1)',
-            data: [65, 59, 80, 81, 56, 55, 40]
-          },
-        ]
-      }
-
-      var areaChartOptions = {
-        maintainAspectRatio: false,
-        responsive: true,
-        legend: {
-          display: false
-        },
-        scales: {
-          xAxes: [{
-            gridLines: {
-              display: false,
-            }
-          }],
-          yAxes: [{
-            gridLines: {
-              display: false,
-            }
-          }]
-        }
-      }
-
-      // This will get the first returned node in the jQuery collection.
-      new Chart(areaChartCanvas, {
-        type: 'line',
-        data: areaChartData,
-        options: areaChartOptions
-      })
-
-      //-------------
-      //- LINE CHART -
-      //--------------
-      var lineChartCanvas = $('#lineChart').get(0).getContext('2d')
-      var lineChartOptions = $.extend(true, {}, areaChartOptions)
-      var lineChartData = $.extend(true, {}, areaChartData)
-      lineChartData.datasets[0].fill = false;
-      lineChartData.datasets[1].fill = false;
-      lineChartOptions.datasetFill = false
-
-      var lineChart = new Chart(lineChartCanvas, {
-        type: 'line',
-        data: lineChartData,
-        options: lineChartOptions
-      })
-
-      //-------------
-      //- DONUT CHART -
-      //-------------
-      // Get context with jQuery - using jQuery's .get() method.
-      var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
-      var donutData = {
-        labels: [
-          'Chrome',
-          'IE',
-          'FireFox',
-          'Safari',
-          'Opera',
-          'Navigator',
-        ],
-        datasets: [{
-          data: [700, 500, 400, 600, 300, 100],
-          backgroundColor: ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
-        }]
-      }
-      var donutOptions = {
-        maintainAspectRatio: false,
-        responsive: true,
-      }
-      //Create pie or douhnut chart
-      // You can switch between pie and douhnut using the method below.
-      new Chart(donutChartCanvas, {
-        type: 'doughnut',
-        data: donutData,
-        options: donutOptions
-      })
-
-      //-------------
-      //- PIE CHART -
-      //-------------
-      // Get context with jQuery - using jQuery's .get() method.
-      var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
-      var pieData = donutData;
-      var pieOptions = {
-        maintainAspectRatio: false,
-        responsive: true,
-      }
-      //Create pie or douhnut chart
-      // You can switch between pie and douhnut using the method below.
-      new Chart(pieChartCanvas, {
-        type: 'pie',
-        data: pieData,
-        options: pieOptions
-      })
 
       //-------------
       //- BAR CHART -
@@ -400,32 +294,11 @@
         options: barChartOptions
       })
 
-      //---------------------
-      //- STACKED BAR CHART -
-      //---------------------
-      var stackedBarChartCanvas = $('#stackedBarChart').get(0).getContext('2d')
-      var stackedBarChartData = $.extend(true, {}, barChartData)
-
-      var stackedBarChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-          xAxes: [{
-            stacked: true,
-          }],
-          yAxes: [{
-            stacked: true
-          }]
-        }
-      }
-
-      new Chart(stackedBarChartCanvas, {
-        type: 'bar',
-        data: stackedBarChartData,
-        options: stackedBarChartOptions
-      })
     })
   </script>
+
+
+
 </body>
 
 
