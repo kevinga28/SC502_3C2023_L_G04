@@ -99,15 +99,15 @@
                           <td>20</td>
                           <td>$2300</td>
                           <td>
-                            <button type="button" class="btn btn-danger float-right" style="margin-right: 8px;">
+                            <a type="button" class="btn btn-danger float-right" style="margin-right: 8px;" href="eliminar.php">
                               <i class="fas fa-download"></i> Eliminar
-                            </button>
-                            <button type="button" class="btn btn-success float-right" style="margin-right: 8px;">
+                            </a>
+                            <a type="button" class="btn btn-success float-right" style="margin-right: 8px;" href="editarProducto.php">
                               <i class="fas fa-download"></i> Editar
-                            </button>
-                            <button type="button" class="btn btn-primary float-right" style="margin-right: 8px;">
+                            </a>
+                            <a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verProducto.php">
                               <i class="fas fa-download"></i> Ver
-                            </button>
+                            </a>
                           </td>
                         </tr>
 
@@ -135,28 +135,27 @@
               </div>
 
 
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+            </div>
+          </div>
+        </div>
       </section>
-      <!-- /.content -->
+
     </div>
-    <!-- /.content-wrapper -->
+
     <footer class="main-footer no-print">
       <?php
       include 'fragments/footer.php'
       ?>
     </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
-  </div>
-  <!-- ./wrapper -->
 
-  <!-- jQuery -->
+    <aside class="control-sidebar control-sidebar-dark">
+
+    </aside>
+
+  </div>
+
+
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -164,12 +163,11 @@
   <script src="../plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="../dist/js/demo.js"></script>
-  <!-- Page specific script -->
+
+
   <script>
     $(function() {
-    
+
 
       //-------------
       //- BAR CHART -
@@ -193,7 +191,7 @@
         options: barChartOptions
       })
 
-      
+
     })
   </script>
 </body>

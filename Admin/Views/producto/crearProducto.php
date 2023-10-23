@@ -69,43 +69,42 @@
                 <div class="col-sm-6">
                   <!-- TITULO DEL FORMULARIO -->
                   <div class="card card-primary">
-                    <div class="card-header" style="background-color: #F7F4ED; color: #202126; ">
+                    <div class="card-header" style="background-color: #F7F4ED; color: #202126;">
                       <h3 class="card-title">Agregar Producto</h3>
                     </div>
                     <!-- EMPIEZA EL FORMULARIO -->
-                    <form>
+                    <form method="POST" action="guardar_producto.php">
                       <div class="card-body">
 
                         <div class="form-group">
-                          <label for="Codigo">Codigo</label>
-                          <input type="text" class="form-control" id="Codigo" placeholder="Codigo Producto">
+                          <label for="codigoProducto">Codigo</label>
+                          <input type="text" class="form-control" id="Codigo" placeholder="Codigo Producto" name="codigoProducto" required>
                         </div>
 
                         <div class="form-group">
-                          <label for="Nombre">Nombre</label>
-                          <input type="text" class="form-control" id="Nombre" placeholder="Nombre Producto">
+                          <label for="nombre">Nombre</label>
+                          <input type="text" class="form-control" id="Nombre" nombre="Nombre Producto" placeholder="Nombre Producto" name="nombre" required> 
                         </div>
 
                         <div class="form-group">
-                          <label for="Descripción">Descripción</label>
-                          <input type="text" class="form-control" id="Descripción" placeholder="Descripción Producto">
+                          <label for="descripcion">Descripción</label>
+                          <input type="text" class="form-control" id="descripcion" placeholder="Descripción" name="descripcion" required>
                         </div>
                         <div class="form-group">
-                          <label for="Cantidad">Cantidad</label>
-                          <input type="text" class="form-control" id="Cantidad" placeholder="Cantidad Producto">
+                          <label for="cantidad">Cantidad</label>
+                          <input type="number" class="form-control" id="cantidad" placeholder="Cantidad" name="cantidad" required>
                         </div>
 
                         <div class="form-group">
-                          <label for="Precio">Precio</label>
-                          <input type="text" class="form-control" id="Precio" placeholder="Precio">
+                          <label for="precio">Precio</label>
+                          <input type="text" class="form-control" id="precio" placeholder="Precio" name="precio" required>
                         </div>
                       </div>
 
                       <!-- /.card-body -->
 
                       <div class="card-footer">
-                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Agregar
-                          Producto</button>
+                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Agregar Producto</button>
                       </div>
                     </form>
 
@@ -128,38 +127,33 @@
                         </button>
                       </div>
                     </div>
+
                     <div class="card-body">
                       <div class="chart">
                         <canvas id="barChart" style="min-height: 320px; height: 335px; max-height: 335px; max-width: 100%;"></canvas>
                       </div>
                     </div>
-                    <!-- /.card-body -->
+
                   </div>
-                  <!-- /.card -->
                 </div>
 
               </div>
 
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+            </div>
+          </div>
+        </div>
       </section>
-      <!-- /.content -->
+
     </div>
-    <!-- /.content-wrapper -->
+
     <footer class="main-footer no-print">
       <?php
       include 'fragments/footer.php'
       ?>
     </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-      <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
   </div>
-  <!-- ./wrapper -->
+
 
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
@@ -169,11 +163,10 @@
   <script src="../plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="../dist/js/demo.js"></script>
-  <!-- Page specific script -->
+
+
   <script>
-    $(function() { 
+    $(function() {
       //-------------
       //- BAR CHART -
       //-------------

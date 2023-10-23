@@ -7,12 +7,18 @@
     <title>Evolve</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+
+    <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+
+    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
+
     <link rel="stylesheet" href="../dist/css/style.css">
 </head>
 
@@ -61,7 +67,8 @@
                                 <div class="card-header" style="background-color: #F7F4ED; color: #202126;">
                                     <h3 class="card-title">Crear Cita</h3>
                                 </div>
-                                <form>
+                                <!-- EMPIEZA EL FORMULARIO -->
+                                <form method="POST" action="guardar_factura.php">
                                     <div class="card-body">
                                         <div class="form-group">
                                             <label for="Cedula">Cédula de Identidad</label>
@@ -75,8 +82,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="Telefono">Teléfono</label>
-                                            <input type="tel" class="form-control" name="Telefono"
-                                                placeholder="Teléfono" required>
+                                            <input type="tel" class="form-control" name="Telefono" placeholder="Teléfono"
+                                                required>
                                         </div>
                                         <div class="form-group">
                                             <label for="Email">Correo Electrónico</label>
@@ -98,13 +105,9 @@
                                                 placeholder="Dirección" required>
                                         </div>
                                     </div>
+
                                     <div class="card-footer">
-                                        <button type="submit" class="btn"
-                                            style="background-color: #202126; color: #F7F4ED;">
-                                            Agendar Cita
-                                        </button>
-
-
+                                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Crear Cita</button>
                                     </div>
                                 </form>
                             </div>
@@ -114,6 +117,7 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
+                                                <th><input id="my-input" class="form-control" type="text" name=""></th>
                                                 <th>Nombre del Cliente</th>
                                                 <th>Fecha</th>
                                                 <th>Hora</th>
@@ -133,47 +137,31 @@
                                                         <i class="fas fa-trash"></i> Eliminar
                                                     </button>
                                                     <button type="button" class="btn btn-success" id="editarButton">
-                                                        <i class="fas fa-edit"><a onclick
-                                                                href="modificarCita.php">Modificar</a></i>
+                                                        <i class="fas fa-edit"></i> Editar
                                                     </button>
                                                     <button type="button" class="btn btn-primary"
-                                                        style="margin-right: 8px;">
-                                                        <i class="fas fa-eye"> <a onclick href="verCita.php">Ver</a></i>
+                                                        onclick="redireccionar()">
+                                                        <i class="fas fa-eye"></i> Ver
                                                     </button>
                                 </div>
                             </div>
 
-                            </button>
-                            </td>
-                            </tr>
-                            </tbody>
-                            </table>
-                            <br>
-                            <table class="table table-striped">
-                            </table>
                         </div>
-                        <!-- /.col -->
-                    </div>
-                    <!-- /.row -->
-                    <div class="row no-print">
-                        <div class="col-12">
-                            <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                                <i class="fas fa-download"></i> Generar PDF
-                            </button>
-                        </div>
+
                     </div>
                 </div>
         </div>
-    </div>
-    </section>
-    <!-- /.content -->
+        </section>
+       
     </div>
     <!-- /.content-wrapper -->
     <footer class="main-footer no-print">
-        <?php include 'fragments/footer.php'; ?>
+        <?php 
+        include 'fragments/footer.php'; 
+        ?>
     </footer>
     </div>
-    <!-- ./wrapper -->
+
 
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
@@ -184,15 +172,31 @@
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
 
-    <!-- Page specific script -->
+    <script src="../plugins/select2/js/select2.full.min.js"></script>
+
+   
+
+
     <script>
-    $(function() {
-
-
-    });
+        // Captura el cambio en la selección de tratamientos
+        $('#tratamiento').on('change', function() {
+            var total = 0;
+            // Suma los precios de los tratamientos seleccionados
+            $('#tratamiento option:selected').each(function() {
+                total += parseInt($(this).data('precio'));
+            });
+            // Muestra el total en el campo correspondiente
+            $('#total').val('$' + total);
+        });
     </script>
 
 
+    <script>
+    function redireccionar() {
+        // Redirige a la página deseada
+        window.location.href = 'http://localhost/proyecto_ambiente_web/Admin/Views/cita/verCita.php';
+    }
+    </script>
 </body>
 
 </html>

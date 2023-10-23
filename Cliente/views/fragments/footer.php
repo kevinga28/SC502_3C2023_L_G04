@@ -42,8 +42,8 @@
                         <div class="heading3">
                            <h3>Mi Cuenta</h3>
                            <ul class="informacion">
-                              <li><a href="#">Registrarse </a></li>
-                              <li><a href="#">Iniciar Sesión</a></li>
+                              <li><a href="login/register.php">Registrarse </a></li>
+                              <li><a href="login/login.php">Iniciar Sesión</a></li>
                            </ul>
                         </div>
                      </div>

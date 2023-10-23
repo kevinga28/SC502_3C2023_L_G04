@@ -1,0 +1,21 @@
+
+
+.registrarse{
+    color:red;
+    font-size:18px;
+    font-weight: bold;
+}
+
+
+
+
+.btn-login{
+    justify-content: center;
+    padding:10px;
+    width:30%;
+    color:#f74d;
+    background-color:#202126;
+    border-radius:12px;
+    margin-top:50px;
+    font-weight: bold;
+}
