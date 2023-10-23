@@ -75,8 +75,8 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="Telefono">Teléfono</label>
-                                            <input type="tel" class="form-control" name="Telefono" placeholder="Teléfono"
-                                                required>
+                                            <input type="tel" class="form-control" name="Telefono"
+                                                placeholder="Teléfono" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="Email">Correo Electrónico</label>
@@ -114,7 +114,6 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-                                                <th><input id="my-input" class="form-control" type="text" name=""></th>
                                                 <th>Nombre del Cliente</th>
                                                 <th>Fecha</th>
                                                 <th>Hora</th>
@@ -134,11 +133,12 @@
                                                         <i class="fas fa-trash"></i> Eliminar
                                                     </button>
                                                     <button type="button" class="btn btn-success" id="editarButton">
-                                                        <i class="fas fa-edit"></i> Editar
+                                                        <i class="fas fa-edit"><a onclick
+                                                                href="modificarCita.php">Modificar</a></i>
                                                     </button>
                                                     <button type="button" class="btn btn-primary"
-                                                        onclick="redireccionar()">
-                                                        <i class="fas fa-eye"></i> Ver
+                                                        style="margin-right: 8px;">
+                                                        <i class="fas fa-eye"> <a onclick href="verCita.php">Ver</a></i>
                                                     </button>
                                 </div>
                             </div>
@@ -192,12 +192,7 @@
     });
     </script>
 
-    <script>
-    function redireccionar() {
-        // Redirige a la página deseada
-        window.location.href = 'http://localhost/proyecto_ambiente_web/Admin/Views/cita/verCita.php';
-    }
-    </script>
+
 </body>
 
 </html>

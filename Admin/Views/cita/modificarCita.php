@@ -85,78 +85,108 @@
                                             <h3 class="card-title">Modificar Factura</h3>
                                         </div>
                                         <!-- EMPIEZA EL FORMULARIO -->
-                                        <form method="POST" action="editar_factura.php">
-                                            <div class="card-body">
-                                                <div class="row">
-                                                    <div class="col-md-6">
+                                        <form method="POST" action="procesar_edicion_cita.php"
+                                            onsubmit="return validateForm()">
+                                            <label for="tratamiento">Tratamiento:</label>
+                                            <select id="tratamiento" name="tratamiento">
+                                                <option value="CorteMujer" data-precio="30">Corte Mujer - $30</option>
+                                                <option value="LargoLavadoMujer" data-precio="40">Largo + Lavado Mujer -
+                                                    $40</option>
+                                                <option value="CortoLavadoMujer" data-precio="35">Corto + Lavado Mujer -
+                                                    $35</option>
+                                                <option value="LargoHombre" data-precio="25">Largo Hombre - $25</option>
+                                                <option value="CortoHombre" data-precio="20">Corto Hombre - $20</option>
+                                                <option value="LargoLavadoHombre" data-precio="30">Largo + Lavado Hombre
+                                                    - $30 </option>
+                                                <option value="CortoLavadoHombre" data-precio="25">Corto + Lavado Hombre
+                                                    - $25</option>
+                                                <option value="NinioNinia" data-precio="15">Niño - Niña - $15</option>
 
-                                                        <label for="cedula">Cédula:</label>
-                                                        <input type="text" id="cedula" name="cedula"
-                                                            placeholder="Cédula" value="12345678">
+                                            </select>
 
-                                                        <label for="nombre">Nombre:</label>
-                                                        <input type="text" id="nombre" name="nombre"
-                                                            placeholder="Primer Nombre" value="Ejemplo de Nombre">
-
-                                                        <label for="telefono">Teléfono:</label>
-                                                        <input type="tel" id="telefono" name="telefono"
-                                                            placeholder="Teléfono" value="123-456-7890">
-
-                                                        <label for="correo">Correo Electrónico:</label>
-                                                        <input type="email" id="correo" name="correo"
-                                                            placeholder="Ingresar Correo" value="ejemplo@email.com">
-
-                                                        <label for="edad">Edad:</label>
-                                                        <input type="number" id="edad" name="edad" placeholder="Edad"
-                                                            value="30">
-
-                                                        <label for="provincia">Provincia:</label>
-                                                        <input type="text" id="provincia" name="provincia"
-                                                            placeholder="Provincia" value="San José">
-
-                                                        <label for="canton">Cantón:</label>
-                                                        <input type="text" id="canton" name="canton"
-                                                            placeholder="Cantón" value="San José">
-
-                                                        <label for="distrito">Distrito:</label>
-                                                        <input type="text" id="distrito" name="distrito"
-                                                            placeholder="Distrito" value="Distrito 1">
-
-                                                    </div>
-                                                </div>
+                                            <div class="form-group">
+                                                <label for="cedula">Cédula:</label>
+                                                <input type="text" id="cedula" name="cedula" placeholder="Cédula"
+                                                    value="12345678" required>
                                             </div>
-                                    </div>
-                                    <div class="col-12 mb-4">
-                                        <a href="#" class="btn btn-secondary">Volver</a>
-                                        <input type="submit" value="Actualizar Facturas" class="btn float-right"
-                                            style="background-color: #202126; color: #F7F4ED;">
-                                    </div>
-                                    </form>
 
+                                            <div class="form-group">
+                                                <label for="nombre">Nombre:</label>
+                                                <input type="text" id="nombre" name="nombre" placeholder="Primer Nombre"
+                                                    value="Ejemplo de Nombre" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="telefono">Teléfono:</label>
+                                                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono"
+                                                    value="123-456-7890" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="correo">Correo Electrónico:</label>
+                                                <input type="email" id="correo" name="correo"
+                                                    placeholder="Ingresar Correo" value="ejemplo@email.com" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="edad">Edad:</label>
+                                                <input type="number" id="edad" name="edad" placeholder="Edad" value="30"
+                                                    required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="provincia">Provincia:</label>
+                                                <input type="text" id="provincia" name="provincia"
+                                                    placeholder="Provincia" value="San José" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="canton">Cantón:</label>
+                                                <input type="text" id="canton" name="canton" placeholder="Cantón"
+                                                    value="San José" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="distrito">Distrito:</label>
+                                                <input type="text" id="distrito" name="distrito" placeholder="Distrito"
+                                                    value="Distrito 1" required>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-primary">Actualizar</button>
+                                                <button type="button" onclick="cancelEdit()"
+                                                    class="btn btn-secondary">Cancelar</button>
+
+                                            </div>
+                                            <div class="col-12 mb-4">
+                                                <a href="Citas.php" class="btn btn-secondary float-right">Volver</a>
+                                            </div>
+
+                                        </form>
+                                    </div>
                                 </div>
+
                             </div>
 
+
                         </div>
-
-
                     </div>
                 </div>
+            </section>
+
         </div>
-        </section>
 
-    </div>
-
-    <footer class="main-footer no-print">
-        <?php
+        <footer class="main-footer no-print">
+            <?php
             include 'fragments/footer.php'
             ?>
-    </footer>
+        </footer>
 
-    <!-- Control Sidebar -->
-    <aside class="control-sidebar control-sidebar-dark">
-        <!-- Control sidebar content goes here -->
-    </aside>
-    <!-- /.control-sidebar -->
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark">
+            <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
     </div>
 
 
@@ -177,29 +207,56 @@
 
     <script>
     function validateForm() {
-        // Validación básica para campos obligatorios
-        const tratamiento = document.getElementById("tratamiento").value;
-        const cedula = document.getElementById("cedula").value;
-        const nombre = document.getElementById("nombre").value;
-        const telefono = document.getElementById("telefono").value;
-        const correo = document.getElementById("correo").value;
-
-        if (!tratamiento || !cedula || !nombre || !telefono || !correo) {
-            alert("Completa todos los campos obligatorios.");
-            return false;
+        const requiredFields = ["cedula", "nombre", "telefono", "correo", "edad", "provincia", "canton", "distrito"];
+        for (const field of requiredFields) {
+            const value = document.getElementById(field).value;
+            if (!value) {
+                alert("Completa este campo: " + field);
+                return false;
+            }
         }
-
         return true;
     }
 
     function cancelEdit() {
-        // Implementa aquí la acción para cancelar la edición (puede ser una redirección o cualquier otra acción).
         alert("Edición cancelada");
     }
+    </script>
 
-    document.getElementById("volverButton").addEventListener("click", function() {
-        window.location.href = "http://localhost/proyecto_ambiente_web/Admin/Views/cita/verCita.php#"; // Reemplaza "tu_pagina_de_destino.html" con la URL deseada.
-    });
+    <script>
+    $(function() {
+
+        //-------------
+        //- BAR CHART -
+        //-------------
+        var barChartCanvas = $('#barChart').get(0).getContext('2d')
+        var barChartData = $.extend(true, {}, areaChartData)
+        var temp0 = areaChartData.datasets[0]
+        var temp1 = areaChartData.datasets[1]
+        barChartData.datasets[0] = temp1
+        barChartData.datasets[1] = temp0
+
+        var barChartOptions = {
+            responsive: true,
+            maintainAspectRatio: false,
+            datasetFill: false
+        }
+
+        new Chart(barChartCanvas, {
+            type: 'bar',
+            data: barChartData,
+            options: barChartOptions
+        })
+
+    })
+    </script>
+
+    <script>
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+    })
     </script>
 
 </body>

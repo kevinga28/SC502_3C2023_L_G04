@@ -124,16 +124,12 @@
                                             <br>
                                         </div>
                                         <div class="col-12 mb-4">
-                                            <a href="Citas.php" class="btn btn-secondary">Modificar cita</a>
+                                            <a href="modificarCita.php" class="btn btn-secondary">Modificar cita</a>
                                             <a href="crearCita.php" class="btn btn-secondary">Volver</a>
                                             <input type="submit" class="btn float-right"
                                                 style="background-color: #202126; color: #F7F4ED;">
                                         </div>
-
-
-
-
-                                        <!-- Agrega la lógica de carga de imagen aquí si es necesario -->
+                                         <!-- Agrega la lógica de carga de imagen aquí si es necesario -->
                                         </form>
 
 
