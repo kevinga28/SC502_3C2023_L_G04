@@ -162,7 +162,7 @@
                      Ven y déjate consentir en un ambiente de lujo y tranquilidad.
                   </p>
                </div>
-               <a class="leer_mas" href="">Ver</a>
+               <a class="leer_mas" href="servicioCortes.php">Ver</a>
             </div>
 
             <div class="col-md-4">
@@ -177,7 +177,7 @@
                      Ven y déjate consentir en un ambiente de lujo y tranquilidad.
                   </p>
                </div>
-               <a class="leer_mas" href="#">Ver</a>
+               <a class="leer_mas" href="servicioColor.php">Ver</a>
             </div>
 
             <div class="col-md-4">
@@ -192,7 +192,7 @@
                      Ven y déjate consentir en un ambiente de lujo y tranquilidad.
                   </p>
                </div>
-               <a class="leer_mas" href="#">Ver</a>
+               <a class="leer_mas" href="servicioCapilar.php">Ver</a>
             </div>
          </div>
 
@@ -208,7 +208,7 @@
                   Ven y déjate consentir en un ambiente de lujo y tranquilidad.
                </p>
             </div>
-            <a class="leer_mas" href="#">Ver</a>
+            <a class="leer_mas" href="servicioBotox.php">Ver</a>
          </div>
 
       </div>
@@ -320,37 +320,16 @@
          <div class="row">
             <div class="col-md-12">
                <div class="titulo">
-                  <h2><img src="images/head.h.png" alt="#" />Formulario<span class="white"> Contacto</span></h2>
+                  <h2><img src="images/head.h.png" alt="#" />Ubicacion <span class="white"> Salon</span></h2>
                </div>
             </div>
          </div>
          <div class="row">
-            <div class="col-md-6">
-               <form id="request" class="main_form">
-                  <div class="row">
-                     <div class="col-md-12">
-                        <input class="contactenos" placeholder="Nombre" type="text" name="Nombre">
-                     </div>
-                     <div class="col-md-12">
-                        <input class="contactenos" placeholder="Correo" type="email" name="Correo">
-                     </div>
-                     <div class="col-md-12">
-                        <input class="contactenos" placeholder="Número de Teléfono" type="tel" name="NumeroTelefono">
-                     </div>
-                     <div class="col-md-12">
-                        <textarea class="textarea" placeholder="Mensaje" name="Mensaje"></textarea>
-                     </div>
-                     <div class="col-sm-12">
-                        <button class="send_btn" type="submit">Enviar</button>
-                     </div>
-                  </div>
-               </form>
-            </div>
-
+            
             <!-- PONER LA DIRECCION DEL LUGAR -->
-            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
                <div class="map-responsive">
-                  <iframe src="" width="600" height="432" frameborder="0" style="border:0; width: 100%;" allowfullscreen></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d491.16345198274337!2d-84.23657056276095!3d9.99142869423163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2scr!4v1698255468449!5m2!1ses-419!2scr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="432" frameborder="0" style="border:0; width: 100%;" allowfullscreen></iframe>
                </div>
             </div>
          </div>

@@ -77,7 +77,7 @@
                             If
                             you are </p>
                     </div>
-                    <a class="leer_mas" href="#">Ver</a>
+                    <a class="leer_mas" href="servicioCortes.php">Ver</a>
                 </div>
 
                 <div class="col-md-4">
@@ -88,7 +88,7 @@
                             If
                             you are </p>
                     </div>
-                    <a class="leer_mas" href="#">Ver</a>
+                    <a class="leer_mas" href="servicioColor.php">Ver</a>
                 </div>
 
                 <div class="col-md-4">
@@ -97,7 +97,7 @@
                         <h3>Capilares</h3>
                         <p>some form, by injected humour, or randomised words which don't look even slightle </p>
                     </div>
-                    <a class="leer_mas" href="#">Ver</a>
+                    <a class="leer_mas" href="servicioCapilar.php">Ver</a>
                 </div>
 
                 <div class="col-md-4 mt-5">
@@ -106,7 +106,7 @@
                         <h3>Botox Capilar</h3>
                         <p>some form, by injected humour, or randomised words which don't look even slightle </p>
                     </div>
-                    <a class="leer_mas" href="#">Ver</a>
+                    <a class="leer_mas" href="servicioBotox.php">Ver</a>
                 </div>
 
 
