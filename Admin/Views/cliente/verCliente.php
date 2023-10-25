@@ -73,7 +73,7 @@
                                             <h3 class="card-title">Ver Cliente</h3>
                                         </div>
                                         <!-- EMPIEZA EL FORMULARIO -->
-                                        <form >
+                                        <form>
                                             <div class="card-body">
                                                 <div class="row">
 
@@ -137,7 +137,7 @@
                                             </div>
 
                                             <div class="col-12 mb-4">
-                                                <a href="clientes.php" class="btn btn-secondary">Volver</a>
+                                                <a href="listaClientes.php" class="btn btn-secondary">Volver</a>
                                             </div>
                                         </form>
 
@@ -163,12 +163,12 @@
     </div>
 
 
-  <!-- jQuery -->
-  <script src="../plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="../dist/js/adminlte.min.js"></script>
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
 
 
 

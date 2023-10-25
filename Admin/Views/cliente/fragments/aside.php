@@ -66,7 +66,7 @@
              </li>
 
              <li class="nav-item menu-open">
-                 <a href="#" class="nav-link">
+                 <a href="#" class="nav-link active">
                      <i class="nav-icon fas fa-user"></i>
                      <p>
                          Clientes
@@ -82,7 +82,7 @@
                      </li>
 
                      <li class="nav-item">
-                         <a href="clientes.php" class="nav-link active">
+                         <a href="clientes.php" class="nav-link ">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Crear Clientes</p>
                          </a>

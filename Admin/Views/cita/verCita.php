@@ -74,10 +74,10 @@
                                     <!-- TITULO DEL FORMULARIO -->
                                     <div class="card card-primary">
                                         <div class="card-header" style="background-color: #F7F4ED; color: #202126;">
-                                            <h3 class="card-title">Ver Factura</h3>
+                                            <h3 class="card-title">Ver Cita</h3>
                                         </div>
                                         <!-- Para lograr ver el formulario sin poder editar desde php  -->
-                                        <form method="POST" action="guardar_factura.php">
+                                        <form >
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -142,8 +142,8 @@
                                             </div>
                                         </form>
                                         <div class="col-12 mb-4">
-                                                <a href="historialCitas.php" class="btn btn-secondary">Volver</a>
-                                            </div>
+                                            <a href="historialCitas.php" class="btn btn-secondary">Volver</a>
+                                        </div>
 
                                     </div>
                                 </div>

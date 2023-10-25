@@ -6,16 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Evolve</title>
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
-    <link rel="stylesheet" href="../dist/css/style.css">
+  <link rel="stylesheet" href="../dist/css/style.css">
 
 </head>
 
@@ -74,7 +74,7 @@
                       <h3 class="card-title">Agregar Cliente</h3>
                     </div>
                     <!-- EMPIEZA EL FORMULARIO -->
-                    <form method="POST" action="guardar_factura.php">
+                    <form method="POST" action="guardar_cliente.php">
                       <div class="card-body">
                         <div class="row">
                           <div class="col-md-6">
@@ -104,14 +104,8 @@
                               <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono">
                             </div>
 
-
-
                           </div>
                           <div class=" col-md-6">
-
-
-
-
                             <div class="form-group">
                               <label for="fechaCita">Provincia</label>
                               <input type="text" class="form-control" id="fechaCita" name="fechaCita" placeholder="Provincia">
@@ -178,70 +172,6 @@
 
               </div>
 
-              <!-- Main content -->
-              <div class="invoice p-3 mb-3">
-                <!-- title row -->
-                <div class="row">
-                  <div class="col-12">
-                    <h4>
-                      <i class="fas fa-globe"></i> Tabla Clientes
-                    </h4>
-                  </div>
-                  <!-- /.col -->
-                </div>
-
-                <!-- Table row -->
-                <div class="row">
-                  <div class="col-12 table-responsive">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Nombre</th>
-                          <th>Apellido</th>
-                          <th>Direccion</th>
-                          <th>Correo</th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Hersal</td>
-                          <td>Alfaro</td>
-                          <td>Alajuela</td>
-                          <td>prueba@hotmail.com</td>
-                          <td>
-                          <a type="button" class="btn btn-danger float-right" style="margin-right: 8px;" href="eliminar.php">
-                        <i class="fas fa-download"></i> Eliminar
-                      </a>
-                      <a type="button" class="btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php">
-                        <i class="fas fa-download"></i> Editar
-                      </a>
-                      <a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php">
-                        <i class="fas fa-download"></i> Ver
-                      </a>
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                    </table>
-                    <br>
-                    <table class="table table-striped"></table>
-                  </div>
-
-                </div>
-
-                <div class="row no-print">
-                  <div class="col-12">
-                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                      <i class="fas fa-download"></i> Generar PDF
-                    </button>
-                  </div>
-                </div>
-
-              </div>
             </div>
           </div>
         </div>

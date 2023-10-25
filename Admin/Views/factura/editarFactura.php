@@ -164,7 +164,7 @@
                                             </div>
 
                                             <div class="col-12 mb-4">
-                                                <a href="#" class="btn btn-secondary">Volver</a>
+                                                <a href="listaFactura.php" class="btn btn-secondary">Volver</a>
                                                 <input type="submit" value="Actualizar Facturas" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
                                             </div>
                                         </form>

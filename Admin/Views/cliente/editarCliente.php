@@ -70,7 +70,7 @@
                                     <!-- TITULO DEL FORMULARIO -->
                                     <div class="card card-primary">
                                         <div class="card-header" style="background-color: #F7F4ED; color: #202126;">
-                                            <h3 class="card-title">Ver Cliente</h3>
+                                            <h3 class="card-title">Editar Cliente</h3>
                                         </div>
                                         <!-- EMPIEZA EL FORMULARIO -->
                                         <form >
@@ -137,7 +137,7 @@
                                             </div>
 
                                             <div class="col-12 mb-4">
-                                                <a href="#" class="btn btn-secondary">Volver</a>
+                                                <a href="listaClientes.php" class="btn btn-secondary">Volver</a>
                                                 <input type="submit" value="Actualizar Cliente" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
                                             </div>
                                         </form>
