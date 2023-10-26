@@ -51,32 +51,32 @@
                         <h3>Inicio de sesion o registro</h3>
                         <div class="group">
                             <label for="nombre" class="label">Nombre</label>
-                            <input id="nombre" type="text" class="input" required>
+                            <input id="nombre" name= "name"type="text" class="input" required>
                         </div>
                         <div class="group">
                             <label for="apellido" class="label">Apellido</label>
-                            <input id="apellido" type="text" class="input" required>
+                            <input id="apellido" name= "apellido" type="text" class="input" required>
                         </div>
                         <div class="group">
                             <label for="user" class="label">Username</label>
-                            <input id="user" type="text" class="input" required>
+                            <input id="user" name= "user" type="text" class="input" required>
                         </div>
                         <div class="group">
                             <label for="pass" class="label">Password</label>
-                            <input id="pass" type="password" class="input" data-type="password" required>
+                            <input id="pass" name= "password" type="password" class="input" data-type="password" required>
                         </div>
                         <div class="group">
                             <label for="telefono" class="label">Teléfono</label>
-                            <input id="telefono" type="text" class="input" required>
+                            <input id="telefono" name= "telefono" type="text" class="input" required>
                         </div>
 
                         <div class="group">
                             <label for="cumpleanos" class="label">Nacimiento</label>
-                            <input id="cumpleanos" type="text" class="input">
+                            <input id="cumpleanos" name= "nacimiento"type="text" class="input">
                         </div>
 
                         <div class="group">
-                            <input href="InicioSesion.html" type="submit" class="button" value="Registrarse">
+                            <input href="InicioSesion.php" name= "registro" type="submit" class="button" value="Registrarse">
                         </div>
 
                     </div>

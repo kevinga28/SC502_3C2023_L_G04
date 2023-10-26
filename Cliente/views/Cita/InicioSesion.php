@@ -18,16 +18,18 @@
     <link rel="stylesheet" href="css/citaRegistro.css">
     <!-- Responsive-->
     <link rel="stylesheet" href="../css/responsive.css">
-  
+    <!-- fevicon -->
+    <link rel="icon" href="../images/fevicon.png" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 
 
 <body>
     <!-- header -->
     <header>
+        <!-- header inicio-->
+
         <?php
         include 'fragments/header.php'
         ?>
@@ -37,9 +39,15 @@
     <!-- banner -->
     <section class="banner_nosotros">
 
-        <?php
-        include 'fragments/banner.php'
-        ?>
+        <div class="carousel-inner-nosotros">
+            <div class="container-fluid">
+                <div class="col-md-12">
+                    <div class="text-bg-nosotros">
+                        <h1>Agenda de citas</h1> 
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </section>
     <!-- final banner -->
@@ -50,18 +58,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="cuadro-beige2">
-                        <a href="">Inicio de sesion o registro</a>
+                        <h3>Inicio de sesion o registro</h3>
                         <div class="group">
-                            <label for="user" class="label">Username</label>
-                            <input id="user" type="text" class="input" required>
+                            <label for="user" class="label">Usuario*</label>
+                            <input id="user" type="text" class="input" name="user" required>
                         </div>
                         <div class="group">
-                            <label for="pass" class="label">Password</label>
-                            <input id="pass" type="password" class="input" data-type="password" required>
+                            <label for="pass" class="label">Constraseña*</label>
+                            <input id="pass" type="password" class="input" data-type="password" name="password" required>
                         </div>
                         <div class="group">
-                            <input type="submit" class="button" value="Iniciar sesion">
+                            <input name="Inicio" type="submit" class="button" value="Iniciar Sesion">
                         </div>
+
                     </div>
 
                     <div class="titulo">
@@ -72,7 +81,6 @@
                         <div class="cuadro-blanco">
                             <textarea placeholder="Introduce tu texto aquí"></textarea>
                         </div>
-                        <button class="boton-siguiente">Siguiente</button>
                     </div>
                 </div>
             </div>
