@@ -13,13 +13,9 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
-
     <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
 
     <link rel="stylesheet" href="../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
-
-    <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 
     <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
 
@@ -168,7 +164,7 @@
                                             </div>
 
                                             <div class="col-12 mb-4">
-                                                <a href="#" class="btn btn-secondary">Volver</a>
+                                                <a href="listaFactura.php" class="btn btn-secondary">Volver</a>
                                                 <input type="submit" value="Actualizar Facturas" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
                                             </div>
                                         </form>
@@ -192,11 +188,6 @@
             ?>
         </footer>
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
     </div>
 
 
@@ -228,34 +219,6 @@
         });
     </script>
 
-
-    <script>
-        $(function() {
-            
-            //-------------
-            //- BAR CHART -
-            //-------------
-            var barChartCanvas = $('#barChart').get(0).getContext('2d')
-            var barChartData = $.extend(true, {}, areaChartData)
-            var temp0 = areaChartData.datasets[0]
-            var temp1 = areaChartData.datasets[1]
-            barChartData.datasets[0] = temp1
-            barChartData.datasets[1] = temp0
-
-            var barChartOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                datasetFill: false
-            }
-
-            new Chart(barChartCanvas, {
-                type: 'bar',
-                data: barChartData,
-                options: barChartOptions
-            })
-            
-        })
-    </script>
 
     <script>
         $(function() {

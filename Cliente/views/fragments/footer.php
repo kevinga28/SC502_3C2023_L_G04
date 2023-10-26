@@ -14,15 +14,6 @@
                            </p>
                         </div>
                      </div>
-                     <div class="col-md-5 padd_bottom padd_bott">
-                        <div class="heading3">
-                           <h3>Contacto</h3>
-                           <ul class="informacion">
-                              <li><a href="#">Correo</a></li>
-                              <li><a href="#">Teléfono</a></li>
-                           </ul>
-                        </div>
-                     </div>
                   </div>
                </div>
                <div class="col-lg-6 col-md-12">
@@ -31,10 +22,10 @@
                         <div class="heading3">
                            <h3>Información</h3>
                            <ul class="informacion">
-                              <li><a href="#">Cortes de Cabello </a></li>
-                              <li><a href="#">Color</a></li>
-                              <li><a href="#">Servicios Capilares</a></li>
-                              <li><a href="#">Botox Capilar</a></li>
+                              <li><a href="servicioCortes.php">Cortes de Cabello </a></li>
+                              <li><a href="servicioColor.php">Color</a></li>
+                              <li><a href="servicioCapilar.php">Servicios Capilares</a></li>
+                              <li><a href="servicioBotox.php">Botox Capilar</a></li>
                            </ul>
                         </div>
                      </div>
@@ -42,8 +33,8 @@
                         <div class="heading3">
                            <h3>Mi Cuenta</h3>
                            <ul class="informacion">
-                              <li><a href="#">Registrarse </a></li>
-                              <li><a href="#">Iniciar Sesión</a></li>
+                              <li><a href="login/register.php">Registrarse </a></li>
+                              <li><a href="login/login.php">Iniciar Sesión</a></li>
                            </ul>
                         </div>
                      </div>

@@ -1,10 +1,7 @@
 .box-log{
-    justify-content: center;
-    align-items: center;
-    width: 500px;
-    height:700px;
+    width: 510px;
+    height:720px;
     background-color:#F7F4ED;
-    color:black;
 }
 
 .box-log .input-box{
@@ -21,44 +18,58 @@
 }
 
 
-.input-box [type="date"]{
-    margin-bottom:10px;
-    align-items: center;
-    justify-content: center;
-    width: 20%;
-}
-
 .box-log .btn{
     justify-content: center;
     padding:10px;
     width:30%;
     color:white;
     background-color:#202126;
+    border-radius:12px;
     margin-top:50px;
-
+    font-weight: bold;
 }
 
 .input-box h3{
-    display:block;
     margin-right: 265px;
+    padding-bottom: 20px;
+    font-weight: bold;
 }
+
 .input-box-fechas{
     display:flex;
     align-items: center;
+    margin-right: 30px;
 }
 
 .input-box-fechas h3{
+    font-size: 15px;
     white-space: nowrap;
     margin-left:40px;
-    margin-right:70px
+    margin-right:70px;
+    font-weight: bold;
+}
+
+.input-box-fechas input::placeholder {
+    text-align: center;
+    color: #242424;
+    font-weight: bold;
+    font-size: 12px;
+}
+.input-box-fechas input {
+    text-align: center; 
 }
 
 .fecha_nacimiento input{
-    width:22%;
-    border: 0px;
-
+    justify-content: center;
+    margin: 2px;
+    width:30%;
+    border: none;
 }
 #parrafo{
     color:black;
+    font-weight: bold;
 }
 
+.aste{
+    color: #B21313;
+}

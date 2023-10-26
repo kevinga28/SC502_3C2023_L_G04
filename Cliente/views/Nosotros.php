@@ -16,10 +16,9 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Responsive-->
     <link rel="stylesheet" href="css/responsive.css">
-    <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
 </head>
@@ -78,7 +77,7 @@
                             If
                             you are </p>
                     </div>
-                    <a class="leer_mas" href="#">Ver</a>
+                    <a class="leer_mas" href="servicioCortes.php">Ver</a>
                 </div>
 
                 <div class="col-md-4">
@@ -89,7 +88,7 @@
                             If
                             you are </p>
                     </div>
-                    <a class="leer_mas" href="#">Ver</a>
+                    <a class="leer_mas" href="servicioColor.php">Ver</a>
                 </div>
 
                 <div class="col-md-4">
@@ -98,7 +97,7 @@
                         <h3>Capilares</h3>
                         <p>some form, by injected humour, or randomised words which don't look even slightle </p>
                     </div>
-                    <a class="leer_mas" href="#">Ver</a>
+                    <a class="leer_mas" href="servicioCapilar.php">Ver</a>
                 </div>
 
                 <div class="col-md-4 mt-5">
@@ -107,7 +106,7 @@
                         <h3>Botox Capilar</h3>
                         <p>some form, by injected humour, or randomised words which don't look even slightle </p>
                     </div>
-                    <a class="leer_mas" href="#">Ver</a>
+                    <a class="leer_mas" href="servicioBotox.php">Ver</a>
                 </div>
 
 
