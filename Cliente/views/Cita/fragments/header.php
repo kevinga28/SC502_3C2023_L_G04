@@ -18,7 +18,7 @@
                         <a class="nav-link" href="../servicios.php">Servicios</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="#estilista">Estilistas</a>
+                        <a class="nav-link" href="../Estilos.php">Estilistas</a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="#contacto">Contacto</a>

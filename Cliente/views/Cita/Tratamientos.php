@@ -9,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Salon Evolve - Estilistas</title>
+    <title>Salon Evolve - Tratamientos</title>
     <!-- bootstrap css -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- style css -->
@@ -50,10 +50,11 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="cuadro-beige2">
-                        <h3><b>Estilistas</b></h3>
+                        <h3><b>Tratamientos</b></h3>
                         <ul class="estilistasJD">
+                            <h4 class="sub-tratamientos"><b>Cabello</b></h4>
                             <li class="nav-item">
-                                <div class="container-estilista">
+                                <div class="container-tratamientos">
                                 <img src="https://cdn-icons-png.flaticon.com/512/20/20079.png" alt="#" class="perfilEstilista">
                                 </div>
                                 <p class="estilistaJD">Sofia Vargas </p> 
@@ -62,7 +63,7 @@
                             </li>
                             <br>
                             <li class="nav-item">
-                                <div class="container-estilista">
+                                <div class="container-tratamientos">
                                 <img src="https://cdn-icons-png.flaticon.com/512/20/20079.png" alt="#" class="perfilEstilista">
                                 </div>
                                 <p class="estilistaJD">Carol Mejias</p> 
@@ -71,7 +72,7 @@
                             </li>
                             <br>
                             <li class="nav-item">
-                            <div class="container-estilista">
+                            <div class="container-tratamientos">
                                 <img src="https://cdn-icons-png.flaticon.com/512/20/20079.png" alt="#" class="perfilEstilista">
                                 </div>
                                 <p class="estilistaJD">Marta Delgado </p> 
