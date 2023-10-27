@@ -17,8 +17,7 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- Responsive-->
     <link rel="stylesheet" href="css/responsive.css">
-    <!-- fevicon -->
-    <link rel="icon" href="images/fevicon.png" type="image/gif" />
+ 
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -59,7 +58,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="titulo_servicio">
-                        <h2 style="color: #593326;">Color</h2>
+                        <h2 style="color: #593326;">Cortes y Lavado</h2>
                         <hr style="background-color: #593326;">
                     </div>
                 </div>
@@ -67,9 +66,9 @@
             <div class="row">
                 <div class="col-md-4">
                     <div id="hover_nuestro_servicio" class="nuestro_servicio_box">
-                        <h3>Tinte Desde Raiz</h3>
+                        <h3>Corte De Mujer</h3>
                         <p>
-                            Precio: ¢23.000 hasta ¢43.000 IVI
+                            Precio: ¢10.000 hasta ¢20.000 IVI
                         </p>
                         <p>
                             Condiciones: Depende el largo del cabello

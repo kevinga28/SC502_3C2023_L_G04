@@ -46,56 +46,54 @@
 
      <!-- Sidebar Menu -->
 
-      <style>
+     <style>
          /* Cambiar el color del icono y lista */
          .nav-pills .nav-link {
              color: #202126;
          }
      </style>
-     
+
      <nav class="mt-2">
          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
              <li class="nav-item">
-                 <a href=".." class="nav-link">
-                     <i class="nav-icon fas fa-tachometer-alt"></i>
+                 <a href="../index.php" class="nav-link">
+                     <i class="nav-icon fas fa-home"></i>
                      <p>
-                         Estadisticas
-                         <i class="right fas fa-angle-left"></i>
+                         Inicio
                      </p>
                  </a>
-
-                 <ul class="nav nav-treeview">
-                     <li class="nav-item">
-                         <a href="" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>General</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="../cliente/clientes.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Clientes</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="../empleado/empleados.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Empleados</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="../producto/productos.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Inventario</p>
-                         </a>
-                     </li>
-                 </ul>
-
              </li>
 
              <li class="nav-item">
-                 <a href="" class="nav-link">
+                 <a href="#" class="nav-link">
+                     <i class="nav-icon fas fa-user"></i>
+                     <p>
+                         Clientes
+                         <i class="fas fa-angle-left right"></i>
+                     </p>
+                 </a>
+                 <ul class="nav nav-treeview">
+                     <li class="nav-item">
+                         <a href="../cliente/listaClientes.php" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Lista de Clientes</p>
+                         </a>
+                     </li>
+
+                     <li class="nav-item">
+                         <a href="../cliente/clientes.php" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Crear Clientes</p>
+                         </a>
+                     </li>
+
+                 </ul>
+             </li>
+
+
+             <li class="nav-item menu-open">
+                 <a href="" class="nav-link active">
                      <i class="nav-icon fas fa-copy"></i>
                      <p>
                          Citas
@@ -106,7 +104,7 @@
 
                  <ul class="nav nav-treeview">
                      <li class="nav-item">
-                         <a href="historialCitas.php" class="nav-link">
+                         <a href="historialCitas.php" class="nav-link" >
                              <i class="far fa-circle nav-icon"></i>
                              <p>Historial de Citas</p>
                          </a>
@@ -139,7 +137,7 @@
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="../producto/crearProdcuto.php" class="nav-link">
+                         <a href="../producto/crearProducto.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Agregar Producto</p>
                          </a>
@@ -148,7 +146,7 @@
                  </ul>
              </li>
 
-             <li class="nav-item">  
+             <li class="nav-item">
                  <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-edit"></i>
                      <p>

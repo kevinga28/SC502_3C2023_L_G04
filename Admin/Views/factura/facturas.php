@@ -13,13 +13,7 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
-
     <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-
-    <link rel="stylesheet" href="../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
-
-    <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
 
     <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
 
@@ -89,55 +83,32 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
+
+                                                        <div class="form-group">
+                                                            <label for="busquedaCliente">Buscar Cliente</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" id="busquedaCliente" name="busquedaCliente" placeholder="Nombre o Apellido del Cliente">
+                                                                <div class="input-group-append">
+                                                                    <button type="button" class="btn btn-primary" id="BuscarCliente">Buscar</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
                                                         <div class="form-group">
                                                             <label for="Nombre">Nombre</label>
-                                                            <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Primer Nombre" required>
+                                                            <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Primer Nombre" required readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="Apellido">Apellido</label>
-                                                            <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Apellido" required>
+                                                            <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Apellido" required readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="correoCliente">Correo Electrónico</label>
-                                                            <input type="email" class="form-control" id="correoCliente" name="correoCliente" placeholder="Ingresar Correo" required>
+                                                            <input type="email" class="form-control" id="correoCliente" name="correoCliente" placeholder="Ingresar Correo" required readonly>
                                                         </div>
 
-                                                        <div class="form-group">
-                                                            <label for="Telefono">Teléfono</label>
-                                                            <input type="tel" class="form-control" id="Telefono" name="Telefono" placeholder="Teléfono" required>
-                                                        </div>
-
-                                                        <div class="form-check mb-3">
-                                                            <input type="checkbox" class="form-check-input" id="EmpleadoCheck" name="EmpleadoCheck">
-                                                            <label class="form-check-label" for="EmpleadoCheck">Empleado</label>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="FechaCita">Fecha de la Cita</label>
-                                                            <input type="date" class="form-control" id="FechaCita" name="FechaCita">
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="HoraCita">Hora de la Cita</label>
-                                                            <input type="time" class="form-control" id="HoraCita" name="HoraCita">
-                                                        </div>
-                                                    </div>
-                                                    <div class=" col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="tratamiento">Tratamiento</label>
-                                                            <select class="select2 select2-hidden-accessible" multiple="multiple" id="tratamiento" name="tratamiento[]" data-placeholder="Seleccionar Tratamiento" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
-                                                                <option value="CorteMujer" data-precio="30">Corte Mujer - $30</option>
-                                                                <option value="LargoLavadoMujer" data-precio="40">Largo + Lavado Mujer - $40</option>
-                                                                <option value="CortoLavadoMujer" data-precio="35">Corto + Lavado Mujer - $35</option>
-                                                                <option value="LargoHombre" data-precio="25">Largo Hombre - $25</option>
-                                                                <option value="CortoHombre" data-precio="20">Corto Hombre - $20</option>
-                                                                <option value="LargoLavadoHombre" data-precio="30">Largo + Lavado Hombre - $30 </option>
-                                                                <option value="CortoLavadoHombre" data-precio="25">Corto + Lavado Hombre - $25</option>
-                                                                <option value="NinioNinia" data-precio="15">Niño - Niña - $15</option>
-                                                            </select>
-                                                        </div>
 
                                                         <div class="form-group">
                                                             <label for="MetodoPago">Método de Pago</label>
@@ -150,6 +121,19 @@
                                                             </select>
                                                         </div>
 
+                                                    </div>
+                                                    <div class=" col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="busquedaCitas">Buscar Cita Del Cliente</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" id="busquedaCitas" name="busquedaCitas" placeholder="Citas">
+                                                                <div class="input-group-append">
+                                                                    <button type="button" class="btn btn-primary" id="BuscarCliente">Buscar</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
                                                         <div class="form-group">
                                                             <label for="estilista">Estilista</label>
                                                             <select class="select2 select2-hidden-accessible" id="estilista" name="estilista" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
@@ -160,9 +144,23 @@
                                                         </div>
 
                                                         <div class="form-group">
+                                                            <label for="FechaCita">Fecha de la Cita</label>
+                                                            <input type="date" class="form-control" id="FechaCita" name="FechaCita" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="HoraCita">Hora de la Cita</label>
+                                                            <input type="time" class="form-control" id="HoraCita" name="HoraCita" readonly>
+                                                        </div>
+
+
+
+                                                        <div class="form-group">
                                                             <label for="total">Total a Pagar</label>
                                                             <input type="text" class="form-control" id="total" name="total" readonly>
                                                         </div>
+
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -203,98 +201,22 @@
                                 </div>
 
                             </div>
-
-                            <!-- Main content -->
-                            <div class="invoice p-3 mb-3">
-                                <!-- title row -->
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h4>
-                                            <i class="fas fa-globe"></i> Tabla Facturas
-                                        </h4>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-
-                                <!-- Table row -->
-                                <div class="row">
-                                    <div class="col-12 table-responsive">
-                                        <table class="table table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Nombre</th>
-                                                    <th>Apellido</th>
-                                                    <th>Tratamiento</th>
-                                                    <th>Correo</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <tr>
-                                                    <td>1</td>
-                                                    <td>Hersal</td>
-                                                    <td>Alfaro</td>
-                                                    <td>Cortes</td>
-                                                    <td>prueba@hotmail.com</td>
-                                                    <td>
-
-                                                        <button type="button" class="btn btn-danger float-right" style="margin-right: 8px;">
-                                                        <i class="fas fa-download"> <a href="eliminarFactura.php">Eliminar</a></i>  
-                                                        </button>
-                                                        <button type="button" class="btn btn-success float-right" style="margin-right: 8px;">
-                                                        <i class="fas fa-download"> <a href="editarFactura.php">Editar</a></i>  
-                                                        </button>
-                                                        <button type="button" class="btn btn-primary float-right" style="margin-right: 8px;">
-                                                            <i class="fas fa-download"> <a href="verFactura.php">Ver</a></i>  
-                                                        </button>
-                                                        
-                                                    </td>
-                                                </tr>
-
-
-                                            </tbody>
-                                        </table>
-                                        <br>
-                                        <table class="table table-striped">
-
-                                        </table>
-                                    </div>
-                                    <!-- /.col -->
-                                </div>
-                                <!-- /.row -->
-
-
-
-                                <div class="row no-print">
-                                    <div class="col-12">
-                                        <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                                            <i class="fas fa-download"></i> Generar PDF
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div><!-- /.col -->
-                    </div><!-- /.row -->
-                </div><!-- /.container-fluid -->
+                        </div>
+                    </div>
+                </div>
             </section>
-            <!-- /.content -->
+
         </div>
-        <!-- /.content-wrapper -->
+
         <footer class="main-footer no-print">
             <?php
             include 'fragments/footer.php'
             ?>
         </footer>
 
-        <!-- Control Sidebar -->
-        <aside class="control-sidebar control-sidebar-dark">
-            <!-- Control sidebar content goes here -->
-        </aside>
-        <!-- /.control-sidebar -->
+
     </div>
-    <!-- ./wrapper -->
+
 
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
@@ -304,24 +226,36 @@
     <script src="../plugins/chart.js/Chart.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <!-- Page specific script -->
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
 
-
+    <!-- Page specific script -->
     <script>
-        // Captura el cambio en la selección de tratamientos
-        $('#tratamiento').on('change', function() {
-            var total = 0;
-            // Suma los precios de los tratamientos seleccionados
-            $('#tratamiento option:selected').each(function() {
-                total += parseInt($(this).data('precio'));
-            });
-            // Muestra el total en el campo correspondiente
-            $('#total').val('$' + total);
-        });
+        $(function() {
+
+            //-------------
+            //- BAR CHART -
+            //-------------
+            var barChartCanvas = $('#barChart').get(0).getContext('2d')
+            var barChartData = $.extend(true, {}, areaChartData)
+            var temp0 = areaChartData.datasets[0]
+            var temp1 = areaChartData.datasets[1]
+            barChartData.datasets[0] = temp1
+            barChartData.datasets[1] = temp0
+
+            var barChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                datasetFill: false
+            }
+
+            new Chart(barChartCanvas, {
+                type: 'bar',
+                data: barChartData,
+                options: barChartOptions
+            })
+
+        })
     </script>
 
 
@@ -332,6 +266,7 @@
 
         })
     </script>
+
 </body>
 
 

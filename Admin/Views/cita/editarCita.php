@@ -65,7 +65,7 @@
                             <!-- FORMULARIO PARA CREAR UNA CITA -->
                             <div class="card card-primary">
                                 <div class="card-header" style="background-color: #F7F4ED; color: #202126;">
-                                    <h3 class="card-title">Crear Cita</h3>
+                                    <h3 class="card-title">Editar Cita</h3>
                                 </div>
                                 <!-- EMPIEZA EL FORMULARIO -->
                                 <form method="POST" action="guardar_cita.php">
@@ -112,7 +112,6 @@
                                                     </select>
                                                 </div>
 
-
                                             </div>
                                             <div class=" col-md-6">
 
@@ -124,8 +123,6 @@
                                                         <option>Sofia Vargas</option>
                                                     </select>
                                                 </div>
-
-
 
                                                 <div class="form-group">
                                                     <label for="fechaCita">Fecha de la Cita</label>
@@ -145,8 +142,9 @@
                                         </div>
                                     </div>
 
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Crear Cita</button>
+                                    <div class="col-12 mb-4">
+                                        <a href="historialCitas.php" class="btn btn-secondary">Volver</a>
+                                        <input type="submit" value="Actualizar Cita" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
                                     </div>
                                 </form>
 
@@ -156,16 +154,16 @@
 
                     </div>
                 </div>
-
-            </section>
-
         </div>
-        <!-- /.content-wrapper -->
-        <footer class="main-footer no-print">
-            <?php
-            include 'fragments/footer.php';
-            ?>
-        </footer>
+        </section>
+
+    </div>
+    <!-- /.content-wrapper -->
+    <footer class="main-footer no-print">
+        <?php
+        include 'fragments/footer.php';
+        ?>
+    </footer>
     </div>
 
 
