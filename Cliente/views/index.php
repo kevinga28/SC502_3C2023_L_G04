@@ -60,7 +60,7 @@
                                  de belleza y tratamientos personalizados para que te sientas renovada y radiante.
                                  Ven y déjate consentir en un ambiente de lujo y tranquilidad.
                               </p>
-                              <a href="Nosotros.php">Leer Más </a> <a href="servicios.php">Servicios</a>
+                              <a href="Nosotros.php">Leer Más </a> <a href="#servicio">Servicios</a>
                            </div>
                         </div>
                         <div class="col-md-6">
@@ -88,7 +88,7 @@
                                  de belleza y tratamientos personalizados para que te sientas renovada y radiante.
                                  Ven y déjate consentir en un ambiente de lujo y tranquilidad.
                               </p>
-                              <a href="Nosotros.php">Leer Más </a> <a href="servicios.php">Servicios</a>
+                              <a href="Nosotros.php">Leer Más </a> <a href="#servicio">Servicios</a>
                            </div>
                         </div>
                         <div class="col-md-6">
@@ -116,7 +116,7 @@
                                  de belleza y tratamientos personalizados para que te sientas renovada y radiante.
                                  Ven y déjate consentir en un ambiente de lujo y tranquilidad.
                               </p>
-                              <a href="Nosotros.php">Leer Más </a> <a href="servicios.php">Servicios</a>
+                              <a href="Nosotros.php">Leer Más </a> <a href="#servicio">Servicios</a>
                            </div>
                         </div>
                         <div class="col-md-6">
@@ -154,12 +154,10 @@
                <div id="hover_servicio" class="servicio_box">
                   <i><img src="images/thr.png" alt="#" /></i>
                   <h3>Cortes de cabello</h3>
-                  <p> Descubre un oasis de belleza y relajación en nuestro salón de belleza. Nuestros
-                     expertos estilistas
-                     y esteticistas están dedicados a realzar tu belleza natural. Te ofrecemos una amplia
-                     gama de servicios
-                     de belleza y tratamientos personalizados para que te sientas renovada y radiante.
-                     Ven y déjate consentir en un ambiente de lujo y tranquilidad.
+                  <p>
+                     En nuestro salón de belleza, nuestros expertos estilistas son maestros en la creación de cortes de cabello que resalten tu estilo y personalidad.
+                     Ya sea que desees un corte clásico, un estilo moderno o algo único y atrevido, estamos aquí para transformar tu cabello y hacerte sentir renovada
+                     y segura de ti misma.
                   </p>
                </div>
                <a class="leer_mas" href="servicioCortes.php">Ver</a>
@@ -169,12 +167,10 @@
                <div id="hover_servicio" class="servicio_box">
                   <i><img src="images/thr1.png" alt="#" /></i>
                   <h3>Color</h3>
-                  <p> Descubre un oasis de belleza y relajación en nuestro salón de belleza. Nuestros
-                     expertos estilistas
-                     y esteticistas están dedicados a realzar tu belleza natural. Te ofrecemos una amplia
-                     gama de servicios
-                     de belleza y tratamientos personalizados para que te sientas renovada y radiante.
-                     Ven y déjate consentir en un ambiente de lujo y tranquilidad.
+                  <p>
+                     ¿Quieres darle vida a tu cabello con un toque de color? Nuestros estilistas especializados en servicios de color te ayudarán a encontrar
+                     el tono perfecto que refleje tu estilo y personalidad. Desde sutiles reflejos hasta audaces transformaciones, estamos listos para realzar
+                     tu belleza y hacer que tu cabello destaque.
                   </p>
                </div>
                <a class="leer_mas" href="servicioColor.php">Ver</a>
@@ -184,28 +180,24 @@
                <div id="hover_servicio" class="servicio_box">
                   <i><img src="images/thr2.png" alt="#" /></i>
                   <h3>Capilares</h3>
-                  <p> Descubre un oasis de belleza y relajación en nuestro salón de belleza. Nuestros
-                     expertos estilistas
-                     y esteticistas están dedicados a realzar tu belleza natural. Te ofrecemos una amplia
-                     gama de servicios
-                     de belleza y tratamientos personalizados para que te sientas renovada y radiante.
-                     Ven y déjate consentir en un ambiente de lujo y tranquilidad.
+                  <p>
+                     En nuestro salón, cuidamos la salud y belleza de tu cabello. Nuestros expertos estilistas ofrecen una variedad de tratamientos capilares
+                     diseñados para mejorar la textura y la apariencia de tu cabello. Desde hidrataciones profundas hasta tratamientos reparadores, te garantizamos
+                     una experiencia rejuvenecedora para tu cabello.
                   </p>
                </div>
                <a class="leer_mas" href="servicioCapilar.php">Ver</a>
             </div>
          </div>
 
-         <div class="col-md-4 mt-5">
+         <div class="col-md-4 mt-5 mx-auto">
             <div id="hover_servicio" class="servicio_box">
-               <i><img src="images/thr2.png" alt="#" /></i>
+               <i><img src="images/thr3.png" alt="#" /></i>
                <h3>Botox Capilar</h3>
-               <p> Descubre un oasis de belleza y relajación en nuestro salón de belleza. Nuestros
-                  expertos estilistas
-                  y esteticistas están dedicados a realzar tu belleza natural. Te ofrecemos una amplia
-                  gama de servicios
-                  de belleza y tratamientos personalizados para que te sientas renovada y radiante.
-                  Ven y déjate consentir en un ambiente de lujo y tranquilidad.
+               <p>
+                  Experimenta la magia del botox capilar en nuestro salón. Este tratamiento revolucionario está diseñado para restaurar
+                  y fortalecer tu cabello, dejándolo suave y manejable. Nuestros expertos estilistas aplicarán este tratamiento con precisión
+                  para brindarte resultados sorprendentes y un cabello espectacularmente hermoso.
                </p>
             </div>
             <a class="leer_mas" href="servicioBotox.php">Ver</a>
@@ -260,9 +252,9 @@
                            <h4>Sofia Vargas</h4>
                            <span>Estilista Curly</span>
                            <p>
-                              Su enfoque especializado en el botox capilar y los cortes curly la
+                              Sofia Vargas es una estilista especializada en cabello rizado. Su enfoque especializado en el botox capilar y los cortes curly la
                               distingue como una profesional de confianza que transforma y realza
-                              la belleza de cada cliente.
+                              la belleza de cada cliente. Con su experiencia y pasión por los rizos, te ayudará a lucir tus rizos de la mejor manera posible.
                            </p>
                            <img src="images/icon.png" alt="#" />
                         </div>
@@ -277,10 +269,10 @@
                            <h4>Carol Mejias</h4>
                            <span>Estilista</span>
                            <p>
-                              Habilidad para transformar el cabello en un lienzo de colores vibrantes.
+                              Carol Mejias es conocida por su habilidad para transformar el cabello en un lienzo de colores vibrantes.
                               Sus servicios de tintes incluyen una gama impresionante de tonos desde los más sutiles
-                              hasta los más atrevidos.
-                              Te ayudará a encontrar el color que refleje tu personalidad única.
+                              hasta los más atrevidos. Te ayudará a encontrar el color que refleje tu personalidad única, y su creatividad
+                              te hará lucir espectacular.
                            </p>
                            <img src="images/icon.png" alt="#" />
                         </div>
@@ -295,7 +287,9 @@
                            <h4>Marta Delgado</h4>
                            <span>Estilista</span>
                            <p>
-
+                              Marta Delgado es una estilista talentosa con una pasión por la belleza. Su enfoque está en
+                              resaltar la belleza natural de sus clientes. Con su habilidad y atención al detalle,
+                              te brindará un servicio excepcional y te ayudará a lucir radiante en cualquier ocasión.
                            </p>
                            <img src="images/icon.png" alt="#" />
                         </div>
@@ -320,16 +314,14 @@
          <div class="row">
             <div class="col-md-12">
                <div class="titulo">
-                  <h2><img src="images/head.h.png" alt="#" />Ubicacion <span class="white"> Salon</span></h2>
+                  <h2><img src="images/head.h.png" alt="#" />Ubicación <span class="white">Salon</span></h2>
                </div>
             </div>
          </div>
          <div class="row">
-            
-            <!-- PONER LA DIRECCION DEL LUGAR -->
-            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+            <div class="col-md-12">
                <div class="map-responsive">
-                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d491.16345198274337!2d-84.23657056276095!3d9.99142869423163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2scr!4v1698255468449!5m2!1ses-419!2scr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" width="600" height="432" frameborder="0" style="border:0; width: 100%;" allowfullscreen></iframe>
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d491.16345198274337!2d-84.23657056276095!3d9.99142869423163!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2scr!4v1698255468449!5m2!1ses-419!2scr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" frameborder="0"></iframe>
                </div>
             </div>
          </div>

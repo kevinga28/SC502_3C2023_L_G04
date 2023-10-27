@@ -58,62 +58,32 @@
     </section>
     <!-- final banner -->
 
-    <!-- servicios -->
-    <div id="servicio" class="servicio">
+    <section class="modern-about-us mt-5 mb-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="titulo">
-                        <h2> <img src="images/head.png" alt="#" />Nuestros Servicios</h2>
-                    </div>
+                    <h2>Nuestra Historia</h2>
+                    <p>
+                        En Evolve Salon, nuestra historia es una historia de pasión y dedicación. Comenzamos como un pequeño equipo de apasionados profesionales de la belleza que compartían la visión de crear un espacio único donde las personas pudieran descubrir su mejor versión. Desde el primer día, nos comprometimos a brindar servicios capilares excepcionales que superaran todas las expectativas.
+                        <br>
+                        A lo largo de los años, hemos evolucionado y crecido, pero nuestra dedicación a la excelencia nunca ha vacilado. Nuestro equipo de estilistas y esteticistas, conocido por su habilidad, creatividad y atención al detalle, trabaja incansablemente para realzar la belleza natural de cada cliente. Cada corte de pelo, cada tratamiento de color y cada peinado que creamos es una obra de arte única, diseñada para reflejar la personalidad y el estilo individual de quienes confían en nosotros.
+                    </p>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-4">
-                    <div id="hover_servicio" class="servicio_box">
-                        <i><img src="images/thr.png" alt="#" /></i>
-                        <h3>Cortes de cabello</h3>
-                        <p>some form, by injected humour, or randomised words which don't look even slightly believable.
-                            If
-                            you are </p>
-                    </div>
-                    <a class="leer_mas" href="servicioCortes.php">Ver</a>
+                <div class="col-md-12">
+                    <h2>Nuestro Equipo</h2>
+                    <p>
+                        En Evolve Salon, nuestro equipo es el núcleo de nuestro compromiso con la belleza y la confianza. Cada miembro de nuestro talentoso grupo de estilistas y esteticistas aporta su pasión y experiencia a nuestro salón. Están dedicados a brindarte un servicio excepcional y a hacerte sentir lo mejor posible en cada visita.
+                        <br>
+                        Nuestro equipo está formado por profesionales apasionados que siguen de cerca las últimas tendencias de la moda y las técnicas más avanzadas en el mundo de la belleza. Cada uno de ellos está comprometido a escucharte, entender tus deseos y necesidades, y trabajar en colaboración contigo para lograr resultados sorprendentes. La creatividad fluye en sus venas, y están listos para transformar tu imagen con cortes de cabello elegantes, tratamientos de color personalizados y peinados únicos.
+                        <br>
+                        Además de su habilidad técnica, nuestros estilistas y esteticistas se esfuerzan por crear una experiencia relajante y rejuvenecedora.
+                    </p>
                 </div>
-
-                <div class="col-md-4">
-                    <div id="hover_servicio" class="servicio_box">
-                        <i><img src="images/thr1.png" alt="#" /></i>
-                        <h3>Color</h3>
-                        <p>some form, by injected humour, or randomised words which don't look even slightly believable.
-                            If
-                            you are </p>
-                    </div>
-                    <a class="leer_mas" href="servicioColor.php">Ver</a>
-                </div>
-
-                <div class="col-md-4">
-                    <div id="hover_servicio" class="servicio_box">
-                        <i><img src="images/thr2.png" alt="#" /></i>
-                        <h3>Capilares</h3>
-                        <p>some form, by injected humour, or randomised words which don't look even slightle </p>
-                    </div>
-                    <a class="leer_mas" href="servicioCapilar.php">Ver</a>
-                </div>
-
-                <div class="col-md-4 mt-5">
-                    <div id="hover_servicio" class="servicio_box">
-                        <i><img src="images/thr2.png" alt="#" /></i>
-                        <h3>Botox Capilar</h3>
-                        <p>some form, by injected humour, or randomised words which don't look even slightle </p>
-                    </div>
-                    <a class="leer_mas" href="servicioBotox.php">Ver</a>
-                </div>
-
-
             </div>
         </div>
-    </div>
-    <!-- final servicios -->
+    </section>
 
     <!--  footer -->
     <footer id="contacto">

@@ -51,7 +51,7 @@
                         <h3>Inicio de sesion o registro</h3>
                         <div class="group">
                             <label for="nombre" class="label">Nombre</label>
-                            <input id="nombre" name= "name"type="text" class="input" required>
+                            <input id="nombre" name= "name" type="text" class="input" required>
                         </div>
                         <div class="group">
                             <label for="apellido" class="label">Apellido</label>

@@ -20,9 +20,6 @@
                      <li class="nav-item">
                         <a class="nav-link" href="#estilista">Estilistas</a>
                      </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#contacto">Contacto</a>
-                     </li>
                   </ul>
                </div>
             </nav>

@@ -15,13 +15,10 @@
                         <a class="nav-link" href="nosotros.php">Nosotros</a>
                      </li>
                      <li class="nav-item">
-                        <a class="nav-link" href="servicios.php">Servicios</a>
+                        <a class="nav-link" href="#servicio">Servicios</a>
                      </li>
                      <li class="nav-item">
                         <a class="nav-link" href="#estilista">Estilistas</a>
-                     </li>
-                     <li class="nav-item">
-                        <a class="nav-link" href="#contacto">Contacto</a>
                      </li>
                   </ul>
                </div>
