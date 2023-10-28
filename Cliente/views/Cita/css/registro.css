@@ -15,11 +15,6 @@
 
 /* Estilos para los campos de correo y contraseña */
 
-.cuadro-beige2{
-    width: 510px;
-    height:720px;
-    background-color:#F7F4ED;
-}
 
 .cuadro-beige2 .input-box{
     width:100%;
@@ -28,35 +23,67 @@
 }
 
 .input-box input{
-    width:70%;
+    width:88%;
     border-style: initial;
     border-radius:8px;
     padding:10px;
 }
 
 
-.input-box [type="date"]{
-    margin-bottom:10px;
-    align-items: center;
-    justify-content: center;
-    width: 20%;
-
-}
-
 .cuadro-beige2 .btn{
-    margin-top: 30px;
     justify-content: center;
     padding:10px;
     width:30%;
     color:white;
     background-color:#202126;
-
+    border-radius:12px;
+    margin-top:50px;
+    font-weight: bold;
 }
 
-.registrarse{
-    color:red;
-    font-size:18px;
+.input-box h3{
+    margin-right: 265px;
+    padding-bottom: 20px;
     font-weight: bold;
+}
+
+.input-box-fechas{
+    display:flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.input-box-fechas h3{
+    font-size: 15px;
+    white-space: nowrap;
+    margin-left:40px;
+    margin-right:70px;
+    font-weight: bold;
+}
+
+.input-box-fechas input::placeholder {
+    text-align: center;
+    color: #242424;
+    font-weight: bold;
+    font-size: 12px;
+}
+.input-box-fechas input {
+    text-align: center; 
+}
+
+.fecha_nacimiento input{
+    justify-content: center;
+    margin: 2px;
+    width:30%;
+    border: none;
+}
+#parrafo{
+    color:black;
+    font-weight: bold;
+}
+
+.aste{
+    color: #B21313;
 }
 
 /* CSS para la imagen, el nombre de esta etiqueta solo se encuentra en ciertos HTMLs por lo que no debe afectar en todo */

@@ -15,7 +15,7 @@
     <!-- style css -->
     <link rel="stylesheet" href="../css/style.css">
     <!-- style css -->
-    <link rel="stylesheet" href="css/citaRegistro.css">
+    <link rel="stylesheet" href="css/registro.css">
     <!-- Responsive-->
     <link rel="stylesheet" href="../css/responsive.css">
 
@@ -48,37 +48,47 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="cuadro-beige2">
-                        <h3>Inicio de sesion o registro</h3>
-                        <div class="group">
-                            <label for="nombre" class="label">Nombre</label>
-                            <input id="nombre" name= "name"type="text" class="input" required>
-                        </div>
-                        <div class="group">
-                            <label for="apellido" class="label">Apellido</label>
-                            <input id="apellido" name= "apellido" type="text" class="input" required>
-                        </div>
-                        <div class="group">
-                            <label for="user" class="label">Username</label>
-                            <input id="user" name= "user" type="text" class="input" required>
-                        </div>
-                        <div class="group">
-                            <label for="pass" class="label">Password</label>
-                            <input id="pass" name= "password" type="password" class="input" data-type="password" required>
-                        </div>
-                        <div class="group">
-                            <label for="telefono" class="label">Teléfono</label>
-                            <input id="telefono" name= "telefono" type="text" class="input" required>
-                        </div>
+                     <form method="POST" action="procesar_registro.php">
+                        <h2>Registrarse</h2>
 
-                        <div class="group">
-                            <label for="cumpleanos" class="label">Nacimiento</label>
-                            <input id="cumpleanos" name= "nacimiento"type="text" class="input">
-                        </div>
+                    <div class="input-box">
+                        <h3> <span class="aste">*</span> Campos Requeridos</h3>
+                        <input type="text" name="nombre" placeholder="Nombre*">
+                    </div>
 
-                        <div class="group">
-                            <input href="InicioSesion.php" name= "registro" type="submit" class="button" value="Registrarse">
-                        </div>
+                    <div class="input-box">
+                        <input type="text" name="apellido" placeholder="Apellido*">
+                    </div>
 
+                    <div class="input-box">
+                        <input type="email" name="correo" placeholder="Correo Electronico*">
+                    </div>
+
+                    <div class="input-box">
+                         <input type="password" name="contrasena" placeholder="Contraseña*">
+                    </div>
+
+                    <div class="input-box">
+                         <input type="text" name="telefono" placeholder="Telefono*">
+                    </div>
+
+                    <div class="input-box-fechas">
+                        <h3>Fecha de nacimiento </h3>
+                      <div class="fecha_nacimiento">
+                        <input type="text" name="dia" placeholder="Dia">
+                        <input type="text" name="mes" placeholder="Mes">
+                        <input type="text" name="ano" placeholder="Año">
+                      </div>
+                   </div>
+
+                 <div class="input-box">
+                  <button type="submit" class="btn">Registrarse</button>
+                 </div>
+
+                    <p id="parrafo">
+                    Al continuar, acepta las Política de privacidad.
+                    </p>
+                 </form>
                     </div>
 
                     <div class="titulo">

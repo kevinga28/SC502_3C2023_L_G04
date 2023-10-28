@@ -15,7 +15,7 @@
     <!-- style css -->
     <link rel="stylesheet" href="../css/style.css">
     <!-- style css -->
-    <link rel="stylesheet" href="css/citaRegistro.css">
+    <link rel="stylesheet" href="css/inicio.css">
     <!-- Responsive-->
     <link rel="stylesheet" href="../css/responsive.css">
     <!-- fevicon -->
@@ -58,18 +58,19 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="cuadro-beige2">
-                        <h3>Inicio de sesion o registro</h3>
-                        <div class="group">
-                            <label for="user" class="label">Usuario*</label>
-                            <input id="user" type="text" class="input" name="user" required>
-                        </div>
-                        <div class="group">
-                            <label for="pass" class="label">Constraseña*</label>
-                            <input id="pass" type="password" class="input" data-type="password" name="password" required>
-                        </div>
-                        <div class="group">
-                            <input name="Inicio" type="submit" class="button" value="Iniciar Sesion">
-                        </div>
+                    <form>
+                            <h2>Registrar o Iniciar Sesion</h2>
+                            <a class="registrarse" href="register.php">Crear una cuenta</a>
+                            <div class="input-box">
+                                <input type="email" name="correo" placeholder="Correo Electronico">
+                            </div>
+                            <div class="input-box">
+                                <input type="password" name="contrasena" placeholder="Contraseña">
+                            </div>
+                            <div class="input-box">
+                                <button type="submit" class="btn">Iniciar Sesion</button>
+                            </div>
+                        </form>
 
                     </div>
 
