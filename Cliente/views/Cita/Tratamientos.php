@@ -52,33 +52,80 @@
                     <div class="cuadro-beige2">
                         <h3><b>Tratamientos</b></h3>
                         <ul class="estilistasJD">
-                            <h4 class="sub-tratamientos"><b>Cabello</b></h4>
-                            <li class="nav-item">
-                                <div class="container-tratamientos">
-                                <img src="https://cdn-icons-png.flaticon.com/512/20/20079.png" alt="#" class="perfilEstilista">
-                                </div>
-                                <p class="estilistaJD">Sofia Vargas </p> 
-                                <div class="col_vacia"></div>
-                                <button class="boton-estilista">Seleccionar</button>
-                            </li>
-                            <br>
-                            <li class="nav-item">
-                                <div class="container-tratamientos">
-                                <img src="https://cdn-icons-png.flaticon.com/512/20/20079.png" alt="#" class="perfilEstilista">
-                                </div>
-                                <p class="estilistaJD">Carol Mejias</p> 
-                                <div class="col_vacia"></div>
-                                <button class="boton-estilista">Seleccionar</button>
-                            </li>
-                            <br>
-                            <li class="nav-item">
-                            <div class="container-tratamientos">
-                                <img src="https://cdn-icons-png.flaticon.com/512/20/20079.png" alt="#" class="perfilEstilista">
-                                </div>
-                                <p class="estilistaJD">Marta Delgado </p> 
-                                <div class="col_vacia"></div>
-                                <button class="boton-estilista">Seleccionar</button>
-                            </li>
+                            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                                <li class="container-tratamientos">
+                                    <a href="#" class="nav-link">
+                                        <p id="sub-tratamientos" style="font-size: 20px; color: #593326">
+                                            Cabello
+                                            <i class="fas fa-angle-left right"></i>
+                                        </p>
+                                    </a>
+                                    <ul class="nav nav-treeview" style="display: none;">
+                                        <li class="nav-item">
+                                            <p href="#" class="item-tratamiento">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <a href="#">Largo Mujer</a>
+                                            </p>
+                                        </li>
+                                        <br>
+                                        <li class="nav-item">
+                                            <p href="#" class="item-tratamiento">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <a href="#">Corto Mujer</a>
+                                            </p>
+                                        </li>
+                                        <br>
+                                        <li class="nav-item">
+                                            <p href="#" class="item-tratamiento">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <a href="#">Largo + Lavado Mujer</a>
+                                            </p>
+                                        </li>
+                                        <br>
+                                        <li class="nav-item">
+                                            <p href="#" class="item-tratamiento">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <a href="#">Corto + Lavado Mujer</a>
+                                            </p>
+                                        </li>
+                                        <br>
+                                        <li class="nav-item">
+                                            <p href="#" class="item-tratamiento">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <a href="#">Largo Hombre</a>
+                                            </p>
+                                        </li>
+                                        <br>
+                                        <li class="nav-item">
+                                            <p href="#" class="item-tratamiento">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <a href="#">Corto Hombre</a>
+                                            </p>
+                                        </li>
+                                        <br>
+                                        <li class="nav-item">
+                                            <p href="#" class="item-tratamiento">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <a href="#">Largo + Lavado Hombre</a>
+                                            </p>
+                                        </li>
+                                        <br>
+                                        <li class="nav-item">
+                                            <p href="#" class="item-tratamiento">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <a href="#">Corto + Lavado Hombre</a>
+                                            </p>
+                                        </li>
+                                        <br>
+                                        <li class="nav-item">
+                                            <p href="#" class="item-tratamiento">
+                                                <i class="far fa-circle nav-icon"></i>
+                                                <a href="#">Niño - Niña</a>
+                                            </p>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </ul>
                         <div class="col_vacia"></div>
                     </div>
@@ -105,6 +152,21 @@
     </footer>
     <!-- final footer -->
 
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Selecciona el enlace "Cabello" por su ID
+        const cabelloLink = document.getElementById("sub-tratamientos");
+
+        // Selecciona el menú desplegable por su clase
+        const menuCabello = document.querySelector(".nav.nav-treeview");
+
+        // Agrega un controlador de eventos al enlace "Cabello"
+        cabelloLink.addEventListener("click", function() {
+            // Cambia la visibilidad del menú desplegable
+            menuCabello.style.display = (menuCabello.style.display === "none") ? "block" : "none";
+        });
+    });
+</script>
 
 
 </body>
