@@ -97,6 +97,9 @@
    </div>
 </div>
 
+
+<!-- MODAL PARA INICIAR SESION Y TENER LA CUENTA INICIADA Y REVISAR SUS FACTURAS Y CITAS DESDEL VISTA CLIENTE -->
+
 <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
    <div class="modal-dialog">
       <div class="modal-content" style="background-color: #F7F4ED;">
@@ -156,6 +159,8 @@
    </div>
 </div>
 
+<!-- MODAL FACTURA-->
+
 <div class="modal fade" id="facturaModal" tabindex="-1" aria-labelledby="facturaModalLabel" aria-hidden="true">
    <div class="modal-dialog">
       <div class="modal-content" style="background-color: #F7F4ED;">
@@ -163,31 +168,33 @@
             <h4 class="modal-title" id="facturaModalLabel">Información de Factura</h4>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 20px;"></button>
          </div>
-         <div class="modal-body">
-            <div class="text-modal">
-               <div class="form-group">
-                  <label for="tratamiento">Tratamiento:</label>
-                  <input type="text" id="tratamiento" name="tratamiento" class="form-control" readonly>
-               </div>
-               <div class="form-group">
-                  <label for="precio">Precio con IVA:</label>
-                  <input type="text" id="precio" name="precio" class="form-control" readonly>
-               </div>
-               <div class="form-group">
-                  <label for="fecha">Fecha:</label>
-                  <div class="row">
-                     <div class="col">
-                        <input type="text" id="dia" name="dia" class="form-control" readonly>
-                     </div>
-                     <div class="col">
-                        <input type="text" id="mes" name="mes" class="form-control" readonly>
-                     </div>
-                     <div class="col">
-                        <input type="text" id="año" name="año" class="form-control" readonly>
+         <div class="modal-body" style="max-height: 500px; overflow-y: auto;">
+            <?php foreach ($facturas as $factura) : ?>
+               <div class="text-modal">
+                  <div class="form-group">
+                     <label for="tratamiento">Tratamiento:</label>
+                     <input type="text" id="tratamiento" name="tratamiento" class="form-control" value="<?php echo $factura['tratamiento']; ?>" readonly>
+                  </div>
+                  <div class="form-group">
+                     <label for="precio">Precio con IVA:</label>
+                     <input type="text" id="precio" name="precio" class="form-control" value="<?php echo $factura['precio']; ?>" readonly>
+                  </div>
+                  <div class="form-group">
+                     <label for="fecha">Fecha:</label>
+                     <div class="row">
+                        <div class="col">
+                           <input type="text" id="dia" name="dia" class="form-control" value="<?php echo date('d', strtotime($factura['fecha'])); ?>" readonly>
+                        </div>
+                        <div class="col">
+                           <input type="text" id="mes" name="mes" class="form-control" value="<?php echo date('m', strtotime($factura['fecha'])); ?>" readonly>
+                        </div>
+                        <div class="col">
+                           <input type="text" id="año" name="año" class="form-control" value="<?php echo date('Y', strtotime($factura['fecha'])); ?>" readonly>
+                        </div>
                      </div>
                   </div>
                </div>
-            </div>
+            <?php endforeach; ?>
          </div>
          <div class="modal-footer" style="justify-content: space-between;">
             <button type="button" class="btn btn-citas-modal" data-bs-toggle="modal" data-bs-target="#myModal">Volver</button>
