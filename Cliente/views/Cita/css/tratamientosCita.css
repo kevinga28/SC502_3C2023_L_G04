@@ -1,17 +1,6 @@
 
 /* CSS para el cuadro beige que se encuentra junto al logo enorme */
 
-.cuadro-beige {
-    background-color: #F7F4ED;
-    padding: 20px;
-    border-radius: 10px;
-    float: left; 
-    margin-right: 20px; 
-    clear: left; 
-    padding-right: 400px;
-    padding-bottom: 400px;
-}
-
 .cuadro-beige h3 {
     font-size: 27px;
     margin-bottom: 10px;
@@ -36,7 +25,8 @@
     float: left; 
     margin-right: 20px; 
     clear: left; 
-    padding-bottom: 570px;
+    padding-right: 200px;
+    padding-bottom: 100px;
 }
 
 .cuadro-beige2 h3 {
@@ -154,12 +144,8 @@
     width: 60px;
 }
 
-.container-tratamientos{
-    margin: 10px;
-}
-
 .nav-item {
-    display: flex;
+    display: block;
 }
 
 #sub-tratamiento{
@@ -172,10 +158,8 @@
     display: flex;
 }
 
-.container-tratamientos{
-    display: flex;
-}
-
 .precio-tratamiento{
     margin-left: auto;
+    color: #593326;
+    font-size: 20px;
 }
