@@ -121,39 +121,51 @@ class Cliente extends Conexion
 
 
 
-
     public function guardarUsuario()
     {
         $sql = "INSERT INTO usuario (nombre, apellido, correo, contrasena, telefono, dia, mes, ano) 
-            VALUES (:nombre, :apellido, :correo, :contrasena, :telefono, :dia, :mes, :ano)";
+        VALUES (:nombre, :apellido, :correo, :contrasena, :telefono, :dia, :mes, :ano)";
 
-        self::getConexion();  // Debes utilizar self::$cnx para acceder a la conexión
-        $nombre = strtoupper($this->getNombre());
-        $apellido = strtoupper($this->getApellido());
-        $correo = $this->getCorreo();
-        $contrasena = $this->getContrasena();
-        $telefono = $this->getTelefono();
-        $dia = $this->getDia();
-        $mes = $this->getMes();
-        $ano = $this->getAno();
+        try {
+            self::getConexion();  // Debes utilizar self::$cnx para acceder a la conexión
+            $nombre = strtoupper($this->getNombre());
+            $apellido = strtoupper($this->getApellido());
+            $correo = $this->getCorreo();
+            $contrasena = $this->getContrasena();
+            $telefono = $this->getTelefono();
+            $dia = $this->getDia();
+            $mes = $this->getMes();
+            $ano = $this->getAno();
 
-        $stmt = self::$cnx->prepare($sql);  // Cambia $conexion a self::$cnx
-        $stmt->bindParam(':nombre', $nombre);
-        $stmt->bindParam(':apellido', $apellido);
-        $stmt->bindParam(':correo', $correo);
-        $stmt->bindParam(':contrasena', $contrasena);
-        $stmt->bindParam(':telefono', $telefono);
-        $stmt->bindParam(':dia', $dia);
-        $stmt->bindParam(':mes', $mes);
-        $stmt->bindParam(':ano', $ano);
+            $stmt = self::$cnx->prepare($sql);  // Cambia $conexion a self::$cnx
+            $stmt->bindParam(':nombre', $nombre);
+            $stmt->bindParam(':apellido', $apellido);
+            $stmt->bindParam(':correo', $correo);
+            $stmt->bindParam(':contrasena', $contrasena);
+            $stmt->bindParam(':telefono', $telefono);
+            $stmt->bindParam(':dia', $dia);
+            $stmt->bindParam(':mes', $mes);
+            $stmt->bindParam(':ano', $ano);
 
+            // Ejecutar la consulta
+            $stmt->execute();
 
-        if ($stmt->execute()) {
-            echo '<script>alert("Registro exitoso. El usuario se ha registrado correctamente.");</script>';
-        } else {
-            echo '<script>alert("Error al registrar el usuario. Por favor, inténtalo de nuevo.");</script>';
+            // Comprobar si la consulta se ejecutó con éxito
+            if ($stmt->rowCount() > 0) {
+                // Aquí puedes retornar un mensaje de éxito
+                return "Registro exitoso. El usuario se ha registrado correctamente.";
+            } else {
+                // Aquí puedes retornar un mensaje de error
+                return "Error al registrar el usuario. Por favor, inténtalo de nuevo.";
+            }
+
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error ".$Exception->getCode().": ".$Exception->getMessage();
+            return $error;
         }
     }
+
 
 
 

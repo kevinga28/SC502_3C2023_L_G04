@@ -26,6 +26,7 @@ $('#login').on('submit', function (event) {
             switch (datos) {
 
                 case '1':
+                    alert('Cliente registrado');
 
 
 

@@ -8,6 +8,7 @@ const limpiarForms = () => {
 
 
 $('#usuario_add').on('submit', function (event) {
+    event.preventDefault();
     $('#btnRegistar').prop('disabled', true);
     var formData = new FormData($('#usuario_add')[0]);
     $.ajax({
@@ -21,6 +22,8 @@ $('#usuario_add').on('submit', function (event) {
             switch (datos) {
 
                 case '1':
+                    alert('Cliente registrado');
+                    limpiarForms();
 
 
                     break;
