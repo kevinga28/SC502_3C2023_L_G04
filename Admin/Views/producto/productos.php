@@ -18,6 +18,7 @@
   <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
   <link rel="stylesheet" href="../dist/css/style.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -32,13 +33,12 @@
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar elevation-4 color-custom">
+
       <?php
       include 'fragments/aside.php'
       ?>
     </aside>
 
-
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
       <section class="content-header">
@@ -49,165 +49,142 @@
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="../index.php">Inicio</a></li>
+                <li class="breadcrumb-item"><a href="#">Inicio</a></li>
                 <li class="breadcrumb-item active">Productos</li>
               </ol>
             </div>
           </div>
-        </div>
+        </div><!-- /.container-fluid -->
       </section>
 
       <section class="content">
-
-
-        <div class="invoice p-3 mb-3">
-
+        <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-              <h4>
-                <i class="fas fa-globe"></i> Tabla Productos
-              </h4>
-            </div>
-          </div>
+            
 
-          <div class="card-body">
-            <div id="tabla_wrapper" class="dataTables_wrapper dt-bootstrap4">
-              <div class="row">
-                <div class="col-sm-12 col-md-6">
-                  <div class="dt-buttons btn-group flex-wrap">
-                    <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="tabla" type="button"><span>Copy</span></button>
-                    <button class="btn btn-secondary buttons-excel buttons-html5" tabindex="0" aria-controls="tabla" type="button"><span>Excel</span></button>
-                    <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0" aria-controls="tabla" type="button"><span>PDF</span></button>
-                    <div class="btn-group">
-                      <button class="btn btn-secondary buttons-collection dropdown-toggle buttons-colvis" tabindex="0" aria-controls="tabla" type="button" aria-haspopup="true">
-                        <span>Column visibility</span>
-                        <span class="dt-down-arrow"></span>
-                      </button>
-                    </div>
+
+
+              <!-- Main content -->
+              <div class="invoice p-3 mb-3">
+                <!-- title row -->
+                <div class="row">
+                  <div class="col-12">
+                    <h4>
+                      <i class="fas fa-globe"></i> Tabla Productos
+                    </h4>
                   </div>
+                  <!-- /.col -->
                 </div>
-                <div class="col-sm-12 col-md-6 text-md-right">
+
+
+                <div class="card-body">
+                  <div id="tabla_wrapper" class="dataTables_wrapper dt-bootstrap4">
+                    <div class="row">
+                      <div class="col-sm-12 col-md-6">
+                        <div class="dt-buttons btn-group flex-wrap">
+                          <button class="btn btn-secondary buttons-copy buttons-html5" tabindex="0" aria-controls="tabla" type="button"><span>Copy</span></button>
+                          <button class="btn btn-secondary buttons-excel buttons-html5" tabindex="0" aria-controls="tabla" type="button"><span>Excel</span></button>
+                          <button class="btn btn-secondary buttons-pdf buttons-html5" tabindex="0" aria-controls="tabla" type="button"><span>PDF</span></button>
+                          <div class="btn-group">
+                            <button class="btn btn-secondary buttons-collection dropdown-toggle buttons-colvis" tabindex="0" aria-controls="tabla" type="button" aria-haspopup="true">
+                              <span>Column visibility</span>
+                              <span class="dt-down-arrow"></span>
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-sm-12 col-md-6 text-md-right"> <!-- Cambiado a text-md-right -->
                         <div id="tabla_filter" class="dataTables_filter">
                           <label>Buscar:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="tabla"></label>
                         </div>
                       </div>
-
-                <!-- Table row -->
-                <div class="row">
-                  <div class="col-12 table-responsive">
-                    <table class="table table-bordered table-striped dataTable dtr-inline">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Nombre</th>
-                          <th>Descripción</th>
-                          <th>Cantidad</th>
-                          <th>Categoría</th>
-                          <th>Precio</th>
-                          <th>Imagen Referencia</th>
-                          <th> </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Miuumi's Red Velvet </td>
-                          <td>Tinte de pelo color terciopelo rojo de la empresa Miuumi's Fashion</td>
-                          <td>20</td>
-                          <td>Cabello</td>
-                          <td>$2300</td>
-                          <td><img src="Ejemplo.png" alt="#"></td>
-                          <td>
-                            <button type="button" class="btn btn-danger float-right" style="margin-right: 8px;">
-                              <i class="fas fa-download"></i> Eliminar
-                            </button>
-                            <button type="button" class="btn btn-success float-right" style="margin-right: 8px;" id="editarProductos">
-                              <i class="fas fa-download"></i> Editar
-                            </button>
-
-                            <script>
-                                 document.getElementById("editarProductos").addEventListener("click", function() {
-                                window.location.href = "editarProducto.php";
-                                });
-                            </script>
-
-                            <button type="button" class="btn btn-primary float-right" style="margin-right: 8px;">
-                              <i class="fas fa-download"></i> Ver
-                            </button>
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                    </table>
-                    <br>
-                    <table class="table table-striped">
-
-                    </table>
-                  </div>
-                  <!-- /.col -->
-                </div>
-                <!-- /.row -->
-
-
-
-                <div class="row no-print">
-                  <div class="col-12">
-                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                      <i class="fas fa-download"></i> Generar PDF
-                    </button>
-                <div class="col-sm-12 col-md-6 text-md-right"> <!-- Cambiado a text-md-right -->
-                  <div id="tabla_filter" class="dataTables_filter">
-                    
-                  </div>
-                </div>
-              </div>
-              
-              <div class="row">
-                <div class="col-sm-12 col-md-5">
-                  <div class="dataTables_info" id="tabla_info" role="status" aria-live="polite">PHP</div>
-                </div>
-                <div class="col-sm-12 col-md-7">
-                  <div class="dataTables_paginate paging_simple_numbers" id="tabla_paginate">
-                    <ul class="pagination">
-                      <li class="paginate_button page-item previous disabled" id="tabla_previous">
-                        <a href="#" aria-controls="tabla" data-dt-idx="0" tabindex="0" class="page-link">Anterior</a>
-                      </li>
-                      <li class="paginate_button page-item active">
-                        <a href="#" aria-controls="tabla" data-dt-idx="1" tabindex="0" class="page-link">1</a>
-                      </li>
-                      <li class="paginate_button page-item ">
-                        <a href="#" aria-controls="tabla" data-dt-idx="2" tabindex="0" class="page-link">2</a>
-                      </li>
-                      <li class="paginate_button page-item ">
-                        <a href="#" aria-controls="tabla" data-dt-idx="3" tabindex="0" class="page-link">3</a>
-                      </li>
-                      <li class="paginate_button page-item ">
-                        <a href="#" aria-controls="tabla" data-dt-idx="4" tabindex="0" class="page-link">4</a>
-                      </li>
-                      <li class="paginate_button page-item ">
-                        <a href="#" aria-controls="tabla" data-dt-idx="5" tabindex="0" class="page-link">5</a>
-                      </li>
-                      <li class="paginate_button page-item ">
-                        <a href="#" aria-controls="tabla" data-dt-idx="6" tabindex="0" class="page-link">6</a>
-                      </li>
-                      <li class="paginate_button page-item next" id="tabla_next">
-                        <a href="#" aria-controls="tabla" data-dt-idx="7" tabindex="0" class="page-link">Siguiente</a>
-                      </li>
-                    </ul>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12">
+                        <table id="tabla" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="tabla_info">
+                          <thead>
+                            <tr>
+                              <th class="sorting sorting_asc" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending">Codigo</th>
+                              <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Nombre: activate to sort column ascending">Nombre</th>
+                              <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Descripcion: activate to sort column ascending">Descripcion</th>
+                              <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Cantidad: activate to sort column ascending">Cantidad</th>
+                              <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Precio: activate to sort column ascending">Precio</th>
+                              <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Categoria: activate to sort column ascending">Categoria</th>
+                              <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Imagen: activate to sort column ascending">Imagen</th>
+                              <th></th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr class="odd">
+                              <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
+                              <td>Firefox 1.0</td>
+                              <td>Win 98+ / OSX.2+</td>
+                              <td>1.7</td>
+                              <td>A</td>
+                              <td>Gerente</td>
+                              <td>URL</td>
+                              <td>
+                                <a type="button" class="btn btn-danger float-right" style="margin-right: 8px;" href="#">
+                                  <i class="fas fa-trash"></i> Eliminar
+                                </a>
+                                <a type="button" class="btn btn-success float-right" style="margin-right: 8px;" href="editarProducto.php">
+                                  <i class="fas fa-pencil-alt"></i> Editar
+                                </a>
+                                <a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verProducto.php">
+                                  <i class="fas fa-eye"></i> Ver
+                                </a>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12 col-md-5">
+                        <div class="dataTables_info" id="tabla_info" role="status" aria-live="polite">PHP</div>
+                      </div>
+                      <div class="col-sm-12 col-md-7">
+                        <div class="dataTables_paginate paging_simple_numbers" id="tabla_paginate">
+                          <ul class="pagination">
+                            <li class="paginate_button page-item previous disabled" id="tabla_previous">
+                              <a href="#" aria-controls="tabla" data-dt-idx="0" tabindex="0" class="page-link">Anterior</a>
+                            </li>
+                            <li class="paginate_button page-item active">
+                              <a href="#" aria-controls="tabla" data-dt-idx="1" tabindex="0" class="page-link">1</a>
+                            </li>
+                            <li class="paginate_button page-item ">
+                              <a href="#" aria-controls="tabla" data-dt-idx="2" tabindex="0" class="page-link">2</a>
+                            </li>
+                            <li class="paginate_button page-item ">
+                              <a href="#" aria-controls="tabla" data-dt-idx="3" tabindex="0" class="page-link">3</a>
+                            </li>
+                            <li class="paginate_button page-item ">
+                              <a href="#" aria-controls="tabla" data-dt-idx="4" tabindex="0" class="page-link">4</a>
+                            </li>
+                            <li class="paginate_button page-item ">
+                              <a href="#" aria-controls="tabla" data-dt-idx="5" tabindex="0" class="page-link">5</a>
+                            </li>
+                            <li class="paginate_button page-item ">
+                              <a href="#" aria-controls="tabla" data-dt-idx="6" tabindex="0" class="page-link">6</a>
+                            </li>
+                            <li class="paginate_button page-item next" id="tabla_next">
+                              <a href="#" aria-controls="tabla" data-dt-idx="7" tabindex="0" class="page-link">Siguiente</a>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+
               </div>
             </div>
           </div>
-
-
-
         </div>
-
       </section>
-    </div>
 
+    </div>
 
     <footer class="main-footer no-print">
       <?php
@@ -221,13 +198,54 @@
 
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap -->
+  <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- jQuery UI -->
-  <script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+  <!-- ChartJS -->
+  <script src="../plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.min.js"></script>
 
+  <script src="../plugins/select2/js/select2.full.min.js"></script>
+
+  <!-- Page specific script -->
+  <script>
+    $(function() {
+
+      //-------------
+      //- BAR CHART -
+      //-------------
+      var barChartCanvas = $('#barChart').get(0).getContext('2d')
+      var barChartData = $.extend(true, {}, areaChartData)
+      var temp0 = areaChartData.datasets[0]
+      var temp1 = areaChartData.datasets[1]
+      barChartData.datasets[0] = temp1
+      barChartData.datasets[1] = temp0
+
+      var barChartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        datasetFill: false
+      }
+
+      new Chart(barChartCanvas, {
+        type: 'bar',
+        data: barChartData,
+        options: barChartOptions
+      })
+
+    })
+  </script>
+
+
+  <script>
+    $(function() {
+      //Initialize Select2 Elements
+      $('.select2').select2()
+
+    })
+  </script>
+
 </body>
+
 
 </html>

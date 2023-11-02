@@ -77,32 +77,21 @@
                       <div class="card-body">
 
                         <div class="form-group">
-<<<<<<< HEAD
-                          <label for="Nombre">Nombre</label>
-                          <input type="text" class="form-control" id="Nombre" placeholder="Nombre Producto">
-=======
-                          <label for="codigoProducto">Codigo</label>
-                          <input type="text" class="form-control" id="Codigo" placeholder="Codigo Producto" name="codigoProducto" required>
-                        </div>
-
-                        <div class="form-group">
                           <label for="nombre">Nombre</label>
-                          <input type="text" class="form-control" id="Nombre" nombre="Nombre Producto" placeholder="Nombre Producto" name="nombre" required> 
->>>>>>> 1e6fbd6b3d549bdcffed4a474047ba3dd080b7ea
+                          <input type="text" class="form-control" id="nombre" placeholder="Nombre">
                         </div>
 
                         <div class="form-group">
                           <label for="descripcion">Descripción</label>
-                          <input type="text" class="form-control" id="descripcion" placeholder="Descripción" name="descripcion" required>
+                          <input type="text" class="form-control" id="descripcion" placeholder="Descripción">
                         </div>
 
                         <div class="form-group">
                           <label for="cantidad">Cantidad</label>
-                          <input type="number" class="form-control" id="cantidad" placeholder="Cantidad" name="cantidad" required>
+                          <input type="number" class="form-control" id="cantidad" placeholder="Cantidad">
                         </div>
 
                         <div class="form-group">
-<<<<<<< HEAD
                           <label for="Categoría">Categoría</label>
                           <select class="form-control" id="Categoría">
                             <option value="categoria0">Seleccione una categoría...</option>
@@ -115,10 +104,6 @@
                         <div class="form-group">
                           <label for="Precio">Precio</label>
                           <input type="text" class="form-control" id="Precio" placeholder="Precio">
-=======
-                          <label for="precio">Precio</label>
-                          <input type="text" class="form-control" id="precio" placeholder="Precio" name="precio" required>
->>>>>>> 1e6fbd6b3d549bdcffed4a474047ba3dd080b7ea
                         </div>
 
                         <div class="form-group">
