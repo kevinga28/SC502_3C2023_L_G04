@@ -13,6 +13,10 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
+  <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
+
   <link rel="stylesheet" href="../dist/css/style.css">
 </head>
 
@@ -41,12 +45,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Sistema Productos</h1>
+              <h1>Sistema de Productos</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="../index.php">Inicio</a></li>
-                <li class="breadcrumb-item active">Lista Productos</li>
+                <li class="breadcrumb-item active">Productos</li>
               </ol>
             </div>
           </div>
@@ -82,12 +86,16 @@
                     </div>
                   </div>
                 </div>
-<<<<<<< HEAD
+                <div class="col-sm-12 col-md-6 text-md-right">
+                        <div id="tabla_filter" class="dataTables_filter">
+                          <label>Buscar:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="tabla"></label>
+                        </div>
+                      </div>
 
                 <!-- Table row -->
                 <div class="row">
                   <div class="col-12 table-responsive">
-                    <table class="table table-striped">
+                    <table class="table table-bordered table-striped dataTable dtr-inline">
                       <thead>
                         <tr>
                           <th>ID</th>
@@ -97,6 +105,7 @@
                           <th>Categoría</th>
                           <th>Precio</th>
                           <th>Imagen Referencia</th>
+                          <th> </th>
                         </tr>
                       </thead>
                       <tbody>
@@ -147,50 +156,13 @@
                     <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
                       <i class="fas fa-download"></i> Generar PDF
                     </button>
-=======
                 <div class="col-sm-12 col-md-6 text-md-right"> <!-- Cambiado a text-md-right -->
                   <div id="tabla_filter" class="dataTables_filter">
-                    <label>Buscar:<input type="search" class="form-control form-control-sm" placeholder="" aria-controls="tabla"></label>
->>>>>>> 1e6fbd6b3d549bdcffed4a474047ba3dd080b7ea
+                    
                   </div>
                 </div>
               </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <table id="tabla" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="tabla_info">
-                    <thead>
-                      <tr>
-                        <th class="sorting sorting_asc" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending">ID</th>
-                        <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Nombre: activate to sort column ascending">Nombre</th>
-                        <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Descripcion: activate to sort column ascending">Descripcion</th>
-                        <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Cantidad: activate to sort column ascending">Cantidad</th>
-                        <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Precio: activate to sort column ascending">Precio</th>
-                        <th></th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr class="odd">
-                        <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                        <td>Firefox 1.0</td>
-                        <td>Win 98+ / OSX.2+</td>
-                        <td>1.7</td>
-                        <td>A</td>
-                        <td>
-                          <a type="button" class="btn btn-danger float-right" style="margin-right: 8px;" href="eliminar.php">
-                            <i class="fas fa-trash"></i> Eliminar
-                          </a>
-                          <a type="button" class="btn btn-success float-right" style="margin-right: 8px;" href="editarProducto.php">
-                            <i class="fas fa-pencil-alt"></i> Editar
-                          </a>
-                          <a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verProducto.php">
-                            <i class="fas fa-eye"></i> Ver
-                          </a>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
+              
               <div class="row">
                 <div class="col-sm-12 col-md-5">
                   <div class="dataTables_info" id="tabla_info" role="status" aria-live="polite">PHP</div>
