@@ -1,0 +1,24 @@
+
+ojavascript:S3776"TRefactor this function to reduce its Cognitive Complexity from 55 to the 15 allowed.(©å„x
+Ejavascript:S3504")Unexpected var, use let or const instead.(É¾¢Í
+Jjavascript:S3504")Unexpected var, use let or const instead.(×ÂÿÚúÿÿÿÿ
+Jjavascript:S3504'")Unexpected var, use let or const instead.(¯±³¸ûÿÿÿÿ
+bjavascript:S1121*"FExtract the assignment of "headDay[0].innerHTML" from this expression.(İÅÚã
+bjavascript:S1121*"FExtract the assignment of "headDay[0].innerHTML" from this expression.(İÅÚã
+Jjavascript:S3504/")Unexpected var, use let or const instead.(ÈñšŸüÿÿÿÿ
+Jjavascript:S35045")Unexpected var, use let or const instead.(âöê“øÿÿÿÿ
+Jjavascript:S3504;")Unexpected var, use let or const instead.(Û“€Øÿÿÿÿÿ
+Jjavascript:S3504@")Unexpected var, use let or const instead.(êÿ‚¡øÿÿÿÿ
+Jjavascript:S3504U")Unexpected var, use let or const instead.(›ñ´ÿÿÿÿÿ
+Ejavascript:S3504y")Unexpected var, use let or const instead.(ä˜í
+Fjavascript:S3504‹")Unexpected var, use let or const instead.(ş°Û‚
+Kjavascript:S3504")Unexpected var, use let or const instead.(ñ®´®üÿÿÿÿ
+javascript:S2392"]Consider moving declaration of 'expires' as it is referenced outside current binding context.(ñ®´®üÿÿÿÿ
+Kjavascript:S3504")Unexpected var, use let or const instead.(â­ºÊşÿÿÿÿ
+?javascript:S2814"'expires' is already defined.(â­ºÊşÿÿÿÿ
+Fjavascript:S3504–")Unexpected var, use let or const instead.(ê®óï
+Kjavascript:S3504˜")Unexpected var, use let or const instead.(Æûôõüÿÿÿÿ
+Fjavascript:S3504™")Unexpected var, use let or const instead.(ûŠ±Ñ
+Fjavascript:S3504¤")Unexpected var, use let or const instead.(ì¬¾’
+Vjavascript:S1481¤"9Remove the declaration of the unused 'calendar' variable.(ì¬¾’
+Sjavascript:S1854¤"6Remove this useless assignment to variable "calendar".(ì¬¾’

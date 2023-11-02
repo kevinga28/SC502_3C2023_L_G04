@@ -22,6 +22,8 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../toastr/toastr.css">
+
 </head>
 
 <body>
@@ -40,17 +42,17 @@
 
             <div class="col-md-12">
                 <div class="box-log text-bg-logueo">
-                    <form method="POST" action="procesar_sesion.php">
+                    <form name="modulos_verif" id="login" method="POST" >
                         <h2>Registrar o Iniciar Sesion</h2>
-                        <a class="registrarse" href="register.php">Crear una cuenta</a>
+                        <a class="registrarse" href="../register.php">Crear una cuenta</a>
                         <div class="input-box">
                             <input type="email" name="correo" placeholder="Correo Electronico">
                         </div>
                         <div class="input-box">
-                            <input type="password" name="contrasena" placeholder="Contraseña">
+                            <input  type="password"   name="contrasena" placeholder="Contraseña">
                         </div>
                         <div class="input-box">
-                            <button type="submit" class="btn">Iniciar Sesion</button>
+                            <button name="btnlogin" type="submit" class="btn">Iniciar Sesion</button>
                         </div>
                     </form>
                 </div>
@@ -65,7 +67,13 @@
         ?>
     </footer>
 
-
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/jquery-3.0.0.min.js"></script>
+    <script src="../js/inicioSesion.js"></script>
+    <script src="../toastr/toastr.js"></script>
+    <script src="../bootbox/bootbox.min.js"></script>
 
 </body>
 
