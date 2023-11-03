@@ -46,19 +46,19 @@ function listarClientesTodos() {
       },
     },
     columns: [
-      { data: "0" },  // Cedula
+      { data: "0" },  // IdCliente
       { data: "1" },  // Correo
       { data: "2" },  // Nombre
       { data: "3" },  // Apellido
       { data: "4" },  // Telefono
-      { data: "5" },  // Genero
+      { data: "5" },  // Provincia
       {
         // Última columna con botones
         data: null,
         render: function (data, type, row) {
-          return '<a type="button" class="btn btn-danger float-right" style="margin-right: 8px;" href="eliminar.php?cedula=' + data[0] + '"><i class="fas fa-trash"></i>Eliminar</a>' +
-            '<a id="modificarCliente" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php?cedula=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>' +
-            '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php?cedula=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>';
+          return '<a type="button" class="btn btn-danger float-right eliminar-cliente" data-clienteId="<?= $clienteId ?>"><i class="fas fa-trash"></i> Eliminar</a>' +
+            '<a id="modificarCliente" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>' +
+            '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>';
         }
       }
     ]
@@ -97,7 +97,7 @@ $('#crearCliente').on('submit', function (event) {
           toastr.error('El correo ya existe. Corrija e inténtelo nuevamente.');
           break;
         case '3':
-          toastr.error('Hubo un error al tratar de ingresar los datos.');
+          toastr.error('El correo ya existe. Corrija e inténtelo nuevamente.');
           break;
         // Otros casos según tus necesidades
         default:
@@ -111,23 +111,21 @@ $('#crearCliente').on('submit', function (event) {
 
 
 
-/* ---------------------------------------------------------------OBTENER LOS DATOS DEL CLIENTE PARA LUEGO EDITAR--------------------------------------------------------------- */
+/* ---------------------------------------------------------------OBTENER LOS DATOS DEL CLIENTE--------------------------------------------------------------- */
 
 const rellenarFormulario = async () => {
   const urlSearchParams = new URLSearchParams(window.location.search);
-  const cedula = urlSearchParams.get("cedula");
+  const IdCliente = urlSearchParams.get("IdCliente");
 
-  if (cedula) {
+  if (IdCliente) {
     try {
-      const response = await fetch(`../../../admin/Controllers/clienteController.php?op=obtener&cedula=${cedula}`);
+      const response = await fetch(`../../../admin/Controllers/clienteController.php?op=obtener&IdCliente=${IdCliente}`);
       if (response.ok) {
         const datos = await response.json();
 
         // Rellena el formulario con los datos obtenidos
-        $("#Ecedula").val(datos.cedula);
         $("#Enombre").val(datos.nombre);
         $("#Eapellido").val(datos.apellido);
-        $("#Egenero").val(datos.genero).trigger("change");
         $("#Ecorreo").val(datos.correo);
         $("#Etelefono").val(datos.telefono);
         $("#Eprovincia").val(datos.provincia);
@@ -173,7 +171,7 @@ $('#cliente_update').on('submit', function (event) {
               $('#formulario_add').show();
               break;
             case '2':
-              toastr.error('Error: Cedula no se puede editar.');
+              toastr.error('Error: IdCliente no se puede editar.');
               break;
           }
         },
@@ -182,3 +180,28 @@ $('#cliente_update').on('submit', function (event) {
   });
 });
 
+/* ---------------------------------------------------------------ELIMINAR EL CLIENTE MEDIANTE EL ID--------------------------------------------------------------- */
+
+$('.eliminar-cliente').on('click', function() {
+  var clienteId = $(this).data('clienteId'); // Obtiene el ID del cliente desde el atributo de datos
+
+  if (clienteId !== undefined) {
+      if (confirm("¿Estás seguro de que deseas eliminar este cliente?")) {
+          // Realiza una solicitud al controlador para eliminar el cliente
+          fetch(`controlador.php?op=eliminar&IdCliente=${clienteId}`, {
+              method: 'POST' // Utiliza POST u otro método según tu configuración
+          })
+          .then(response => {
+              if (response.ok) {
+                  alert("Cliente eliminado exitosamente");
+                  // Puedes realizar acciones adicionales, como actualizar la vista o la lista de clientes en la página.
+              } else {
+                  alert("No se pudo eliminar el cliente. Inténtalo de nuevo.");
+              }
+          })
+          .catch(error => {
+              console.error("Error al eliminar el cliente:", error);
+          });
+      }
+  }
+});

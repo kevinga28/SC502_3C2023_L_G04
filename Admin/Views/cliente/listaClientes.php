@@ -94,7 +94,7 @@
                               <th>Nombre</th>
                               <th>Apellido</th>
                               <th>Telefono</th>
-                              <th>Genero</th>
+                              <th>Provincia</th>
                               <th>Opciones</th>
                             </tr>
                           </thead>

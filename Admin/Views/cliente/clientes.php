@@ -84,11 +84,6 @@
                           <div class="col-md-6">
 
                             <div class="form-group">
-                              <label for="Cedula">Cedula</label>
-                              <input type="number" class="form-control" id="cedula" name="cedula" placeholder="Cedula" required>
-                            </div>
-
-                            <div class="form-group">
                               <label for="Nombre">Nombre</label>
                               <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre" required>
                             </div>
@@ -98,15 +93,6 @@
                               <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" required>
                             </div>
 
-                            <div class="form-group">
-                              <label for="Genero">Genero</label>
-                              <select class="select2 select2-hidden-accessible" id="genero" name="genero" 
-                              data-placeholder="Seleccionar Genero" data-dropdown-css-class="select2-danger" style="width: 100%;" 
-                              tabindex="1" aria-hidden="true" data-minimumResultsForSearch="Infinity">
-                                <option>Masculino</option>
-                                <option>Femenino</option>
-                              </select>
-                            </div>
 
                             <div class="form-group">
                               <label for="correo">Correo Electrónico</label>
@@ -118,13 +104,14 @@
                               <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" required>
                             </div>
 
-
-                          </div>
-                          <div class=" col-md-6">
                             <div class="form-group">
                               <label for="telefono">Telefono</label>
                               <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono" required>
                             </div>
+
+                          </div>
+                          <div class=" col-md-6">
+
 
                             <div class="form-group">
                               <label for="provincia">Provincia</label>
@@ -213,16 +200,15 @@
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- ChartJS -->
-  <script src="../plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.min.js"></script>
+  <!-- Datatable -->
+  <script src="../plugins/DataTables/datatables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
   <!-- TOAST -->
   <script src="../plugins/toastr/toastr.js"></script>
 
   <script src="../dist/js/cliente.js"></script>
-
-  <script src="../plugins/select2/js/select2.full.min.js"></script>
 
   <script src="../plugins/bootbox/bootbox.min.js"></script>
 
@@ -256,13 +242,13 @@
     })
   </script>
 
-<script>
-        $(function() {
-            //Initialize Select2 Elements
-            $('.select2').select2()
+  <script>
+    $(function() {
+      //Initialize Select2 Elements
+      $('.select2').select2()
 
-        })
-    </script>
+    })
+  </script>
 
 
 

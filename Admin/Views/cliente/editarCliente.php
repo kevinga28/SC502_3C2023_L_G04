@@ -15,7 +15,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-
     <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
     <link rel="stylesheet" href="../dist/css/style.css">
@@ -82,11 +81,6 @@
                                                     <div class="col-md-6">
 
                                                         <div class="form-group">
-                                                            <label for="Cedula">Cedula</label>
-                                                            <input type="number" class="form-control" id="Ecedula" name="cedula" placeholder="Cedula" required>
-                                                        </div>
-
-                                                        <div class="form-group">
                                                             <label for="Nombre">Nombre</label>
                                                             <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Primer Nombre" required>
                                                         </div>
@@ -94,14 +88,6 @@
                                                         <div class="form-group">
                                                             <label for="apellido">Apellido</label>
                                                             <input type="text" class="form-control" id="Eapellido" name="apellido" placeholder="Apellido" required>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="Genero">Genero</label>
-                                                            <select class="select2 select2-hidden-accessible" id="Egenero" name="genero" data-placeholder="Seleccionar Genero" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" data-minimumResultsForSearch="Infinity">
-                                                                <option>Masculino</option>
-                                                                <option>Femenino</option>
-                                                            </select>
                                                         </div>
 
                                                         <div class="form-group">
@@ -113,14 +99,14 @@
                                                             <label for="contraseña">Contraseña</label>
                                                             <input type="password" class="form-control" id="Econtrasena" name="contrasena" placeholder="Contraseña" required>
                                                         </div>
-
-
-                                                    </div>
-                                                    <div class=" col-md-6">
                                                         <div class="form-group">
                                                             <label for="telefono">Telefono</label>
                                                             <input type="number" class="form-control" id="Etelefono" name="telefono" placeholder="Telefono" required>
                                                         </div>
+
+                                                    </div>
+                                                    <div class=" col-md-6">
+
 
                                                         <div class="form-group">
                                                             <label for="provincia">Provincia</label>
@@ -158,16 +144,10 @@
                                                 <input type="submit" value="Actualizar Cliente" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
                                             </div>
                                         </form>
-
-
-
-
                                     </div>
                                 </div>
 
                             </div>
-
-
                         </div>
                     </div>
                 </div>
