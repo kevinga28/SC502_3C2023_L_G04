@@ -5,18 +5,19 @@
 
 const limpiarForms = () => {
     // Selecciona el formulario y restablece su estado
-    $('#usuario_add')[0].reset();
+    $('#login')[0].reset();
 };
 
 
 
 
 $('#login').on('submit', function (event) {
-
+    event.preventDefault();
     $('#btnlogin').prop('disabled', true);
     var formData = new FormData($('#login')[0]);
     $.ajax({
-        url: '../Controller/InicioSesionController.php?op=login',
+        //url: 'http://localhost/SC502_3C2023_L_G04/Cliente/Controller/InicioSesionController.php?op=login',
+        url: '../../Controller/InicioSesionController.php?op=login',
         type: 'POST',
         data: formData,
         contentType: false,
@@ -24,20 +25,16 @@ $('#login').on('submit', function (event) {
         success: function (datos) {
 
             switch (datos) {
-
                 case '1':
-                    alert('Cliente registrado');
+                    alert('Logeado');
+                    limpiarForms();
 
-
-
-
-
-
-
+                    break;
+                case '2':
+                    alert('credenciales incorrectas');
 
                     break;
 
-                default :
             }
             $('#btnRegistar').removeAttr('disabled');
         },

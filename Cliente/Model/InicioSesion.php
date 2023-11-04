@@ -3,14 +3,38 @@ require_once '../config/Conexion.php';
 
 class InicioSesion extends Conexion
 {
+    protected static $cnx;
     private $nombre;
     private $correo;
     private $contrasena;
 
-    public function __construct( $nombre, $correo, $contrasena)
+    public function __construct()
+    {
+
+
+    }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre)
     {
         $this->nombre = $nombre;
+    }
+
+    /**
+     * @param mixed $correo
+     */
+    public function setCorreo($correo)
+    {
         $this->correo = $correo;
+    }
+
+    /**
+     * @param mixed $contrasena
+     */
+    public function setContrasena($contrasena)
+    {
         $this->contrasena = $contrasena;
     }
 
@@ -31,20 +55,40 @@ class InicioSesion extends Conexion
         return $this->contrasena;
     }
 
+
+    public static function getConexion()
+    {
+        self::$cnx = Conexion::conectar();
+    }
+
+    public static function desconectar()
+    {
+        self::$cnx = null;
+    }
+
+
+
+
+
     public function verificarInicioSesion($correo, $contrasena)
     {
-        $query = "SELECT * FROM usuarios WHERE correo = :correo AND contrasena = :contrasena";
+        $query = "SELECT * FROM usuario WHERE correo = :correo AND contrasena = :contrasena";
 
         try {
-            $resultado = $this->cnx->prepare($query);
-            $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
-            $resultado->bindParam(":contrasena", $contrasena, PDO::PARAM_STR);
-            $resultado->execute();
+            self::getConexion();
 
-            if ($resultado->rowCount() > 0) {
+            $stmt = self::$cnx->prepare($query);
+            $stmt->bindParam(":correo", $correo);
+            $stmt->bindParam(":contrasena", $contrasena);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
                 return true;
+                echo '<script>alert("hola.");</script>';
             } else {
                 return false;
+                echo '<script>alert("Credenciales incorrectas. Por favor, verifica tus datos.");</script>';
+
             }
         } catch (PDOException $Exception) {
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
@@ -52,30 +96,17 @@ class InicioSesion extends Conexion
         }
     }
 
+
     public function iniciarSesion($correo, $contrasena)
     {
-        if ($this->verificarInicioSesion($correo, $contrasena)) {
-            header("Location: https://twitter.com/home");
-            echo '<script>alert("Credenciales incorrectas. Por favor, verifica tus datos.");</script>';
-            exit; 
-        } else {
-            header("Location: https://twitter.com/home");
-            echo '<script>alert("Credenciales incorrectas. Por favor, verifica tus datos.");</script>';
-        }
+        return $this->verificarInicioSesion($correo, $contrasena);
     }
+
+
+
+
+
+
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['correo']) && isset($_POST['contrasena'])) {
-        $correo = $_POST['correo'];
-        $contrasena = $_POST['contrasena'];
-
-        try {
-            $iniciarController = new Iniciar(); 
-            $iniciarController->iniciarSesion($correo, $contrasena);
-        } catch (Exception $e) {
-            echo "Error: " . $e->getMessage();
-        }
-    }
-}
 ?>

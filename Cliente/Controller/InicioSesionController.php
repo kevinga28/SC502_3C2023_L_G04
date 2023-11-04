@@ -1,27 +1,35 @@
 <?php
 
 require_once '../Model/InicioSesion.php';
-switch ($_GET["op"]){
-
-    case 'login':
-
-
-        $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
-
-        $contrasena = isset($_POST["contrasena"]) ? trim($_POST["contrasena"]) : "";
+    switch ($_GET["op"]) {
+        case 'login':
 
 
-        $cliente = new InicioSesion();
+            $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
+            $contrasena = isset($_POST["contrasena"]) ? trim($_POST["contrasena"]) : "";
 
-        $cliente->setCorreo($correo);
-        $cliente->setContrasena($contrasena);
 
-        $cliente->iniciarSesion($cliente->getCorreo(), $cliente->getContrasena());
-        echo 1;
+            $cliente = new InicioSesion();
+;
 
-        break;
+            $cliente->setCorreo($correo);
+            $cliente->setContrasena($contrasena);
+            if($cliente->iniciarSesion($correo,$contrasena)){
+                echo 1;
 
+
+            }else{
+                echo 2;
+            }
+
+
+
+
+
+            break;
 
 }
+
+
 
 ?>
