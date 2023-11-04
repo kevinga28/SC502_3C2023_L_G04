@@ -1,0 +1,179 @@
+/* CSS para el cuadro beige que se encuentra junto al logo enorme */
+
+.cuadro-beige2 {
+    background-color: #F7F4ED;
+    padding: 20px;
+    float: left; 
+    margin-right: 20px; 
+    clear: left; 
+    width: 510px;
+    height:720px;
+
+}
+
+/* Estilos para los campos de correo y contraseña */
+
+.cuadro-beige2 .input-box{
+    width:100%;
+    height:100%;
+    margin: 20px 0;
+}
+
+form {
+    text-align: center;
+}
+
+form h2{
+    font-weight: bold;
+}
+
+
+.input-box h3{
+    text-align: left;
+    padding-bottom: 20px;
+    font-weight: bold;
+}
+
+.input-box input{
+    width:100%;
+    border-style: initial;
+    border-radius:8px;
+    padding:10px;
+}
+
+
+.input-box-fechas{
+    display:flex;
+    align-items: center;
+    margin-right: 30px;
+}
+
+.input-box-fechas h3{
+    font-size: 15px;
+    white-space: nowrap;
+    margin-left:10px;
+    margin-right:70px;
+    font-weight: bold;
+}
+
+.input-box-fechas input::placeholder {
+    text-align: center;
+    color: #242424;
+    font-weight: bold;
+    font-size: 13px;
+}
+.input-box-fechas input {
+    text-align: center; 
+}
+
+.fecha_nacimiento input{
+    justify-content: center;
+    margin: 2px;
+    width:30%;
+    border: none;
+}
+#parrafo{
+    color:black;
+    font-weight: bold;
+}
+
+.aste{
+    color: #B21313;
+}
+
+.cuadro-beige2 .btn{
+    justify-content: center;
+    padding:10px;
+    width:30%;
+    color:white;
+    background-color:#202126;
+    border-radius:12px;
+    margin-top:50px;
+    font-weight: bold;
+}
+
+/* CSS para la imagen, el nombre de esta etiqueta solo se encuentra en ciertos HTMLs por lo que no debe afectar en todo */
+.imag_medio {
+    margin-top: 80px;
+    max-width: 500px;
+    height: auto;
+}
+
+/* CSS para el bloque gris */
+.bloque-gris {
+    background-color: #f1f1f1;
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 20px;
+    text-align: left; 
+}
+
+.bloque-gris p {
+    font-size: 20px;
+    margin: 0;
+    float: none;
+}
+
+/* CSS del Textarea dentro del bloque gris */
+
+.cuadro-blanco {
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+.cuadro-blanco textarea {
+    width: 100%;
+    height: 150px; 
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    resize: vertical; 
+}
+
+/* CSS del boton del  bloque gris*/
+
+.boton-siguiente {
+    background-color: black;
+    color: #fff; 
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 20px; 
+    cursor: pointer; 
+    margin-top: 5px;
+    font-size: 18px; 
+}
+
+.boton-siguiente:hover {
+    background-color: #593326; 
+}
+
+
+
+.opciones-hora {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+}
+
+.opciones-hora h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.opcion {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.opcion input[type="radio"] {
+    margin-right: 10px;
+}
+
+.opcion label {
+    font-size: 16px;
+    cursor: pointer;
+}
+

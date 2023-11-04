@@ -15,7 +15,7 @@
     <!-- style css -->
     <link rel="stylesheet" href="../css/style.css">
     <!-- style css -->
-    <link rel="stylesheet" href="css/citaRegistro.css">
+    <link rel="stylesheet" href="css/registro.css">
     <!-- Responsive-->
     <link rel="stylesheet" href="../css/responsive.css">
 
@@ -35,55 +35,70 @@
     <!-- final header -->
 
     <!-- banner -->
-    <section class="banner_nosotros">
+    <section class="banner_citas">
         <?php
         include 'fragments/banner.php'
         ?>
     </section>
     <!-- final banner -->
 
-    <!-- servicios -->
-    <div id="servicio" class="servicio">
+
+
+    <section id="registro" class="registro">
+
         <div class="container">
             <div class="row">
-                <div class="col-md-12">
+                <div class="col-md-6">
                     <div class="cuadro-beige2">
-                        <h3>Inicio de sesion o registro</h3>
-                        <div class="group">
-                            <label for="nombre" class="label">Nombre</label>
-                            <input id="nombre" type="text" class="input" required>
-                        </div>
-                        <div class="group">
-                            <label for="apellido" class="label">Apellido</label>
-                            <input id="apellido" type="text" class="input" required>
-                        </div>
-                        <div class="group">
-                            <label for="user" class="label">Username</label>
-                            <input id="user" type="text" class="input" required>
-                        </div>
-                        <div class="group">
-                            <label for="pass" class="label">Password</label>
-                            <input id="pass" type="password" class="input" data-type="password" required>
-                        </div>
-                        <div class="group">
-                            <label for="telefono" class="label">Teléfono</label>
-                            <input id="telefono" type="text" class="input" required>
-                        </div>
+                        <form method="POST" action="procesar_registro.php">
+                            <h2>Registrarse</h2>
 
-                        <div class="group">
-                            <label for="cumpleanos" class="label">Nacimiento</label>
-                            <input id="cumpleanos" type="text" class="input">
-                        </div>
+                            <div class="input-box">
+                                <h3> <span class="aste">*</span> Campos Requeridos</h3>
+                                <input type="text" name="nombre" placeholder="Nombre*" required>
+                            </div>
 
-                        <div class="group">
-                            <input href="InicioSesion.html" type="submit" class="button" value="Registrarse">
-                        </div>
+                            <div class="input-box">
+                                <input type="text" name="apellido" placeholder="Apellido*" required>
+                            </div>
 
+                            <div class="input-box">
+                                <input type="email" name="correo" placeholder="Correo Electrónico*" required>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="password" name="contrasena" placeholder="Contraseña*" required>
+                            </div>
+
+                            <div class="input-box">
+                                <input type="text" name="telefono" placeholder="Teléfono*" required>
+                            </div>
+
+                            <div class="input-box-fechas">
+                                <h3>Fecha de nacimiento</h3>
+                                <div class="fecha_nacimiento">
+                                    <input type="text" name="dia" placeholder="Día">
+                                    <input type="text" name="mes" placeholder="Mes">
+                                    <input type="text" name="ano" placeholder="Año">
+                                </div>
+                            </div>
+
+                            <div class="input-box">
+                                <button type="submit" class="btn">Registrarse</button>
+                            </div>
+
+                            <p id="parrafo">
+                                Al continuar, acepta la Política de privacidad.
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div id="titulo" class="titulo">
+                        <a href="#"><img src="../imageslogo.png" alt="#" class="imag_medio" /></a>
                     </div>
 
-                    <div class="titulo">
-                        <a href="#"><img src="../images/logo.png" alt="#" class="imag_medio" /></a>
-                    </div>
                     <div class="bloque-gris">
                         <p>Servicios</p>
                         <div class="cuadro-blanco">
@@ -91,9 +106,14 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
         </div>
-    </div>
+    </section>
+
+
+
     <!-- final servicios -->
 
     <!--  footer -->
