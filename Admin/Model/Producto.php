@@ -88,20 +88,30 @@ class Producto extends Conexion
 
     public function crearProducto()
     {
-        $query = "INSERT INTO producto (nombre, descripcion, cantidad, precio) VALUES (:nombre, :descripcion, :cantidad, :precio)";
+        $query = "INSERT INTO `producto` ( `nombre`, `descripcion`,  `cantidad`, `precio`)
+            VALUES ( :nombre, :descripcion, :cantidad, :precio)";
+
         try {
             self::getConexion();
+           
+            $nombre = $this->getNombre();
+            $descripcion = $this->getDescripcion();
+            $cantidad = $this->getCantidad();
+            $precio = $this->getPrecio();
+
+
             $resultado = self::$cnx->prepare($query);
-            $resultado->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
-            $resultado->bindParam(':descripcion', $this->descripcion, PDO::PARAM_STR);
-            $resultado->bindParam(':cantidad', $this->cantidad, PDO::PARAM_INT);
-            $resultado->bindParam(':precio', $this->precio, PDO::PARAM_STR);
+            
+            $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+            $resultado->bindParam(":descripcion", $descripcion, PDO::PARAM_STR);
+            $resultado->bindParam(":cantidad", $cantidad, PDO::PARAM_STR);
+            $resultado->bindParam(":precio", $precio, PDO::PARAM_STR);
+
             $resultado->execute();
             self::desconectar();
-            return true;
         } catch (PDOException $Exception) {
             self::desconectar();
-            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();;
             return json_encode($error);
         }
     }
@@ -112,11 +122,13 @@ class Producto extends Conexion
     {
         $query = "SELECT * FROM producto";
         $arr = array();
+        
         try {
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
             $resultado->execute();
             self::desconectar();
+            
             foreach ($resultado->fetchAll() as $encontrado) {
                 $producto = new Producto();
                 $producto->setCodigo($encontrado['codigo']);
@@ -131,6 +143,57 @@ class Producto extends Conexion
             self::desconectar();
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();;
             return json_encode($error);
+        }
+    }
+
+    public function verificarProducto()
+    {
+        $query = "SELECT codigo FROM cliente WHERE codigo= :codigo";
+
+        try {
+            self::getConexion();
+            $codigo = $this->getCodigo();
+            $resultado = self::$cnx->prepare($query);
+            $resultado->bindParam(":codigo", $codigo, PDO::PARAM_INT);
+            $resultado->execute();
+            self::desconectar();
+
+            $encontrado = false;
+            foreach ($resultado->fetchAll() as $reg) {
+                $encontrado = true;
+            }
+            return $encontrado;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error;
+        }
+    }
+
+    public static function obtenerProductoCodigo($codigo)
+    {
+        $query = "SELECT * FROM producto WHERE codigo = :codigo";
+        try {
+            // Conecta a la base de datos
+            self::getConexion();
+
+            // Prepara la consulta
+            $stmt = self::$cnx->prepare($query);
+
+            // Asigna el codigo y ejecuta la consulta
+            $stmt->bindParam(":codigo", $codigo, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Obtiene los resultados y los devuelve como un arreglo asociativo
+            $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Cierra la conexión a la base de datos
+            self::desconectar();
+
+            return $cliente;
+        } catch (PDOException $e) {
+            // Manejo de errores, por ejemplo, loguear el error
+            return null;
         }
     }
 

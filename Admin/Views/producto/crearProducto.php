@@ -73,7 +73,7 @@
                       <h3 class="card-title">Agregar Producto</h3>
                     </div>
                     <!-- EMPIEZA EL FORMULARIO -->
-                    <form method="POST" action="guardar_producto.php">
+                    <form method="POST" name="modulos_add" id="crearProducto">
                       <div class="card-body">
 
                         <div class="form-group">
@@ -91,7 +91,7 @@
                           <input type="number" class="form-control" id="cantidad" placeholder="Cantidad">
                         </div>
 
-                        <div class="form-group">
+ <!--                        <div class="form-group">
                           <label for="Categoría">Categoría</label>
                           <select class="form-control" id="Categoría">
                             <option value="categoria0">Seleccione una categoría...</option>
@@ -100,15 +100,10 @@
                             <option value="categoria3">Uñas</option>
                           </select>
                         </div>
-
+ -->
                         <div class="form-group">
                           <label for="Precio">Precio</label>
                           <input type="text" class="form-control" id="Precio" placeholder="Precio">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="Imagen">Imagen Referencia</label>
-                          <input type="text" class="form-control" id="Imagen" placeholder="URL de la imagen">
                         </div>
                       </div>
 
@@ -176,6 +171,16 @@
   <script src="../plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.min.js"></script>
+  <!-- Datatable -->
+  <script src="../plugins/DataTables/datatables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+  <!-- TOAST -->
+  <script src="../plugins/toastr/toastr.js"></script>
+
+  <script src="../dist/js/producto.js"></script>
+
+  <script src="../plugins/bootbox/bootbox.min.js"></script>
+
 
 
   <script>
@@ -202,7 +207,9 @@
         options: barChartOptions
       })
     })
+
   </script>
+  
 </body>
 
 

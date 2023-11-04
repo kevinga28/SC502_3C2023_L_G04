@@ -6,12 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Evolve</title>
 
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+
+  <link rel="stylesheet" href="../plugins/toastr/toastr.css">
 
   <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
 
@@ -61,7 +64,6 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-            
 
 
 
@@ -105,38 +107,14 @@
                         <table id="tabla" class="table table-bordered table-striped dataTable dtr-inline" aria-describedby="tabla_info">
                           <thead>
                             <tr>
-                              <th class="sorting sorting_asc" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-sort="ascending" aria-label="ID: activate to sort column descending">Codigo</th>
-                              <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Nombre: activate to sort column ascending">Nombre</th>
-                              <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Descripcion: activate to sort column ascending">Descripcion</th>
-                              <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Cantidad: activate to sort column ascending">Cantidad</th>
-                              <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Precio: activate to sort column ascending">Precio</th>
-                              <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Categoria: activate to sort column ascending">Categoria</th>
-                              <th class="sorting" tabindex="0" aria-controls="tabla" rowspan="1" colspan="1" aria-label="Imagen: activate to sort column ascending">Imagen</th>
+                              <th>Codigo</th>
+                              <th>Nombre</th>
+                              <th>Descripcion</th>
+                              <th>Cantidad</th>
+                              <th>Precio</th>
                               <th></th>
                             </tr>
                           </thead>
-                          <tbody>
-                            <tr class="odd">
-                              <td class="dtr-control sorting_1" tabindex="0">Gecko</td>
-                              <td>Firefox 1.0</td>
-                              <td>Win 98+ / OSX.2+</td>
-                              <td>1.7</td>
-                              <td>A</td>
-                              <td>Gerente</td>
-                              <td>URL</td>
-                              <td>
-                                <a type="button" class="btn btn-danger float-right" style="margin-right: 8px;" href="#">
-                                  <i class="fas fa-trash"></i> Eliminar
-                                </a>
-                                <a type="button" class="btn btn-success float-right" style="margin-right: 8px;" href="editarProducto.php">
-                                  <i class="fas fa-pencil-alt"></i> Editar
-                                </a>
-                                <a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verProducto.php">
-                                  <i class="fas fa-eye"></i> Ver
-                                </a>
-                              </td>
-                            </tr>
-                          </tbody>
                         </table>
                       </div>
                     </div>
@@ -177,7 +155,6 @@
                     </div>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
@@ -206,44 +183,6 @@
   <script src="../dist/js/adminlte.min.js"></script>
 
   <script src="../plugins/select2/js/select2.full.min.js"></script>
-
-  <!-- Page specific script -->
-  <script>
-    $(function() {
-
-      //-------------
-      //- BAR CHART -
-      //-------------
-      var barChartCanvas = $('#barChart').get(0).getContext('2d')
-      var barChartData = $.extend(true, {}, areaChartData)
-      var temp0 = areaChartData.datasets[0]
-      var temp1 = areaChartData.datasets[1]
-      barChartData.datasets[0] = temp1
-      barChartData.datasets[1] = temp0
-
-      var barChartOptions = {
-        responsive: true,
-        maintainAspectRatio: false,
-        datasetFill: false
-      }
-
-      new Chart(barChartCanvas, {
-        type: 'bar',
-        data: barChartData,
-        options: barChartOptions
-      })
-
-    })
-  </script>
-
-
-  <script>
-    $(function() {
-      //Initialize Select2 Elements
-      $('.select2').select2()
-
-    })
-  </script>
 
 </body>
 
