@@ -1,6 +1,6 @@
 <?php
 //CONSTANTES
-define('DB_NAME_MYSQL', 'pruebaprueba');
+define('DB_NAME_MYSQL', 'SALON_BELLEZZA');
 define('DB_HOST_MYSQL', 'localhost');
-define('DB_USER_MYSQL', 'usuario_prueba');
-define('DB_PASSWORD_MYSQL', 'Usuar1o_Clave.');
+define('DB_USER_MYSQL', 'root');
+define('DB_PASSWORD_MYSQL', 'Scyth41803.');
