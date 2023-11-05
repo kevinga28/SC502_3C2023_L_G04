@@ -182,26 +182,28 @@ $('#cliente_update').on('submit', function (event) {
 
 /* ---------------------------------------------------------------ELIMINAR EL CLIENTE MEDIANTE EL ID--------------------------------------------------------------- */
 
-$('.eliminar-cliente').on('click', function() {
-  var clienteId = $(this).data('clienteId'); // Obtiene el ID del cliente desde el atributo de datos
+$('.eliminar-cliente').on('click', function(event) {
+  event.preventDefault();
+  const urlSearchParams = new URLSearchParams(window.location.search);
+  const clienteId = urlSearchParams.get("IdCliente");
 
-  if (clienteId !== undefined) {
-      if (confirm("¿Estás seguro de que deseas eliminar este cliente?")) {
-          // Realiza una solicitud al controlador para eliminar el cliente
-          fetch(`controlador.php?op=eliminar&IdCliente=${clienteId}`, {
-              method: 'POST' // Utiliza POST u otro método según tu configuración
-          })
-          .then(response => {
-              if (response.ok) {
-                  alert("Cliente eliminado exitosamente");
-                  // Puedes realizar acciones adicionales, como actualizar la vista o la lista de clientes en la página.
-              } else {
-                  alert("No se pudo eliminar el cliente. Inténtalo de nuevo.");
-              }
-          })
-          .catch(error => {
-              console.error("Error al eliminar el cliente:", error);
-          });
-      }
+  if (clienteId) {
+    if (confirm("¿Estás seguro de que deseas eliminar este cliente?")) {
+      // Realiza una solicitud al controlador para eliminar el cliente
+      fetch(`../../../admin/Controllers/clienteController.php?op=eliminar&IdCliente=${clienteId}`, {
+        method: 'POST', // Utiliza POST u otro método según tu configuración
+      })
+        .then(response => {
+          if (response.ok) {
+            alert("Cliente eliminado exitosamente");
+            // Puedes realizar acciones adicionales, como actualizar la vista o la lista de clientes en la página.
+          } else {
+            alert("No se pudo eliminar el cliente. Inténtalo de nuevo.");
+          }
+        })
+        .catch(error => {
+          console.error("Error al eliminar el cliente:", error);
+        });
+    }
   }
 });
