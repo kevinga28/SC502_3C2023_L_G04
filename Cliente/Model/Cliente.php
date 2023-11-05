@@ -18,7 +18,7 @@ class Cliente extends Conexion
     private $distrito;
     private $dia;
     private $mes;
-    private $ano;
+    private $anio;
     private $otros;
 
     public function __construct()
@@ -97,14 +97,14 @@ class Cliente extends Conexion
         return $this->mes;
     }
 
-    public function setAno($ano)
+    public function setAnio($anio)
     {
-        $this->ano = $ano;
+        $this->anio = $anio;
     }
 
-    public function getAno()
+    public function getAnio()
     {
-        return $this->ano;
+        return $this->anio;
     }
 
 
@@ -124,7 +124,7 @@ class Cliente extends Conexion
     public function guardarUsuario()
     {
         $sql = "INSERT INTO usuario (nombre, apellido, correo, contrasena, telefono, dia, mes, ano) 
-        VALUES (:nombre, :apellido, :correo, :contrasena, :telefono, :dia, :mes, :ano)";
+        VALUES (:nombre, :apellido, :correo, :contrasena, :telefono, :dia, :mes, :anio)";
 
         try {
             self::getConexion();  // Debes utilizar self::$cnx para acceder a la conexión
@@ -135,7 +135,7 @@ class Cliente extends Conexion
             $telefono = $this->getTelefono();
             $dia = $this->getDia();
             $mes = $this->getMes();
-            $ano = $this->getAno();
+            $anio = $this->getAnio();
 
             $stmt = self::$cnx->prepare($sql);  // Cambia $conexion a self::$cnx
             $stmt->bindParam(':nombre', $nombre);
@@ -145,7 +145,7 @@ class Cliente extends Conexion
             $stmt->bindParam(':telefono', $telefono);
             $stmt->bindParam(':dia', $dia);
             $stmt->bindParam(':mes', $mes);
-            $stmt->bindParam(':ano', $ano);
+            $stmt->bindParam(':anio', $anio);
 
             // Ejecutar la consulta
             $stmt->execute();
@@ -165,6 +165,69 @@ class Cliente extends Conexion
             return $error;
         }
     }
+
+
+
+    public function verificarInicioSesion($correo, $contrasena)
+    {
+        $query = "SELECT * FROM usuario WHERE correo = :correo AND contrasena = :contrasena";
+
+        try {
+            self::getConexion();
+
+            $stmt = self::$cnx->prepare($query);
+            $stmt->bindParam(":correo", $correo);
+            $stmt->bindParam(":contrasena", $contrasena);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                return true;
+                echo '<script>alert("hola.");</script>';
+            } else {
+                return false;
+                echo '<script>alert("Credenciales incorrectas. Por favor, verifica tus datos.");</script>';
+
+            }
+        } catch (PDOException $Exception) {
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            throw new Exception($error);
+        }
+    }
+
+
+    public function iniciarSesion($correo, $contrasena)
+    {
+        return $this->verificarInicioSesion($correo, $contrasena);
+    }
+
+
+
+
+
+    public function obtenerDatosUsuario($correo)
+    {
+        $query = "SELECT * FROM usuario WHERE correo = :correo";
+
+        try {
+            self::getConexion();
+            $stmt = self::$cnx->prepare($query);
+            $stmt->bindParam(":correo", $correo);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                // Devuelve los datos del usuario como un arreglo asociativo
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+            } else {
+                return null; // Devuelve null si no se encuentra el usuario
+            }
+        } catch (PDOException $Exception) {
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            throw new Exception($error);
+        }
+    }
+
+
+
 
 
 

@@ -21,7 +21,29 @@ D
 Admin/Views/user.php,8\9\89851361acb74cf57366c2f9d7f08223c8156957
 P
  Admin/Views/logueo/css/login.css,1\8\185aac258c5f025fb8a9f34fc98ef1d927ce3528
-G
-Cliente/views/index.php,e\f\ef78b4674ac4577c67b6adaf21cf2dfd6a1e77e3
 M
 Admin/Views/logueo/logueo.php,5\3\5321c7459484ab7bf82dbb52124f0ab9eb5b7ebd
+P
+ Admin/Views/cliente/clientes.php,1\d\1dd51275446d3d75f8271b118fdbe4212d399280
+U
+%Admin/Views/cliente/listaClientes.php,f\c\fcd85db26c422c0bbef2ecc1237530826fb82a4d
+R
+"Admin/Views/cliente/verCliente.php,5\8\583175ddd895869d11491f22b858812fe477aa2e
+U
+%Admin/Views/cliente/editarCliente.php,1\7\17e8ecf8254db4499e17ccf8f3093c90250d445d
+L
+Cliente/views/js/register.js,8\8\88e19e1b20de31e787740af04e463810881633ee
+I
+Cliente/config/global.php,0\b\0ba0b58530f9dc0d172e1878f671302ad79cd92b
+K
+Cliente/config/Conexion.php,c\4\c4f7a6f2d371512c0bbcf5d372d8faff00a91544
+M
+Cliente/views/login/login.php,e\d\edc46f6f03c3b15eccad4d1ec2e2bdaaf438cd4f
+I
+Admin/config/Conexion.php,9\a\9aea813be9be2b7d48eaf3c971a0a58212bfa354
+G
+Admin/Model/Factura.php,1\0\10f6aaca7d7608dda31aa4ed6cd74b9a8dc0f0c4
+W
+'Admin/Controllers/facturaController.php,8\3\83a9fdfa34bd52b0903f6e6e0791679e9eeeaf69
+H
+Admin/Model/Registro.php,0\b\0b2885e8a46b3c55bcb41a3c2760e247dd402c91

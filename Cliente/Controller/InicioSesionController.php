@@ -1,32 +1,37 @@
 <?php
 
-require_once '../Model/InicioSesion.php';
+require_once '../Model/Cliente.php';
+    session_start();
     switch ($_GET["op"]) {
         case 'login':
 
 
             $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
             $contrasena = isset($_POST["contrasena"]) ? trim($_POST["contrasena"]) : "";
+            $clavehash = hash('SHA256', trim($contrasena));
 
 
-            $cliente = new InicioSesion();
-;
+            $cliente = new Cliente();
+            if ($cliente->iniciarSesion($correo, $clavehash)) {
+                $datosUsuario = $cliente->obtenerDatosUsuario($correo);
 
-            $cliente->setCorreo($correo);
-            $cliente->setContrasena($contrasena);
-            if($cliente->iniciarSesion($correo,$contrasena)){
-                echo 1;
+                if ($datosUsuario) {
+                    $cliente->setCorreo($datosUsuario['correo']);
+                    $cliente->setNombre($datosUsuario['nombre']);
+                    $cliente->setApellido($datosUsuario['apellido']);
+                    $cliente->setTelefono($datosUsuario['telefono']);
+                    $cliente->setDia($datosUsuario['dia']);
+                    $cliente->setMes($datosUsuario['mes']);
+                    $cliente->setAnio($datosUsuario['ano']);// Asegúrate de tener las propiedades correspondientes en tu clase Cliente
+                    // Asigna otras propiedades según sea necesario
 
-
-            }else{
-                echo 2;
+                    $_SESSION['usuario'] = $cliente;
+                    echo 1;
+                } else {
+                    echo 2;
+                }
             }
 
-
-
-
-
-            break;
 
 }
 

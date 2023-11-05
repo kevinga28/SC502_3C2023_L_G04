@@ -1,0 +1,22 @@
+
+_php:S103
+"KSplit this 124 characters long line (which is greater than 120 authorized).(ä²Ñ±
+_php:S103T"KSplit this 163 characters long line (which is greater than 120 authorized).(ğË¢Â
+dphp:S103Y"KSplit this 162 characters long line (which is greater than 120 authorized).(ù‹É°ÿÿÿÿÿ
+_php:S103^"KSplit this 157 characters long line (which is greater than 120 authorized).(ìôëß
+_php:S103c"KSplit this 172 characters long line (which is greater than 120 authorized).(ªâèİ
+dphp:S103h"KSplit this 164 characters long line (which is greater than 120 authorized).(ÆÌÒúÿÿÿÿ
+dphp:S103q"KSplit this 165 characters long line (which is greater than 120 authorized).(ß™Õšøÿÿÿÿ
+dphp:S103v"KSplit this 162 characters long line (which is greater than 120 authorized).(äÎ×Ğşÿÿÿÿ
+_php:S103{"KSplit this 156 characters long line (which is greater than 120 authorized).(òú’Ã
+ephp:S103€"KSplit this 161 characters long line (which is greater than 120 authorized).(“ÒÃÿÿÿÿÿ
+ephp:S103„"KSplit this 136 characters long line (which is greater than 120 authorized).(„Ôªùÿÿÿÿ
+`php:S103…"KSplit this 128 characters long line (which is greater than 120 authorized).(áÛ·î
+3php:S113"'Add a new line at the end of this file.
+b	php:S1779"UReplace all non line feed end of line characters in this file "verCliente.php" by LF.
+;	php:S2003"&Replace "include" with "include_once".(Îê‚‚
+;	php:S2003$"&Replace "include" with "include_once".(ÂÑï
+A	php:S2003Ÿ"&Replace "include" with "include_once".(×«ñÄùÿÿÿÿ
+a	php:S4833"LReplace "include" with namespace import mechanism through the "use" keyword.(Îê‚‚
+a	php:S4833$"LReplace "include" with namespace import mechanism through the "use" keyword.(ÂÑï
+g	php:S4833Ÿ"LReplace "include" with namespace import mechanism through the "use" keyword.(×«ñÄùÿÿÿÿ

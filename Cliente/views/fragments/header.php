@@ -1,3 +1,28 @@
+
+<?php
+require_once '../Model/Cliente.php';
+
+// Iniciar la sesión
+session_start();
+
+
+// Comprobar si el usuario ha iniciado sesión y si se han almacenado los datos del usuario en la sesión
+if (isset($_SESSION['usuario'])) {
+    $usuario = $_SESSION['usuario'];
+} else {
+    $usuario = null;
+}
+
+// Cerrar la sesión
+if (isset($_GET['cerrar_sesion'])) {
+    session_unset();
+    session_destroy();
+    $usuario = null;
+}
+?>
+
+
+
 <div class="header">
    <div class="container">
       <div class="row">
@@ -46,7 +71,7 @@
 
                   <!-- 
                   <?php
-                  session_start(); // iniciar la sesión 
+
                   if (isset($_SESSION['usuario_logueado'])) {
                      // El usuario ha iniciado sesión, muestra el enlace al perfil.
                      echo '<a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fas fa-user-circle fa-lg"></i></a>';
@@ -83,9 +108,9 @@
                $telefonoCliente = "(123) 456-7890";
                ?>
 
-               <h6 class="nombre-cliente-modal">Cliente: <?php echo $nombreCliente; ?></h6>
-               <p class="correo-cliente-modal">Correo: <?php echo $correoCliente; ?></p>
-               <p class="telefono-cliente-modal">Teléfono: <?php echo $telefonoCliente; ?></p>
+               <h6 class="nombre-cliente-modal">Cliente:<?php echo $usuario->getNombre(); ?></h6>
+               <p class="correo-cliente-modal">Correo: <?php echo $usuario->getCorreo(); ?></p>
+               <p class="telefono-cliente-modal">Teléfono: <?php echo $usuario->getTelefono(); ?></p>
             </div>
          </div>
          <div class="modal-footer" style="justify-content: space-between;">

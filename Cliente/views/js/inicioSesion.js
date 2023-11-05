@@ -28,6 +28,7 @@ $('#login').on('submit', function (event) {
                 case '1':
                     alert('Logeado');
                     limpiarForms();
+                    window.location.href = "../index.php";
 
                     break;
                 case '2':
