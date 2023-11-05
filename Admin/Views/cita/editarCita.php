@@ -82,6 +82,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <button type="button" class="btn btn-primary" id="openModalButton">Editar Cita</button>
 
                                                 <div class="form-group">
                                                     <label for="Nombre">Nombre</label>
@@ -141,6 +142,9 @@
                                             </div>
                                         </div>
                                     </div>
+                                    </div>
+                                    
+
 
                                     <div class="col-12 mb-4">
                                         <a href="historialCitas.php" class="btn btn-secondary">Volver</a>
@@ -177,6 +181,8 @@
     <script src="../dist/js/adminlte.min.js"></script>
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
+
+    
 
 
 

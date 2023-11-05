@@ -7,7 +7,8 @@
     <title>Evolve</title>
 
     <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
     <!-- Theme style -->
@@ -63,102 +64,136 @@
                             </div>
 
                             <!-- FORMULARIO PARA CREAR UNA CITA -->
-                            <div class="card card-primary">
-                                <div class="card-header" style="background-color: #F7F4ED; color: #202126;">
-                                    <h3 class="card-title">Crear Cita</h3>
-                                </div>
-                                <!-- EMPIEZA EL FORMULARIO -->
-                                <form method="POST" action="guardar_cita.php">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <!-- TITULO DEL FORMULARIO -->
+                                    <div class="card card-primary">
+                                        <div class="card-header" style="background-color: #F7F4ED; color: #202126; ">
+                                            <h3 class="card-title">Crear Cita</h3>
+                                        </div>
+                                        <form method="POST" action="guardar_cita.php">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                <div class="form-group">
-                                                    <label for="BusquedaCliente">Buscar Cliente</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="BusquedaCliente" name="BusquedaCliente" placeholder="Cedula Cliente">
-                                                        <div class="input-group-append">
-                                                            <button type="button" class="btn btn-primary" id="BuscarCliente">Buscar</button>
+                                                        <div class="form-group">
+                                                            <label for="BusquedaCliente">Buscar Cliente</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control"
+                                                                    id="BusquedaCliente" name="BusquedaCliente"
+                                                                    placeholder="Cedula Cliente">
+                                                                <div class="input-group-append">
+                                                                    <button type="button" class="btn btn-primary"
+                                                                        id="BuscarCliente"
+                                                                        name="BuscarCliente">Buscar</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="nombre">Nombre</label>
+                                                            <input type="text" class="form-control" id="nombre"
+                                                                name="nombre" placeholder="Primer Nombre" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="apellido">Apellido</label>
+                                                            <input type="text" class="form-control" id="apellido"
+                                                                name="apellido" placeholder="Apellido" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="correo">Correo Electrónico</label>
+                                                            <input type="email" class="form-control" id="correo"
+                                                                name="correo" placeholder="correo" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="tratamiento">Tratamiento</label>
+                                                            <select class="select2 select2-hidden-accessible"
+                                                                multiple="multiple" id="tratamiento"
+                                                                name="tratamiento[]"
+                                                                data-placeholder="Seleccionar Tratamiento"
+                                                                data-dropdown-css-class="select2-danger"
+                                                                style="width: 100%;" tabindex="1" aria-hidden="true">
+                                                                <option value="CorteMujer" data-precio="30">Corte Mujer
+                                                                    - $30
+                                                                </option>
+                                                                <option value="LargoLavadoMujer" data-precio="40">Largo
+                                                                    + Lavado
+                                                                    Mujer - $40</option>
+                                                                <option value="CortoLavadoMujer" data-precio="35">Corto
+                                                                    + Lavado
+                                                                    Mujer - $35</option>
+                                                                <option value="LargoHombre" data-precio="25">Largo
+                                                                    Hombre - $25
+                                                                </option>
+                                                                <option value="CortoHombre" data-precio="20">Corto
+                                                                    Hombre - $20
+                                                                </option>
+                                                                <option value="LargoLavadoHombre" data-precio="30">Largo
+                                                                    + Lavado
+                                                                    Hombre - $30</option>
+                                                                <option value="CortoLavadoHombre" data-precio="25">Corto
+                                                                    + Lavado
+                                                                    Hombre - $25</option>
+                                                                <option value="NinioNinia" data-precio="15">Niño - Niña
+                                                                    - $15
+                                                                </option>
+                                                            </select>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                    <div class="col-md-6">
 
-                                                <div class="form-group">
-                                                    <label for="Nombre">Nombre</label>
-                                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre" readonly>
-                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="estilista">Estilista</label>
+                                                            <select class="select2 select2-hidden-accessible"
+                                                                id="estilista" name="estilista"
+                                                                data-placeholder="Seleccionar Estilista"
+                                                                data-dropdown-css-class="select2-danger"
+                                                                style="width: 100%;" tabindex="1" aria-hidden="true">
+                                                                <option>Carol Mejias</option>
+                                                                <option>Marta Delgado</option>
+                                                                <option>Sofia Vargas</option>
+                                                            </select>
+                                                        </div>
 
-                                                <div class="form-group">
-                                                    <label for="apellido">Apellido</label>
-                                                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" readonly>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="correo">Correo Electrónico</label>
-                                                    <input type="email" class="form-control" id="correo" name="correo" placeholder="correo" readonly>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="tratamiento">Tratamiento</label>
-                                                    <select class="select2 select2-hidden-accessible" multiple="multiple" id="tratamiento" name="tratamiento[]" data-placeholder="Seleccionar Tratamiento" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
-                                                        <option value="CorteMujer" data-precio="30">Corte Mujer - $30</option>
-                                                        <option value="LargoLavadoMujer" data-precio="40">Largo + Lavado Mujer - $40</option>
-                                                        <option value="CortoLavadoMujer" data-precio="35">Corto + Lavado Mujer - $35</option>
-                                                        <option value="LargoHombre" data-precio="25">Largo Hombre - $25</option>
-                                                        <option value="CortoHombre" data-precio="20">Corto Hombre - $20</option>
-                                                        <option value="LargoLavadoHombre" data-precio="30">Largo + Lavado Hombre - $30 </option>
-                                                        <option value="CortoLavadoHombre" data-precio="25">Corto + Lavado Hombre - $25</option>
-                                                        <option value="NinioNinia" data-precio="15">Niño - Niña - $15</option>
-                                                    </select>
-                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="fechaCita">Fecha de la Cita</label>
+                                                            <input type="date" class="form-control" id="fechaCita"
+                                                                name="fechaCita">
+                                                        </div>
 
 
-                                            </div>
-                                            <div class=" col-md-6">
+                                                        <label for="horaCita">Hora de la Cita</label>
+                                                        <input type="time" class="form-control" id="horaCita"
+                                                            name="horaCita">
+                                                    </div>
 
-                                                <div class="form-group">
-                                                    <label for="estilista">Estilista</label>
-                                                    <select class="select2 select2-hidden-accessible" id="estilista" name="estilista" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
-                                                        <option>Carol Mejias</option>
-                                                        <option>Marta Delgado</option>
-                                                        <option>Sofia Vargas</option>
-                                                    </select>
-                                                </div>
-
-
-
-                                                <div class="form-group">
-                                                    <label for="fechaCita">Fecha de la Cita</label>
-                                                    <input type="date" class="form-control" id="fechaCita" name="fechaCita">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="horaCita">Hora de la Cita</label>
-                                                    <input type="time" class="form-control" id="horaCita" name="horaCita">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="pagoTotal">Total a Pagar</label>
-                                                    <input type="text" class="form-control" id="pagoTotal" name="pagoTotal" readonly>
+                                                    <div class="form-group">
+                                                        <label for="pagoTotal">Total a Pagar</label>
+                                                        <input type="text" class="form-control" id="pagoTotal"
+                                                            name="pagoTotal" readonly>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
                                     </div>
 
-                                    <div class="card-footer">
-                                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Crear Cita</button>
+                                    <div class="col-12 mb-4">
+                                        <a href="historialCitas.php" class="btn btn-secondary">Volver</a>
+                                        <input type="submit" value="Crear cita" class="btn float-right"
+                                            style="background-color: #202126; color: #F7F4ED;">
                                     </div>
-                                </form>
+                                    </form>
+
+                                </div>
 
                             </div>
 
                         </div>
-
                     </div>
                 </div>
-
             </section>
-
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer no-print">
@@ -184,26 +219,28 @@
 
 
     <script>
-        // Captura el cambio en la selección de tratamientos
-        $('#tratamiento').on('change', function() {
-            var total = 0;
-            // Suma los precios de los tratamientos seleccionados
-            $('#tratamiento option:selected').each(function() {
-                total += parseInt($(this).data('precio'));
-            });
-            // Muestra el total en el campo correspondiente
-            $('#total').val('$' + total);
+    // Captura el cambio en la selección de tratamientos
+    $('#tratamiento').on('change', function() {
+        var total = 0;
+        // Suma los precios de los tratamientos seleccionados
+        $('#tratamiento option:selected').each(function() {
+            total += parseInt($(this).data('precio'));
         });
+        // Muestra el total en el campo correspondiente
+        $('#total').val('$' + total);
+    });
     </script>
 
 
     <script>
-        $(function() {
-            //Initialize Select2 Elements
-            $('.select2').select2()
+    $(function() {
+        //Initialize Select2 Elements
+        $('.select2').select2()
+        passive: true
 
-        })
+    })
     </script>
+
 
 
 </body>
