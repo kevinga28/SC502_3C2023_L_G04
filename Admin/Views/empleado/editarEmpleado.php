@@ -98,7 +98,7 @@
 
                                                         <div class="form-group">
                                                             <label for="contraseña">Contraseña</label>
-                                                            <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Contraseña">
+                                                            <input type="password" class="form-control" id="contraseña" name="contrasena" placeholder="Contraseña">
                                                         </div>
 
                                                         <div class="form-group">
@@ -112,7 +112,7 @@
 
                                                         <div class="form-group">
                                                             <label for="fechaCita">Provincia</label>
-                                                            <input type="text" class="form-control" id="fechaCita" name="fechaCita" placeholder="Provincia">
+                                                            <input type="text" class="form-control" id="fechaCita" name="provincia" placeholder="Provincia">
                                                         </div>
 
                                                         <div class="form-group">
