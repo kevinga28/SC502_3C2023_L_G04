@@ -6,14 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Evolve</title>
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+     <!-- Google Font: Source Sans Pro -->
+     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- TOAST-->
+    <link rel="stylesheet" href="../plugins/toastr/toastr.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
-
-    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
 
     <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
@@ -76,77 +76,74 @@
                                             <h3 class="card-title">Editar Empleado</h3>
                                         </div>
                                         <!-- EMPIEZA EL FORMULARIO -->
-                                        <form method="POST" action="guardar_empleado.php">
+                                        <form method="POST" name="empleado_update" id="empleado_update">
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-md-6">
+                                                    <div class="col-md-6">                        
+                                                            <div class="form-group">
+                                                             
+                                                                <input type="hidden" class="form-control" id="Ecedula" name="cedula"  readonly>
 
-                                                        <div class="form-group">
-                                                            <label for="Nombre">Nombre</label>
-                                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre">
-                                                        </div>
+                                                                <div class="form-group">
+                                                                <label for="Nombre">Nombre</label>
+                                                                <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Primer Nombre" required>
+                                                                </div>
 
-                                                        <div class="form-group">
-                                                            <label for="apellido">Apellido</label>
-                                                            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
-                                                        </div>
+                                                                <div class="form-group">
+                                                                <label for="apellido">Apellido</label>
+                                                                <input type="text" class="form-control" id="Eapellido" name="apellido" placeholder="Apellido" required>
+                                                                </div>
 
-                                                        <div class="form-group">
-                                                            <label for="correo">Correo Electrónico</label>
-                                                            <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo">
-                                                        </div>
+                                                                <input type="hidden" class="form-control" id="Egenero" name="genero" readonly>
 
-                                                        <div class="form-group">
-                                                            <label for="contraseña">Contraseña</label>
-                                                            <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Contraseña">
-                                                        </div>
+                                                                <div class="form-group">
+                                                                <label for="correo">Correo Electrónico</label>
+                                                                <input type="email" class="form-control" id="Ecorreo" name="correo" placeholder="Correo" readonly>
+                                                                </div>
 
-                                                        <div class="form-group">
-                                                            <label for="telefono">Telefono</label>
-                                                            <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono">
-                                                        </div>
+                                                                <input type="hidden" class="form-control" id="Econtrasena" name="contrasena" readonly>
 
+                                                                <div class="form-group">
+                                                                <label for="telefono">Telefono</label>
+                                                                <input type="number" class="form-control" id="Etelefono" name="telefono" placeholder="Telefono" required>
+                                                                </div>
 
-                                                    </div>
-                                                    <div class=" col-md-6">
+                                                                <div class="form-group">
+                                                                <label for="fechaCita">Provincia</label>
+                                                                <input type="text" class="form-control" id="Eprovincia" name="provincia" placeholder="Provincia" required>
+                                                                </div>
 
-                                                        <div class="form-group">
-                                                            <label for="fechaCita">Provincia</label>
-                                                            <input type="text" class="form-control" id="fechaCita" name="fechaCita" placeholder="Provincia">
-                                                        </div>
+                                                                <div class="form-group">
+                                                                <label for="distrito">Distrito</label>
+                                                                <input type="text" class="form-control" id="Edistrito" name="distrito" placeholder="Distrito" required>
+                                                                </div>
 
-                                                        <div class="form-group">
-                                                            <label for="distrito">Distrito</label>
-                                                            <input type="text" class="form-control" id="distrito" name="distrito" placeholder="Distrito">
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="canton">Canton</label>
-                                                            <input type="text" class="form-control" id="canton" name="canton" placeholder="Canton">
-                                                        </div>
+                                                                <div class="form-group">
+                                                                <label for="canton">Canton</label>
+                                                                <input type="text" class="form-control" id="Ecanton" name="canton" placeholder="Canton" required>
+                                                                </div>
 
 
-                                                        <div class="form-group">
-                                                            <label for="otros">Otros</label>
-                                                            <input type="text" class="form-control" id="otros" name="otros" placeholder="Otras Señales">
-                                                        </div>
+                                                                <div class="form-group">
+                                                                <label for="otros">Otros</label>
+                                                                <input type="text" class="form-control" id="Eotros" name="otros" placeholder="Otras Señales" required>
+                                                                </div>
 
-                                                        <div class="form-group">
-                                                            <label for="rol">Rol</label>
-                                                            <select class="select2 select2-hidden-accessible" id="rol" name="rol" data-placeholder="Seleccionar Rol" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
-                                                                <option>Gerente</option>
-                                                                <option>Estilista</option>
-                                                                <option>Admin</option>
-                                                            </select>
-                                                        </div>
-
+                                                                <div class="form-group">
+                                                                <label for="rol">Rol</label>
+                                                                <select class="select2 select2-hidden-accessible" id="Erol" name="rol" data-placeholder="Seleccionar Rol" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
+                                                                    <option>Gerente</option>
+                                                                    <option>Estilista</option>
+                                                                    <option>Admin</option>
+                                                                </select>
+                                                                </div>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="col-12 mb-4">
                                                 <a href="listaEmpleado.php" class="btn btn-secondary">Volver</a>
-                                                <input type="submit" value="Actualizar Cliente" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
+                                                <input type="submit" value="Actualizar Empleado" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
                                             </div>
                                         </form>
 
@@ -173,24 +170,21 @@
 
     </div>
 
-
     <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
+    <!-- Datatable -->
+    <script src="../plugins/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <!-- TOAST -->
+    <script src="../plugins/toastr/toastr.js"></script>
 
-    <script src="../plugins/select2/js/select2.full.min.js"></script>
+    <script src="../dist/js/empleado.js"></script>
 
-    <!-- Page specific script -->
-    <script>
-        $(function() {
-            //Initialize Select2 Elements
-            $('.select2').select2()
-
-        })
-    </script>
+    <script src="../plugins/bootbox/bootbox.min.js"></script>
 
 </body>
 

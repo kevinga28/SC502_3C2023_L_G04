@@ -19,6 +19,8 @@
 
   <link rel="stylesheet" href="../dist/css/style.css">
 
+  <link rel="stylesheet" href="../plugins/toastr/toastr.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -76,34 +78,44 @@
                       <h3 class="card-title">Agregar Empleado</h3>
                     </div>
                     <!-- EMPIEZA EL FORMULARIO -->
-                    <form method="POST" action="guardar_empleado.php">
+                    <form method="POST"name="modulos_add" id="crearEmpleado">
                       <div class="card-body">
                         <div class="row">
                           <div class="col-md-6">
 
+                          <div class="form-group">
+                              <label for="Nombre">Cedula</label>
+                              <input type="text" class="form-control" id="cedula" name="cedula" placeholder="Cedula" required>
+                            </div>
+
+                          <div class="form-group">
+                              <label for="imagen">Imagen</label>
+                              <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
+                            </div>
+
                             <div class="form-group">
                               <label for="Nombre">Nombre</label>
-                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre">
+                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre" required>
                             </div>
 
                             <div class="form-group">
                               <label for="apellido">Apellido</label>
-                              <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
+                              <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" required>
                             </div>
 
                             <div class="form-group">
                               <label for="correo">Correo Electrónico</label>
-                              <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo">
+                              <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" required>
                             </div>
 
                             <div class="form-group">
                               <label for="contraseña">Contraseña</label>
-                              <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Contraseña">
+                              <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Contraseña" required>
                             </div>
 
                             <div class="form-group">
                               <label for="telefono">Telefono</label>
-                              <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono">
+                              <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono" required>
                             </div>
 
 
@@ -112,23 +124,32 @@
 
                             <div class="form-group">
                               <label for="fechaCita">Provincia</label>
-                              <input type="text" class="form-control" id="fechaCita" name="fechaCita" placeholder="Provincia">
+                              <input type="text" class="form-control" id="provincia" name="provincia" placeholder="Provincia" required>
                             </div>
 
                             <div class="form-group">
                               <label for="distrito">Distrito</label>
-                              <input type="text" class="form-control" id="distrito" name="distrito" placeholder="Distrito">
+                              <input type="text" class="form-control" id="distrito" name="distrito" placeholder="Distrito" required>
                             </div>
 
                             <div class="form-group">
                               <label for="canton">Canton</label>
-                              <input type="text" class="form-control" id="canton" name="canton" placeholder="Canton">
+                              <input type="text" class="form-control" id="canton" name="canton" placeholder="Canton" required>
                             </div>
 
 
                             <div class="form-group">
                               <label for="otros">Otros</label>
-                              <input type="text" class="form-control" id="otros" name="otros" placeholder="Otras Señales">
+                              <input type="text" class="form-control" id="otros" name="otros" placeholder="Otras Señales" required>
+                            </div>
+
+                            
+                            <div class="form-group">
+                              <label for="rol">genero</label>
+                              <select class="select2 select2-hidden-accessible" id="genero" name="genero" data-placeholder="Seleccionar genero" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
+                                <option>Masculino</option>
+                                <option>Femenino</option>
+                              </select>
                             </div>
 
                             <div class="form-group">
@@ -145,7 +166,7 @@
                       </div>
 
                       <div class="card-footer">
-                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Agregar Empleado</button>
+                        <input type="submit" class="btn" value="Agregar Empleado" id="btnRegistrar" style="background-color: #202126; color: #F7F4ED;"></input>
                       </div>
                     </form>
 
@@ -205,6 +226,15 @@
   <script src="../plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.min.js"></script>
+   <!-- Datatable -->
+  <script src="../plugins/DataTables/datatables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+  <!-- TOAST -->
+  <script src="../plugins/toastr/toastr.js"></script>
+
+  <script src="../dist/js/empleado.js"></script>
+
+  <script src="../plugins/bootbox/bootbox.min.js"></script>
 
   <script src="../plugins/select2/js/select2.full.min.js"></script>
 
