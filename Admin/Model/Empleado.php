@@ -185,13 +185,13 @@ class Empleado extends Conexion
 
     public function verificarExistenciaEmpleado()
 {
-    $query = "SELECT cedula, correo FROM empleado WHERE cedula=:cedula OR correo=:correo";
+    $query = "SELECT * FROM empleado WHERE cedula=:cedula OR correo=:correo";
 
     try {
         self::getConexion();
+        $resultado = self::$conn->prepare($query);
         $cedula = $this->getCedula();
         $correo = $this->getCorreo();
-        $resultado = self::$conn->prepare($query);
         $resultado->bindParam(":cedula", $cedula, PDO::PARAM_INT);
         $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
         $resultado->execute(); 
@@ -210,8 +210,7 @@ class Empleado extends Conexion
 }
 
 
-    public function insertar()
-    {
+    public function insertar(){
         $query = "INSERT INTO `empleado` (`cedula`, `imagen`, `nombre`, `apellido`,`genero`, `correo`, `contrasena`, `telefono`, `rol`, `provincia`, `distrito`, `canton`, `otros`)
                 VALUES (:cedula, :imagen, :nombre, :apellido, :genero, :correo, :contrasena, :telefono, :rol, :provincia, :distrito, :canton, :otros)";
     
@@ -256,4 +255,105 @@ class Empleado extends Conexion
         }
     }
 
+    public function actualizarEmpleado()
+{
+    $query = "UPDATE empleado 
+    SET  nombre = :nombre,  apellido = :apellido, telefono = :telefono, 
+        rol = :rol, provincia = :provincia, genero = :genero,
+        distrito = :distrito, canton = :canton, otros = :otros
+        where cedula= :cedula and email=:email";
+
+
+    try {
+        self::getConexion();
+
+
+        $nombre = $this->getNombre();
+        $apellido = $this->getApellido();
+        $genero = $this->getGenero();
+        $correo = $this->getCorreo();
+        $telefono = $this->getTelefono();
+        $rol = $this->getRol();
+        $provincia = $this->getProvincia();
+        $distrito = $this->getDistrito();
+        $canton = $this->getCanton();
+        $otros = $this->getOtros();
+
+
+        $resultado = self::$conn->prepare($query);
+
+        $resultado->bindParam(":imagen", $imagen, PDO::PARAM_LOB); 
+        $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+        $resultado->bindParam(":apellido", $apellido, PDO::PARAM_STR);
+        $resultado->bindParam(":genero", $genero, PDO::PARAM_STR);
+        $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
+        $resultado->bindParam(":telefono", $telefono, PDO::PARAM_STR);
+        $resultado->bindParam(":rol", $rol, PDO::PARAM_STR);
+        $resultado->bindParam(":provincia", $provincia, PDO::PARAM_STR);
+        $resultado->bindParam(":distrito", $distrito, PDO::PARAM_STR);
+        $resultado->bindParam(":canton", $canton, PDO::PARAM_STR);
+        $resultado->bindParam(":otros", $otros, PDO::PARAM_STR);
+
+        self::$conn->beginTransaction(); // Desactiva el autocommit
+
+        $resultado->execute();
+        self::$conn->commit(); // Realiza el commit y vuelve al modo autocommit
+        self::desconectar();
+        return $resultado->rowCount();
+    } catch (PDOException $Exception) {
+        self::$conn->rollBack();
+        self::desconectar();
+        $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+        return $error;
+    }
+}
+
+    public static function obtenerEmpleadoPorCedula($cedula)
+    {
+        $query = "SELECT * FROM empleado WHERE cedula = :cedula";
+        try {
+            // Conecta a la base de datos
+            self::getConexion();
+
+            // Prepara la consulta
+            $stmt = self::$conn->prepare($query);
+
+            // Asigna el valor de la cédula y ejecuta la consulta
+            $stmt->bindParam(":cedula", $cedula, PDO::PARAM_INT);
+            $stmt->execute();
+
+            // Obtiene los resultados y los devuelve como un arreglo asociativo
+            $empleado = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            // Cierra la conexión a la base de datos
+            self::desconectar();
+
+            return $empleado;
+        } catch (PDOException $e) {
+            // Manejo de errores, por ejemplo, loguear el error
+            return null;
+        }
+    }
+    /*=====  End of Metodos de la Clase  ======*/
+
+    public function eliminarEmpleado()
+{
+    $query = "DELETE FROM empleado WHERE cedula = :cedula";
+
+    try {
+        self::getConexion();
+        $cedula = $this->getCedula();
+
+        $resultado = self::$conn->prepare($query);
+        $resultado->bindParam(":cedula", $cedula, PDO::PARAM_INT);
+        $resultado->execute();
+        self::desconectar();
+
+        return $resultado->rowCount(); // Devuelve el número de filas afectadas (debe ser 1 si se eliminó correctamente).
+    } catch (PDOException $Exception) {
+        self::desconectar();
+        $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+        return $error;
+    }
+}
 }

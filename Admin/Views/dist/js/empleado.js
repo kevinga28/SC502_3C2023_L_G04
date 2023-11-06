@@ -3,7 +3,7 @@ function limpiarForms() {
     $('#modulos_update').trigger('reset');
   }
   
-  /* ---------------------------------------------------------------LISTAR LOS CLIENTES--------------------------------------------------------------- */
+  /* ---------------------------------------------------------------LISTAR LOS empleadoS--------------------------------------------------------------- */
   function listarEmpleados() {
     tabla = $('#tblistado').dataTable({
       aProcessing: true, //actiavmos el procesamiento de datatables
@@ -56,9 +56,9 @@ function limpiarForms() {
           // Última columna con botones
           data: null,
           render: function (data, type, row) {
-            return '<a type="button" class="btn btn-danger float-right eliminar-cliente" data-cedula="<?= $cedula ?>"><i class="fas fa-trash"></i> Eliminar</a>' +
-              '<a id="modificarEmpleado" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarEmpleado.php?cedula=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>' +
-              '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verEmpleado.php?cedula=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>';
+            return '<a type="button" class="btn btn-danger float-right eliminar-empleado" data-cedula="' + data[0] + '"><i class="fas fa-trash"></i> Eliminar</a>' +
+       '<a id="modificarEmpleado" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarEmpleado.php?cedula=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>' +
+       '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verEmpleado.php?cedula=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>';
           }
         }
       ]
@@ -107,3 +107,113 @@ $('#crearEmpleado').on('submit', function (event) {
       },
     });
   });
+
+  
+const rellenarFormulario = async () => {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const cedula = urlSearchParams.get("cedula");
+  
+    if (cedula) {
+      try {
+        const response = await fetch(`../../../admin/Controllers/empleadoController.php?op=obtener&cedula=${cedula}`);
+        if (response.ok) {
+          const datos = await response.json();
+  
+          // Rellena el formulario con los datos obtenidos
+          $("#Ecedula").val(datos.cedula);
+          $("#Eimagen").val(datos.imagen);
+          $("#Egenero").val(datos.genero);
+          $("#Enombre").val(datos.nombre);
+          $("#Eapellido").val(datos.apellido);
+          $("#Ecorreo").val(datos.correo);
+          $("#Etelefono").val(datos.telefono);
+          $("#Eprovincia").val(datos.provincia);
+          $("#Edistrito").val(datos.distrito);
+          $("#Ecanton").val(datos.canton);
+          $("#Eotros").val(datos.otros);
+          $("#Erol").val(datos.rol);
+          
+        } else {
+          console.error("Error al obtener los datos del empleado");
+        }
+      } catch (error) {
+        console.error("Error en la solicitud AJAX:", error);
+      }
+    }
+  };
+  
+  rellenarFormulario(); // Llamar la funcion 
+  
+  /* ---------------------------------------------------------------EDITAR LOS DATOS DEL empleado--------------------------------------------------------------- */
+  
+  
+  $('#empleado_update').on('submit', function (event) {
+    event.preventDefault();
+    bootbox.confirm('¿Desea modificar los datos?', function (result) {
+      if (result) {
+        var formData = new FormData($('#empleado_update')[0]);
+        $.ajax({
+          url: '../../../admin/Controllers/empleadoController.php?op=editar',
+          type: 'POST',
+          data: formData,
+          contentType: false,
+          processData: false,
+          success: function (datos) {
+            //alert(datos);
+            switch (datos) {
+              case '0':
+                toastr.error('Error: No se pudieron actualizar los datos');
+                break;
+              case '1':
+                toastr.success('Empleado actualizado exitosamente');
+                tabla.api().ajax.reload();
+                limpiarForms();
+                $('#formulario_update').hide();
+                $('#formulario_add').show();
+                break;
+              case '2':
+                toastr.error('Error: No se pudo editar.');
+                break;
+            }
+          },
+        });
+      }
+    });
+  });
+  
+  /* ---------------------------------------------------------------ELIMINAR EL empleado MEDIANTE EL ID--------------------------------------------------------------- */
+  $(document).on('click', '.eliminar-empleado', function() {
+    var cedula = $(this).data('cedula'); // Obtiene la cédula del empleado desde el atributo de datos
+
+    if (cedula !== undefined) {
+        if (confirm("¿Estás seguro de que deseas eliminar este empleado?")) {
+            // Realiza una solicitud al controlador para eliminar el empleado
+            $.ajax({
+                url: 'controlador.php',
+                method: 'POST',
+                data: { op: 'eliminar', cedula: cedula },
+                success: function(response) {
+                    if (response === '1') {
+                        alert("Empleado eliminado exitosamente");
+                   
+                    } else {
+                        alert("No se pudo eliminar el empleado. Inténtalo de nuevo.");
+                    }
+                },
+                error: function(error) {
+                    console.error("Error al eliminar el empleado:", error);
+                }
+            });
+        }
+    }
+});
+
+
+
+
+
+
+
+
+
+  
