@@ -7,34 +7,23 @@ class Producto extends Conexion
 	=            Atributos de la Clase            =
 	=============================================*/
     protected static $cnx;
-    private $codigo = null;
+    private $Codigo = null;
     private $nombre = null;
     private $descripcion = null;
     private $cantidad = null;
     private $precio = null;
 
-    /*=====  End of Atributos de la Clase  ======*/
-
-    /*=============================================
-	=            Contructores de la Clase          =
-	=============================================*/
     public function __construct()
     {
     }
-    /*=====  End of Contructores de la Clase  ======*/
-
-    /*=============================================
-	=            Encapsuladores de la Clase       =
-	=============================================*/
-
 
     public function getCodigo()
     {
-        return $this->codigo;
+        return $this->Codigo;
     }
-    public function setCodigo($codigo)
+    public function setCodigo($Codigo)
     {
-        $this->codigo = $codigo;
+        $this->Codigo = $Codigo;
     }
     public function getNombre()
     {
@@ -84,24 +73,75 @@ class Producto extends Conexion
         self::$cnx = null;
     }
 
-    /*=====  [CRUD] Guardar Productos de la Clase  ======*/
-
-    public function crearProducto()
+    public function listarProductos()
     {
-        $query = "INSERT INTO `producto` ( `nombre`, `descripcion`,  `cantidad`, `precio`)
-            VALUES ( :nombre, :descripcion, :cantidad, :precio)";
+        $query = "SELECT * FROM producto";
+        $arr = array();
+        
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+            $resultado->execute();
+            self::desconectar();
+            
+            foreach ($resultado->fetchAll() as $articulo) {
+                $producto = new Producto();
+                $producto->setCodigo($articulo['Codigo']);
+                $producto->setNombre($articulo['nombre']);
+                $producto->setDescripcion($articulo['descripcion']);
+                $producto->setCantidad($articulo['cantidad']);
+                $producto->setPrecio($articulo['precio']);
+                $arr[] = $producto;
+            }
+            return $arr;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();;
+            return json_encode($error);
+        }
+    }
+
+    public function verificarProducto()
+    {
+        $query = "SELECT * FROM producto WHERE Codigo= :Codigo";
 
         try {
             self::getConexion();
-           
+            $resultado = self::$cnx->prepare($query);
+            $Codigo = $this->getCodigo();
+            $resultado->bindParam(":Codigo", $Codigo, PDO::PARAM_INT);
+            $resultado->execute();
+            self::desconectar();
+
+            $encontrado = false;
+            foreach ($resultado->fetchAll() as $articulo) {
+                $encontrado = true;
+            }
+            return $encontrado;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error;
+        }
+    }
+
+    /*=====  [CRUD] Guardar Productos de la Clase  ======*/
+
+    public function crearProducto(){
+        $query = "INSERT INTO `producto` ( `Codigo`, `nombre`, `descripcion`,  `cantidad`, `precio`)
+            VALUES ( :Codigo, :nombre, :descripcion, :cantidad, :precio)";
+
+        try {
+            self::getConexion();   
+            $Codigo = $this->getCodigo();
             $nombre = $this->getNombre();
             $descripcion = $this->getDescripcion();
             $cantidad = $this->getCantidad();
             $precio = $this->getPrecio();
 
-
             $resultado = self::$cnx->prepare($query);
             
+            $resultado->bindParam(":Codigo", $Codigo, PDO::PARAM_STR);
             $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
             $resultado->bindParam(":descripcion", $descripcion, PDO::PARAM_STR);
             $resultado->bindParam(":cantidad", $cantidad, PDO::PARAM_STR);
@@ -118,81 +158,23 @@ class Producto extends Conexion
 
     /*=====  [CRUD] Leer Productos de la Clase  ======*/
 
-    public function leerProductos()
-    {
-        $query = "SELECT * FROM producto";
-        $arr = array();
-        
-        try {
-            self::getConexion();
-            $resultado = self::$cnx->prepare($query);
-            $resultado->execute();
-            self::desconectar();
-            
-            foreach ($resultado->fetchAll() as $encontrado) {
-                $producto = new Producto();
-                $producto->setCodigo($encontrado['codigo']);
-                $producto->setNombre($encontrado['nombre']);
-                $producto->setDescripcion($encontrado['descripcion']);
-                $producto->setCantidad($encontrado['cantidad']);
-                $producto->setPrecio($encontrado['precio']);
-                $arr[] = $producto;
-            }
-            return $arr;
-        } catch (PDOException $Exception) {
-            self::desconectar();
-            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();;
-            return json_encode($error);
-        }
-    }
-
-    public function verificarProducto()
-    {
-        $query = "SELECT codigo FROM cliente WHERE codigo= :codigo";
-
-        try {
-            self::getConexion();
-            $codigo = $this->getCodigo();
-            $resultado = self::$cnx->prepare($query);
-            $resultado->bindParam(":codigo", $codigo, PDO::PARAM_INT);
-            $resultado->execute();
-            self::desconectar();
-
-            $encontrado = false;
-            foreach ($resultado->fetchAll() as $reg) {
-                $encontrado = true;
-            }
-            return $encontrado;
-        } catch (PDOException $Exception) {
-            self::desconectar();
-            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-            return $error;
-        }
-    }
-
     public static function obtenerProductoCodigo($codigo)
     {
-        $query = "SELECT * FROM producto WHERE codigo = :codigo";
+        $query = "SELECT * FROM producto WHERE Codigo = :Codigo";
         try {
-            // Conecta a la base de datos
             self::getConexion();
 
-            // Prepara la consulta
             $stmt = self::$cnx->prepare($query);
 
-            // Asigna el codigo y ejecuta la consulta
-            $stmt->bindParam(":codigo", $codigo, PDO::PARAM_INT);
+            $stmt->bindParam(":Codigo", $Codigo, PDO::PARAM_INT);
             $stmt->execute();
 
-            // Obtiene los resultados y los devuelve como un arreglo asociativo
-            $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
+            $producto = $stmt->fetch(PDO::FETCH_ASSOC);
 
-            // Cierra la conexión a la base de datos
             self::desconectar();
 
-            return $cliente;
+            return $producto;
         } catch (PDOException $e) {
-            // Manejo de errores, por ejemplo, loguear el error
             return null;
         }
     }
@@ -201,19 +183,31 @@ class Producto extends Conexion
 
     public function actualizarProducto()
     {
-        $query = "UPDATE producto SET nombre = :nombre, descripcion = :descripcion, cantidad = :cantidad, precio = :precio WHERE codigo = :codigo";
+        $query = "UPDATE producto SET nombre = :nombre, descripcion = :descripcion, cantidad = :cantidad, precio = :precio WHERE Codigo = :Codigo";
         try {
             self::getConexion();
+
+            $nombre = $this->getNombre();
+            $descripcion = $this->getDescripcion();
+            $cantidad = $this->getCantidad();
+            $precio = $this->getPrecio();
+
             $resultado = self::$cnx->prepare($query);
+
             $resultado->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
             $resultado->bindParam(':descripcion', $this->descripcion, PDO::PARAM_STR);
             $resultado->bindParam(':cantidad', $this->cantidad, PDO::PARAM_INT);
             $resultado->bindParam(':precio', $this->precio, PDO::PARAM_STR);
             $resultado->bindParam(':codigo', $this->codigo, PDO::PARAM_INT);
+
+            self::$cnx->beginTransaction();
+
             $resultado->execute();
+            self::$cnx->commit();
             self::desconectar();
-            return true;
+            return $resultado->rowCount();;
         } catch (PDOException $Exception) {
+            self::$cnx->rollBack();
             self::desconectar();
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
             return json_encode($error);
@@ -224,13 +218,15 @@ class Producto extends Conexion
 
     public function eliminarProducto()
     {
-        $query = "DELETE FROM producto WHERE codigo = :codigo";
+        $query = "DELETE FROM producto WHERE Codigo = :Codigo";
         try {
             self::getConexion();
+            $Codigo = $this->getCodigo();
             $resultado = self::$cnx->prepare($query);
-            $resultado->bindParam(':codigo', $this->codigo, PDO::PARAM_INT);
+            $resultado->bindParam(':Codigo', $this->Codigo, PDO::PARAM_INT);
             $resultado->execute();
             self::desconectar();
+            return $resultado->rowCount();
             return true;
         } catch (PDOException $Exception) {
             self::desconectar();
@@ -238,6 +234,4 @@ class Producto extends Conexion
             return json_encode($error);
         }
     }
-
-    /*=====  End of Metodos de la Clase  ======*/
 }

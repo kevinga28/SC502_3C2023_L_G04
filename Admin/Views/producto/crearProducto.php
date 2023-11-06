@@ -13,8 +13,13 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-  <link rel="stylesheet" href="../dist/css/style.css">
+  <link rel="stylesheet" href="../plugins/toastr/toastr.css">
 
+  <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
+
+  <link rel="stylesheet" href="../dist/css/style.css">
 
 </head>
 
@@ -75,51 +80,60 @@
                     <!-- EMPIEZA EL FORMULARIO -->
                     <form method="POST" name="modulos_add" id="crearProducto">
                       <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
 
-                        <div class="form-group">
-                          <label for="nombre">Nombre</label>
-                          <input type="text" class="form-control" id="nombre" placeholder="Nombre">
-                        </div>
+                              <div class="form-group">
+                                <label for="Codigo">Codigo</label>
+                                <input type="text" class="form-control" id="Codigo" name="Codigo" placeholder="Codigo" required>
+                              </div>
 
-                        <div class="form-group">
-                          <label for="descripcion">Descripción</label>
-                          <input type="text" class="form-control" id="descripcion" placeholder="Descripción">
-                        </div>
+                              <div class="form-group">
+                                <label for="Nombre">Nombre</label>
+                                <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" required>
+                              </div>
 
-                        <div class="form-group">
-                          <label for="cantidad">Cantidad</label>
-                          <input type="number" class="form-control" id="cantidad" placeholder="Cantidad">
-                        </div>
+                              <div class="form-group">
+                                <label for="descripcion">Descripción</label>
+                                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripción" required>
+                              </div>
 
- <!--                        <div class="form-group">
-                          <label for="Categoría">Categoría</label>
-                          <select class="form-control" id="Categoría">
-                            <option value="categoria0">Seleccione una categoría...</option>
-                            <option value="categoria1">Cabello</option>
-                            <option value="categoria2">Tratamientos Faciales</option>
-                            <option value="categoria3">Uñas</option>
-                          </select>
-                        </div>
- -->
-                        <div class="form-group">
-                          <label for="Precio">Precio</label>
-                          <input type="text" class="form-control" id="Precio" placeholder="Precio">
+                              <div class="form-group">
+                                <label for="cantidad">Cantidad</label>
+                                <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" required>
+                              </div>
+
+      <!--                        <div class="form-group">
+                                <label for="Categoría">Categoría</label>
+                                <select class="form-control" id="Categoría">
+                                  <option value="categoria0">Seleccione una categoría...</option>
+                                  <option value="categoria1">Cabello</option>
+                                  <option value="categoria2">Tratamientos Faciales</option>
+                                  <option value="categoria3">Uñas</option>
+                                </select>
+                              </div>
+      -->
+                              <div class="form-group">
+                                <label for="Precio">Precio</label>
+                                <input type="text" class="form-control" id="precio" name="precio" placeholder="Precio" required>
+                              </div>
+                              
+                          </div>
                         </div>
                       </div>
-
                       
 
                       <!-- /.card-body -->
 
                       <div class="card-footer">
-                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Agregar Producto</button>
+                        <input type="submit" class="btn" value="Agregar Empleado" id="btnRegistrar" style="background-color: #202126; color: #F7F4ED;"></input>
                       </div>
                     </form>
 
                   </div>
                 </div>
 
-                <!-- ESTADISTICAS DE LOS CLIENTES  -->
+                <!-- ESTADISTICAS DE LOS PRODUCTOS  -->
                 <div class="col-sm-6">
                   <!-- GRAFICOS EN BARRA-->
                   <div class="card card-success">
@@ -135,18 +149,14 @@
                         </button>
                       </div>
                     </div>
-
                     <div class="card-body">
                       <div class="chart">
                         <canvas id="barChart" style="min-height: 320px; height: 335px; max-height: 335px; max-width: 100%;"></canvas>
-                      </div>
+                        </div>
                     </div>
-
                   </div>
                 </div>
-
               </div>
-
             </div>
           </div>
         </div>
@@ -181,8 +191,10 @@
 
   <script src="../plugins/bootbox/bootbox.min.js"></script>
 
+  <script src="../plugins/select2/js/select2.full.min.js"></script>
 
 
+  <!-- Page specific script -->
   <script>
     $(function() {
       //-------------
@@ -207,9 +219,16 @@
         options: barChartOptions
       })
     })
-
   </script>
   
+  <script>
+    $(function() {
+      //Initialize Select2 Elements
+      $('.select2').select2()
+
+    })
+  </script>
+
 </body>
 
 

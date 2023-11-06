@@ -4,8 +4,8 @@ function limpiarForms() {
   }
   
   /* --------------------------------------------------------------- LISTAR LOS PRODUCTOS --------------------------------------------------------------- */
-  function listarProductosTodos() {
-    tabla = $('#tbllistado').dataTable({
+  function listarProductos() {
+    tabla = $('#tblistado').dataTable({
       aProcessing: true, //actiavmos el procesamiento de datatables
       aServerSide: true, //paginacion y filtrado del lado del serevr
       dom: 'Bfrtip', //definimos los elementos del control de tabla
@@ -55,9 +55,9 @@ function limpiarForms() {
           // Última columna con botones
           data: null,
           render: function (data, type, row) {
-            return '<a type="button" class="btn btn-danger float-right eliminar-producto" data-codigo="<?= $codigo ?>"><i class="fas fa-trash"></i> Eliminar</a>' +
-              '<a id="editarProducto" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarProducto.php?codigo=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>' +
-              '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verProducto.php?codigo=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>';
+            return '<a type="button" class="btn btn-danger float-right eliminar-producto" data-Codigo="' + data[0] + '"><i class="fas fa-trash"></i> Eliminar</a>' +
+            '<a id="modificarProducto" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarProducto.php?Codigo=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>' +
+            '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verProducto.php?Codigo=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>';
           }
         }
       ]
@@ -65,7 +65,7 @@ function limpiarForms() {
   }
   $(function () {
   
-    listarProductosTodos();
+    listarProductos();
   });
   
   /* --------------------------------------------------------------- CREAR LOS PRODUCTOS --------------------------------------------------------------- */
@@ -84,6 +84,24 @@ function limpiarForms() {
       processData: false,
       success: function (datos) {
         console.log('Respuesta del servidor:', datos);
+        switch (datos) {
+          case '1':
+            toastr.success(
+              'Producto registrado'
+            );
+            $('#crearProducto')[0].reset();
+            tabla.api().ajax.reload();
+            break;
+          case '2':
+            toastr.error('El Codigo ya existe. Corrija e inténtelo nuevamente.');
+            break;
+          case '3':
+            toastr.error('El Codigo ya existe. Corrija e inténtelo nuevamente.');
+            break;
+          default:
+            toastr.error(datos);
+            break;
+        }
         $('#btnRegistrar').removeAttr('disabled');
       },
     });
@@ -95,15 +113,16 @@ function limpiarForms() {
   
   const rellenarFormulario = async () => {
     const urlSearchParams = new URLSearchParams(window.location.search);
-    const codigo = urlSearchParams.get("codigo");
+    const Codigo = urlSearchParams.get("Codigo");
   
-    if (codigo) {
+    if (Codigo) {
       try {
-        const response = await fetch(`../../../admin/Controllers/productoController.php?op=obtener&codigo=${codigo}`);
+        const response = await fetch(`../../../admin/Controllers/productoController.php?op=obtener&Codigo=${Codigo}`);
         if (response.ok) {
           const datos = await response.json();
   
           // Rellena el formulario con los datos obtenidos
+          $("#ECodigo").val(datos.Codigo);
           $("#Enombre").val(datos.nombre);
           $("#Edescripcion").val(datos.descripcion);
           $("#Ecantidad").val(datos.cantidad);
@@ -147,7 +166,7 @@ function limpiarForms() {
                 $('#formulario_add').show();
                 break;
               case '2':
-                toastr.error('Error: codigo no se puede editar.');
+                toastr.error('Error: Codigo no se puede editar.');
                 break;
             }
           },
@@ -158,26 +177,27 @@ function limpiarForms() {
   
   /* --------------------------------------------------------------- ELIMINAR EL PRODUCTO MEDIANTE EL CODIGO --------------------------------------------------------------- */
   
-  $('.eliminar-producto').on('click', function() {
-    var codigo = $(this).data('codigo'); // Obtiene el ID del cliente desde el atributo de datos
+  $(document).on('click', '.eliminar-producto', function() {
+    var Codigo = $(this).data('Codigo'); // Obtiene el ID del cliente desde el atributo de datos
   
-    if (codigo !== undefined) {
-        if (confirm("¿Estás seguro de que deseas eliminar este produucto?")) {
-            // Realiza una solicitud al controlador para eliminar el codigo
-            fetch(`controlador.php?op=eliminar&codigo=${codigo}`, {
-                method: 'POST' // Utiliza POST u otro método según tu configuración
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert("Producto eliminado exitosamente");
-                    // Puedes realizar acciones adicionales, como actualizar la vista o la lista de clientes en la página.
-                } else {
-                    alert("No se pudo eliminar el producto. Inténtalo de nuevo.");
-                }
-            })
-            .catch(error => {
-                console.error("Error al eliminar el producto:", error);
-            });
+    if (Codigo !== undefined) {
+        if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
+            // Realiza una solicitud al controlador para eliminar el Codigo
+            $.ajax({
+              url: 'controlador.php',
+              method: 'POST',
+              data: { op: 'eliminar', Codigo: Codigo },
+              success: function(response) {
+                  if (response === '1') {
+                      alert("Producto eliminado exitosamente");
+                  } else {
+                      alert("No se pudo eliminar el producto. Inténtalo de nuevo.");
+                  }
+              },
+              error: function(error) {
+                  console.error("Error al eliminar el producto:", error);
+              }
+          });
         }
     }
   });

@@ -4,16 +4,16 @@
     switch ($_GET["op"]) {
         
         case 'listaProducto':
-            $newProducto = new Producto();
-            $productos = $newProducto->leerProductos();
+            $producto = new Producto();
+            $productos = $producto->leerProductos();
             $data = array();
-            foreach ($productos as $reg) {
+            foreach ($productos as $articulo) {
                 $data[] = array(
-                    "0" => $reg->getCodigo(),
-                    "1" =>  $reg->getNombre(),
-                    "2" =>  $reg->getDescripcion(),
-                    "3" =>  $reg->getCantidad(),
-                    "4" => $reg->getPrecio(),
+                    "0" => $articulo->getCodigo(),
+                    "1" => $articulo->getNombre(),
+                    "2" => $articulo->getDescripcion(),
+                    "3" => $articulo->getCantidad(),
+                    "4" => $articulo->getPrecio(),
                 );
             }
 
@@ -27,6 +27,7 @@
         break;
 
         case 'insertar':
+            $Codigo = isset($_POST["Codigo"]) ? trim($_POST["Codigo"]) : "";
             $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
             $descripcion = isset($_POST["descripcion"]) ? trim($_POST["descripcion"]) : "";
             $cantidad = isset($_POST["cantidad"]) ? trim($_POST["cantidad"]) : "";
@@ -34,46 +35,72 @@
 
             $producto = new Producto();
 
-            $producto->setNombre($nombre);
-            $producto->setDescripcion($descripcion);
-            $producto->setCantidad($cantidad);
-            $producto->setPrecio($precio);
+            $producto->setCodigo($Codigo);
+            $encontrado = $producto->verificarProducto();
+            if ($encontrado == false) {   
+                $producto->setCodigo($Codigo);
+                $producto->setNombre($nombre);
+                $producto->setDescripcion($descripcion);
+                $producto->setCantidad($cantidad);
+                $producto->setPrecio($precio);
+                $producto->insertar();
+                if ($producto->verificarProducto()) {
+                    echo 1; 
+                } else {
+                    echo 2;
+                }
+            } else {
+                echo 3;
+            }
+        break;
 
+        case 'verificar_producto':
+            $Codigo = isset($_POST["Codigo"]) ? trim($_POST["Codigo"]) : "";
+            $producto = new Producto();
+            $producto->setProducto($producto);
+            $encontrado = $producto->verificarProducto();
+            if ($encontrado != null) {
+                echo 1;
+            }else{
+                echo 0;
+            }
         break;
 
         case 'editar':
-              $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
-              $descripcion = isset($_POST["descripcion"]) ? trim($_POST["descripcion"]) : "";
-              $cantidad = isset($_POST["cantidad"]) ? trim($_POST["cantidad"]) : "";
-              $precio = isset($_POST["precio"]) ? trim($_POST["precio"]) : "";
+            $Codigo = isset($_POST["Codigo"]) ? trim($_POST["Codigo"]) : "";
+            $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
+            $descripcion = isset($_POST["descripcion"]) ? trim($_POST["descripcion"]) : "";
+            $cantidad = isset($_POST["cantidad"]) ? trim($_POST["cantidad"]) : "";
+            $precio = isset($_POST["precio"]) ? trim($_POST["precio"]) : "";
 
-              $producto = new Producto();
+            $producto = new Producto();
+            $encontrado = $producto->verificarProducto();
 
-              $encontrado = $producto->verificarProducto();
-              if ($encontrado == 1) {
+            if ($encontrado == false) {
                 $producto->setCodigo($codigo);
                 $producto->setNombre($nombre);
                 $producto->setDescripcion($descripcion);
                 $producto->setCantidad($cantidad);
                 $producto->setPrecio($precio);
 
-                $modificados = $producto->actualizarUsuario();
+                $modificados = $producto->actualizarProducto();
+
                 if ($modificados > 0) {
                   echo 1;
                 } else {
                   echo 0;
                 }
-              }else{
+            }else{
                 echo 2;	
-              }
+            }
         break;
 
         case 'obtener':
-            if (isset($_GET['codigo'])) {
-                $codigo = isset($_GET['codigo']) ? intval($_GET['codigo']) : null;
-                $producto = Producto::obtenerProductoCodigo($codigo);
+            if (isset($_GET['Codigo'])) {
+                $Codigo = isset($_GET['Codigo']) ? intval($_GET['Codigo']) : null;
+                $producto = Producto::obtenerProductoCodigo($Codigo);
     
-                if ($cliente) {
+                if ($producto) {
                     // Devuelve los datos del producto en formato JSON
                     echo json_encode($producto);
                 } else {
@@ -85,26 +112,21 @@
             break;
 
         case 'eliminar':
-          if (isset($_GET['codigo'])) {
-              $codigo = isset($_GET['codigo']) ? intval($_GET['codigo']) : null;
-      
-              $producto = Producto::obtenerProductoCodigo($codigo);
-      
-              if ($producto) {
-                  // Realiza la eliminación del producto
-                  $resultado = $producto->eliminarProducto();
-      
-                  if ($resultado === 1) {
-                      echo json_encode(["success" => "Producto eliminado exitosamente"]);
-                  } else {
-                      echo json_encode(["error" => "No se pudo eliminar el producto"]);
-                  }
-              } else {
-                  echo json_encode(["error" => "No se encontró el producto"]);
-              }
-          } else {
-              echo json_encode(["error" => "codigo del cliente no proporcionada"]);
-          }
-          break;
+            if (isset($_POST['Codigo'])) {
+                $codigo = intval($_POST['Codigo']);
+                $producto = new Producto();
+                $producto->setCodigo($Codigo);
+        
+                $resultado = $producto->eliminarProducto();
+        
+                if ($resultado === 1) {
+                    echo json_encode(["success" => "Producto eliminado"]);
+                } else {
+                    echo json_encode(["error" => "No se pudo eliminar el producto"]);
+                }
+            } else {
+                echo json_encode(["error" => "Codigo del producto no proporcionado"]);
+            }
+        break;
       }
 ?>
