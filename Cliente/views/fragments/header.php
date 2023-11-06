@@ -2,6 +2,7 @@
 <?php
 require_once '../Model/Cliente.php';
 
+
 // Iniciar la sesión
 session_start();
 
@@ -102,15 +103,24 @@ if (isset($_GET['cerrar_sesion'])) {
          <div class="modal-body">
             <div class="text-modal">
                <?php
-               // Datos del cliente (puedes obtener estos valores desde tu base de datos o donde los tengas)
+
                $nombreCliente = "Nombre del Cliente";
                $correoCliente = "correo@example.com";
                $telefonoCliente = "(123) 456-7890";
                ?>
+               <?php
+               if (isset($usuario)) {
 
-               <h6 class="nombre-cliente-modal">Cliente:<?php echo $usuario->getNombre(); ?></h6>
-               <p class="correo-cliente-modal">Correo: <?php echo $usuario->getCorreo(); ?></p>
-               <p class="telefono-cliente-modal">Teléfono: <?php echo $usuario->getTelefono(); ?></p>
+                   echo '<h6 class="nombre-cliente-modal">Cliente:' . $usuario->getNombre() . '</h6>';
+                   echo '<p class="correo-cliente-modal">Correo: ' . $usuario->getCorreo() . '</p>';
+                   echo '<p class="telefono-cliente-modal">Teléfono: ' . $usuario->getTelefono() . '</p>';
+               } else {
+
+                   echo '<h6 class="nombre-cliente-modal">Cliente: No hay datos registrados</h6>';
+                   echo '<p class="correo-cliente-modal">Correo: No hay datos registrados</p>';
+                   echo '<p class="telefono-cliente-modal">Teléfono: No hay datos registrados</p>';
+               }
+               ?>
             </div>
          </div>
          <div class="modal-footer" style="justify-content: space-between;">

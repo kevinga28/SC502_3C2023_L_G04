@@ -33,10 +33,6 @@ U
 %Admin/Views/cliente/editarCliente.php,1\7\17e8ecf8254db4499e17ccf8f3093c90250d445d
 L
 Cliente/views/js/register.js,8\8\88e19e1b20de31e787740af04e463810881633ee
-I
-Cliente/config/global.php,0\b\0ba0b58530f9dc0d172e1878f671302ad79cd92b
-K
-Cliente/config/Conexion.php,c\4\c4f7a6f2d371512c0bbcf5d372d8faff00a91544
 M
 Cliente/views/login/login.php,e\d\edc46f6f03c3b15eccad4d1ec2e2bdaaf438cd4f
 I
