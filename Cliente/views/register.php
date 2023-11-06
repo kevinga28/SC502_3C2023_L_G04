@@ -47,19 +47,20 @@
 
               <div class="input-box">
                 <h3> <span class="aste">*</span> Campos Requeridos</h3>
-                <input type="text" name="nombre" placeholder="Nombre*">
+                  <input type="text" name="nombre" required placeholder="Nombre*">
+              </div>
+
+
+              <div class="input-box">
+                <input type="text" name="apellido"  placeholder="Apellido*">
               </div>
 
               <div class="input-box">
-                <input type="text" name="apellido" placeholder="Apellido*">
+                <input type="email" name="correo" required placeholder="Correo Electronico*">
               </div>
 
               <div class="input-box">
-                <input type="email" name="correo" placeholder="Correo Electronico*">
-              </div>
-
-              <div class="input-box">
-                <input type="password" name="contrasena" placeholder="Contraseña*">
+                <input type="password" name="contrasena" required placeholder="Contraseña*">
               </div>
 
               <div class="input-box">

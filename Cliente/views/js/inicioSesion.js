@@ -32,8 +32,8 @@ $('#login').on('submit', function (event) {
 
                     break;
                 case '2':
+                    limpiarForms();
                     alert('credenciales incorrectas');
-
                     break;
 
             }

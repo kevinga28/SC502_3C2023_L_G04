@@ -15,22 +15,22 @@ require_once '../Model/Cliente.php';
             if ($cliente->iniciarSesion($correo, $clavehash)) {
                 $datosUsuario = $cliente->obtenerDatosUsuario($correo);
 
+
                 if ($datosUsuario) {
                     $cliente->setCorreo($datosUsuario['correo']);
                     $cliente->setNombre($datosUsuario['nombre']);
                     $cliente->setApellido($datosUsuario['apellido']);
                     $cliente->setTelefono($datosUsuario['telefono']);
-                    $cliente->setDia($datosUsuario['dia']);
-                    $cliente->setMes($datosUsuario['mes']);
-                    $cliente->setAnio($datosUsuario['ano']);// Asegúrate de tener las propiedades correspondientes en tu clase Cliente
+
                     // Asigna otras propiedades según sea necesario
 
                     $_SESSION['usuario'] = $cliente;
                     echo 1;
-                } else {
-                    echo 2;
                 }
+            } else {
+                echo 2;
             }
+
 
 
 }

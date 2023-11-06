@@ -1,22 +1,16 @@
 
 N
 Cliente/views/js/jquery.min.js,d\1\d1892da473ffc89c01b0a8c6f5c36e9c4ba5f369
-H
-Cliente/views/js/main.js,7\d\7db1464ac015e34239a5dcb4c681a7e5fbd3e36e
 O
 Cliente/views/servicioBotox.php,b\9\b919619c93ff391704fb30f68febfab6410b3159
 P
  Cliente/views/toastr/toastr.less,d\8\d8a29a50c9fbecf6bb02e4778da4d3d081d4cc07
 N
 Cliente/views/toastr/toastr.js,a\d\adeb8786b7e201619ec14c2e429553d8cbd6fca9
-J
-Cliente/views/Nosotros.php,8\d\8d9392df4811827de5a7ff956bdb80c2834d1f49
 T
 $Cliente/views/css/bootstrap-grid.css,d\a\daa7a0288b107d8c49b735a0539077bab5930706
 P
  Cliente/views/servicioCortes.php,f\9\f943fbe864e95ad05e536ff5980ce2eb188ff5c4
-J
-Cliente/views/register.php,2\2\2256c2baa4d883b8b6dc93b16627f35c7f27ed04
 D
 Admin/Views/user.php,8\9\89851361acb74cf57366c2f9d7f08223c8156957
 P
@@ -31,10 +25,6 @@ R
 "Admin/Views/cliente/verCliente.php,5\8\583175ddd895869d11491f22b858812fe477aa2e
 U
 %Admin/Views/cliente/editarCliente.php,1\7\17e8ecf8254db4499e17ccf8f3093c90250d445d
-L
-Cliente/views/js/register.js,8\8\88e19e1b20de31e787740af04e463810881633ee
-M
-Cliente/views/login/login.php,e\d\edc46f6f03c3b15eccad4d1ec2e2bdaaf438cd4f
 I
 Admin/config/Conexion.php,9\a\9aea813be9be2b7d48eaf3c971a0a58212bfa354
 G
@@ -43,3 +33,11 @@ W
 'Admin/Controllers/facturaController.php,8\3\83a9fdfa34bd52b0903f6e6e0791679e9eeeaf69
 H
 Admin/Model/Registro.php,0\b\0b2885e8a46b3c55bcb41a3c2760e247dd402c91
+K
+Cliente/config/Conexion.php,c\4\c4f7a6f2d371512c0bbcf5d372d8faff00a91544
+I
+Cliente/config/global.php,0\b\0ba0b58530f9dc0d172e1878f671302ad79cd92b
+J
+Cliente/views/register.php,2\2\2256c2baa4d883b8b6dc93b16627f35c7f27ed04
+M
+Cliente/views/login/login.php,e\d\edc46f6f03c3b15eccad4d1ec2e2bdaaf438cd4f

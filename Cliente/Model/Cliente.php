@@ -87,6 +87,79 @@ class Cliente extends Conexion
         return $this->dia;
     }
 
+
+    public function getCedula()
+    {
+        return $this->cedula;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getGenero()
+    {
+        return $this->genero;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCanton()
+    {
+        return $this->canton;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDistrito()
+    {
+        return $this->distrito;
+    }
+
+    /**
+     * @param mixed $cedula
+     */
+    public function setCedula($cedula)
+    {
+        $this->cedula = $cedula;
+    }
+
+    /**
+     * @param mixed $genero
+     */
+    public function setGenero($genero)
+    {
+        $this->genero = $genero;
+    }
+
+    /**
+     * @param mixed $tipoCliente
+     */
+    public function setTipoCliente($tipoCliente)
+    {
+        $this->tipoCliente = $tipoCliente;
+    }
+
+    /**
+     * @param mixed $canton
+     */
+    public function setCanton($canton)
+    {
+        $this->canton = $canton;
+    }
+
+    /**
+     * @param mixed $distrito
+     */
+    public function setDistrito($distrito)
+    {
+        $this->distrito = $distrito;
+    }
+
+
+
+
     public function setMes($mes)
     {
         $this->mes = $mes;
@@ -123,19 +196,18 @@ class Cliente extends Conexion
 
     public function guardarUsuario()
     {
-        $sql = "INSERT INTO usuario (nombre, apellido, correo, contrasena, telefono, dia, mes, ano) 
-        VALUES (:nombre, :apellido, :correo, :contrasena, :telefono, :dia, :mes, :anio)";
+        $sql = "INSERT INTO cliente(nombre, apellido, correo, contrasena, telefono) 
+        VALUES (:nombre, :apellido, :correo, :contrasena, :telefono)";
 
         try {
             self::getConexion();  // Debes utilizar self::$cnx para acceder a la conexión
+
             $nombre = strtoupper($this->getNombre());
             $apellido = strtoupper($this->getApellido());
             $correo = $this->getCorreo();
             $contrasena = $this->getContrasena();
             $telefono = $this->getTelefono();
-            $dia = $this->getDia();
-            $mes = $this->getMes();
-            $anio = $this->getAnio();
+
 
             $stmt = self::$cnx->prepare($sql);  // Cambia $conexion a self::$cnx
             $stmt->bindParam(':nombre', $nombre);
@@ -143,20 +215,18 @@ class Cliente extends Conexion
             $stmt->bindParam(':correo', $correo);
             $stmt->bindParam(':contrasena', $contrasena);
             $stmt->bindParam(':telefono', $telefono);
-            $stmt->bindParam(':dia', $dia);
-            $stmt->bindParam(':mes', $mes);
-            $stmt->bindParam(':anio', $anio);
+
 
             // Ejecutar la consulta
             $stmt->execute();
 
-            // Comprobar si la consulta se ejecutó con éxito
+
             if ($stmt->rowCount() > 0) {
-                // Aquí puedes retornar un mensaje de éxito
-                return "Registro exitoso. El usuario se ha registrado correctamente.";
+
+                return true;
             } else {
-                // Aquí puedes retornar un mensaje de error
-                return "Error al registrar el usuario. Por favor, inténtalo de nuevo.";
+
+                return false;
             }
 
         } catch (PDOException $Exception) {
@@ -170,7 +240,7 @@ class Cliente extends Conexion
 
     public function verificarInicioSesion($correo, $contrasena)
     {
-        $query = "SELECT * FROM usuario WHERE correo = :correo AND contrasena = :contrasena";
+        $query = "SELECT * FROM cliente WHERE correo = :correo AND contrasena = :contrasena";
 
         try {
             self::getConexion();
@@ -182,10 +252,10 @@ class Cliente extends Conexion
 
             if ($stmt->rowCount() > 0) {
                 return true;
-                echo '<script>alert("hola.");</script>';
+
             } else {
                 return false;
-                echo '<script>alert("Credenciales incorrectas. Por favor, verifica tus datos.");</script>';
+
 
             }
         } catch (PDOException $Exception) {
@@ -206,7 +276,7 @@ class Cliente extends Conexion
 
     public function obtenerDatosUsuario($correo)
     {
-        $query = "SELECT * FROM usuario WHERE correo = :correo";
+        $query = "SELECT * FROM cliente WHERE correo = :correo";
 
         try {
             self::getConexion();
@@ -227,7 +297,31 @@ class Cliente extends Conexion
     }
 
 
+    public function verificarExistenciaCliente()
+    {
+        $query = "SELECT COUNT(*) FROM cliente WHERE correo=:correo";
 
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+
+            $correo = $this->getCorreo();
+
+            $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
+            $resultado->execute();
+
+            $count = $resultado->fetchColumn();
+
+            if ($count > 0) {
+                return true; // El cliente existe
+            } else {
+                return false; // El cliente no existe
+            }
+        } catch (PDOException $Exception) {
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            throw new Exception($error);
+        }
+    }
 
 
 
