@@ -41,3 +41,5 @@ J
 Cliente/views/register.php,2\2\2256c2baa4d883b8b6dc93b16627f35c7f27ed04
 M
 Cliente/views/login/login.php,e\d\edc46f6f03c3b15eccad4d1ec2e2bdaaf438cd4f
+J
+Cliente/views/Nosotros.php,8\d\8d9392df4811827de5a7ff956bdb80c2834d1f49

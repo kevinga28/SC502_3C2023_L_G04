@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8c9abd-086d-4297-a16c-a6018e345d6d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/2/2256c2baa4d883b8b6dc93b16627f35c7f27ed04" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/2/2256c2baa4d883b8b6dc93b16627f35c7f27ed04" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7db1464ac015e34239a5dcb4c681a7e5fbd3e36e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88e19e1b20de31e787740af04e463810881633ee" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/d/8d9392df4811827de5a7ff956bdb80c2834d1f49" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/Controller/InicioSesionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/Controller/InicioSesionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/Controller/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/Controller/UsuarioController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/Model/Cliente.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/Model/Cliente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/js/inicioSesion.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/js/inicioSesion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/js/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +84,7 @@
       <workItem from="1699076906710" duration="4000000" />
       <workItem from="1699129142615" duration="16415000" />
       <workItem from="1699158243755" duration="11090000" />
-      <workItem from="1699265509320" duration="315000" />
+      <workItem from="1699265509320" duration="694000" />
     </task>
     <servers />
   </component>
