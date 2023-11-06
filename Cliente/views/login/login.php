@@ -44,7 +44,7 @@
                 <div class="box-log text-bg-logueo">
                     <form name="modulos_verif" id="login" method="POST" >
                         <h2>Registrar o Iniciar Sesion</h2>
-                        <a class="registrarse" href="../register.php">Crear una cuenta</a>
+                        <a class="registrarse" href="register.php">Crear una cuenta</a>
                         <div class="input-box">
                             <input type="email" name="correo" placeholder="Correo Electronico">
                         </div>

@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8c9abd-086d-4297-a16c-a6018e345d6d" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/2/2256c2baa4d883b8b6dc93b16627f35c7f27ed04" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/d/edc46f6f03c3b15eccad4d1ec2e2bdaaf438cd4f" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/views/fragments/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/fragments/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/views/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/js/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/views/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/views/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,10 +69,10 @@
       <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente\views\login" />
       <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente\views\js" />
       <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente\views" />
       <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente" />
-      <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente\views\login" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -85,6 +92,7 @@
       <workItem from="1699129142615" duration="16415000" />
       <workItem from="1699158243755" duration="11090000" />
       <workItem from="1699265509320" duration="694000" />
+      <workItem from="1699287735386" duration="1801000" />
     </task>
     <servers />
   </component>

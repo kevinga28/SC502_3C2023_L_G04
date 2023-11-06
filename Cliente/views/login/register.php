@@ -10,18 +10,18 @@
   <!-- site metas -->
   <title>Registro</title>
   <!-- bootstrap css -->
-  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
   <!-- style css -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 
-  <link rel="stylesheet" href="login/css/register.css">
+  <link rel="stylesheet" href="css/register.css">
   <!-- Responsive-->
-  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="../css/responsive.css">
   <!-- fevicon -->
   <link rel="icon" href="../images/fevicon.png" type="image/gif" />
-    <link rel="stylesheet" href="toastr/toastr.css">
+    <link rel="stylesheet" href="../toastr/toastr.css">
   <!-- Scrollbar Custom CSS -->
-  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
@@ -96,13 +96,13 @@
     ?>
   </footer>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.bundle.min.js"></script>
-  <script src="js/jquery-3.0.0.min.js"></script>
-  <script src="js/register.js"></script>
-  <script src="toastr/toastr.js"></script>
-  <script src="bootbox/bootbox.min.js"></script>
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jquery-3.0.0.min.js"></script>
+  <script src="../js/register.js"></script>
+  <script src="../toastr/toastr.js"></script>
+  <script src="../bootbox/bootbox.min.js"></script>
 
 </body>
 
