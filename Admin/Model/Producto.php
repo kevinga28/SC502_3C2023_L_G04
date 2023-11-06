@@ -127,7 +127,7 @@ class Producto extends Conexion
 
     /*=====  [CRUD] Guardar Productos de la Clase  ======*/
 
-    public function crearProducto(){
+    public function insertar(){
         $query = "INSERT INTO `producto` ( `Codigo`, `nombre`, `descripcion`,  `cantidad`, `precio`)
             VALUES ( :Codigo, :nombre, :descripcion, :cantidad, :precio)";
 

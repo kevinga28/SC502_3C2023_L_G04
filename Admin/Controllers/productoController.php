@@ -5,7 +5,7 @@
         
         case 'listaProducto':
             $producto = new Producto();
-            $productos = $producto->leerProductos();
+            $productos = $producto->listarProductos();
             $data = array();
             foreach ($productos as $articulo) {
                 $data[] = array(
