@@ -56,7 +56,7 @@ function listarClientesTodos() {
         // Última columna con botones
         data: null,
         render: function (data, type, row) {
-          return '<a type="button" class="btn btn-danger float-right eliminar-cliente" data-clienteId="<?= $clienteId ?>"><i class="fas fa-trash"></i> Eliminar</a>' +
+          return '<a type="button" class="btn btn-danger float-right" id="eliminar-cliente" data-clienteId="<?= $clienteId ?>"><i class="fas fa-trash"></i> Eliminar</a>' +
             '<a id="modificarCliente" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>' +
             '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>';
         }
@@ -182,28 +182,35 @@ $('#cliente_update').on('submit', function (event) {
 
 /* ---------------------------------------------------------------ELIMINAR EL CLIENTE MEDIANTE EL ID--------------------------------------------------------------- */
 
-$('.eliminar-cliente').on('click', function(event) {
-  event.preventDefault();
-  const urlSearchParams = new URLSearchParams(window.location.search);
-  const clienteId = urlSearchParams.get("IdCliente");
+$(document).ready(function() {
+  $('.eliminar-cliente').on('click', function(event) {
+    const clienteId = $(this).data('cliente-id');
 
-  if (clienteId) {
-    if (confirm("¿Estás seguro de que deseas eliminar este cliente?")) {
-      // Realiza una solicitud al controlador para eliminar el cliente
-      fetch(`../../../admin/Controllers/clienteController.php?op=eliminar&IdCliente=${clienteId}`, {
-        method: 'POST', // Utiliza POST u otro método según tu configuración
-      })
-        .then(response => {
-          if (response.ok) {
-            alert("Cliente eliminado exitosamente");
-            // Puedes realizar acciones adicionales, como actualizar la vista o la lista de clientes en la página.
-          } else {
-            alert("No se pudo eliminar el cliente. Inténtalo de nuevo.");
-          }
+    if (clienteId) {
+      if (confirm("¿Estás seguro de que deseas eliminar este cliente?")) {
+        // Realiza una solicitud al controlador para eliminar el cliente
+        fetch(`../../../admin/Controllers/clienteController.php?op=eliminar&IdCliente=${clienteId}`, {
+          method: 'POST',
         })
-        .catch(error => {
-          console.error("Error al eliminar el cliente:", error);
-        });
+          .then(response => {
+            if (response.ok) {
+              alert("Cliente eliminado exitosamente");
+              // Puedes actualizar la vista o la lista de clientes en la página si es necesario.
+              // Por ejemplo, puedes eliminar la fila correspondiente de la tabla.
+              $(this).closest('tr').remove(); // Elimina la fila de la tabla.
+            } else {
+              alert("No se pudo eliminar el cliente. Inténtalo de nuevo.");
+            }
+          })
+          .catch(error => {
+            console.error("Error al eliminar el cliente:", error);
+          });
+      }
     }
-  }
+  });
 });
+
+
+
+
+

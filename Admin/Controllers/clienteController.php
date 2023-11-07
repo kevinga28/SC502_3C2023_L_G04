@@ -80,7 +80,6 @@ switch ($_GET["op"]) {
 
     case 'editar':
         // Asegúrate de recibir y validar todos los datos necesarios
-        $IdCliente = isset($_POST["IdCliente"]) ? trim($_POST["IdCliente"]) : "";
         $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
         $apellido = isset($_POST["apellido"]) ? trim($_POST["apellido"]) : "";
         $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
@@ -95,7 +94,7 @@ switch ($_GET["op"]) {
 
         $encontrado = $cliente->verificarExistenciaCliente();
         if ($encontrado == 1) {
-            $cliente->setIdCliente($IdCliente);
+            
             $cliente->setNombre($nombre);
             $cliente->setApellido($apellido);
             $cliente->setCorreo($correo);
