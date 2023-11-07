@@ -76,7 +76,7 @@
                       <h3 class="card-title">Agregar Empleado</h3>
                     </div>
                     <!-- EMPIEZA EL FORMULARIO -->
-                    <form method="POST" action="guardar_factura.php">
+                    <form method="POST" action="guardar_empleado.php">
                       <div class="card-body">
                         <div class="row">
                           <div class="col-md-6">
@@ -180,70 +180,6 @@
 
               </div>
 
-              <!-- Main content -->
-              <div class="invoice p-3 mb-3">
-                <!-- title row -->
-                <div class="row">
-                  <div class="col-12">
-                    <h4>
-                      <i class="fas fa-globe"></i> Tabla Empleados
-                    </h4>
-                  </div>
-                  <!-- /.col -->
-                </div>
-
-                <!-- Table row -->
-                <div class="row">
-                  <div class="col-12 table-responsive">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Nombre</th>
-                          <th>Apellido</th>
-                          <th>Telefono</th>
-                          <th>Correo</th>
-                          <th>Rol</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Hersal</td>
-                          <td>Alfaro</td>
-                          <td>1111-2222</td>
-                          <td>prueba@hotmail.com</td>
-                          <td>Admin</td>
-                          <td>
-                            <button type="button" class="btn btn-danger float-right" style="margin-right: 8px;">
-                              <i class="fas fa-download"></i> Eliminar
-                            </button>
-                            <button type="button" class="btn btn-success float-right" style="margin-right: 8px;">
-                              <i class="fas fa-download"></i> Editar
-                            </button>
-                            <button type="button" class="btn btn-primary float-right" style="margin-right: 8px;">
-                              <i class="fas fa-download"></i> Ver
-                            </button>
-                          </td>
-                        </tr>
-
-                      </tbody>
-                    </table>
-                    <br>
-                    <table class="table table-striped"></table>
-                  </div>
-
-                </div>
-
-                <div class="row no-print">
-                  <div class="col-12">
-                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                      <i class="fas fa-download"></i> Generar PDF
-                    </button>
-                  </div>
-                </div>
-
-              </div>
             </div>
           </div>
         </div>

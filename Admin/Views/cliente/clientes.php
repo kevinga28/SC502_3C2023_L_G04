@@ -1,21 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Evolve</title>
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
+  <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
 
-    <link rel="stylesheet" href="../dist/css/style.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
+
+  <link rel="stylesheet" href="../dist/css/style.css">
+
+  <link rel="stylesheet" href="../plugins/toastr/toastr.css">
 
 </head>
 
@@ -74,67 +78,65 @@
                       <h3 class="card-title">Agregar Cliente</h3>
                     </div>
                     <!-- EMPIEZA EL FORMULARIO -->
-                    <form method="POST" action="guardar_factura.php">
+                    <form method="POST" name="modulos_add" id="crearCliente">
                       <div class="card-body">
                         <div class="row">
                           <div class="col-md-6">
 
                             <div class="form-group">
                               <label for="Nombre">Nombre</label>
-                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre">
+                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre" required>
                             </div>
 
                             <div class="form-group">
                               <label for="apellido">Apellido</label>
-                              <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido">
+                              <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" required>
                             </div>
+
 
                             <div class="form-group">
                               <label for="correo">Correo Electrónico</label>
-                              <input type="email" class="form-control" id="correo" name="correo" placeholder="correo">
+                              <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" required>
                             </div>
 
                             <div class="form-group">
                               <label for="contraseña">Contraseña</label>
-                              <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Contraseña">
+                              <input type="password" class="form-control" id="contrasena" name="contrasena" placeholder="Contraseña" required>
                             </div>
 
                             <div class="form-group">
                               <label for="telefono">Telefono</label>
-                              <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono">
+                              <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono" required>
                             </div>
-
-
 
                           </div>
                           <div class=" col-md-6">
 
 
-
-
                             <div class="form-group">
-                              <label for="fechaCita">Provincia</label>
-                              <input type="text" class="form-control" id="fechaCita" name="fechaCita" placeholder="Provincia">
+                              <label for="provincia">Provincia</label>
+                              <input type="text" class="form-control" id="provincia" name="provincia" placeholder="Provincia" required>
                             </div>
 
                             <div class="form-group">
                               <label for="distrito">Distrito</label>
-                              <input type="text" class="form-control" id="distrito" name="distrito" placeholder="Distrito">
+                              <input type="text" class="form-control" id="distrito" name="distrito" placeholder="Distrito" required>
                             </div>
 
                             <div class="form-group">
                               <label for="canton">Canton</label>
-                              <input type="text" class="form-control" id="canton" name="canton" placeholder="Canton">
+                              <input type="text" class="form-control" id="canton" name="canton" placeholder="Canton" required>
                             </div>
 
 
                             <div class="form-group">
                               <label for="otros">Otros</label>
-                              <input type="text" class="form-control" id="otros" name="otros" placeholder="Otras Señales">
+                              <input type="text" class="form-control" id="otros" name="otros" placeholder="Otras Señales" required>
                             </div>
 
+
                             <div class="form-check">
-                              <input type="checkbox" class="form-check-input" id="EmpleadoCheck">
+                              <input type="checkbox" class="form-check-input" value="false" id="tipoCliente" name="tipoCliente">
                               <label class="form-check-label" for="EmpleadoCheck">Empleado</label>
                             </div>
 
@@ -143,7 +145,7 @@
                       </div>
 
                       <div class="card-footer">
-                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Agregar Cliente</button>
+                        <input type="submit" class="btn" value="Agregar Cliente" id="btnRegistrar" style="background-color: #202126; color: #F7F4ED;"></input>
                       </div>
                     </form>
 
@@ -178,70 +180,6 @@
 
               </div>
 
-              <!-- Main content -->
-              <div class="invoice p-3 mb-3">
-                <!-- title row -->
-                <div class="row">
-                  <div class="col-12">
-                    <h4>
-                      <i class="fas fa-globe"></i> Tabla Clientes
-                    </h4>
-                  </div>
-                  <!-- /.col -->
-                </div>
-
-                <!-- Table row -->
-                <div class="row">
-                  <div class="col-12 table-responsive">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>ID</th>
-                          <th>Nombre</th>
-                          <th>Apellido</th>
-                          <th>Direccion</th>
-                          <th>Correo</th>
-                          <th></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td>1</td>
-                          <td>Hersal</td>
-                          <td>Alfaro</td>
-                          <td>Alajuela</td>
-                          <td>prueba@hotmail.com</td>
-                          <td>
-                          <a type="button" class="btn btn-danger float-right" style="margin-right: 8px;" href="eliminar.php">
-                        <i class="fas fa-download"></i> Eliminar
-                      </a>
-                      <a type="button" class="btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php">
-                        <i class="fas fa-download"></i> Editar
-                      </a>
-                      <a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php">
-                        <i class="fas fa-download"></i> Ver
-                      </a>
-                          </td>
-                        </tr>
-
-
-                      </tbody>
-                    </table>
-                    <br>
-                    <table class="table table-striped"></table>
-                  </div>
-
-                </div>
-
-                <div class="row no-print">
-                  <div class="col-12">
-                    <button type="button" class="btn btn-primary float-right" style="margin-right: 5px;">
-                      <i class="fas fa-download"></i> Generar PDF
-                    </button>
-                  </div>
-                </div>
-
-              </div>
             </div>
           </div>
         </div>
@@ -262,10 +200,17 @@
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- ChartJS -->
-  <script src="../plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.min.js"></script>
+  <!-- Datatable -->
+  <script src="../plugins/DataTables/datatables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+  <!-- TOAST -->
+  <script src="../plugins/toastr/toastr.js"></script>
+
+  <script src="../dist/js/cliente.js"></script>
+
+  <script src="../plugins/bootbox/bootbox.min.js"></script>
 
 
   <!-- Page specific script -->
@@ -293,6 +238,14 @@
         data: barChartData,
         options: barChartOptions
       })
+
+    })
+  </script>
+
+  <script>
+    $(function() {
+      //Initialize Select2 Elements
+      $('.select2').select2()
 
     })
   </script>

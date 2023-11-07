@@ -70,7 +70,7 @@
                   <!-- TITULO DEL FORMULARIO -->
                   <div class="card card-primary">
                     <div class="card-header" style="background-color: #F7F4ED; color: #202126;">
-                      <h3 class="card-title">Editar Producto</h3>
+                      <h3 class="card-title">Ver Producto</h3>
                     </div>
                     <!-- EMPIEZA EL FORMULARIO -->
                     <form method="POST" action="guardar_producto.php">

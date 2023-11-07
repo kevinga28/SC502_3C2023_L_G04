@@ -1,0 +1,43 @@
+.box-log{
+    width: 510px;
+    height:720px;
+    background-color:#F7F4ED;
+}
+
+.box-log .input-box{
+    width:100%;
+    height:100%;
+    margin: 20px 0;
+}
+
+.input-box input{
+    width:88%;
+    border-style: initial;
+    border-radius:8px;
+    padding:10px;
+}
+
+
+.input-box [type="date"]{
+    margin-bottom:10px;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+
+}
+
+.box-log .btn{
+    margin-top: 30px;
+    justify-content: center;
+    padding:10px;
+    width:30%;
+    color:white;
+    background-color:#202126;
+
+}
+
+.registrarse{
+    color:red;
+    font-size:18px;
+    font-weight: bold;
+}

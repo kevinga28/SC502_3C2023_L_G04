@@ -1,24 +1,18 @@
 <?php
 require_once '../config/Conexion.php';
-
+require_once 'Cliente.php';
+require_once 'Producto.php';
 class Factura extends Conexion
 {
     /*=============================================
 	=            Atributos de la Clase            =
 	=============================================*/
     protected static $cnx;
-    private $id = null;
-    private $nombre = null;
-    private $apellido = null;
-    private $correo = null;
-    private $telefono = null;
-    private $tipoCliente = null;
-    private $tratamiento = null;
-    private $metodoPago = null;
-    private $estilista = null;
-    private $totalPago = null;
-    private $fechaCita = null;
-    private $horaCita = null;
+    private $ID_Factura;
+    private $ID_Cita;
+    private $codigoProducto;
+    private $metodoPago;
+    private $pagoTotal;
 
     /*=====  End of Atributos de la Clase  ======*/
 
@@ -35,107 +29,55 @@ class Factura extends Conexion
 	=============================================*/
 
 
-    public function getId()
+    public function getIdFactura()
     {
-        return $this->id;
-    }
-    public function setId($id)
-    {
-        $this->id = $id;
-    }
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-    }
-    public function setApellido($apellido)
-    {
-        $this->apellido = $apellido;
-    }
-    public function getApellido()
-    {
-        return $this->apellido;
-    }
-    public function getCorreo()
-    {
-        return $this->correo;
-    }
-    public function setCorreo($correo)
-    {
-        $this->correo = $correo;
-    }
-    public function getTelefono()
-    {
-        return $this->telefono;
-    }
-    public function setTelefono($telefono)
-    {
-        $this->telefono = $telefono;
+        return $this->ID_Factura;
     }
 
-    public function getTipoCliente()
+    public function setIdFactura($ID_Factura)
     {
-        return $this->tipoCliente;
+        $this->ID_Factura = $ID_Factura;
     }
-    public function setTipoCliente($tipoCliente)
+
+    public function getIdCita()
     {
-        $this->tipoCliente = $tipoCliente;
+        return $this->ID_Cita;
     }
-    public function getTratamiento()
+
+    public function setIdCita($ID_Cita)
     {
-        return $this->tratamiento;
+        $this->ID_Cita = $ID_Cita;
     }
-    public function setTratamiento($tratamiento)
+
+    public function getCodigoProducto()
     {
-        $this->tratamiento = $tratamiento;
+        return $this->codigoProducto;
     }
+
+    public function setCodigoProducto($codigoProducto)
+    {
+        $this->codigoProducto = $codigoProducto;
+    }
+
     public function getMetodoPago()
     {
         return $this->metodoPago;
     }
+
     public function setMetodoPago($metodoPago)
     {
         $this->metodoPago = $metodoPago;
     }
 
-    public function getEstilista()
+    public function getPagoTotal()
     {
-        return $this->estilista;
-    }
-    public function setEstilista($estilista)
-    {
-        $this->estilista = $estilista;
+        return $this->pagoTotal;
     }
 
-    public function getTotalPago()
+    public function setPagoTotal($pagoTotal)
     {
-        return $this->totalPago;
+        $this->pagoTotal = $pagoTotal;
     }
-    public function setTotalPago($totalPago)
-    {
-        $this->totalPago = $totalPago;
-    }
-
-    public function getFechaCita()
-    {
-        return $this->fechaCita;
-    }
-    public function setFechaCita($fechaCita)
-    {
-        $this->fechaCita = $fechaCita;
-    }
-    public function getHoraCita()
-    {
-        return $this->horaCita;
-    }
-    public function setHoraCita($horaCita)
-    {
-        $this->horaCita = $horaCita;
-    }
-
 
     /*=====  End of Encapsuladores de la Clase  ======*/
 
@@ -154,108 +96,113 @@ class Factura extends Conexion
 
     public function listarFacturas()
     {
-        $query = "SELECT * FROM facturas";
-        $arr = array();
+        $query = "SELECT f.ID_Factura, f.metodoPago, f.pagoTotal, c.*, p.*
+              FROM factura f
+              JOIN cita c ON f.ID_Cita = c.ID_Cita
+              JOIN producto p ON f.codigoProducto = p.Codigo";
+
+        $facturas = array();
+
         try {
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
             $resultado->execute();
             self::desconectar();
+
             foreach ($resultado->fetchAll() as $encontrado) {
                 $factura = new Factura();
-                $factura->setId($encontrado['id']);
-                $factura->setNombre($encontrado['nombre']);
-                $factura->setApellido($encontrado['apellido']);
-                $factura->setCorreo($encontrado['correo']);
-                $factura->setTelefono($encontrado['telefono']);
-                $factura->setTipoCliente($encontrado['tipoCiente']);
-                $factura->setTratamiento($encontrado['tratamiento']);
+                $factura->setIdFactura($encontrado['ID_Factura']);
                 $factura->setMetodoPago($encontrado['metodoPago']);
-                $factura->setEstilista($encontrado['estilista']);
-                $factura->setTotalPago($encontrado['totalPago']);
-                $factura->setFechaCita($encontrado['fechaCita']);
-                $factura->setHoraCita($encontrado['horaCita']);
-                $arr[] = $factura;
+                $factura->setPagoTotal($encontrado['pagoTotal']);
+
+                $cita = new Cita();
+                $cita->setIdCita($encontrado['ID_Cita']);
+                // Setear otras propiedades de la tabla 'cita' si es necesario
+                $factura->setCita($cita);
+
+                $producto = new Producto();
+                $producto->setCodigo($encontrado['Codigo']);
+                // Setear otras propiedades de la tabla 'producto' si es necesario
+                $factura->setProducto($producto);
+
+                $facturas[] = $factura;
             }
-            return $arr;
+
+            return $facturas;
         } catch (PDOException $Exception) {
             self::desconectar();
-            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();;
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
             return json_encode($error);
         }
     }
-
     public function verificarExistenciaDb()
     {
-        $query = "SELECT * FROM facturas where correo=:correo";
+        $query = "SELECT ID_Factura FROM factura WHERE ID_Factura = :idFactura";
+
         try {
-            self::getConexion();
+            self::getConexion(); // Abre la conexión a la base de datos
+
+            $idFactura = $this->getIdFactura();
+
             $resultado = self::$cnx->prepare($query);
-            $email = $this->getCorreo();
-            $resultado->bindParam(":correo", $email, PDO::PARAM_STR);
+            $resultado->bindParam(":idFactura", $idFactura, PDO::PARAM_INT);
             $resultado->execute();
-            self::desconectar();
+
+            self::desconectar(); // Cierra la conexión a la base de datos
+
             $encontrado = false;
-            foreach ($resultado->fetchAll() as $reg) {
+
+            if ($resultado->rowCount() > 0) {
                 $encontrado = true;
             }
+
             return $encontrado;
         } catch (PDOException $Exception) {
             self::desconectar();
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-            return $error;
+            return $error; // Manejo de errores
         }
     }
 
     public function guardarEnDb()
     {
-        $query = "INSERT INTO `facturas`(`nombre`, `apellido`, `correo`, `telefono`, `tipoCliente`, `tratamiento`, `metodoPago`,  `estilista`, `totalPago`, `fechaCita`, `horaCita`,`created_at`) 
-            VALUES (:nombre,:apellido,:correo,:telefono,:tipoCliente,:tratamiento,:metodoPago,:estilista,:totalPago,:fechaCita,:horaCita,now())";
+        $query = "INSERT INTO factura (ID_Cita, codigoProducto, metodoPago, pagoTotal)
+                  VALUES (:idCita, :codigoProducto, :metodoPago, :pagoTotal)";
+
         try {
-            self::getConexion();
-            $nombre = strtoupper($this->getNombre());
-            $apellido = strtoupper($this->getApellido());
-            $correo = $this->getCorreo();
-            $telefono = $this->getTelefono();
-            $tipoCliente = $this->getTipoCliente();
-            $tratamiento = $this->getTratamiento();
+            self::getConexion(); // Abre la conexión a la base de datos
+
+            $idCita = $this->getIdCita();
+            $codigoProducto = $this->getCodigoProducto();
             $metodoPago = $this->getMetodoPago();
-            $estiista = $this->getEstilista();
-            $totalPago = $this->getTotalPago();
-            $fechaCita = $this->getFechaCita();
-            $horaCita = $this->getHoraCita();
+            $pagoTotal = $this->getPagoTotal();
 
             $resultado = self::$cnx->prepare($query);
-            $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
-            $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
-            $resultado->bindParam(":apellido", $apellido, PDO::PARAM_STR);
-            $resultado->bindParam(":tratamiento", $tratamiento, PDO::PARAM_STR);
-            $resultado->bindParam(":telefono", $telefono, PDO::PARAM_STR);
-            $resultado->bindParam(":tipoCliente", $tipoCliente, PDO::PARAM_STR);
+
+            $resultado->bindParam(":idCita", $idCita, PDO::PARAM_INT);
+            $resultado->bindParam(":codigoProducto", $codigoProducto, PDO::PARAM_INT);
             $resultado->bindParam(":metodoPago", $metodoPago, PDO::PARAM_STR);
-            $resultado->bindParam(":estiista", $estiista, PDO::PARAM_STR);
-            $resultado->bindParam(":totalPago", $totalPago, PDO::PARAM_STR);
-            $resultado->bindParam(":fechaCita", $fechaCita, PDO::PARAM_STR);
-            $resultado->bindParam(":horaCita", $horaCita, PDO::PARAM_STR);
+            $resultado->bindParam(":pagoTotal", $pagoTotal, PDO::PARAM_STR);
+
             $resultado->execute();
-            self::desconectar();
+
+            self::desconectar(); // Cierra la conexión a la base de datos
         } catch (PDOException $Exception) {
             self::desconectar();
-            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();;
-            return json_encode($error);
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error; // Manejo de errores
         }
     }
 
 
 
-    public static function mostrar($correo)
+    public static function mostrarPorId($ID_Factura)
     {
-        $query = "SELECT * FROM facturas where correo=:id";
-        $id = $correo;
+        $query = "SELECT * FROM factura WHERE ID_Factura = :ID_Factura";
         try {
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
-            $resultado->bindParam(":id", $id, PDO::PARAM_STR);
+            $resultado->bindParam(":ID_Factura", $ID_Factura, PDO::PARAM_INT);
             $resultado->execute();
             self::desconectar();
             return $resultado->fetch();
@@ -268,20 +215,26 @@ class Factura extends Conexion
 
     public function llenarCampos($id)
     {
-        $query = "SELECT * FROM facturas where id=:id";
+        $query = "SELECT * FROM facturas WHERE id = :id";
         try {
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
             $resultado->bindParam(":id", $id, PDO::PARAM_INT);
             $resultado->execute();
             self::desconectar();
-            foreach ($resultado->fetchAll() as $encontrado) {
-                $this->setId($encontrado['id']);
-                $this->setNombre($encontrado['nombre']);
+
+            $facturaEncontrada = $resultado->fetch();
+
+            if ($facturaEncontrada) {
+                $this->setIdFactura($facturaEncontrada['ID_Factura']);
+                $this->setIdCita($facturaEncontrada['ID_Cita']);
+                $this->setCodigoProducto($facturaEncontrada['codigoProducto']);
+                $this->setMetodoPago($facturaEncontrada['metodoPago']);
+                $this->setPagoTotal($facturaEncontrada['pagoTotal']);
             }
         } catch (PDOException $Exception) {
             self::desconectar();
-            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();;
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
             return json_encode($error);
         }
     }
@@ -289,82 +242,42 @@ class Factura extends Conexion
     public function actualizarFactura()
     {
         $query = "UPDATE facturas 
-            SET nombre=:nombre, apellido=:apellido, correo=:correo, telefono=:telefono, 
-                tipoCliente=:tipoCliente, tratamiento=:tratamiento, metodoPago=:metodoPago, 
-                estilista=:estilista, totalPago=:totalPago, fechaCita=:fechaCita, horaCita=:horaCita 
-            WHERE id=:id";
-        try {
-            self::getConexion();
-            $id = $this->getId();
+              SET ID_Cita=:ID_Cita, codigoProducto=:codigoProducto, 
+                  metodoPago=:metodoPago, pagoTotal=:pagoTotal 
+              WHERE ID_Factura=:ID_Factura";
 
-            $nombre = $this->getNombre();
-            $apellido = $this->getApellido();
-            $correo = $this->getCorreo();
-            $telefono = $this->getTelefono();
-            $tipoCliente = $this->getTipoCliente();
-            $tratamiento = $this->getTratamiento();
+        try {
+            self::getConexion(); // Abre la conexión a la base de datos
+
+            $ID_Factura = $this->getIdFactura();
+            $ID_Cita = $this->getIdCita();
+            $codigoProducto = $this->getCodigoProducto();
             $metodoPago = $this->getMetodoPago();
-            $estilista = $this->getEstilista();
-            $totalPago = $this->getTotalPago();
-            $fechaCita = $this->getFechaCita();
-            $horaCita = $this->getHoraCita();
+            $pagoTotal = $this->getPagoTotal();
 
             $resultado = self::$cnx->prepare($query);
 
-            $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
-            $resultado->bindParam(":apellido", $apellido, PDO::PARAM_STR);
-            $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
-            $resultado->bindParam(":telefono", $telefono, PDO::PARAM_STR);
-            $resultado->bindParam(":tipoCliente", $tipoCliente, PDO::PARAM_STR);
-            $resultado->bindParam(":tratamiento", $tratamiento, PDO::PARAM_STR);
+            $resultado->bindParam(":ID_Factura", $ID_Factura, PDO::PARAM_INT);
+            $resultado->bindParam(":ID_Cita", $ID_Cita, PDO::PARAM_INT);
+            $resultado->bindParam(":codigoProducto", $codigoProducto, PDO::PARAM_INT);
             $resultado->bindParam(":metodoPago", $metodoPago, PDO::PARAM_STR);
-            $resultado->bindParam(":estilista", $estilista, PDO::PARAM_STR);
-            $resultado->bindParam(":totalPago", $totalPago, PDO::PARAM_STR);
-            $resultado->bindParam(":fechaCita", $fechaCita, PDO::PARAM_STR);
-            $resultado->bindParam(":horaCita", $horaCita, PDO::PARAM_STR);
-            $resultado->bindParam(":id", $id, PDO::PARAM_INT);
+            $resultado->bindParam(":pagoTotal", $pagoTotal, PDO::PARAM_STR);
 
-            self::$cnx->beginTransaction(); //desactiva el autocommit
+            self::$cnx->beginTransaction(); // Inicia una transacción
             $resultado->execute();
-            self::$cnx->commit(); //realiza el commit y vuelve al modo autocommit
-            self::desconectar();
-            return $resultado->rowCount();
+            self::$cnx->commit(); // Confirma la transacción
+            self::desconectar(); // Cierra la conexión a la base de datos
+
+            return $resultado->rowCount(); // Devuelve la cantidad de filas afectadas
         } catch (PDOException $Exception) {
-            self::$cnx->rollBack();
-            self::desconectar();
+            self::$cnx->rollBack(); // Revierte la transacción en caso de error
+            self::desconectar(); // Cierra la conexión a la base de datos
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-            return $error;
+            return $error; // Manejo de errores
         }
     }
 
-    public function verificarExistenciaEmail()
-    {
-        $query = "SELECT id, nombre, telefono FROM facturas WHERE nombre=:nombre AND apellido=:apellido";
+    
 
-        try {
-            self::getConexion();
-            $resultado = self::$cnx->prepare($query);
-            $nombre= $this->getNombre();
-            $apellido= $this->getApellido();
-            $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
-            $resultado->bindParam(":apellido", $apellido, PDO::PARAM_STR);
-            $resultado->execute();
-            self::desconectar();
-            $encontrado = false;
-            $arr = array();
-            foreach ($resultado->fetchAll() as $reg) {
-                $arr[] = $reg['id'];
-                $arr[] = $reg['correo'];
-                $arr[] = $reg['nombre'];
-                $arr[] = $reg['telefono'];
-            }
-            return $arr;
-            return $encontrado;
-        } catch (PDOException $Exception) {
-            self::desconectar();
-            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-            return $error;
-        }
-    }
     /*=====  End of Metodos de la Clase  ======*/
 }

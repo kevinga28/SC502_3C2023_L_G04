@@ -72,10 +72,10 @@
                                     <!-- TITULO DEL FORMULARIO -->
                                     <div class="card card-primary">
                                         <div class="card-header" style="background-color: #F7F4ED; color: #202126; ">
-                                            <h3 class="card-title">Agregar Empleado</h3>
+                                            <h3 class="card-title">Ver Empleado</h3>
                                         </div>
                                         <!-- EMPIEZA EL FORMULARIO -->
-                                        <form method="POST" action="guardar_factura.php">
+                                        <form >
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -143,7 +143,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 mb-4">
-                                                <a href="empleados.php" class="btn btn-secondary">Volver</a>
+                                                <a href="listaEmpleado.php" class="btn btn-secondary">Volver</a>
                                             </div>
                                         </form>
 

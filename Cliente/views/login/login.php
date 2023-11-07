@@ -8,13 +8,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1">
     <!-- site metas -->
-    <title>Login</title>
+    <title>Logueo Evolve</title>
     <!-- bootstrap css -->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <!-- style css -->
     <link rel="stylesheet" href="../css/style.css">
     <!-- style css -->
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="css/login.css">
     <!-- Responsive-->
     <link rel="stylesheet" href="../css/responsive.css">
     <!-- fevicon -->
@@ -37,25 +37,25 @@
 
     <section class="banner_logueo">
         <div>
-            <div class="container-fluid">
-                <div class="col-md-12">
-                    <div class="box-log text-bg-logueo">
-                        <form>
-                            <h2>Registrar o Iniciar Sesion</h2>
-                            <a class="registrarse" href="register.php">Crear una cuenta</a>
-                            <div class="input-box">
-                                <input type="email" name="correo" placeholder="Correo Electronico">
-                            </div>
-                            <div class="input-box">
-                                <input type="password" name="contrasena" placeholder="Contraseña">
-                            </div>
-                            <div class="input-box">
-                                <button type="submit" class="btn">Iniciar Sesion</button>
-                            </div>
-                        </form>
-                    </div>
+
+            <div class="col-md-12">
+                <div class="box-log text-bg-logueo">
+                    <form method="POST" action="procesar_sesion.php">
+                        <h2>Registrar o Iniciar Sesion</h2>
+                        <a class="registrarse" href="register.php">Crear una cuenta</a>
+                        <div class="input-box">
+                            <input type="email" name="correo" placeholder="Correo Electronico">
+                        </div>
+                        <div class="input-box">
+                            <input type="password" name="contrasena" placeholder="Contraseña">
+                        </div>
+                        <div class="input-box">
+                            <button type="submit" class="btn">Iniciar Sesion</button>
+                        </div>
+                    </form>
                 </div>
             </div>
+
             <div>
     </section>
 
