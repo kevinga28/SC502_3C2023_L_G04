@@ -21,6 +21,8 @@
 
   <link rel="stylesheet" href="../dist/css/style.css">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.4/dist/sweetalert2.min.css">
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -228,6 +230,8 @@
 
     })
   </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.4/dist/sweetalert2.min.js"></script>
 
 </body>
 

@@ -83,16 +83,15 @@
                 $producto->setCantidad($cantidad);
                 $producto->setPrecio($precio);
 
-                $modificados = $producto->actualizarProducto();
-
-                if ($modificados > 0) {
-                  echo 1;
+                if ( $producto->actualizarProducto()) {
+                    echo 1; 
                 } else {
-                  echo 0;
+                    echo 2; 
                 }
-            }else{
-                echo 2;	
+            } else {
+                echo 3; 
             }
+
         break;
 
         case 'obtener':

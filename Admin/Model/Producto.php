@@ -183,7 +183,12 @@ class Producto extends Conexion
 
     public function actualizarProducto()
     {
-        $query = "UPDATE producto SET nombre = :nombre, descripcion = :descripcion, cantidad = :cantidad, precio = :precio WHERE Codigo = :Codigo";
+        $query = "UPDATE producto 
+                     SET nombre = :nombre, 
+                         descripcion = :descripcion, 
+                         cantidad = :cantidad, 
+                         precio = :precio 
+                   WHERE Codigo = :Codigo";
         try {
             self::getConexion();
 
@@ -194,18 +199,18 @@ class Producto extends Conexion
 
             $resultado = self::$cnx->prepare($query);
 
-            $resultado->bindParam(':nombre', $this->nombre, PDO::PARAM_STR);
-            $resultado->bindParam(':descripcion', $this->descripcion, PDO::PARAM_STR);
-            $resultado->bindParam(':cantidad', $this->cantidad, PDO::PARAM_INT);
-            $resultado->bindParam(':precio', $this->precio, PDO::PARAM_STR);
-            $resultado->bindParam(':codigo', $this->codigo, PDO::PARAM_INT);
+            $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+            $resultado->bindParam(":descripcion", $descripcion, PDO::PARAM_STR);
+            $resultado->bindParam(":cantidad", $cantidad, PDO::PARAM_INT);
+            $resultado->bindParam(":precio", $precio, PDO::PARAM_STR);
+            $resultado->bindParam(":Codigo", $this->getCodigo(), PDO::PARAM_INT);
 
             self::$cnx->beginTransaction();
 
             $resultado->execute();
             self::$cnx->commit();
             self::desconectar();
-            return $resultado->rowCount();;
+            return $resultado->rowCount();
         } catch (PDOException $Exception) {
             self::$cnx->rollBack();
             self::desconectar();
@@ -213,6 +218,7 @@ class Producto extends Conexion
             return json_encode($error);
         }
     }
+
 
     /*=====  [CRUD] Borrar Productos de la Clase  ======*/
 

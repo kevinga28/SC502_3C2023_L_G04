@@ -1,50 +1,49 @@
 function limpiarForms() {
-    $('#modulos_add').trigger('reset');
-    $('#modulos_update').trigger('reset');
-  }
-  
-  /* --------------------------------------------------------------- LISTAR LOS PRODUCTOS --------------------------------------------------------------- */
-  function listarProductos() {
-    tabla = $('#tblistado').dataTable({
-      aProcessing: true, //actiavmos el procesamiento de datatables
-      aServerSide: true, //paginacion y filtrado del lado del serevr
-      dom: 'Bfrtip', //definimos los elementos del control de tabla
-      buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdf'],
-      ajax: {
-        url: '../../../admin/Controllers/productoController.php?op=listaProducto',
-        type: 'get',
-        dataType: 'json',
-        error: function (e) {
-          console.log(e.responseText);
+  $('#modulos_add').trigger('reset');
+  $('#modulos_update').trigger('reset');
+}
+
+/* --------------------------------------------------------------- LISTAR LOS PRODUCTOS --------------------------------------------------------------- */
+function listarProductos() {
+  tabla = $('#tblistado').dataTable({
+    aProcessing: true, //actiavmos el procesamiento de datatables
+    aServerSide: true, //paginacion y filtrado del lado del serevr
+    dom: 'Bfrtip', //definimos los elementos del control de tabla
+    buttons: ['copyHtml5', 'excelHtml5', 'csvHtml5', 'pdf'],
+    ajax: {
+      url: '../../../admin/Controllers/productoController.php?op=listaProducto',
+      type: 'get',
+      dataType: 'json',
+      error: function (e) {
+        console.log(e.responseText);
         },
-  
-        bDestroy: true,
-        iDisplayLength: 5,
-  
-      }, language: {
-        sProcessing: "Procesando...", // Mensaje de procesamiento
-        sLengthMenu: "Mostrar _MENU_ registros", // Menú para seleccionar cantidad de registros por página
-        sZeroRecords: "No se encontraron resultados",
-        sEmptyTable: "Ningún dato disponible en esta tabla",
-        sInfo: "Mostrando _START_ al _END_ de _TOTAL_ registros",
-        sInfoEmpty: "Mostrando 0 al 0 de 0 registros",
-        sInfoFiltered: "(filtrado de _MAX_ registros en total)",
-        sInfoPostFix: "",
-        sSearch: "Buscar:",
-        sUrl: "",
-        sInfoThousands: ",",
-        sLoadingRecords: "Cargando...",
-        oPaginate: {
-          sFirst: "Primero",
-          sLast: "Último",
-          sNext: "Siguiente",
-          sPrevious: "Anterior",
-        },
-        oAria: {
-          sSortAscending: ": Activar para ordenar la columna en orden ascendente",
-          sSortDescending: ": Activar para ordenar la columna en orden descendente",
-        },
+      bDestroy: true,
+      iDisplayLength: 5,
+
+    }, language: {
+      sProcessing: "Procesando...", // Mensaje de procesamiento
+      sLengthMenu: "Mostrar _MENU_ registros", // Menú para seleccionar cantidad de registros por página
+      sZeroRecords: "No se encontraron resultados",
+      sEmptyTable: "Ningún dato disponible en esta tabla",
+      sInfo: "Mostrando _START_ al _END_ de _TOTAL_ registros",
+      sInfoEmpty: "Mostrando 0 al 0 de 0 registros",
+      sInfoFiltered: "(filtrado de _MAX_ registros en total)",
+      sInfoPostFix: "",
+      sSearch: "Buscar:",
+      sUrl: "",
+      sInfoThousands: ",",
+      sLoadingRecords: "Cargando...",
+      oPaginate: {
+        sFirst: "Primero",
+        sLast: "Último",
+        sNext: "Siguiente",
+        sPrevious: "Anterior",
       },
+      oAria: {
+        sSortAscending: ": Activar para ordenar la columna en orden ascendente",
+        sSortDescending: ": Activar para ordenar la columna en orden descendente",
+      },
+    },
       columns: [
         { data: "0" },  // Codigo
         { data: "1" },  // Nombre
@@ -140,7 +139,6 @@ function limpiarForms() {
   
   /* --------------------------------------------------------------- EDITAR LOS DATOS DEL PRODUCTO --------------------------------------------------------------- */
   
-  
   $('#producto_update').on('submit', function (event) {
     event.preventDefault();
     bootbox.confirm('¿Desea modificar los datos?', function (result) {
@@ -153,7 +151,6 @@ function limpiarForms() {
           contentType: false,
           processData: false,
           success: function (datos) {
-            //alert(datos);
             switch (datos) {
               case '0':
                 toastr.error('Error: No se pudieron actualizar los datos');

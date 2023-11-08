@@ -90,8 +90,9 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-
-                                                          <input type="hidden" class="form-control" id="ECodigo" name="Codigo"  readonly>
+                                                          <label for="Codigo">Codigo</label>
+                                                          <input type="text" class="form-control" id="ECodigo" name="Codigo"  readonly>
+                                                        </div>
 
                                                           <div class="form-group">
                                                             <label for="Nombre">Nombre</label>
