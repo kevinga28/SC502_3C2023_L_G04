@@ -81,6 +81,11 @@
                                                     <div class="col-md-6">
 
                                                         <div class="form-group">
+                                                            <label for="Id">Id</label>
+                                                            <input type="text" class="form-control" id="EIdCliente" name="IdCliente" placeholder="ID" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
                                                             <label for="Nombre">Nombre</label>
                                                             <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Primer Nombre" required>
                                                         </div>
@@ -92,13 +97,10 @@
 
                                                         <div class="form-group">
                                                             <label for="correo">Correo Electrónico</label>
-                                                            <input type="email" class="form-control" id="Ecorreo" name="correo" placeholder="Correo" required>
+                                                            <input type="email" class="form-control" id="Ecorreo" name="correo" placeholder="Correo" readonly>
                                                         </div>
 
-                                                        <div class="form-group">
-                                                            <label for="contraseña">Contraseña</label>
-                                                            <input type="password" class="form-control" id="Econtrasena" name="contrasena" placeholder="Contraseña" required>
-                                                        </div>
+
                                                         <div class="form-group">
                                                             <label for="telefono">Telefono</label>
                                                             <input type="number" class="form-control" id="Etelefono" name="telefono" placeholder="Telefono" required>
