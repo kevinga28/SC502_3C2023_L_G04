@@ -266,7 +266,7 @@ class Empleado extends Conexion
     
         try {
             self::getConexion();
-    
+            $cedula = $this->getCedula();
             $nombre = $this->getNombre();
             $apellido = $this->getApellido();
             $telefono = $this->getTelefono();
@@ -286,7 +286,7 @@ class Empleado extends Conexion
             $resultado->bindParam(":distrito", $distrito, PDO::PARAM_STR);
             $resultado->bindParam(":canton", $canton, PDO::PARAM_STR);
             $resultado->bindParam(":otros", $otros, PDO::PARAM_STR);
-            $resultado->bindParam(":cedula", $this->getCedula(), PDO::PARAM_STR);
+            $resultado->bindParam(":cedula", $cedula, PDO::PARAM_INT);
     
             self::$conn->beginTransaction(); // Desactiva el autocommit
     
