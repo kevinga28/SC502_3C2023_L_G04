@@ -64,12 +64,12 @@
                                 Esta pagina sera configurada con el mvc
                             </div>
 
-                            <!-- FORMULARIO PARA CREAR UN EMPLEADO -->
-                            <div class="row">
+                           <!-- FORMULARIO PARA CREAR UN PAGO O FACTURA -->
+                           <div class="row">
                                 <div class="col-sm-12">
                                     <!-- TITULO DEL FORMULARIO -->
                                     <div class="card card-primary">
-                                        <div class="card-header" style="background-color: #F7F4ED; color: #202126; ">
+                                        <div class="card-header" style="background-color: #F7F4ED; color: #202126;">
                                             <h3 class="card-title">Ver Empleado</h3>
                                         </div>
                                         <!-- EMPIEZA EL FORMULARIO -->
@@ -77,23 +77,15 @@
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
+                                                         <div class="form-group">
+                                                            <label for="Nombre">Cedula</label>
+                                                            <input type="text" class="form-control" id="Ecedula" name="cedula" placeholder="Cedula" readonly>
+                                                            </div>
 
                                                         <div class="form-group">
-                                                            <label for="cedula">Cédula</label>
-                                                            <input type="text" class="form-control" id="Ecedula" name="cedula" placeholder="Cédula" readonly>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="imagen">Imagen</label>
+                                                            <label for="Imagen">Imagen</label>
                                                             <input type="text" class="form-control" id="Eimagen" name="imagen" placeholder="Imagen" readonly>
                                                         </div>
-
-                                                        <div class="form-group">
-                                                            <label for="genero">Género</label>
-                                                            <input type="text" class="form-control" id="Egenero" name="genero" placeholder="Género" readonly>
-                                                        </div>
-
-
                                                         <div class="form-group">
                                                             <label for="Nombre">Nombre</label>
                                                             <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Primer Nombre" readonly>
@@ -107,49 +99,63 @@
                                                         <div class="form-group">
                                                             <label for="correo">Correo Electrónico</label>
                                                             <input type="email" class="form-control" id="Ecorreo" name="correo" placeholder="Correo" readonly>
-                                                        </div>
+                                                         </div>
+
 
                                                         <div class="form-group">
                                                             <label for="telefono">Telefono</label>
                                                             <input type="number" class="form-control" id="Etelefono" name="telefono" placeholder="Telefono" readonly>
                                                         </div>
 
-                                                        <div class="form-group">
-                                                            <label for="provincia">Provincia</label>
-                                                            <input type="text" class="form-control" id="Eprovincia" name="provincia" placeholder="Provincia" readonly>
+
+                                                    </div>
+                                                    <div class=" col-md-6">
+
+
+                                                    <div class="form-group">
+                                                        <label for="fechaCita">Provincia</label>
+                                                        <input type="text" class="form-control" id="Eprovincia" name="provincia" placeholder="Provincia" readonly>
                                                         </div>
 
-                                                        <div class="form-group">
-                                                            <label for="distrito">Distrito</label>
-                                                            <input type="text" class="form-control" id="Edistrito" name="distrito" placeholder="Distrito" readonly>
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label for="distrito">Distrito</label>
+                                                        <input type="text" class="form-control" id="Edistrito" name="distrito" placeholder="Distrito" readonly>
+                                                    </div>
 
-                                                        <div class="form-group">
-                                                            <label for="canton">Canton</label>
-                                                            <input type="text" class="form-control" id="Ecanton" name="canton" placeholder="Canton" readonly>
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label for="canton">Canton</label>
+                                                        <input type="text" class="form-control" id="Ecanton" name="canton" placeholder="Canton" readonly>
+                                                    </div>
 
-                                                        <div class="form-group">
-                                                            <label for="rol">Rol</label>
-                                                            <input type="text" class="form-control" id="Erol" name="rol" placeholder="Rol" readonly>
-                                                        </div>
 
-                                                        <div class="form-group">
-                                                            <label for="otros">Otros</label>
-                                                            <input type="text" class="form-control" id="Eotros" name="otros" placeholder="Otras Señales" readonly>
-                                                        </div>
+                                                    <div class="form-group">
+                                                        <label for="otros">Otros</label>
+                                                        <input type="text" class="form-control" id="Eotros" name="otros" placeholder="Otras Señales" readonly>
+                                                    </div>
 
+                                                        
+
+                                                    <div class="form-group">
+                                                        <label for="genero">Genero</label>
+                                                        <input type="text" class="form-control" id="Egenero" name="genero" placeholder="Genero" readonly>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="Rol">Rol</label>
+                                                        <input type="text" class="form-control" id="Erol" name="rol" placeholder="Rol" readonly>
+                                                    </div>
 
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div class="col-12 mb-4">
                                                 <a href="listaEmpleado.php" class="btn btn-secondary">Volver</a>
                                             </div>
                                         </form>
-
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -157,6 +163,7 @@
             </section>
 
         </div>
+
 
         <footer class="main-footer no-print">
             <?php
