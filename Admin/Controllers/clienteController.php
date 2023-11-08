@@ -133,8 +133,8 @@ switch ($_GET["op"]) {
         break;
 
     case 'eliminar':
-        if (isset($_POST['IdCliente'])) {
-            $IdCliente = intval($_POST['IdCliente']);
+        if (isset($_POST['id'])) {
+            $IdCliente = intval($_POST['id']);
             $cliente = new cliente();
             $cliente->setIdCliente($IdCliente);
 

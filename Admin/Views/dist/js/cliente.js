@@ -56,7 +56,7 @@ function listarClientesTodos() {
         // Última columna con botones
         data: null,
         render: function (data, type, row) {
-          return '<a type="button" class="btn btn-danger float-right eliminar-cliente" data-IdCliente="'+ data[0] + '"><i class="fas fa-trash"></i> Eliminar</a>' +
+          return '<a type="button" class="btn btn-danger float-right eliminar-cliente" data-id="'+ data[0] + '"><i class="fas fa-trash"></i> Eliminar</a>' +
           '<a id="modificarCliente" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>' +
           '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>';
         }
@@ -180,29 +180,62 @@ $('#cliente_update').on('submit', function (event) {
 /* ---------------------------------------------------------------ELIMINAR EL CLIENTE MEDIANTE EL ID--------------------------------------------------------------- */
 // Para eliminar un cliente
 $(document).on('click', '.eliminar-cliente', function() {
-  var IdCliente = $(this).data('IdCliente'); // Obtiene la cédula del empleado desde el atributo de datos
+  var id = $(this).data('id');
+  console.log('id del cliente: ' + id);
 
-  if (IdCliente !== undefined) {
-    if (confirm("¿Estás seguro de que deseas eliminar este Cliente?")) {
-      // Realiza una solicitud al controlador para eliminar el empleado
-      $.ajax({
-        url: '../../../admin/Controllers/clienteController.php?op=eliminar',
-        method: 'POST',
-        data: { op: 'eliminar', IdCliente: IdCliente },
-        success: function(response) {
-          if (response === '1') {
-            toastr.error("No se pudo eliminar el Cliente. Inténtalo de nuevo");
-          } else {
-            location.reload(); // Actualiza la página
-          }
-        },
-        error: function(error) {
-          console.error("Error al eliminar el Cliente:", error);
-        }
+  Swal.fire({
+    title: 'Confirmación de Eliminación',
+    text: '¿Estás seguro de que deseas eliminar este Cliente?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, eliminar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      eliminarCliente(id);
+    }
+  });
+});
+
+function eliminarCliente(id) {
+  $.ajax({
+    url: '../../../admin/Controllers/clienteController.php?op=eliminar',
+    method: 'POST',
+    data: { op: 'eliminar', id: id },
+    success: function(response) {
+      if (response === '1') {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'No se pudo eliminar el Cliente. Inténtalo de nuevo'
+        });
+      } else {
+        Swal.fire({
+          icon: 'success',
+          title: 'Éxito',
+          text: 'Se eliminó el cliente correctamente',
+          showConfirmButton: false
+        });
+        setTimeout(function() {
+          location.reload(); 
+        }, 1800); 
+      }
+    },
+    error: function(error) {
+      console.error("Error al eliminar el Cliente:", error);
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'No se pudo eliminar el Cliente. Inténtalo de nuevo'
       });
     }
-  }
-});
+  });
+}
+
+
+
 
 
 
