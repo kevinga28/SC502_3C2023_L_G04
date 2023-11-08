@@ -17,26 +17,19 @@ if (isset($_GET["op"])) {
             $cliente = new Cliente();
 
             $cliente->setCorreo($correo);
+            $cliente->setnombre($nombre);
+            $cliente->setApellido($apellido);
+            $cliente->setContrasena($clavehash);
+            $cliente->setTelefono($telefono);
 
             if ($cliente->verificarExistenciaCliente()) {
-
-                echo 3;
-
+                echo 1; // El cliente ya existe
+            } else if (strlen($contrasena) < 8) {
+                echo 2; // Contraseña demasiado corta
+            } else if ($cliente->guardarUsuario()) {
+                echo 3; // Cliente registrado exitosamente
             } else {
-                // El cliente no existe, procede a registrar
-                $cliente->setNombre($nombre);
-                $cliente->setApellido($apellido);
-                $cliente->setContrasena($clavehash);
-                $cliente->setTelefono($telefono);
-
-                // Intenta guardar el cliente
-                if ($cliente->guardarUsuario()) {
-                    // Cliente registrado exitosamente
-                    echo 1;
-                } else {
-                    // Error al registrar el cliente
-                    echo 2;
-                }
+                echo 4; // Error al registrar el cliente
             }
 
     }

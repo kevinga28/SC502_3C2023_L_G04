@@ -1,0 +1,27 @@
+
+UWeb:AvoidCommentedOutCodeCheckI"Remove this commented out code.(‹òá¤ıÿÿÿÿ8Š›Äœº1
+a	php:S1131I"@Remove the useless trailing whitespaces at the end of this line.(‹òá¤ıÿÿÿÿ8•ˆÔœº1
+fphp:S103 "KSplit this 199 characters long line (which is greater than 120 authorized).(À¿Ú8•ˆÔœº1
+fphp:S103N"KSplit this 134 characters long line (which is greater than 120 authorized).(Ú¸ØĞ8•ˆÔœº1
+fphp:S103e"KSplit this 132 characters long line (which is greater than 120 authorized).(ŠÌÜù8•ˆÔœº1
+kphp:S103"KSplit this 131 characters long line (which is greater than 120 authorized).(¶Ú²Îüÿÿÿÿ8•ˆÔœº1
+gphp:S103"KSplit this 141 characters long line (which is greater than 120 authorized).(ÚÒÙÙ8•ˆÔœº1
+gphp:S103"KSplit this 132 characters long line (which is greater than 120 authorized).(ŠÌÜù8•ˆÔœº1
+gphp:S103—"KSplit this 142 characters long line (which is greater than 120 authorized).(Óæâ°8•ˆÔœº1
+gphp:S103›"KSplit this 143 characters long line (which is greater than 120 authorized).(‡ßí†8–ˆÔœº1
+gphp:S103Ÿ"KSplit this 131 characters long line (which is greater than 120 authorized).(úÜ“¾8–ˆÔœº1
+gphp:S103£"KSplit this 148 characters long line (which is greater than 120 authorized).(ä—8–ˆÔœº1
+fphp:S103«"KSplit this 130 characters long line (which is greater than 120 authorized).(ğÌ!8–ˆÔœº1
+gphp:S103¯"KSplit this 127 characters long line (which is greater than 120 authorized).(†İª8–ˆÔœº1
+lphp:S103³"KSplit this 136 characters long line (which is greater than 120 authorized).(ƒ¥Ÿ«şÿÿÿÿ8–ˆÔœº1
+lphp:S103¼"KSplit this 132 characters long line (which is greater than 120 authorized).(¹ÑÑúÿÿÿÿ8–ˆÔœº1
+gphp:S103Ì"KSplit this 132 characters long line (which is greater than 120 authorized).(ŠÌÜù8–ˆÔœº1
+gphp:S103Ó"KSplit this 153 characters long line (which is greater than 120 authorized).(…ê’ü8–ˆÔœº1
+gphp:S103×"KSplit this 138 characters long line (which is greater than 120 authorized).(ğ¤Í£8–ˆÔœº1
+fphp:S103İ"KSplit this 159 characters long line (which is greater than 120 authorized).(±Ëc8–ˆÔœº1
+lphp:S103à"KSplit this 159 characters long line (which is greater than 120 authorized).(¯¬±ºüÿÿÿÿ8–ˆÔœº1
+gphp:S103ã"KSplit this 159 characters long line (which is greater than 120 authorized).(ùˆ8–ˆÔœº1
+lphp:S103ë"KSplit this 126 characters long line (which is greater than 120 authorized).(¹ÑÑúÿÿÿÿ8–ˆÔœº1
+:php:S113"'Add a new line at the end of this file.8–ˆÔœº1
+e	php:S1779"QReplace all non line feed end of line characters in this file "header.php" by LF.8É±“º1
+m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ŸÛ¿ñ8–ˆÔœº1

@@ -33,9 +33,9 @@ W
 'Admin/Controllers/facturaController.php,8\3\83a9fdfa34bd52b0903f6e6e0791679e9eeeaf69
 H
 Admin/Model/Registro.php,0\b\0b2885e8a46b3c55bcb41a3c2760e247dd402c91
-K
-Cliente/config/Conexion.php,c\4\c4f7a6f2d371512c0bbcf5d372d8faff00a91544
-I
-Cliente/config/global.php,0\b\0ba0b58530f9dc0d172e1878f671302ad79cd92b
 J
 Cliente/views/Nosotros.php,8\d\8d9392df4811827de5a7ff956bdb80c2834d1f49
+R
+"Cliente/views/fragments/header.php,2\9\29d579302d102ae1246ad3a8983529394137be29
+]
+-Cliente/Controller/InicioSesionController.php,2\7\27a83fe2c14bb39f3a4e46ef63a76f76f7478c83

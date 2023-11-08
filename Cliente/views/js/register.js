@@ -21,17 +21,24 @@ $('#usuario_add').on('submit', function (event) {
         success: function (datos) {
             switch (datos) {
                 case '1':
-                    alert('Usuario Registrado');
+                    alert('correo ya existente')
                     limpiarForms();
-                    window.location.href = "../index.php";
+
 
                     break;
                 case '2':
-                    alert('error al registrar el usuario');
+                    alert('la contraeña debe contener al menos 8 caracteres');
+                    limpiarForms();
 
                     break;
                 case '3':
-                    alert('correo ya existente')
+
+                    alert('Usuario Registrado');
+                    limpiarForms();
+                    window.location.href = "../index.php";
+                    break;
+                case '4':
+                    alert('error')
 
             }
             $('#btnRegistar').removeAttr('disabled');
