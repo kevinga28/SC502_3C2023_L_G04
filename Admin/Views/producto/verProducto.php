@@ -13,6 +13,8 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
+
   <link rel="stylesheet" href="../dist/css/style.css">
 
 
@@ -73,31 +75,32 @@
                       <h3 class="card-title">Ver Producto</h3>
                     </div>
                     <!-- EMPIEZA EL FORMULARIO -->
-                    <form method="POST" action="guardar_producto.php">
+                    <form>
                       <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-6">
 
-                        <div class="form-group">
-                          <label for="codigoProducto">Codigo</label>
-                          <input type="text" class="form-control" id="Codigo" placeholder="Codigo Producto" name="codigoProducto" readonly>
-                        </div>
+                            <div class="form-group">
+                              <label for="nombre">Nombre</label>
+                              <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Nombre"  readonly>
+                            </div>
 
-                        <div class="form-group">
-                          <label for="nombre">Nombre</label>
-                          <input type="text" class="form-control" id="Nombre" nombre="Nombre Producto" placeholder="Nombre Producto" name="nombre" readonly>
-                        </div>
+                            <div class="form-group">
+                              <label for="descripcion">Descripcion</label>
+                              <input type="text" class="form-control" id="Edescripcion" name="descripcion" placeholder="Descripcion"  readonly>
+                            </div>
 
-                        <div class="form-group">
-                          <label for="descripcion">Descripción</label>
-                          <input type="text" class="form-control" id="descripcion" placeholder="Descripción" name="descripcion" readonly>
-                        </div>
-                        <div class="form-group">
-                          <label for="cantidad">Cantidad</label>
-                          <input type="number" class="form-control" id="cantidad" placeholder="Cantidad" name="cantidad" readonly>
-                        </div>
+                            <div class="form-group">
+                              <label for="cantidad">Cantidad</label>
+                              <input type="text" class="form-control" id="Ecantidad" name="cantidad" placeholder="Cantidad"  readonly>
+                            </div>
 
-                        <div class="form-group">
-                          <label for="precio">Precio</label>
-                          <input type="text" class="form-control" id="precio" placeholder="Precio" name="precio" readonly>
+                            <div class="form-group">
+                              <label for="precio">Precio</label>
+                              <input type="text" class="form-control" id="Eprecio" name="precio" placeholder="Precio"  readonly>
+                            </div>
+
+                          </div>
                         </div>
                       </div>
 
@@ -127,12 +130,22 @@
 
   </div>
 
-  <!-- jQuery -->
-  <script src="../plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="../dist/js/adminlte.min.js"></script>
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- Datatable -->
+    <script src="../plugins/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <!-- TOAST -->
+    <script src="../plugins/toastr/toastr.js"></script>
+
+    <script src="../dist/js/producto.js"></script>
+
+    <script src="../plugins/bootbox/bootbox.min.js"></script>
+
 
 </body>
 

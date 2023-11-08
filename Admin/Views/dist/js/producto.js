@@ -175,20 +175,20 @@ function listarProductos() {
   /* --------------------------------------------------------------- ELIMINAR EL PRODUCTO MEDIANTE EL CODIGO --------------------------------------------------------------- */
   
   $(document).on('click', '.eliminar-producto', function() {
-    var Codigo = $(this).data('Codigo'); // Obtiene el ID del cliente desde el atributo de datos
+    var Codigo = $(this).data('Codigo'); // Obtiene el Codigo del producto desde el atributo de datos
   
     if (Codigo !== undefined) {
         if (confirm("¿Estás seguro de que deseas eliminar este producto?")) {
             // Realiza una solicitud al controlador para eliminar el Codigo
             $.ajax({
-              url: 'controlador.php',
+              url: '../../../admin/Controllers/productoController.php?op=eliminar',
               method: 'POST',
               data: { op: 'eliminar', Codigo: Codigo },
               success: function(response) {
                   if (response === '1') {
-                      alert("Producto eliminado exitosamente");
+                    toastr.error("No se pudo eliminar el producto. Inténtalo de nuevo");
                   } else {
-                      alert("No se pudo eliminar el producto. Inténtalo de nuevo.");
+                    location.reload(); // Actualiza la página
                   }
               },
               error: function(error) {

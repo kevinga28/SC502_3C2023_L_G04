@@ -128,7 +128,7 @@
                       <!-- /.card-body -->
 
                       <div class="card-footer">
-                        <input type="submit" class="btn" value="Agregar Empleado" id="btnRegistrar" style="background-color: #202126; color: #F7F4ED;"></input>
+                        <input type="submit" class="btn" value="Agregar Producto" id="btnRegistrar" style="background-color: #202126; color: #F7F4ED;"></input>
                       </div>
                     </form>
 

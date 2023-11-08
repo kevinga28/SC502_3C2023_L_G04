@@ -90,24 +90,25 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="form-group">
-                                                          <label for="Codigo">Codigo</label>
-                                                          <input type="text" class="form-control" id="ECodigo" name="Codigo"  readonly>
+                                                            <label for="Codigo">Codigo</label>
+                                                            <input type="text" class="form-control" id="ECodigo" name="Codigo" placeholder="Cedula" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="Nombre">Nombre</label>
+                                                            <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Nombre" required>
                                                         </div>
 
                                                           <div class="form-group">
-                                                            <label for="Nombre">Nombre</label>
-                                                            <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Nombre">
+                                                            <label for="Descripcion">Descripción</label>
+                                                            <input type="text" class="form-control" id="Edescripcion" name="descripcion" placeholder="Descripción" required>
                                                           </div>
 
                                                           <div class="form-group">
-                                                              <label for="Descripcion">Descripción</label>
-                                                              <input type="text" class="form-control" id="Edescripcion" name="descripcion" placeholder="Descripción">
+                                                            <label for="Cantidad">Cantidad</label>
+                                                            <input type="text" class="form-control" id="Ecantidad" name="cantidad" placeholder="Cantidad" required>
                                                           </div>
 
-                                                          <div class="form-group">
-                                                              <label for="Cantidad">Cantidad</label>
-                                                              <input type="text" class="form-control" id="Ecantidad" name="cantidad" placeholder="Cantidad">
-                                                          </div>
                                                           <!--
                                                           <div class="form-group">
                                                           <label for="Categoría">Categoría</label>
@@ -121,7 +122,7 @@
                                                           -->
                                                           <div class="form-group">
                                                               <label for="Precio">Precio</label>
-                                                              <input type="text" class="form-control" id="Eprecio" placeholder="Precio">
+                                                              <input type="text" class="form-control" id="Eprecio" placeholder="Precio" required>
                                                           </div>
                                                           <!--
                                                           <div class="form-group">
@@ -138,13 +139,10 @@
                                                 <input type="submit" value="Actualizar Producto" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
                                             </div>
                                         </form>
-
                                     </div>
                                 </div>
 
                             </div>
-
-
                         </div>
                     </div>
                 </div>
