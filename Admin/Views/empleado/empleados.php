@@ -21,6 +21,10 @@
 
   <link rel="stylesheet" href="../plugins/toastr/toastr.css">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.4/dist/sweetalert2.min.css">
+
+
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -238,6 +242,7 @@
 
   <script src="../plugins/select2/js/select2.full.min.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.4/dist/sweetalert2.min.js"></script>
   <!-- Page specific script -->
   <script>
     $(function() {

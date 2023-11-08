@@ -67,76 +67,87 @@
                             </div>
 
 
-                            <!-- FORMULARIO PARA CREAR UN EMPLEADO -->
+                            <!-- FORMULARIO PARA CREAR UN PAGO O FACTURA -->
                             <div class="row">
                                 <div class="col-sm-12">
                                     <!-- TITULO DEL FORMULARIO -->
                                     <div class="card card-primary">
-                                        <div class="card-header" style="background-color: #F7F4ED; color: #202126; ">
+                                        <div class="card-header" style="background-color: #F7F4ED; color: #202126;">
                                             <h3 class="card-title">Editar Empleado</h3>
                                         </div>
                                         <!-- EMPIEZA EL FORMULARIO -->
                                         <form method="POST" name="empleado_update" id="empleado_update">
                                             <div class="card-body">
                                                 <div class="row">
-                                                    <div class="col-md-6">                        
-                                                            <div class="form-group">
-                                                             
-                                                                <input type="hidden" class="form-control" id="Ecedula" name="cedula"  readonly>
+                                                    <div class="col-md-6">
+                                                         <div class="form-group">
+                                                            <label for="Nombre">Cedula</label>
+                                                            <input type="text" class="form-control" id="Ecedula" name="cedula" placeholder="Cedula" readonly>
+                                                            </div>
 
-                                                                <div class="form-group">
-                                                                <label for="Nombre">Nombre</label>
-                                                                <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Primer Nombre" required>
-                                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="Nombre">Nombre</label>
+                                                            <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Primer Nombre" required>
+                                                        </div>
 
-                                                                <div class="form-group">
-                                                                <label for="apellido">Apellido</label>
-                                                                <input type="text" class="form-control" id="Eapellido" name="apellido" placeholder="Apellido" required>
-                                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="apellido">Apellido</label>
+                                                            <input type="text" class="form-control" id="Eapellido" name="apellido" placeholder="Apellido" required>
+                                                        </div>
 
-                                                                <input type="hidden" class="form-control" id="Egenero" name="genero" readonly>
-
-                                                                <div class="form-group">
-                                                                <label for="correo">Correo Electrónico</label>
-                                                                <input type="email" class="form-control" id="Ecorreo" name="correo" placeholder="Correo" readonly>
-                                                                </div>
-
-                                                                <input type="hidden" class="form-control" id="Econtrasena" name="contrasena" readonly>
-
-                                                                <div class="form-group">
-                                                                <label for="telefono">Telefono</label>
-                                                                <input type="number" class="form-control" id="Etelefono" name="telefono" placeholder="Telefono" required>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                <label for="fechaCita">Provincia</label>
-                                                                <input type="text" class="form-control" id="Eprovincia" name="provincia" placeholder="Provincia" required>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                <label for="distrito">Distrito</label>
-                                                                <input type="text" class="form-control" id="Edistrito" name="distrito" placeholder="Distrito" required>
-                                                                </div>
-
-                                                                <div class="form-group">
-                                                                <label for="canton">Canton</label>
-                                                                <input type="text" class="form-control" id="Ecanton" name="canton" placeholder="Canton" required>
-                                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="correo">Correo Electrónico</label>
+                                                            <input type="email" class="form-control" id="Ecorreo" name="correo" placeholder="Correo" readonly>
+                                                         </div>
 
 
-                                                                <div class="form-group">
-                                                                <label for="otros">Otros</label>
-                                                                <input type="text" class="form-control" id="Eotros" name="otros" placeholder="Otras Señales" required>
-                                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="telefono">Telefono</label>
+                                                            <input type="number" class="form-control" id="Etelefono" name="telefono" placeholder="Telefono" required>
+                                                        </div>
 
-                                                                <div class="form-group">
-                                                                <label for="rol">Rol</label>
-                                                                <select class="select2 select2-hidden-accessible" id="Erol" name="rol" data-placeholder="Seleccionar Rol" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
-                                                                    <option>Gerente</option>
-                                                                    <option>Estilista</option>
-                                                                    <option>Admin</option>
-                                                                </select>
-                                                                </div>
+
+                                                    </div>
+                                                    <div class=" col-md-6">
+
+
+                                                    <div class="form-group">
+                                                        <label for="fechaCita">Provincia</label>
+                                                        <input type="text" class="form-control" id="Eprovincia" name="provincia" placeholder="Provincia" required>
+                                                        </div>
+
+                                                    <div class="form-group">
+                                                        <label for="distrito">Distrito</label>
+                                                        <input type="text" class="form-control" id="Edistrito" name="distrito" placeholder="Distrito" required>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="canton">Canton</label>
+                                                        <input type="text" class="form-control" id="Ecanton" name="canton" placeholder="Canton" required>
+                                                    </div>
+
+
+                                                    <div class="form-group">
+                                                        <label for="otros">Otros</label>
+                                                        <input type="text" class="form-control" id="Eotros" name="otros" placeholder="Otras Señales" required>
+                                                    </div>
+
+                                                        
+
+                                                    <div class="form-group">
+                                                        <label for="genero">Genero</label>
+                                                        <input type="text" class="form-control" id="Egenero" name="genero" placeholder="Genero" readonly>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="rol">Rol</label>
+                                                        <select class="select2 select2-hidden-accessible" id="Erol" name="rol" data-placeholder="Seleccionar Rol" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
+                                                            <option>Gerente</option>
+                                                            <option>Estilista</option>
+                                                            <option>Admin</option>
+                                                        </select>
+                                                    </div>
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -146,14 +157,10 @@
                                                 <input type="submit" value="Actualizar Empleado" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
                                             </div>
                                         </form>
-
                                     </div>
                                 </div>
 
-
-
                             </div>
-
                         </div>
                     </div>
                 </div>

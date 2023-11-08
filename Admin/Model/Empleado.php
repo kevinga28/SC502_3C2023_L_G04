@@ -255,58 +255,54 @@ class Empleado extends Conexion
         }
     }
 
+
     public function actualizarEmpleado()
-{
-    $query = "UPDATE empleado 
-    SET  nombre = :nombre,  apellido = :apellido, telefono = :telefono, 
-        rol = :rol, provincia = :provincia, genero = :genero,
-        distrito = :distrito, canton = :canton, otros = :otros
-        where cedula= :cedula and email=:email";
-
-
-    try {
-        self::getConexion();
-
-
-        $nombre = $this->getNombre();
-        $apellido = $this->getApellido();
-        $genero = $this->getGenero();
-        $correo = $this->getCorreo();
-        $telefono = $this->getTelefono();
-        $rol = $this->getRol();
-        $provincia = $this->getProvincia();
-        $distrito = $this->getDistrito();
-        $canton = $this->getCanton();
-        $otros = $this->getOtros();
-
-
-        $resultado = self::$conn->prepare($query);
-
-        $resultado->bindParam(":imagen", $imagen, PDO::PARAM_LOB); 
-        $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
-        $resultado->bindParam(":apellido", $apellido, PDO::PARAM_STR);
-        $resultado->bindParam(":genero", $genero, PDO::PARAM_STR);
-        $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
-        $resultado->bindParam(":telefono", $telefono, PDO::PARAM_STR);
-        $resultado->bindParam(":rol", $rol, PDO::PARAM_STR);
-        $resultado->bindParam(":provincia", $provincia, PDO::PARAM_STR);
-        $resultado->bindParam(":distrito", $distrito, PDO::PARAM_STR);
-        $resultado->bindParam(":canton", $canton, PDO::PARAM_STR);
-        $resultado->bindParam(":otros", $otros, PDO::PARAM_STR);
-
-        self::$conn->beginTransaction(); // Desactiva el autocommit
-
-        $resultado->execute();
-        self::$conn->commit(); // Realiza el commit y vuelve al modo autocommit
-        self::desconectar();
-        return $resultado->rowCount();
-    } catch (PDOException $Exception) {
-        self::$conn->rollBack();
-        self::desconectar();
-        $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-        return $error;
+    {
+        $query = "UPDATE empleado 
+                  SET nombre = :nombre, apellido = :apellido, telefono = :telefono, 
+                      rol = :rol, provincia = :provincia,
+                      distrito = :distrito, canton = :canton, otros = :otros
+                  WHERE cedula = :cedula";
+    
+        try {
+            self::getConexion();
+    
+            $nombre = $this->getNombre();
+            $apellido = $this->getApellido();
+            $telefono = $this->getTelefono();
+            $rol = $this->getRol();
+            $provincia = $this->getProvincia();
+            $distrito = $this->getDistrito();
+            $canton = $this->getCanton();
+            $otros = $this->getOtros();
+    
+            $resultado = self::$conn->prepare($query);
+    
+            $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+            $resultado->bindParam(":apellido", $apellido, PDO::PARAM_STR);
+            $resultado->bindParam(":telefono", $telefono, PDO::PARAM_STR);
+            $resultado->bindParam(":rol", $rol, PDO::PARAM_STR);
+            $resultado->bindParam(":provincia", $provincia, PDO::PARAM_STR);
+            $resultado->bindParam(":distrito", $distrito, PDO::PARAM_STR);
+            $resultado->bindParam(":canton", $canton, PDO::PARAM_STR);
+            $resultado->bindParam(":otros", $otros, PDO::PARAM_STR);
+            $resultado->bindParam(":cedula", $this->getCedula(), PDO::PARAM_STR);
+    
+            self::$conn->beginTransaction(); // Desactiva el autocommit
+    
+            $resultado->execute();
+            self::$conn->commit(); // Realiza el commit y vuelve al modo autocommit
+            self::desconectar();
+            return $resultado->rowCount();
+        } catch (PDOException $Exception) {
+            self::$conn->rollBack();
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error;
+        }
     }
-}
+    
+
 
     public static function obtenerEmpleadoPorCedula($cedula)
     {
@@ -357,3 +353,4 @@ class Empleado extends Conexion
     }
 }
 }
+
