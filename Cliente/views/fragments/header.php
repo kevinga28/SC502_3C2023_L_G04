@@ -147,12 +147,19 @@ if (isset($_GET['cerrar_sesion'])) {
                <div class="row">
                   <div class="col-md-6">
                      <div class="form-group">
+
+
+
+
+
+
+
                         <label for="nombreCliente">Nombre:</label>
-                        <input type="text" id="nombreCliente" name="nombreCliente" value="<?php echo $nombreCliente; ?>" class="form-control">
+                         <input type="email" id="correoCliente" name="correoCliente" value="<?php echo isset($usuario) ? $usuario->getNombre() : ''; ?>" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="correoCliente">Correo:</label>
-                        <input type="email" id="correoCliente" name="correoCliente" value="<?php echo $correoCliente; ?>" class="form-control">
+                         <input type="email" id="correoCliente" name="correoCliente" value="<?php echo isset($usuario) ? $usuario->getCorreo() : ''; ?>" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="password">Contraseña:</label>
@@ -160,7 +167,7 @@ if (isset($_GET['cerrar_sesion'])) {
                      </div>
                      <div class="form-group">
                         <label for="telefonoCliente">Teléfono:</label>
-                        <input type="text" id="telefonoCliente" name="telefonoCliente" value="<?php echo $telefonoCliente; ?>" class="form-control">
+                         <input type="email" id="correoCliente" name="correoCliente" value="<?php echo isset($usuario) ? $usuario->getTelefono() : ''; ?>" class="form-control">
                      </div>
 
                   </div>
@@ -184,6 +191,9 @@ if (isset($_GET['cerrar_sesion'])) {
                      </div>
                   </div>
                </div>
+
+
+
                <div class="modal-footer" style="justify-content: space-between;">
                   <button type="button" class="btn btn-citas-modal" data-bs-toggle="modal" data-bs-target="#myModal">Volver</button>
                   <button type="submit" class="btn btn-editar-modal">Guardar Cambios</button>
@@ -208,7 +218,7 @@ if (isset($_GET['cerrar_sesion'])) {
                <div class="text-modal">
                   <div class="form-group">
                      <label for="tratamiento">Tratamiento:</label>
-                     <input type="text" id="tratamiento" name="tratamiento" class="form-control" value="<?php echo $factura['tratamiento']; ?>" readonly>
+                     <input type="text" id="tratamiento" name="tratamiento" class="form-control"  readonly>
                   </div>
                   <div class="form-group">
                      <label for="precio">Precio con IVA:</label>

@@ -35,7 +35,9 @@ H
 Admin/Model/Registro.php,0\b\0b2885e8a46b3c55bcb41a3c2760e247dd402c91
 J
 Cliente/views/Nosotros.php,8\d\8d9392df4811827de5a7ff956bdb80c2834d1f49
-R
-"Cliente/views/fragments/header.php,2\9\29d579302d102ae1246ad3a8983529394137be29
 ]
 -Cliente/Controller/InicioSesionController.php,2\7\27a83fe2c14bb39f3a4e46ef63a76f76f7478c83
+P
+ Cliente/views/js/inicioSesion.js,7\9\79314a4b441b8012c2d040250328b877064a522e
+R
+"Cliente/views/fragments/footer.php,a\2\a2052863a0bd785e104754369285aa88f84579c0
