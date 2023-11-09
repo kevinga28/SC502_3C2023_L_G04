@@ -158,7 +158,7 @@ class Producto extends Conexion
 
     /*=====  [CRUD] Leer Productos de la Clase  ======*/
 
-    public static function obtenerProductoCodigo($codigo)
+    public static function obtenerProductoCodigo($Codigo)
     {
         $query = "SELECT * FROM producto WHERE Codigo = :Codigo";
         try {
@@ -192,6 +192,7 @@ class Producto extends Conexion
         try {
             self::getConexion();
 
+            $Codigo = $this->getCodigo();
             $nombre = $this->getNombre();
             $descripcion = $this->getDescripcion();
             $cantidad = $this->getCantidad();
@@ -203,7 +204,7 @@ class Producto extends Conexion
             $resultado->bindParam(":descripcion", $descripcion, PDO::PARAM_STR);
             $resultado->bindParam(":cantidad", $cantidad, PDO::PARAM_INT);
             $resultado->bindParam(":precio", $precio, PDO::PARAM_STR);
-            $resultado->bindParam(":Codigo", $this->getCodigo(), PDO::PARAM_INT);
+            $resultado->bindParam(":Codigo", $Codigo, PDO::PARAM_INT);
 
             self::$cnx->beginTransaction();
 
@@ -229,7 +230,7 @@ class Producto extends Conexion
             self::getConexion();
             $Codigo = $this->getCodigo();
             $resultado = self::$cnx->prepare($query);
-            $resultado->bindParam(':Codigo', $this->Codigo, PDO::PARAM_INT);
+            $resultado->bindParam(':Codigo', $Codigo, PDO::PARAM_INT);
             $resultado->execute();
             self::desconectar();
             return $resultado->rowCount();
@@ -237,7 +238,7 @@ class Producto extends Conexion
         } catch (PDOException $Exception) {
             self::desconectar();
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-            return json_encode($error);
+            return $error;
         }
     }
 }

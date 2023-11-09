@@ -77,7 +77,7 @@
             $encontrado = $producto->verificarProducto();
 
             if ($encontrado == false) {
-                $producto->setCodigo($codigo);
+                $producto->setCodigo($Codigo);
                 $producto->setNombre($nombre);
                 $producto->setDescripcion($descripcion);
                 $producto->setCantidad($cantidad);
@@ -106,13 +106,13 @@
                     echo json_encode(["error" => "No se encontró el producto"]);
                 }
             } else {
-                echo json_encode(["error" => "codigo del producto no proporcionado"]);
+                echo json_encode(["error" => "Codigo del producto no proporcionado"]);
             }
             break;
 
         case 'eliminar':
             if (isset($_POST['Codigo'])) {
-                $codigo = intval($_POST['Codigo']);
+                $Codigo = intval($_POST['Codigo']);
                 $producto = new Producto();
                 $producto->setCodigo($Codigo);
         

@@ -121,9 +121,11 @@
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- ChartJS -->
+  <script src="../plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.min.js"></script>
-  <!-- Datatable -->
+   <!-- Datatable -->
   <script src="../plugins/DataTables/datatables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
   <!-- TOAST -->
@@ -132,6 +134,10 @@
   <script src="../dist/js/producto.js"></script>
 
   <script src="../plugins/bootbox/bootbox.min.js"></script>
+
+  <script src="../plugins/select2/js/select2.full.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.4/dist/sweetalert2.min.js"></script>
 
 </body>
 
