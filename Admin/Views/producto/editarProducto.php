@@ -124,7 +124,7 @@
                                                           -->
                                                           <div class="form-group">
                                                               <label for="Precio">Precio</label>
-                                                              <input type="text" class="form-control" id="Eprecio" placeholder="Precio" required>
+                                                              <input type="text" class="form-control" id="Eprecio" name="precio" placeholder="Precio" required>
                                                           </div>
                                                           <!--
                                                           <div class="form-group">
