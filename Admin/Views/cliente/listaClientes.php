@@ -23,6 +23,9 @@
   <link rel="stylesheet" href="../dist/css/style.css">
 
 
+
+
+
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -89,7 +92,7 @@
                         <table id="tbllistado" class="table table-striped table-bordered table-hover">
                           <thead>
                             <tr>
-                              <th>ID</th>
+                              <th>IdCliente</th>
                               <th>Correo</th>
                               <th>Nombre</th>
                               <th>Apellido</th>
@@ -121,6 +124,8 @@
   </div>
 
   <!-- jQuery -->
+
+  
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -132,9 +137,12 @@
   <!-- TOAST -->
   <script src="../plugins/toastr/toastr.js"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
   <script src="../dist/js/cliente.js"></script>
 
   <script src="../plugins/bootbox/bootbox.min.js"></script>
+
 
 
 

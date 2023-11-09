@@ -3,8 +3,8 @@ require_once '../Model/Cliente.php';
 switch ($_GET["op"]) {
 
     case 'listaTabla':
-        $user_login = new Cliente();
-        $clientes = $user_login->listarClientes();
+        $cliente = new Cliente();
+        $clientes = $cliente->listarClientes();
         // Prepara los datos para DataTables
         $data = array();
         foreach ($clientes as $reg) {
@@ -60,7 +60,7 @@ switch ($_GET["op"]) {
             $cliente->setOtros($otros);
             $cliente->guardarEnDb();
             if ($cliente->verificarExistenciaCliente()) {
-                echo 1; 
+                echo 1;
             } else {
                 echo 2;
             }
@@ -70,8 +70,10 @@ switch ($_GET["op"]) {
         break;
 
     case 'verificar_existencia_cliente':
+        $IdCliente = isset($_POST["IdCliente"]) ? trim($_POST["IdCliente"]) : "";
         $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
         $cliente->setCorreo($correo);
+        $cliente->setIdCliente($IdCliente);
         $encontrado = $cliente->verificarExistenciaCliente();
         echo $encontrado ? 1 : 0;
         break;
@@ -80,9 +82,9 @@ switch ($_GET["op"]) {
 
     case 'editar':
         // Asegúrate de recibir y validar todos los datos necesarios
+        $IdCliente = isset($_POST["IdCliente"]) ? trim($_POST["IdCliente"]) : "";
         $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
         $apellido = isset($_POST["apellido"]) ? trim($_POST["apellido"]) : "";
-        $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
         $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
         $tipoCliente = isset($_POST["tipoCliente"]) ? trim($_POST["tipoCliente"]) : "";
         $provincia = isset($_POST["provincia"]) ? trim($_POST["provincia"]) : "";
@@ -91,13 +93,12 @@ switch ($_GET["op"]) {
         $otros = isset($_POST["otros"]) ? trim($_POST["otros"]) : "";
 
         $cliente = new Cliente();
-
         $encontrado = $cliente->verificarExistenciaCliente();
-        if ($encontrado == 1) {
-            
+
+        if ($encontrado == false) {
+            $cliente->setIdCliente($IdCliente);
             $cliente->setNombre($nombre);
             $cliente->setApellido($apellido);
-            $cliente->setCorreo($correo);
             $cliente->setTelefono($telefono);
             $cliente->setTipoCliente($tipoCliente);
             $cliente->setProvincia($provincia);
@@ -105,15 +106,13 @@ switch ($_GET["op"]) {
             $cliente->setCanton($canton);
             $cliente->setOtros($otros);
 
-            $modificados = $cliente->actualizarCliente();
-
-            if ($modificados > 0) {
-                echo 1; // Éxito en la actualización
+            if ($cliente->actualizarCliente()) {
+                echo 1; //exito en la actualizacion
             } else {
-                echo 0; // No se realizaron modificaciones
+                echo 2; //Indica que la actualización se ejecutó, pero los datos no cambiaron.
             }
         } else {
-            echo 2; // El cliente no existe
+            echo 3; //Este valor se muestra si el cliente no existe
         }
         break;
 
@@ -132,27 +131,22 @@ switch ($_GET["op"]) {
             echo json_encode(["error" => "IdCliente del cliente no proporcionada"]);
         }
         break;
-        
-        case 'eliminar':
-            if (isset($_GET['IdCliente'])) {
-                $IdCliente = isset($_GET['IdCliente']) ? intval($_GET['IdCliente']) : null;
-        
-                $cliente = Cliente::obtenerClientePorIdCliente($IdCliente);
-        
-                if ($cliente) {
-                    // Realiza la eliminación del cliente
-                    $resultado = $cliente->eliminarCliente();
-        
-                    if ($resultado === 1) {
-                        echo json_encode(["success" => "Cliente eliminado exitosamente"]);
-                    } else {
-                        echo json_encode(["error" => "No se pudo eliminar el cliente"]);
-                    }
-                } else {
-                    echo json_encode(["error" => "No se encontró el cliente"]);
-                }
+
+    case 'eliminar':
+        if (isset($_POST['id'])) {
+            $IdCliente = intval($_POST['id']);
+            $cliente = new cliente();
+            $cliente->setIdCliente($IdCliente);
+
+            $resultado = $cliente->eliminarcliente();
+
+            if ($resultado === 1) {
+                echo json_encode(["success" => "cliente eliminado"]);
             } else {
-                echo json_encode(["error" => "IdCliente del cliente no proporcionada"]);
+                echo json_encode(["error" => "No se pudo eliminar el cliente"]);
             }
-            break;
+        } else {
+            echo json_encode(["error" => "Id del cliente no proporcionado"]);
+        }
+        break;
 }

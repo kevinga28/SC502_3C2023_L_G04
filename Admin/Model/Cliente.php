@@ -266,37 +266,38 @@ class Cliente extends Conexion
     public function actualizarCliente()
     {
         $query = "UPDATE cliente 
-        SET  nombre = :nombre, apellido = :apellido, correo = :correo, telefono = :telefono, 
-            tipoCliente = :tipoCliente, provincia = :provincia, 
-            distrito = :distrito, canton = :canton, otros = :otros 
-        WHERE IdCliente = :IdCliente";
+                    SET nombre = :nombre, apellido = :apellido, telefono = :telefono, 
+                        tipoCliente = :tipoCliente, provincia = :provincia, 
+                        distrito = :distrito, canton = :canton, otros = :otros 
+                    WHERE IdCliente = :IdCliente";
 
         try {
             self::getConexion();
 
             $nombre = $this->getNombre();
             $apellido = $this->getApellido();
-            $correo = $this->getCorreo();
             $telefono = $this->getTelefono();
             $tipoCliente = $this->getTipoCliente();
             $provincia = $this->getProvincia();
             $distrito = $this->getDistrito();
             $canton = $this->getCanton();
             $otros = $this->getOtros();
+            $IdCliente = $this->getIdCliente();
 
             $resultado = self::$cnx->prepare($query);
 
             $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
             $resultado->bindParam(":apellido", $apellido, PDO::PARAM_STR);
-            $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
             $resultado->bindParam(":telefono", $telefono, PDO::PARAM_STR);
             $resultado->bindParam(":tipoCliente", $tipoCliente, PDO::PARAM_BOOL);
             $resultado->bindParam(":provincia", $provincia, PDO::PARAM_STR);
             $resultado->bindParam(":distrito", $distrito, PDO::PARAM_STR);
             $resultado->bindParam(":canton", $canton, PDO::PARAM_STR);
             $resultado->bindParam(":otros", $otros, PDO::PARAM_STR);
+            $resultado->bindParam(":IdCliente", $IdCliente, PDO::PARAM_INT);
 
             self::$cnx->beginTransaction(); // Desactiva el autocommit
+
             $resultado->execute();
             self::$cnx->commit(); // Realiza el commit y vuelve al modo autocommit
             self::desconectar();
@@ -337,16 +338,19 @@ class Cliente extends Conexion
     }
     /*=====  End of Metodos de la Clase  ======*/
 
-    public function eliminarCliente($IdCliente)
+    public function eliminarcliente()
     {
         $query = "DELETE FROM cliente WHERE IdCliente = :IdCliente";
 
         try {
             self::getConexion();
+            $IdCliente = $this->getIdCliente();
+
             $resultado = self::$cnx->prepare($query);
             $resultado->bindParam(":IdCliente", $IdCliente, PDO::PARAM_INT);
             $resultado->execute();
             self::desconectar();
+
             return $resultado->rowCount(); // Devuelve el número de filas afectadas (debe ser 1 si se eliminó correctamente).
         } catch (PDOException $Exception) {
             self::desconectar();
@@ -354,45 +358,4 @@ class Cliente extends Conexion
             return $error;
         }
     }
-
-    public static function buscarClientePorId($IdCliente)
-{
-    try {
-        self::getConexion();
-
-        $query = "SELECT * FROM cliente WHERE IdCliente = :IdCliente";
-        $resultado = self::$cnx->prepare($query);
-        $resultado->bindParam(":IdCliente", $IdCliente, PDO::PARAM_INT);
-        $resultado->execute();
-
-        // Verifica si se encontró un cliente con el IdCliente proporcionado
-        if ($resultado->rowCount() > 0) {
-            // Obtiene los datos del cliente
-            $clienteData = $resultado->fetch(PDO::FETCH_ASSOC);
-            $cliente = new Cliente();
-
-            // Llena el objeto cliente con los datos
-            $cliente->setIdCliente($clienteData['IdCliente']);
-            $cliente->setNombre($clienteData['nombre']);
-            $cliente->setApellido($clienteData['apellido']);
-            $cliente->setCorreo($clienteData['correo']);
-            // Agrega otros campos según tus necesidades
-
-            // Cierra la conexión a la base de datos
-            self::desconectar();
-
-            return $cliente;
-        }
-
-        // Cierra la conexión a la base de datos
-        self::desconectar();
-
-        return null; // No se encontró ningún cliente con ese IdCliente
-    } catch (PDOException $Exception) {
-        // En caso de un error, cierra la conexión y devuelve un mensaje de error
-        self::desconectar();
-        $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-        return $error;
-    }
-}
 }
