@@ -111,8 +111,8 @@
             break;
 
         case 'eliminar':
-            if (isset($_POST['Codigo'])) {
-                $Codigo = intval($_POST['Codigo']);
+            if (isset($_POST['cod'])) {
+                $Codigo = intval($_POST['cod']);
                 $producto = new Producto();
                 $producto->setCodigo($Codigo);
         

@@ -6,28 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Evolve</title>
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-    <!-- TOAST-->
-    <link rel="stylesheet" href="../plugins/toastr/toastr.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-    <link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
-    <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-
-    <link rel="stylesheet" href="../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
-
-    <link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
-
-    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
-
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
-
-    <link rel="stylesheet" href="../dist/css/style.css">
+  <link rel="stylesheet" href="../dist/css/style.css">
 
 
 </head>
@@ -101,17 +89,17 @@
                                                             <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Nombre" required>
                                                         </div>
 
-                                                          <div class="form-group">
+                                                        <div class="form-group">
                                                             <label for="Descripcion">Descripción</label>
                                                             <input type="text" class="form-control" id="Edescripcion" name="descripcion" placeholder="Descripción" required>
-                                                          </div>
+                                                        </div>
 
-                                                          <div class="form-group">
+                                                        <div class="form-group">
                                                             <label for="Cantidad">Cantidad</label>
                                                             <input type="text" class="form-control" id="Ecantidad" name="cantidad" placeholder="Cantidad" required>
-                                                          </div>
+                                                        </div>
 
-                                                          <!--
+                                                        <!--
                                                           <div class="form-group">
                                                           <label for="Categoría">Categoría</label>
                                                           <select class="form-control" id="Categoría">
@@ -122,11 +110,11 @@
                                                           </select>
                                                           </div>
                                                           -->
-                                                          <div class="form-group">
-                                                              <label for="Precio">Precio</label>
-                                                              <input type="text" class="form-control" id="Eprecio" name="precio" placeholder="Precio" required>
-                                                          </div>
-                                                          <!--
+                                                        <div class="form-group">
+                                                            <label for="Precio">Precio</label>
+                                                            <input type="text" class="form-control" id="Eprecio" name="precio" placeholder="Precio" required>
+                                                        </div>
+                                                        <!--
                                                           <div class="form-group">
                                                               <label for="Imagen">Imagen Referencia</label>
                                                               <input type="text" class="form-control" id="Imagen" placeholder="URL de la imagen">
@@ -175,12 +163,11 @@
     <!-- Datatable -->
     <script src="../plugins/DataTables/datatables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-    <!-- TOAST -->
-    <script src="../plugins/toastr/toastr.js"></script>
+    <!-- SWEETALERT -->
+    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
     <script src="../dist/js/producto.js"></script>
-    
-    <script src="../plugins/bootbox/bootbox.min.js"></script>
+
 
 </body>
 

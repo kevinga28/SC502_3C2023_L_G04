@@ -82,22 +82,22 @@
 
                             <div class="form-group">
                               <label for="nombre">Nombre</label>
-                              <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Nombre"  readonly>
+                              <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Nombre" readonly>
                             </div>
 
                             <div class="form-group">
                               <label for="descripcion">Descripcion</label>
-                              <input type="text" class="form-control" id="Edescripcion" name="descripcion" placeholder="Descripcion"  readonly>
+                              <input type="text" class="form-control" id="Edescripcion" name="descripcion" placeholder="Descripcion" readonly>
                             </div>
 
                             <div class="form-group">
                               <label for="cantidad">Cantidad</label>
-                              <input type="text" class="form-control" id="Ecantidad" name="cantidad" placeholder="Cantidad"  readonly>
+                              <input type="text" class="form-control" id="Ecantidad" name="cantidad" placeholder="Cantidad" readonly>
                             </div>
 
                             <div class="form-group">
                               <label for="precio">Precio</label>
-                              <input type="text" class="form-control" id="Eprecio" name="precio" placeholder="Precio"  readonly>
+                              <input type="text" class="form-control" id="Eprecio" name="precio" placeholder="Precio" readonly>
                             </div>
 
                           </div>
@@ -130,21 +130,24 @@
 
   </div>
 
-    <!-- jQuery -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
-    <!-- Datatable -->
-    <script src="../plugins/DataTables/datatables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-    <!-- TOAST -->
-    <script src="../plugins/toastr/toastr.js"></script>
 
-    <script src="../dist/js/producto.js"></script>
 
-    <script src="../plugins/bootbox/bootbox.min.js"></script>
+
+  
+  <!-- jQuery -->
+  <script src="../plugins/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../dist/js/adminlte.min.js"></script>
+  <!-- Datatable -->
+  <script src="../plugins/DataTables/datatables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+  <!-- SWEETALERT -->
+  <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
+
+  <script src="../dist/js/producto.js"></script>
+
 
 
 </body>
