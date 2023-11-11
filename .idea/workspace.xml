@@ -5,12 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8c9abd-086d-4297-a16c-a6018e345d6d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/e/6e32f7f75515e41f450719028bfdac0c857f8342" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/9/b922cf94facfda6f952867030842ab1b3a423495" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1abaac618b17fb470d3f9d65f9631e2f33537241" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d1239c9c87c08aad77d4e6da0f76733818bd1409" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Controllers/loginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Controllers/loginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Model/InicioSesion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Model/InicioSesion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/fragments/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/fragments/login.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/logueo.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/logueo.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +99,8 @@
       <workItem from="1699504910975" duration="235000" />
       <workItem from="1699670957450" duration="13149000" />
       <workItem from="1699684889205" duration="49000" />
-      <workItem from="1699685541502" duration="1819000" />
+      <workItem from="1699685541502" duration="2561000" />
+      <workItem from="1699721618009" duration="2832000" />
     </task>
     <servers />
   </component>

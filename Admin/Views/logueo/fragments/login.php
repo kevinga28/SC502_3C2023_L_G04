@@ -1,5 +1,4 @@
 <div class="login-box">
-
     <div class="card card-outline card-primary">
         <div class="card-header text-center">
             <a href="../../index3.html" class="h1">
@@ -11,12 +10,12 @@
             <form name="modulos_verif" id="login" method="POST">
                 <!-- Email input -->
                 <div class="form-outline mb-4">
-                    <input name="correo" type="email" id="form2Example1" class="form-control" />
+                    <input name="correo" type="email" id="form2Example1" class="form-control" required />
                     <label class="form-label" for="form2Example1">Email address</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                    <input name="contrasena" type="password" id="form2Example2" class="form-control" />
+                    <input name="contrasena" type="password" id="form2Example2" class="form-control" required />
                     <label class="form-label" for="form2Example2">
                         Contraseña
                         <span class="toggle-password" id="togglePassword"

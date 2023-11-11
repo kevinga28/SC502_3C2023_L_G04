@@ -26,14 +26,19 @@ $('#login').on('submit', function (event) {
 
             switch (datos) {
                 case '1':
-                    alert('Logeado');
+
                     limpiarForms();
                     window.location.href = "../index.php";
 
                     break;
                 case '2':
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Credenciales Incorrectas',
+                        text: 'Logueado.',});
                     limpiarForms();
-                    alert('credenciales incorrectas');
+
+
                     break;
 
             }

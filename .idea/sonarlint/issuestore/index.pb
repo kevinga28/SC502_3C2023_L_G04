@@ -47,8 +47,6 @@ X
 -Cliente/Controller/InicioSesionController.php,2\7\27a83fe2c14bb39f3a4e46ef63a76f76f7478c83
 I
 Cliente/Model/Cliente.php,4\b\4b0a6bd5bda1a1beaba641bf58a95a85ab1a2510
-V
-&Admin/Views/logueo/fragments/login.php,d\1\d1239c9c87c08aad77d4e6da0f76733818bd1409
 L
 Cliente/views/js/register.js,8\8\88e19e1b20de31e787740af04e463810881633ee
 D
@@ -57,11 +55,13 @@ G
 Admin/Model/Cliente.php,e\3\e3aa02ab5e8d41341dfda7499b0122638e76cc4a
 T
 $Admin/Controllers/citaController.php,4\a\4a29a1a2d4dca1eb8b2e81fa1628868bd2e10759
-X
-(Admin/Controllers/empleadoController.php,1\a\1abaac618b17fb470d3f9d65f9631e2f33537241
 W
 'Admin/Controllers/clienteController.php,6\1\616f5009821b2827caab8d8bc584be24d853b4ff
 G
 Admin/config/global.php,5\8\58b7a93acbc7f426b7017b70c30a5706069d9785
 G
 Admin/Model/Factura.php,1\0\10f6aaca7d7608dda31aa4ed6cd74b9a8dc0f0c4
+H
+Admin/Model/Empleado.php,6\e\6e32f7f75515e41f450719028bfdac0c857f8342
+Y
+)Admin/Views/fragments/listaInventario.php,b\9\b922cf94facfda6f952867030842ab1b3a423495

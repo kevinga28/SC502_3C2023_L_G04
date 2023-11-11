@@ -1,0 +1,49 @@
+
+[	php:S1131®"@Remove the useless trailing whitespaces at the end of this line.(¯ë±øÿÿÿÿ
+V	php:S1131Å"@Remove the useless trailing whitespaces at the end of this line.(ïÛ†ï
+V	php:S1131ì"@Remove the useless trailing whitespaces at the end of this line.(ª¦ï´
+V	php:S1131ù"@Remove the useless trailing whitespaces at the end of this line.(ïÛ†ï
+[	php:S1131…"@Remove the useless trailing whitespaces at the end of this line.(½ûğÕşÿÿÿÿ
+V	php:S1131†"@Remove the useless trailing whitespaces at the end of this line.(¤Øô¢
+Qphp:S105"EReplace all tab characters in this file by sequences of white-spaces.
+ephp:S103Ö"KSplit this 179 characters long line (which is greater than 120 authorized).(¹ôÍúÿÿÿÿÿ
+ephp:S103×"KSplit this 151 characters long line (which is greater than 120 authorized).(åğ„àùÿÿÿÿ
+`php:S103Ü"KSplit this 121 characters long line (which is greater than 120 authorized).(¸—“ç
+W	php:S1808"=Move this open curly brace to the beginning of the next line.(éúÜÅûÿÿÿÿ
+R	php:S1808"=Move this open curly brace to the beginning of the next line.(à’ĞÍ
+Q	php:S1808 "=Move this open curly brace to the beginning of the next line.(È²Æ
+W	php:S1808$"=Move this open curly brace to the beginning of the next line.(´ğíŸúÿÿÿÿ
+W	php:S1808("=Move this open curly brace to the beginning of the next line.(ÿ……Öüÿÿÿÿ
+R	php:S1808,"=Move this open curly brace to the beginning of the next line.(·»Õ§
+Q	php:S18080"=Move this open curly brace to the beginning of the next line.(úôy
+W	php:S18084"=Move this open curly brace to the beginning of the next line.(ó‰ñ±ÿÿÿÿÿ
+W	php:S18088"=Move this open curly brace to the beginning of the next line.(ğ×øÿÿÿÿ
+W	php:S1808<"=Move this open curly brace to the beginning of the next line.(ˆ–Áùÿÿÿÿ
+W	php:S1808@"=Move this open curly brace to the beginning of the next line.(÷é­êùÿÿÿÿ
+W	php:S1808D"=Move this open curly brace to the beginning of the next line.(Ñ®¡¡üÿÿÿÿ
+R	php:S1808H"=Move this open curly brace to the beginning of the next line.(À€«ò
+R	php:S1808L"=Move this open curly brace to the beginning of the next line.(İï¹ş
+W	php:S1808P"=Move this open curly brace to the beginning of the next line.(•³§úşÿÿÿÿ
+R	php:S1808T"=Move this open curly brace to the beginning of the next line.(¸ı¹Â
+W	php:S1808X"=Move this open curly brace to the beginning of the next line.(¥¤á¡üÿÿÿÿ
+W	php:S1808\"=Move this open curly brace to the beginning of the next line.(ôùĞûÿÿÿÿ
+R	php:S1808`"=Move this open curly brace to the beginning of the next line.(Ñ¥§è
+R	php:S1808d"=Move this open curly brace to the beginning of the next line.(ı§Šü
+W	php:S1808h"=Move this open curly brace to the beginning of the next line.(ıûˆÀùÿÿÿÿ
+R	php:S1808l"=Move this open curly brace to the beginning of the next line.(É»Ûß
+R	php:S1808p"=Move this open curly brace to the beginning of the next line.(òÜ¾‘
+Q	php:S1808t"=Move this open curly brace to the beginning of the next line.(ªôß3
+R	php:S1808x"=Move this open curly brace to the beginning of the next line.(‰•ö 
+W	php:S1808|"=Move this open curly brace to the beginning of the next line.(€òì™ıÿÿÿÿ
+S	php:S1808€"=Move this open curly brace to the beginning of the next line.(²üÏ¸
+X	php:S1808Õ"=Move this open curly brace to the beginning of the next line.(ĞğŞ­úÿÿÿÿ
+e	php:S1808Õ"JPut one space between the closing parenthesis and the opening curly brace.(ĞğŞ­úÿÿÿÿ
+`	php:S1779"SReplace all non line feed end of line characters in this file "Empleado.php" by LF.
+b	php:S1192µ"GDefine a constant instead of duplicating this literal "Error " 5 times.(Ñëİ±ûÿÿÿÿ
+c	php:S1192Ã"HDefine a constant instead of duplicating this literal ":cedula" 5 times.(·õºáşÿÿÿÿ
+y	php:S1488Ï"^Immediately return this expression instead of assigning it to the temporary variable "$error".(Ñëİ±ûÿÿÿÿ
+y	php:S1488¬"^Immediately return this expression instead of assigning it to the temporary variable "$error".(Ñëİ±ûÿÿÿÿ
+y	php:S1488ß"^Immediately return this expression instead of assigning it to the temporary variable "$error".(Ñëİ±ûÿÿÿÿ
+@	php:S1481É"*Remove this unused "$item" local variable.(’¼îâ
+y	php:S1448"dClass "Empleado" has 35 methods, which is greater than 20 authorized. Split it into smaller classes.(Ÿ¡¬Ô
+k	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ğŠº’şÿÿÿÿ
