@@ -34,8 +34,17 @@ switch ($_GET["op"]) {
         $apellido = isset($_POST["apellido"]) ? trim($_POST["apellido"]) : "";
         $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
         $contrasena = isset($_POST["contrasena"]) ? trim($_POST["contrasena"]) : "";
+        if (strlen($contrasena) < 8) {
+            echo 'La contraseña debe tener al menos 8 caracteres.';
+            exit;
+        }
         $contrasena = hash('SHA256', $contrasena);
+
         $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
+        if (strlen($telefono) != 8) {
+            echo 'El teléfono debe tener exactamente 8 dígitos.';
+            exit;
+        }
         $tipoCliente = isset($_POST["tipoCliente"]) ? trim($_POST["tipoCliente"]) : "";
         $provincia = isset($_POST["provincia"]) ? trim($_POST["provincia"]) : "";
         $distrito = isset($_POST["distrito"]) ? trim($_POST["distrito"]) : "";
@@ -81,11 +90,14 @@ switch ($_GET["op"]) {
 
 
     case 'editar':
-        // Asegúrate de recibir y validar todos los datos necesarios
         $IdCliente = isset($_POST["IdCliente"]) ? trim($_POST["IdCliente"]) : "";
         $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
         $apellido = isset($_POST["apellido"]) ? trim($_POST["apellido"]) : "";
         $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
+        if (strlen($telefono) != 8) {
+            echo 'El teléfono debe tener exactamente 8 dígitos.';
+            exit;
+        }
         $tipoCliente = isset($_POST["tipoCliente"]) ? trim($_POST["tipoCliente"]) : "";
         $provincia = isset($_POST["provincia"]) ? trim($_POST["provincia"]) : "";
         $distrito = isset($_POST["distrito"]) ? trim($_POST["distrito"]) : "";
@@ -109,7 +121,7 @@ switch ($_GET["op"]) {
             if ($cliente->actualizarCliente()) {
                 echo 1; //exito en la actualizacion
             } else {
-                echo 2; //Indica que la actualización se ejecutó, pero los datos no cambiaron.
+                echo 2;  //Error al guardar en la base de datos
             }
         } else {
             echo 3; //Este valor se muestra si el cliente no existe
@@ -122,7 +134,6 @@ switch ($_GET["op"]) {
             $cliente = Cliente::obtenerClientePorIdCliente($IdCliente);
 
             if ($cliente) {
-                // Devuelve los datos del cliente en formato JSON
                 echo json_encode($cliente);
             } else {
                 echo json_encode(["error" => "No se encontró el cliente"]);
@@ -148,5 +159,11 @@ switch ($_GET["op"]) {
         } else {
             echo json_encode(["error" => "Id del cliente no proporcionado"]);
         }
+        break;
+
+        case 'cargarCliente':
+        $clienteModel = new Cliente();
+        $clientes = $clienteModel->obtenerCliente();
+        echo json_encode($clientes);
         break;
 }

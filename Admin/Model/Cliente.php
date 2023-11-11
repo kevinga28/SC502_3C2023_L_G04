@@ -316,27 +316,26 @@ class Cliente extends Conexion
         try {
             // Conecta a la base de datos
             self::getConexion();
-
+    
             // Prepara la consulta
             $stmt = self::$cnx->prepare($query);
-
+    
             // Asigna el valor de la cédula y ejecuta la consulta
             $stmt->bindParam(":IdCliente", $IdCliente, PDO::PARAM_INT);
             $stmt->execute();
-
+    
             // Obtiene los resultados y los devuelve como un arreglo asociativo
             $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
-
+    
             // Cierra la conexión a la base de datos
             self::desconectar();
-
+    
             return $cliente;
         } catch (PDOException $e) {
             // Manejo de errores, por ejemplo, loguear el error
             return null;
         }
     }
-    /*=====  End of Metodos de la Clase  ======*/
 
     public function eliminarcliente()
     {
@@ -352,6 +351,30 @@ class Cliente extends Conexion
             self::desconectar();
 
             return $resultado->rowCount(); // Devuelve el número de filas afectadas (debe ser 1 si se eliminó correctamente).
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error;
+        }
+    }
+
+    public function obtenerCliente()
+    {
+        $query = "SELECT IdCliente, nombre, apellido, correo FROM cliente";
+
+        $clientes = array();
+
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->query($query);
+
+            while ($cliente = $resultado->fetch(PDO::FETCH_ASSOC)) {
+                $clientes[] = $cliente;
+            }
+
+            self::desconectar();
+
+            return $clientes;
         } catch (PDOException $Exception) {
             self::desconectar();
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();

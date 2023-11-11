@@ -46,12 +46,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Sistema de Clientes</h1>
+              <h1>Sistema de Tratamientos</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                <li class="breadcrumb-item active">Clientes</li>
+                <li class="breadcrumb-item active">Tratamientos</li>
               </ol>
             </div>
           </div>
@@ -71,7 +71,7 @@
                 <div class="row">
                   <div class="col-12">
                     <h4>
-                      <i class="fas fa-globe"></i> Tabla Clientes
+                      <i class="fas fa-globe"></i> Tabla Tratamientos
                     </h4>
                   </div>
                   <!-- /.col -->
@@ -83,15 +83,13 @@
 
                     <div class="row">
                       <div class="col-sm-12">
-                        <table id="tbllistado" class="table table-striped table-bordered table-hover">
+                        <table id="listado" class="table table-striped table-bordered table-hover">
                           <thead>
                             <tr>
-                              <th>IdCliente</th>
-                              <th>Correo</th>
+                              <th>ID</th>
                               <th>Nombre</th>
-                              <th>Apellido</th>
-                              <th>Telefono</th>
-                              <th>Provincia</th>
+                              <th>Descripcion</th>
+                              <th>Precio</th>
                               <th>Opciones</th>
                             </tr>
                           </thead>
@@ -119,7 +117,6 @@
 
   <!-- jQuery -->
 
-  
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -131,7 +128,7 @@
    <!-- SWEETALERT -->
    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
-  <script src="../dist/js/cliente.js"></script>
+  <script src="../dist/js/tratamiento.js"></script>
 
 
 

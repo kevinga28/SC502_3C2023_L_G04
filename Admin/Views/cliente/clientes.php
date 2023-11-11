@@ -13,13 +13,9 @@
   <!-- Theme style -->
   <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-  <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
-
   <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
   <link rel="stylesheet" href="../dist/css/style.css">
-
-  <link rel="stylesheet" href="../plugins/toastr/toastr.css">
 
 </head>
 
@@ -205,13 +201,10 @@
   <!-- Datatable -->
   <script src="../plugins/DataTables/datatables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-  <!-- TOAST -->
-  <script src="../plugins/toastr/toastr.js"></script>
+  <!-- SWEETALERT -->
+  <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
   <script src="../dist/js/cliente.js"></script>
-
-  <script src="../plugins/bootbox/bootbox.min.js"></script>
-
 
   <!-- Page specific script -->
   <script>
@@ -238,14 +231,6 @@
         data: barChartData,
         options: barChartOptions
       })
-
-    })
-  </script>
-
-  <script>
-    $(function() {
-      //Initialize Select2 Elements
-      $('.select2').select2()
 
     })
   </script>

@@ -6,9 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Evolve</title>
 
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css">
-
-
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -46,12 +43,12 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Sistema de Clientes</h1>
+              <h1>Sistema de Tratamientos</h1>
             </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
-                <li class="breadcrumb-item active">Clientes</li>
+                <li class="breadcrumb-item active">Tratamientos</li>
               </ol>
             </div>
           </div>
@@ -62,45 +59,51 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-
-
-
-              <!-- Main content -->
-              <div class="invoice p-3 mb-3">
-                <!-- title row -->
-                <div class="row">
-                  <div class="col-12">
-                    <h4>
-                      <i class="fas fa-globe"></i> Tabla Clientes
-                    </h4>
-                  </div>
-                  <!-- /.col -->
-                </div>
-
-
-                <div class="card-body">
-                  <div id="tabla_wrapper" class="dataTables_wrapper dt-bootstrap4">
-
-                    <div class="row">
-                      <div class="col-sm-12">
-                        <table id="tbllistado" class="table table-striped table-bordered table-hover">
-                          <thead>
-                            <tr>
-                              <th>IdCliente</th>
-                              <th>Correo</th>
-                              <th>Nombre</th>
-                              <th>Apellido</th>
-                              <th>Telefono</th>
-                              <th>Provincia</th>
-                              <th>Opciones</th>
-                            </tr>
-                          </thead>
-                        </table>
-                      </div>
+              
+              <!-- FORMULARIO PARA CREAR UN tratamiento -->
+              <div class="row">
+                <div class="col-sm-12">
+                  <!-- TITULO DEL FORMULARIO -->
+                  <div class="card card-primary">
+                    <div class="card-header" style="background-color: #F7F4ED; color: #202126; ">
+                      <h3 class="card-title">Agregar Tratamiento</h3>
                     </div>
+                    <!-- EMPIEZA EL FORMULARIO -->
+                    <form method="POST" name="modulos_add" id="crearTratamiento">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-md-12">
+
+                            <div class="form-group">
+                              <label for="Nombre">Nombre</label>
+                              <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre Tratamiento" required>
+                            </div>
+
+                            <div class="form-group">
+                              <label for="Descripcion">Descripcion</label>
+                              <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion" required>
+                            </div>
+
+
+                            <div class="form-group">
+                              <label for="Precio">Precio</label>
+                              <input type="text" class="form-control" id="precio" name="precio" placeholder="Precio" required>
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+
+                      <div class="card-footer">
+                        <input type="submit" class="btn" value="Agregar Tratamiento" id="btnRegistrarTratamiento" style="background-color: #202126; color: #F7F4ED;"></input>
+                      </div>
+                    </form>
+
                   </div>
                 </div>
+
               </div>
+
             </div>
           </div>
         </div>
@@ -118,8 +121,6 @@
   </div>
 
   <!-- jQuery -->
-
-  
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -128,11 +129,10 @@
   <!-- Datatable -->
   <script src="../plugins/DataTables/datatables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-   <!-- SWEETALERT -->
-   <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
+  <!-- SWEETALERT -->
+  <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
-  <script src="../dist/js/cliente.js"></script>
-
+  <script src="../dist/js/tratamiento.js"></script>
 
 
 

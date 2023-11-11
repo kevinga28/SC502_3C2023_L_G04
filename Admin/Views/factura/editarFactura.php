@@ -13,10 +13,6 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-    <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-
-    <link rel="stylesheet" href="../plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
-
     <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
 
     <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
@@ -65,11 +61,6 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <div class="callout callout-info">
-                                <h5><i class="fas fa-info"></i> Nota:</h5>
-                                Esta pagina sera configurada con el mvc
-                            </div>
-
 
                             <!-- FORMULARIO PARA CREAR UN PAGO O FACTURA -->
                             <div class="row">
@@ -79,90 +70,82 @@
                                         <div class="card-header" style="background-color: #F7F4ED; color: #202126;">
                                             <h3 class="card-title">Editar Factura</h3>
                                         </div>
+
                                         <!-- EMPIEZA EL FORMULARIO -->
-                                        <form method="POST" action="editar_factura.php">
+                                        <form method="POST" name="" id="">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
+
                                                         <div class="form-group">
-                                                            <label for="Nombre">Nombre</label>
-                                                            <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Primer Nombre">
+                                                            <label for="busquedaCitas">Buscar Cita Del Cliente</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" id="busquedaCitas" name="busquedaCitas" placeholder="Citas">
+                                                                <div class="input-group-append">
+                                                                    <button type="button" class="btn btn-primary" id="buscarCliente">Buscar</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="Apellido">Apellido</label>
-                                                            <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Apellido">
+                                                            <label for="nombre">Nombre</label>
+                                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre" required readonly>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="correoCliente">Correo Electrónico</label>
-                                                            <input type="email" class="form-control" id="correoCliente" name="correoCliente" placeholder="Ingresar Correo">
+                                                            <label for="apellido">Apellido</label>
+                                                            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" required readonly>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="Telefono">Teléfono</label>
-                                                            <input type="text" class="form-control" id="Telefono" name="Telefono" placeholder="Teléfono">
+                                                            <label for="correo">Correo Electrónico</label>
+                                                            <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" required readonly>
                                                         </div>
 
-                                                        <div class="form-check mb-3">
-                                                            <input type="checkbox" class="form-check-input" id="EmpleadoCheck" name="EmpleadoCheck">
-                                                            <label class="form-check-label" for="EmpleadoCheck">Empleado</label>
-                                                        </div>
 
                                                         <div class="form-group">
-                                                            <label for="FechaCita">Fecha de la Cita</label>
-                                                            <input type="date" class="form-control" id="FechaCita" name="FechaCita">
+                                                            <label for="metodoPago">Método de Pago</label>
+                                                            <select class="select2 select2-hidden-accessible" id="metodoPago" name="metodoPago" data-placeholder="Seleccionar Pago" data-dropdown-css-class="select2-danger" style="width: 100%;" aria-hidden="true">
+                                                                <option>Efectivo</option>
+                                                                <option>Tarjeta de Crédito</option>
+                                                                <option>Tarjeta de Débito</option>
+                                                                <option>Transferencia Bancaria</option>
+                                                                <option>Otro</option>
+                                                            </select>
                                                         </div>
 
-                                                        <div class="form-group">
-                                                            <label for="HoraCita">Hora de la Cita</label>
-                                                            <input type="time" class="form-control" id="HoraCita" name="HoraCita">
-                                                        </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <div class="form-group">
-                                                            <label for="tratamiento">Tratamiento</label>
-                                                            <select class="select2 select2-hidden-accessible" multiple="multiple" id="tratamiento" name="tratamiento[]" data-placeholder="Seleccionar Tratamiento" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
-                                                                <option value="CorteMujer" data-precio="30">Corte Mujer - $30</option>
-                                                                <option value="LargoLavadoMujer" data-precio="40">Largo + Lavado Mujer - $40</option>
-                                                                <option value="CortoLavadoMujer" data-precio="35">Corto + Lavado Mujer - $35</option>
-                                                                <option value="LargoHombre" data-precio="25">Largo Hombre - $25</option>
-                                                                <option value="CortoHombre" data-precio="20">Corto Hombre - $20</option>
-                                                                <option value="LargoLavadoHombre" data-precio="30">Largo + Lavado Hombre - $30 </option>
-                                                                <option value="CortoLavadoHombre" data-precio="25">Corto + Lavado Hombre - $25</option>
-                                                                <option value="NinioNinia" data-precio="15">Niño - Niña - $15</option>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="MetodoPago">Método de Pago</label>
-                                                            <select class="select2 select2-hidden-accessible" id="MetodoPago" name="MetodoPago" data-placeholder="Seleccionar Pago" data-dropdown-css-class="select2-danger" style="width: 100%;" aria-hidden="true">
-                                                                <option value="Efectivo">Efectivo</option>
-                                                                <option value="Tarjeta de Crédito">Tarjeta de Crédito</option>
-                                                                <option value="Tarjeta de Débito">Tarjeta de Débito</option>
-                                                                <option value="Transferencia Bancaria">Transferencia Bancaria</option>
-                                                                <option value="Otro">Otro</option>
-                                                            </select>
-                                                        </div>
+                                                    <div class=" col-md-6">
 
                                                         <div class="form-group">
                                                             <label for="estilista">Estilista</label>
-                                                            <select class="select2 select2-hidden-accessible" id="estilista" name="estilista" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
-                                                                <option value="Carol Mejias">Carol Mejias</option>
-                                                                <option value="Marta Delgado">Marta Delgado</option>
-                                                                <option value="Sofia Vargas">Sofia Vargas</option>
+                                                            <input type="text" class="form-control" id="estilista" name="estilista" placeholder="Estilista" readonly>
+                                                        </div>
 
+                                                        <div class="form-group">
+                                                            <label for="tratamiento">Producto</label>
+                                                            <select class="select2 select2-hidden-accessible" multiple="multiple" id="IdProducto" name="producto[]" data-placeholder="Buscar Producto" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
                                                             </select>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="fechaCita">Fecha de la Cita</label>
+                                                            <input type="date" class="form-control" id="fechaCita" name="fechaCita" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="horaCita">Hora de la Cita</label>
+                                                            <input type="time" class="form-control" id="horaCita" name="horaCita" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="total">Total a Pagar</label>
                                                             <input type="text" class="form-control" id="total" name="total" readonly>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
-
                                             <div class="col-12 mb-4">
                                                 <a href="listaFactura.php" class="btn btn-secondary">Volver</a>
                                                 <input type="submit" value="Actualizar Facturas" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
@@ -191,19 +174,22 @@
     </div>
 
 
-    <!-- jQuery -->
+
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="../plugins/chart.js/Chart.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
-    <!-- Page specific script -->
+    <!-- Datatable -->
+    <script src="../plugins/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <!-- SWEETALERT -->
+    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
+
+    <script src="../dist/js/factura.js"></script>
+
 
 
     <script>
@@ -215,7 +201,7 @@
                 total += parseInt($(this).data('precio'));
             });
             // Muestra el total en el campo correspondiente
-            $('#total').val('$' + total);
+            $('#total').val('₡' + total);
         });
     </script>
 

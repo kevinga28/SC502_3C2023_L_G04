@@ -19,7 +19,6 @@
 
     <link rel="stylesheet" href="../dist/css/style.css">
 
-    <link rel="stylesheet" href="../plugins/toastr/toastr.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -73,55 +72,46 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
 
+                                                       
+
                                                         <div class="form-group">
-                                                            <label for="BusquedaCliente">Buscar Cliente</label>
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control" id="BusquedaCliente" name="BusquedaCliente" placeholder="Cliente" required>
-                                                                <div class="input-group-append">
-                                                                    <input type="button" class="btn btn-primary" value="Buscar" id="BuscarCliente">
-                                                                </div>
-                                                            </div>
+                                                            <label for="cliente">Buscar Cliente</label>
+                                                            <select class="select2 select2-hidden-accessible" id="cliente" name="cliente" data-placeholder="Seleccionar Cliente" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
+                                                                <!-- Clientes cargados desde PHP se insertarán aquí automáticamente -->
+                                                            </select>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="Nombre">Nombre</label>
-                                                            <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Primer Nombre" readonly>
+                                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre" readonly>
                                                         </div>
 
 
                                                         <div class="form-group">
                                                             <label for="apellido">Apellido</label>
-                                                            <input type="text" class="form-control" id="Eapellido" name="apellido" placeholder="Apellido" readonly>
+                                                            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="correo">Correo Electrónico</label>
-                                                            <input type="email" class="form-control" id="Ecorreo" name="correo" placeholder="Correo" readonly>
+                                                            <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" readonly>
                                                         </div>
 
 
                                                         <div class="form-group">
                                                             <label for="tratamiento">Tratamiento</label>
                                                             <select class="select2 select2-hidden-accessible" multiple="multiple" id="tratamiento" name="tratamiento[]" data-placeholder="Seleccionar Tratamiento" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
-                                                                <option value="CorteMujer" data-precio="30">Corte Mujer - ₡30</option>
-                                                                <option value="LargoLavadoMujer" data-precio="40">Largo + Lavado Mujer - ₡40</option>
-                                                                <option value="CortoLavadoMujer" data-precio="35">Corto + Lavado Mujer - ₡35</option>
-                                                                <option value="LargoHombre" data-precio="25">Largo Hombre - ₡25</option>
-                                                                <option value="CortoHombre" data-precio="20">Corto Hombre - ₡20</option>
-                                                                <option value="LargoLavadoHombre" data-precio="30">Largo + Lavado Hombre - ₡30 </option>
-                                                                <option value="CortoLavadoHombre" data-precio="25">Corto + Lavado Hombre - ₡25</option>
-                                                                <option value="NinioNinia" data-precio="15">Niño - Niña - ₡15</option>
+                                                                <!-- Tratamientos cargados desde PHP se insertarán aquí automáticamente -->
                                                             </select>
                                                         </div>
+
                                                     </div>
                                                     <div class=" col-md-6">
 
                                                         <div class="form-group">
                                                             <label for="estilista">Estilista</label>
-                                                            <select class="select2 select2-hidden-accessible" id="estilista" name="estilista" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
-                                                                <option>Carol Mejias</option>
-                                                                <option>Marta Delgado</option>
-                                                                <option>Sofia Vargas</option>
+                                                            <select class="select2 select2-hidden-accessible" id="cedulaEmpleado" name="cedulaEmpleado" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
+                                                                <!-- Tratamientos cargados desde PHP se insertarán aquí automáticamente -->
                                                             </select>
                                                         </div>
 
@@ -136,15 +126,20 @@
                                                         </div>
 
                                                         <div class="form-group">
+                                                            <label for="duracionTotal">Duración Total</label>
+                                                            <input type="time" class="form-control" id="duracionTotal" name="duracionTotal" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
                                                             <label for="pagoTotal">Total a Pagar</label>
-                                                            <input type="text" class="form-control" id="pagoTotal" name="pagoTotal" readonly>
+                                                            <input type="text" class="form-control" id="pagototal" name="pagoTotal" readonly value="₡0">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="card-footer">
-                                                <input type="submit" class="btn" value="Agregar Cita" id="btnRegistrar" style="background-color: #202126; color: #F7F4ED;"></input>
+                                                <input type="submit" class="btn" value="Agregar Cita" id="btnRegistrarCita" style="background-color: #202126; color: #F7F4ED;"></input>
                                             </div>
                                         </form>
 
@@ -167,7 +162,6 @@
     </div>
 
 
-    <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -176,31 +170,56 @@
     <!-- Datatable -->
     <script src="../plugins/DataTables/datatables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-    <!-- TOAST -->
-    <script src="../plugins/toastr/toastr.js"></script>
-
-    <script src="../dist/js/cita.js"></script>
-
-    <script src="../plugins/bootbox/bootbox.min.js"></script>
+    <!-- SWEETALERT -->
+    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
 
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
 
 
 
     <script>
-        // Captura el cambio en la selección de tratamientos
-        $('#tratamiento').on('change', function() {
-            var total = 0;
-            // Suma los precios de los tratamientos seleccionados
-            $('#tratamiento option:selected').each(function() {
-                total += parseInt($(this).data('precio'));
+        $(document).ready(function() {
+            $('#tratamiento').on('change', function() {
+                var total = 0;
+                // Suma los precios de los tratamientos seleccionados
+                $('#tratamiento option:selected').each(function() {
+                    total += parseInt($(this).data('precio'));
+                });
+                // Muestra el total en el campo correspondiente
+                $('#pagototal').val('₡' + total);
             });
-            // Muestra el total en el campo correspondiente
-            $('#pagototal').val('₡' + total);
         });
     </script>
 
+<script>
+    $(document).ready(function() {
+        $('#tratamiento').on('change', function() {
+            var duracionTotal = 0;
+            $('#tratamiento option:selected').each(function() {
+                var duracionComoMinutos = convertirFormatoHoraAMinutos($(this).data('duracion'));
+                duracionTotal += duracionComoMinutos;
+            });
+            $('#duracionTotal').val(convertirDuracionAFormatoHora(duracionTotal));
+        });
+    });
+
+ 
+    function convertirFormatoHoraAMinutos(horaEnFormatoHHMMSS) {
+        var partes = horaEnFormatoHHMMSS.split(":");
+        var horas = parseInt(partes[0]);
+        var minutos = parseInt(partes[1]);
+        var segundos = parseInt(partes[2]);
+        return horas * 60 + minutos + segundos / 60;
+    }
+
+    function convertirDuracionAFormatoHora(duracionEnMinutos) {
+        var horas = Math.floor(duracionEnMinutos / 60);
+        var minutos = duracionEnMinutos % 60;
+        return ('00' + horas).slice(-2) + ':' + ('00' + minutos).slice(-2);
+    }
+</script>
 
     <script>
         $(function() {
@@ -210,6 +229,14 @@
 
         })
     </script>
+
+    <script src="../dist/js/cita.js"></script>
+
+    <script src="../dist/js/tratamiento.js"></script>
+
+
+
+
 
 
 

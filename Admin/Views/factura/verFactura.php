@@ -61,10 +61,6 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <div class="callout callout-info">
-                                <h5><i class="fas fa-info"></i> Nota:</h5>
-                                Esta pagina sera configurada con el mvc
-                            </div>
 
                             <!-- FORMULARIO PARA CREAR UN EMPLEADO -->
                             <div class="row">
@@ -75,65 +71,59 @@
                                             <h3 class="card-title">Ver Factura</h3>
                                         </div>
                                         <!-- EMPIEZA EL FORMULARIO -->
-                                        <form method="POST" action="guardar_factura.php">
+                                        <form method="POST" name="" id="">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
 
+
                                                         <div class="form-group">
-                                                            <label for="Nombre">Nombre</label>
-                                                            <input type="text" class="form-control" id="Nombre" name="Nombre" placeholder="Primer Nombre" required readonly>
+                                                            <label for="nombre">Nombre</label>
+                                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre" readonly>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="Apellido">Apellido</label>
-                                                            <input type="text" class="form-control" id="Apellido" name="Apellido" placeholder="Apellido" required readonly>
+                                                            <label for="apellido">Apellido</label>
+                                                            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" readonly>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="correoCliente">Correo Electrónico</label>
-                                                            <input type="email" class="form-control" id="correoCliente" name="correoCliente" placeholder="Ingresar Correo" required readonly>
+                                                            <label for="correo">Correo Electrónico</label>
+                                                            <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" readonly>
                                                         </div>
 
 
                                                         <div class="form-group">
-                                                            <label for="MetodoPago">Método de Pago</label>
-                                                            <select class="select2 select2-hidden-accessible" id="MetodoPago" name="MetodoPago" data-placeholder="Seleccionar Pago" data-dropdown-css-class="select2-danger" style="width: 100%;" aria-hidden="true">
-                                                                <option>Efectivo</option>
-                                                                <option>Tarjeta de Crédito</option>
-                                                                <option>Tarjeta de Débito</option>
-                                                                <option>Transferencia Bancaria</option>
-                                                                <option>Otro</option>
-                                                            </select>
+                                                            <label for="metodoPago">Método de Pago</label>
+                                                            <input type="text" class="form-control" id="metodoPago" name="metodoPago"  placeholder="Metodo Pago"readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="estilista">Estilista</label>
+                                                            <input type="text" class="form-control" id="estilista" name="estilista" placeholder="Estilista" readonly>
                                                         </div>
 
                                                     </div>
                                                     <div class=" col-md-6">
 
                                                         <div class="form-group">
-                                                            <label for="estilista">Estilista</label>
-                                                            <select class="select2 select2-hidden-accessible" id="estilista" name="estilista" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
-                                                                <option>Carol Mejias</option>
-                                                                <option>Marta Delgado</option>
-                                                                <option>Sofia Vargas</option>
-                                                            </select>
+                                                            <label for="producto">Producto</label>
+                                                            <input type="text" class="form-control" id="producto" name="producto" placeholder="Productos" readonly>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="FechaCita">Fecha de la Cita</label>
-                                                            <input type="date" class="form-control" id="FechaCita" name="FechaCita" readonly>
+                                                            <label for="fechaCita">Fecha de la Cita</label>
+                                                            <input type="date" class="form-control" id="fechaCita" name="fechaCita" readonly>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="HoraCita">Hora de la Cita</label>
-                                                            <input type="time" class="form-control" id="HoraCita" name="HoraCita" readonly>
+                                                            <label for="horaCita">Hora de la Cita</label>
+                                                            <input type="time" class="form-control" id="horaCita" name="horaCita"  readonly>
                                                         </div>
-
-
 
                                                         <div class="form-group">
                                                             <label for="total">Total a Pagar</label>
-                                                            <input type="text" class="form-control" id="total" name="total" readonly>
+                                                            <input type="text" class="form-control" id="total" name="total" placeholder="Total" readonly>
                                                         </div>
 
 
@@ -164,14 +154,21 @@
 
     </div>
 
-    <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
+    <!-- Datatable -->
+    <script src="../plugins/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <!-- SWEETALERT -->
+    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
+
+    <script src="../dist/js/factura.js"></script>
+
 
     <!-- Page specific script -->
     <script>
