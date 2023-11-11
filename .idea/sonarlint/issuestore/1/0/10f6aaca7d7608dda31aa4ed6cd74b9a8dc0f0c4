@@ -1,25 +1,0 @@
-
-V	php:S1131Ô"@Remove the useless trailing whitespaces at the end of this line.(ËŞ»„
-[	php:S1131£"@Remove the useless trailing whitespaces at the end of this line.(ğƒÜØşÿÿÿÿ
-[	php:S1131¤"@Remove the useless trailing whitespaces at the end of this line.(¡¸™úÿÿÿÿ
-V	php:S1131¥"@Remove the useless trailing whitespaces at the end of this line.(ÓÙÄ
-[	php:S1131¦"@Remove the useless trailing whitespaces at the end of this line.(³‘­Ôøÿÿÿÿ
-Qphp:S105"EReplace all tab characters in this file by sequences of white-spaces.
-`php:S103Ô"KSplit this 194 characters long line (which is greater than 120 authorized).(ËŞ»„
-`php:S103Õ"KSplit this 145 characters long line (which is greater than 120 authorized).(İşá
-_	php:S1779"RReplace all non line feed end of line characters in this file "Factura.php" by LF.
-]	php:S1192·"GDefine a constant instead of duplicating this literal "Error " 7 times.(¨âà¨
-^	php:S1192æ"HDefine a constant instead of duplicating this literal ":nombre" 3 times.(˜–—ü
-`	php:S1192ç"JDefine a constant instead of duplicating this literal ":apellido" 3 times.(•ÆÃã
-c	php:S1192Ã"HDefine a constant instead of duplicating this literal ":correo" 3 times.(ˆşÍÓúÿÿÿÿ
-y	php:S1488Í"^Immediately return this expression instead of assigning it to the temporary variable "$error".(Ñëİ±ûÿÿÿÿ
-y	php:S1488ˆ"^Immediately return this expression instead of assigning it to the temporary variable "$error".(Ñëİ±ûÿÿÿÿ
-y	php:S1488Ï"^Immediately return this expression instead of assigning it to the temporary variable "$error".(Ñëİ±ûÿÿÿÿ
-y	php:S1488í"^Immediately return this expression instead of assigning it to the temporary variable "$error".(Ñëİ±ûÿÿÿÿ
-]	php:S1763ê"GDelete this unreachable code or refactor the code to make it reachable.(¸×Ëå
-D	php:S1481Ç")Remove this unused "$reg" local variable.(Ñåˆ³ıÿÿÿÿ
-2	php:S1116·"Remove this empty statement.(¨âà¨
-2	php:S1116ô"Remove this empty statement.(¨âà¨
-2	php:S1116œ"Remove this empty statement.(¨âà¨
-}	php:S1448"cClass "Factura" has 34 methods, which is greater than 20 authorized. Split it into smaller classes.(úÅÖøÿÿÿÿ
-k	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ğŠº’şÿÿÿÿ

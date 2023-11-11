@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8c9abd-086d-4297-a16c-a6018e345d6d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/29d579302d102ae1246ad3a8983529394137be29" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0b2885e8a46b3c55bcb41a3c2760e247dd402c91" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/10f6aaca7d7608dda31aa4ed6cd74b9a8dc0f0c4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/7/27a83fe2c14bb39f3a4e46ef63a76f76f7478c83" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/3/5321c7459484ab7bf82dbb52124f0ab9eb5b7ebd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/79314a4b441b8012c2d040250328b877064a522e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/3/83a9fdfa34bd52b0903f6e6e0791679e9eeeaf69" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/89851361acb74cf57366c2f9d7f08223c8156957" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/fragments/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/fragments/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Model/InicioSesion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Model/InicioSesion.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/fragments/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/fragments/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/logueo.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/logueo.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,19 +53,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jason/Downloads/sc502_clase9&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/Users/jason/Downloads/login",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente\Model" />
@@ -90,7 +98,9 @@
       <workItem from="1699265509320" duration="694000" />
       <workItem from="1699287735386" duration="3089000" />
       <workItem from="1699423335304" duration="2265000" />
-      <workItem from="1699466021775" duration="1193000" />
+      <workItem from="1699466021775" duration="1820000" />
+      <workItem from="1699504910975" duration="235000" />
+      <workItem from="1699670957450" duration="5410000" />
     </task>
     <servers />
   </component>

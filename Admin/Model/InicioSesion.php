@@ -3,16 +3,20 @@ require_once '../config/Conexion.php';
 
 class InicioSesion extends Conexion
 {
+    protected static $cnx;
     private $nombre;
     private $correo;
     private $contrasena;
 
-    public function __construct( $nombre, $correo, $contrasena)
+    public function __construct()
     {
-        $this->nombre = $nombre;
-        $this->correo = $correo;
-        $this->contrasena = $contrasena;
+
     }
+
+
+
+
+
 
 
 
@@ -31,20 +35,73 @@ class InicioSesion extends Conexion
         return $this->contrasena;
     }
 
+
+    public static function getConexion()
+    {
+        self::$cnx = Conexion::conectar();
+    }
+
+    public static function desconectar()
+    {
+        self::$cnx = null;
+    }
+
+    /**
+     * @param mixed $cnx
+     */
+    public static function setCnx($cnx)
+    {
+        self::$cnx = $cnx;
+    }
+
+    /**
+     * @param mixed $nombre
+     */
+    public function setNombre($nombre)
+    {
+        $this->nombre = $nombre;
+    }
+
+    /**
+     * @param mixed $correo
+     */
+    public function setCorreo($correo)
+    {
+        $this->correo = $correo;
+    }
+
+    /**
+     * @param mixed $contrasena
+     */
+    public function setContrasena($contrasena)
+    {
+        $this->contrasena = $contrasena;
+    }
+
+
+
+
+
+
     public function verificarInicioSesion($correo, $contrasena)
     {
         $query = "SELECT * FROM usuario WHERE correo = :correo AND contrasena = :contrasena";
 
         try {
-            $resultado = $this->cnx->prepare($query);
-            $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
-            $resultado->bindParam(":contrasena", $contrasena, PDO::PARAM_STR);
-            $resultado->execute();
+            self::getConexion();
 
-            if ($resultado->rowCount() > 0) {
+            $stmt = self::$cnx->prepare($query);
+            $stmt->bindParam(":correo", $correo);
+            $stmt->bindParam(":contrasena", $contrasena);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
                 return true;
+
             } else {
                 return false;
+
+
             }
         } catch (PDOException $Exception) {
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
@@ -52,16 +109,39 @@ class InicioSesion extends Conexion
         }
     }
 
+
     public function iniciarSesion($correo, $contrasena)
     {
-        if ($this->verificarInicioSesion($correo, $contrasena)) {
-            header("Location: calendario.php");
-            echo '<script>alert("hola.");</script>';
-            exit; 
-        } else {
-            echo '<script>alert("Credenciales incorrectas. Por favor, verifica tus datos.");</script>';
+        return $this->verificarInicioSesion($correo, $contrasena);
+    }
+
+
+    public function obtenerDatosUsuario($correo)
+    {
+        $query = "SELECT * FROM usuario WHERE correo = :correo";
+
+        try {
+            self::getConexion();
+            $stmt = self::$cnx->prepare($query);
+            $stmt->bindParam(":correo", $correo);
+            $stmt->execute();
+
+            if ($stmt->rowCount() > 0) {
+                // Devuelve los datos del usuario como un arreglo asociativo
+                return $stmt->fetch(PDO::FETCH_ASSOC);
+            } else {
+                return null; // Devuelve null si no se encuentra el usuario
+            }
+        } catch (PDOException $Exception) {
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            throw new Exception($error);
         }
     }
+
+
+
+
+
 }
 
 

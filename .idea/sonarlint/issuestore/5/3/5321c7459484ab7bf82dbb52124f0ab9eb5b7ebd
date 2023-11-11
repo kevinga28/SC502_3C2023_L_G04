@@ -1,8 +1,0 @@
-
-_php:S103	"KSplit this 124 characters long line (which is greater than 120 authorized).(ä²Ñ±
-_php:S103B"KSplit this 143 characters long line (which is greater than 120 authorized).(×­“
-_php:S103M"KSplit this 134 characters long line (which is greater than 120 authorized).(öËá
-3php:S113"'Add a new line at the end of this file.
-^	php:S1779"QReplace all non line feed end of line characters in this file "logueo.php" by LF.
-;	php:S2003Y"&Replace "include" with "include_once".(ìº÷“
-a	php:S4833Y"LReplace "include" with namespace import mechanism through the "use" keyword.(ìº÷“
