@@ -1,0 +1,22 @@
+
+E	Web:S1827Ê"/Remove this deprecated "frameborder" attribute.(„öš‹
+TWeb:FrameWithoutTitleCheckÊ"-Add a "title" attribute to this <iframe> tag.(„öš‹
+`php:S103¤"KSplit this 166 characters long line (which is greater than 120 authorized).(¤‰ï
+`php:S103¥"KSplit this 166 characters long line (which is greater than 120 authorized).(âãÒ
+ephp:S103±"KSplit this 157 characters long line (which is greater than 120 authorized).(ŠöÈ°ÿÿÿÿÿ
+ephp:S103²"KSplit this 158 characters long line (which is greater than 120 authorized).(˜‡£ğûÿÿÿÿ
+`php:S103¾"KSplit this 157 characters long line (which is greater than 120 authorized).(Çö“ç
+_php:S103¿"KSplit this 163 characters long line (which is greater than 120 authorized).(êíÓb
+ephp:S103Ì"KSplit this 135 characters long line (which is greater than 120 authorized).( œÏüÿÿÿÿ
+ephp:S103Í"KSplit this 141 characters long line (which is greater than 120 authorized).(‹›å¼şÿÿÿÿ
+ephp:S103…"KSplit this 159 characters long line (which is greater than 120 authorized).(ÊöÁşÿÿÿÿÿ
+`php:S103‡"KSplit this 157 characters long line (which is greater than 120 authorized).(ìŞñæ
+_php:S103–"KSplit this 134 characters long line (which is greater than 120 authorized).(Áó‡
+ephp:S103˜"KSplit this 138 characters long line (which is greater than 120 authorized).(Ü³şğùÿÿÿÿ
+`php:S103Ê"KSplit this 388 characters long line (which is greater than 120 authorized).(„öš‹
+3php:S113"'Add a new line at the end of this file.
+]	php:S1779"PReplace all non line feed end of line characters in this file "index.php" by LF.
+;	php:S2003%"&Replace "include" with "include_once".(ß…¢…
+A	php:S2003Õ"&Replace "include" with "include_once".(×«ñÄùÿÿÿÿ
+a	php:S4833%"LReplace "include" with namespace import mechanism through the "use" keyword.(ß…¢…
+g	php:S4833Õ"LReplace "include" with namespace import mechanism through the "use" keyword.(×«ñÄùÿÿÿÿ

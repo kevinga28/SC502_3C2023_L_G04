@@ -1,0 +1,6 @@
+
+i	php:S1779"\Replace all non line feed end of line characters in this file "clienteController.php" by LF.
+>	php:S11253")Remove the literal "false" boolean value.(°ñ¸š
+>	php:S1125b")Remove the literal "false" boolean value.(°ñ¸š
+f	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ŸÛ¿ñ
+Pphp:S131"7Add a "case default" clause to this "switch" statement.(ÇÖ»ùÿÿÿÿ

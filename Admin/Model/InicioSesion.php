@@ -138,6 +138,12 @@ class InicioSesion extends Conexion
         }
     }
 
+    public function logOut() {
+        $_SESSION=[];
+        session_destroy();
+
+    }
+
 
 
 

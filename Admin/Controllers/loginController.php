@@ -41,9 +41,18 @@ switch ($_GET["op"]) {
         } else {
             echo 2;
         }
+        break;
+
 
 
     case 'logout':
+
+        $cliente = new InicioSesion();
+
+        $cliente->logOut();
+        echo 1;
+        break;
+
 
 
 

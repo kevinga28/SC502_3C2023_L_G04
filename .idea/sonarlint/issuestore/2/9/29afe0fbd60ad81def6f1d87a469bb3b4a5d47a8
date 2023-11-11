@@ -1,0 +1,8 @@
+
+g	php:S1301"MReplace this "switch" statement with "if" statements to increase readability.(ÇÖ»ùÿÿÿÿ
+7	php:S1780&"Remove this closing tag "?>".(Ö‘äÏúÿÿÿÿ
+p	php:S1779"\Replace all non line feed end of line characters in this file "UsuarioController.php" by LF.8ÐÏÆ€»1
+]	php:S1793"<Replace this "else if" keyword sequence by "elseif" keyword.(‡ÕÀÑýÿÿÿÿ8Ñøúìº1
+X	php:S1793"<Replace this "else if" keyword sequence by "elseif" keyword.(§ÞóÖ8ì‘ûìº1
+f	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ŸÛ¿ñ
+Pphp:S131"7Add a "case default" clause to this "switch" statement.(ÇÖ»ùÿÿÿÿ
