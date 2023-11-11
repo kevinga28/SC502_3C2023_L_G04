@@ -10,18 +10,22 @@
   <!-- site metas -->
   <title>Registro</title>
   <!-- bootstrap css -->
-  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
   <!-- style css -->
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="css/style.css">
 
-  <link rel="stylesheet" href="css/register.css">
+  <link rel="stylesheet" href="login/css/register.css">
   <!-- Responsive-->
-  <link rel="stylesheet" href="../css/responsive.css">
+  <link rel="stylesheet" href="css/responsive.css">
   <!-- fevicon -->
   <link rel="icon" href="../images/fevicon.png" type="image/gif" />
+    <link rel="stylesheet" href="toastr/toastr.css">
   <!-- Scrollbar Custom CSS -->
-  <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
+  <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+
+
 </head>
 
 <body>
@@ -38,7 +42,7 @@
       <div class="col-md-12">
         <div class="text-bg-logueo">
           <div class="box-log">
-            <form method="POST" action="procesar_registro.php">
+            <form name="modulos_add" id="usuario_add" method="POST">
               <h2>Registrarse</h2>
 
               <div class="input-box">
@@ -72,7 +76,7 @@
               </div>
 
               <div class="input-box">
-                <button type="submit" class="btn">Registrarse</button>
+                <button id="btnRegistar" type="submit" class="btn" value="registrar">Registrarse</button>
               </div>
 
               <p id="parrafo">
@@ -91,7 +95,13 @@
     ?>
   </footer>
 
-
+  <script src="js/jquery.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.bundle.min.js"></script>
+  <script src="js/jquery-3.0.0.min.js"></script>
+  <script src="js/register.js"></script>
+  <script src="toastr/toastr.js"></script>
+  <script src="bootbox/bootbox.min.js"></script>
 
 </body>
 

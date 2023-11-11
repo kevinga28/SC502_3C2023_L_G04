@@ -15,8 +15,6 @@
     <!-- style css -->
     <link rel="stylesheet" href="../css/style.css">
     <!-- style css -->
-    <link rel="stylesheet" href="css/citaRegistro.css">
-    <!-- style css -->
     <link rel="stylesheet" href="css/estilistaCita.css">
     <!-- Responsive-->
     <link rel="stylesheet" href="../css/responsive.css">
@@ -55,18 +53,33 @@
                         <h3><b>Estilistas</b></h3>
                         <ul class="estilistasJD">
                             <li class="nav-item">
-                                <a class="estilistaJD" href="#">Valentina Ramirez <button class="boton-estilista">Seleccionar</button></a>
+                                <div class="container-estilista">
+                                <img src="https://cdn-icons-png.flaticon.com/512/20/20079.png" alt="#" class="perfilEstilista">
+                                </div>
+                                <p class="estilistaJD">Sofia Vargas </p> 
+                                <div class="col_vacia"></div>
+                                <button class="boton-estilista">Seleccionar</button>
                             </li>
                             <br>
                             <li class="nav-item">
-                                <a class="estilistaJD" href="#">Benjamin Sinclaire <button class="boton-estilista">Seleccionar</button></a>
+                                <div class="container-estilista">
+                                <img src="https://cdn-icons-png.flaticon.com/512/20/20079.png" alt="#" class="perfilEstilista">
+                                </div>
+                                <p class="estilistaJD">Carol Mejias</p> 
+                                <div class="col_vacia"></div>
+                                <button class="boton-estilista">Seleccionar</button>
                             </li>
                             <br>
                             <li class="nav-item">
-                                <a class="estilistaJD" href="#">Isabella Montague <button class="boton-estilista">Seleccionar</button></a>
+                            <div class="container-estilista">
+                                <img src="https://cdn-icons-png.flaticon.com/512/20/20079.png" alt="#" class="perfilEstilista">
+                                </div>
+                                <p class="estilistaJD">Marta Delgado </p> 
+                                <div class="col_vacia"></div>
+                                <button class="boton-estilista">Seleccionar</button>
                             </li>
                         </ul>
-
+                        <div class="col_vacia"></div>
                     </div>
                     <div class="titulo">
                         <a href="#"><img src="../images/logo.png" alt="#" class="imag_medio" /></a>
