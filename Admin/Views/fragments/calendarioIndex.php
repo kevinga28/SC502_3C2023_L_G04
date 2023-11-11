@@ -375,8 +375,4 @@
 
 
 
-<<<<<<< HEAD
 </div> <!-- FIN DEL CALENDARIO -->
-=======
-</div> <!-- FIN DEL CALENDARIO -->
->>>>>>> 4aa3b769a5fd3d633c0452d905602e70cff06de4

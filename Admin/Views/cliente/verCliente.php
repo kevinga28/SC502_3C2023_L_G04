@@ -76,77 +76,72 @@
                                         <form>
                                             <div class="card-body">
                                                 <div class="row">
-
                                                     <div class="col-md-6">
-                                                        <!-- Campos de la izquierda -->
+
                                                         <div class="form-group">
-                                                            <label for="nombre">Nombre</label>
-                                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre" readonly>
+                                                            <label for="Nombre">Nombre</label>
+                                                            <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Primer Nombre" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="apellido">Apellido</label>
-                                                            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" readonly>
+                                                            <input type="text" class="form-control" id="Eapellido" name="apellido" placeholder="Apellido" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="correo">Correo Electrónico</label>
-                                                            <input type="email" class="form-control" id="correo" name="correo" placeholder="correo" readonly>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="contraseña">Contraseña</label>
-                                                            <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Contraseña" readonly>
+                                                            <input type="email" class="form-control" id="Ecorreo" name="correo" placeholder="Correo" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="telefono">Telefono</label>
-                                                            <input type="number" class="form-control" id="telefono" name="telefono" placeholder="Telefono" readonly>
+                                                            <input type="number" class="form-control" id="Etelefono" name="telefono" placeholder="Telefono" readonly>
                                                         </div>
-
                                                     </div>
-
-                                                    <div class="col-md-6">
+                                                    <div class=" col-md-6">
+                                                        
 
                                                         <div class="form-group">
-                                                            <label for="fechaCita">Provincia</label>
-                                                            <input type="text" class="form-control" id="fechaCita" name="fechaCita" placeholder="Provincia" readonly>
+                                                            <label for="provincia">Provincia</label>
+                                                            <input type="text" class="form-control" id="Eprovincia" name="provincia" placeholder="Provincia" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="distrito">Distrito</label>
-                                                            <input type="text" class="form-control" id="distrito" name="distrito" placeholder="Distrito" readonly>
+                                                            <input type="text" class="form-control" id="Edistrito" name="distrito" placeholder="Distrito" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="canton">Canton</label>
-                                                            <input type="text" class="form-control" id="canton" name="canton" placeholder="Canton" readonly>
+                                                            <input type="text" class="form-control" id="Ecanton" name="canton" placeholder="Canton" readonly>
                                                         </div>
+
 
                                                         <div class="form-group">
                                                             <label for="otros">Otros</label>
-                                                            <input type="text" class="form-control" id="otros" name="otros" placeholder="Otras Señales" readonly>
+                                                            <input type="text" class="form-control" id="Eotros" name="otros" placeholder="Otras Señales" readonly>
                                                         </div>
 
+
                                                         <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" id="EmpleadoCheck" readonly>
+                                                            <input type="checkbox" class="form-check-input" value="false" id="EtipoCliente" name="tipoCliente">
                                                             <label class="form-check-label" for="EmpleadoCheck">Empleado</label>
                                                         </div>
+
                                                     </div>
                                                 </div>
                                             </div>
 
+
                                             <div class="col-12 mb-4">
                                                 <a href="listaClientes.php" class="btn btn-secondary">Volver</a>
                                             </div>
+
                                         </form>
 
                                     </div>
                                 </div>
-
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -163,13 +158,21 @@
     </div>
 
 
-    <!-- jQuery -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
+      <!-- jQuery -->
+      <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
+    <!-- Datatable -->
+    <script src="../plugins/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <!-- TOAST -->
+    <script src="../plugins/toastr/toastr.js"></script>
 
+    <script src="../dist/js/cliente.js"></script>
+
+    <script src="../plugins/bootbox/bootbox.min.js"></script>
 
 
 

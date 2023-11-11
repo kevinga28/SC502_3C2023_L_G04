@@ -1,3 +1,34 @@
+
+<?php
+require_once '../Model/Empleado.php';
+
+
+// Iniciar la sesión
+session_start();
+
+
+// Comprobar si el usuario ha iniciado sesión y si se han almacenado los datos del usuario en la sesión
+if (isset($_SESSION['usuario'])) {
+    $usuario = $_SESSION['usuario'];
+} else {
+    $usuario = null;
+}
+
+// Cerrar la sesión
+if (isset($_GET['cerrar_sesion'])) {
+    session_unset();
+    session_destroy();
+    $usuario = null;
+}
+?>
+
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,9 +97,9 @@
                                         <img class="profile-user-img img-fluid img-circle" src="dist/img/user4-128x128.jpg" alt="User profile picture">
                                     </div>
 
-                                    <h3 class="profile-username text-center">Admin</h3>
+                                    <h3 class="profile-username text-center"><?php echo isset($usuario) ? $usuario->getRol() : ''; ?></h3>
 
-                                    <p class="text-muted text-center">Administrador</p>
+                                    <p class="text-muted text-center"><?php echo isset($usuario) ? $usuario->getNombre() : ''; ?></p>
 
                                 </div>
                                 <!-- /.card-body -->
@@ -156,26 +187,26 @@
                                             <form class="form-horizontal">
                                                 <div class="form-group">
                                                     <label for="Nombre">Nombre</label>
-                                                    <input type="text" class="form-control" name="nombre" id="Nombre" placeholder="Primer Nombre" require>
+                                                    <input type="text" class="form-control" value="<?php echo isset($usuario) ? $usuario->getNombre() : ''; ?>" name="nombre" id="Nombre" placeholder="Primer Nombre" require>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="Apellidos">Apellidos</label>
-                                                    <input type="text" class="form-control" name="apellidos" id="Apellidos" placeholder="Apellidos" require>
+                                                    <input type="text" class="form-control" value="<?php echo isset($usuario) ? $usuario->getApellido() : ''; ?>" name="apellidos" id="Apellidos" placeholder="Apellidos" require>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="correo">Correo Electronico</label>
-                                                    <input type="email" class="form-control" name="correo" id="correo" placeholder="Correo" require>
+                                                    <input type="email" class="form-control" value="<?php echo isset($usuario) ? $usuario->getCorreo() : ''; ?>" name="correo" id="correo" placeholder="Correo" require>
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="contrasena">Contraseña</label>
-                                                    <input type="password" class="form-control" name="contrasena" id="contrasena" placeholder="Contraseña" require>
+                                                    <input type="password" class="form-control" value="<?php echo isset($usuario) ? $usuario->getContrasena() : ''; ?>" name="contrasena" id="contrasena" placeholder="Contraseña" require>
                                                 </div>
 
                                                 <div class="form-group">
                                                     <label for="Telefono">Telefono</label>
-                                                    <input type="text" class="form-control" name="telefono" id="Telefono" placeholder="Telefono" require>
+                                                    <input type="text" class="form-control" value="<?php echo isset($usuario) ? $usuario->getTelefono() : ''; ?>" name="telefono" id="Telefono" placeholder="Telefono" require>
                                                 </div>
 
                                                 <div class="form-group ">

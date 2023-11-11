@@ -13,13 +13,13 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-    <link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-
     <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
 
     <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
     <link rel="stylesheet" href="../dist/css/style.css">
+
+    <link rel="stylesheet" href="../plugins/toastr/toastr.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -57,127 +57,134 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <div class="callout callout-info">
-                                <h5><i class="fas fa-info"></i> Nota:</h5>
-                                Esta página será configurada con el MVC.
-                            </div>
 
                             <!-- FORMULARIO PARA CREAR UNA CITA -->
-                            <div class="card card-primary">
-                                <div class="card-header" style="background-color: #F7F4ED; color: #202126;">
-                                    <h3 class="card-title">Editar Cita</h3>
-                                </div>
-                                <!-- EMPIEZA EL FORMULARIO -->
-                                <form method="POST" action="guardar_cita.php">
-                                    <div class="card-body">
-                                        <div class="row">
-                                            <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <!-- TITULO DEL FORMULARIO -->
+                                    <div class="card card-primary">
+                                        <div class="card-header" style="background-color: #F7F4ED; color: #202126; ">
+                                            <h3 class="card-title">Editar Cita</h3>
+                                        </div>
+                                        <!-- EMPIEZA EL FORMULARIO -->
+                                        <form method="POST" name="modulos_add" id="crearCita">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <div class="col-md-6">
 
-                                                <div class="form-group">
-                                                    <label for="BusquedaCliente">Buscar Cliente</label>
-                                                    <div class="input-group">
-                                                        <input type="text" class="form-control" id="BusquedaCliente" name="BusquedaCliente" placeholder="Cedula Cliente">
-                                                        <div class="input-group-append">
-                                                            <button type="button" class="btn btn-primary" id="BuscarCliente">Buscar</button>
+                                                        <div class="form-group">
+                                                            <label for="BusquedaCliente">Buscar Cliente</label>
+                                                            <div class="input-group">
+                                                                <input type="text" class="form-control" id="EBusquedaCliente" name="BusquedaCliente" placeholder="Cedula Cliente">
+                                                                <div class="input-group-append">
+                                                                    <button type="button" class="btn btn-primary" id="BuscarCliente">Buscar</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="Nombre">Nombre</label>
+                                                            <input type="text" class="form-control" id="nombre" name="Enombre" placeholder="Primer Nombre" readonly>
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                            <label for="apellido">Apellido</label>
+                                                            <input type="text" class="form-control" id="apellido" name="Eapellido" placeholder="Apellido" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="correo">Correo Electrónico</label>
+                                                            <input type="email" class="form-control" id="correo" name="Ecorreo" placeholder="Correo" readonly>
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                            <label for="tratamiento">Tratamiento</label>
+                                                            <select class="select2 select2-hidden-accessible" multiple="multiple" id="Etratamiento" name="tratamiento[]" data-placeholder="Seleccionar Tratamiento" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
+                                                            <option value="CorteMujer" data-precio="30">Corte Mujer - ₡30</option>
+                                                                <option value="LargoLavadoMujer" data-precio="40">Largo + Lavado Mujer - ₡40</option>
+                                                                <option value="CortoLavadoMujer" data-precio="35">Corto + Lavado Mujer - ₡35</option>
+                                                                <option value="LargoHombre" data-precio="25">Largo Hombre - ₡25</option>
+                                                                <option value="CortoHombre" data-precio="20">Corto Hombre - ₡20</option>
+                                                                <option value="LargoLavadoHombre" data-precio="30">Largo + Lavado Hombre - ₡30 </option>
+                                                                <option value="CortoLavadoHombre" data-precio="25">Corto + Lavado Hombre - ₡25</option>
+                                                                <option value="NinioNinia" data-precio="15">Niño - Niña - ₡15</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                    <div class=" col-md-6">
+
+                                                        <div class="form-group">
+                                                            <label for="estilista">Estilista</label>
+                                                            <select class="select2 select2-hidden-accessible" id="Eestilista" name="estilista" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
+                                                                <option>Carol Mejias</option>
+                                                                <option>Marta Delgado</option>
+                                                                <option>Sofia Vargas</option>
+                                                            </select>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="fechaCita">Fecha de la Cita</label>
+                                                            <input type="date" class="form-control" id="EfechaCita" name="fechaCita">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="horaCita">Hora de la Cita</label>
+                                                            <input type="time" class="form-control" id="EhoraCita" name="horaCita">
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="pagoTotal">Total a Pagar</label>
+                                                            <input type="text" class="form-control" id="EpagoTotal" name="pagoTotal" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="form-group">
-                                                    <label for="Nombre">Nombre</label>
-                                                    <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre" readonly>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="apellido">Apellido</label>
-                                                    <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" readonly>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="correo">Correo Electrónico</label>
-                                                    <input type="email" class="form-control" id="correo" name="correo" placeholder="correo" readonly>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="tratamiento">Tratamiento</label>
-                                                    <select class="select2 select2-hidden-accessible" multiple="multiple" id="tratamiento" name="tratamiento[]" data-placeholder="Seleccionar Tratamiento" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
-                                                        <option value="CorteMujer" data-precio="30">Corte Mujer - $30</option>
-                                                        <option value="LargoLavadoMujer" data-precio="40">Largo + Lavado Mujer - $40</option>
-                                                        <option value="CortoLavadoMujer" data-precio="35">Corto + Lavado Mujer - $35</option>
-                                                        <option value="LargoHombre" data-precio="25">Largo Hombre - $25</option>
-                                                        <option value="CortoHombre" data-precio="20">Corto Hombre - $20</option>
-                                                        <option value="LargoLavadoHombre" data-precio="30">Largo + Lavado Hombre - $30 </option>
-                                                        <option value="CortoLavadoHombre" data-precio="25">Corto + Lavado Hombre - $25</option>
-                                                        <option value="NinioNinia" data-precio="15">Niño - Niña - $15</option>
-                                                    </select>
-                                                </div>
-
                                             </div>
-                                            <div class=" col-md-6">
 
-                                                <div class="form-group">
-                                                    <label for="estilista">Estilista</label>
-                                                    <select class="select2 select2-hidden-accessible" id="estilista" name="estilista" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
-                                                        <option>Carol Mejias</option>
-                                                        <option>Marta Delgado</option>
-                                                        <option>Sofia Vargas</option>
-                                                    </select>
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="fechaCita">Fecha de la Cita</label>
-                                                    <input type="date" class="form-control" id="fechaCita" name="fechaCita">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="horaCita">Hora de la Cita</label>
-                                                    <input type="time" class="form-control" id="horaCita" name="horaCita">
-                                                </div>
-
-                                                <div class="form-group">
-                                                    <label for="pagoTotal">Total a Pagar</label>
-                                                    <input type="text" class="form-control" id="pagoTotal" name="pagoTotal" readonly>
-                                                </div>
+                                            <div class="col-12 mb-4">
+                                                <a href="historialCitas.php" class="btn btn-secondary">Volver</a>
+                                                <input type="submit" value="Actualizar Cita" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
                                             </div>
-                                        </div>
-                                    </div>
+                                        </form>
 
-                                    <div class="col-12 mb-4">
-                                        <a href="historialCitas.php" class="btn btn-secondary">Volver</a>
-                                        <input type="submit" value="Actualizar Cita" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
                                     </div>
-                                </form>
+                                </div>
 
                             </div>
 
                         </div>
-
                     </div>
                 </div>
+            </section>
+
         </div>
-        </section>
-
-    </div>
-    <!-- /.content-wrapper -->
-    <footer class="main-footer no-print">
-        <?php
-        include 'fragments/footer.php';
-        ?>
-    </footer>
+        <!-- /.content-wrapper -->
+        <footer class="main-footer no-print">
+            <?php
+            include 'fragments/footer.php';
+            ?>
+        </footer>
     </div>
 
 
-    <!-- jQuery -->
-    <script src="../plugins/jquery/jquery.min.js"></script>
+  <!-- jQuery -->
+  <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- ChartJS -->
-    <script src="../plugins/chart.js/Chart.min.js"></script>
     <!-- AdminLTE App -->
     <script src="../dist/js/adminlte.min.js"></script>
+    <!-- Datatable -->
+    <script src="../plugins/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <!-- TOAST -->
+    <script src="../plugins/toastr/toastr.js"></script>
+
+    <script src="../dist/js/cita.js"></script>
+
+    <script src="../plugins/bootbox/bootbox.min.js"></script>
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
-
 
 
 
@@ -190,7 +197,7 @@
                 total += parseInt($(this).data('precio'));
             });
             // Muestra el total en el campo correspondiente
-            $('#total').val('$' + total);
+            $('#pagototal').val('₡' + total);
         });
     </script>
 

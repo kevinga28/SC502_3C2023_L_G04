@@ -85,7 +85,7 @@ class InicioSesion extends Conexion
 
     public function verificarInicioSesion($correo, $contrasena)
     {
-        $query = "SELECT * FROM usuario WHERE correo = :correo AND contrasena = :contrasena";
+        $query = "SELECT * FROM empleado WHERE correo = :correo AND contrasena = :contrasena";
 
         try {
             self::getConexion();
@@ -118,7 +118,7 @@ class InicioSesion extends Conexion
 
     public function obtenerDatosUsuario($correo)
     {
-        $query = "SELECT * FROM usuario WHERE correo = :correo";
+        $query = "SELECT * FROM empleado WHERE correo = :correo";
 
         try {
             self::getConexion();
