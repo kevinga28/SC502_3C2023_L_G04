@@ -5,15 +5,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8c9abd-086d-4297-a16c-a6018e345d6d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/e/6e32f7f75515e41f450719028bfdac0c857f8342" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/9/b922cf94facfda6f952867030842ab1b3a423495" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1abaac618b17fb470d3f9d65f9631e2f33537241" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d1239c9c87c08aad77d4e6da0f76733818bd1409" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/7/27a83fe2c14bb39f3a4e46ef63a76f76f7478c83" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/29afe0fbd60ad81def6f1d87a469bb3b4a5d47a8" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/b/4b0a6bd5bda1a1beaba641bf58a95a85ab1a2510" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/2/62419e7e4bdba34c3f9dc329a4a4a8d762476c1d" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/2/62419e7e4bdba34c3f9dc329a4a4a8d762476c1d" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/e/6e32f7f75515e41f450719028bfdac0c857f8342" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/79314a4b441b8012c2d040250328b877064a522e" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/8/88e19e1b20de31e787740af04e463810881633ee" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/2/a2052863a0bd785e104754369285aa88f84579c0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/3/e3aa02ab5e8d41341dfda7499b0122638e76cc4a" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/d/edc46f6f03c3b15eccad4d1ec2e2bdaaf438cd4f" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/d/edc46f6f03c3b15eccad4d1ec2e2bdaaf438cd4f" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/ef78b4674ac4577c67b6adaf21cf2dfd6a1e77e3" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/ef78b4674ac4577c67b6adaf21cf2dfd6a1e77e3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/fragments/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/fragments/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/logueo.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/logueo.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/Controller/InicioSesionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/Controller/InicioSesionController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/Controller/UsuarioController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/Controller/UsuarioController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/Model/Cliente.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/views/fragments/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/fragments/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/views/fragments/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/fragments/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/views/js/inicioSesion.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/js/inicioSesion.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/views/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/js/register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/views/login/fragments/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/fragments/footer.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/views/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cliente/views/login/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/register.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +71,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/jason/Downloads/login&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/SC502_3C2023_L_G04/Cliente/Model&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -70,6 +86,7 @@
       <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente\views\login\js" />
       <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente\views\login" />
       <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente\views\js" />
       <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente\views" />
@@ -100,7 +117,8 @@
       <workItem from="1699670957450" duration="13149000" />
       <workItem from="1699684889205" duration="49000" />
       <workItem from="1699685541502" duration="2561000" />
-      <workItem from="1699721618009" duration="2832000" />
+      <workItem from="1699721618009" duration="20060000" />
+      <workItem from="1699752159586" duration="603000" />
     </task>
     <servers />
   </component>

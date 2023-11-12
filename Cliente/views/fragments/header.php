@@ -1,6 +1,7 @@
 
 <?php
-require_once '../Model/Cliente.php';
+require_once '../../Admin/Model/Cliente.php';
+
 
 
 // Iniciar la sesión
@@ -146,48 +147,49 @@ if (isset($_GET['cerrar_sesion'])) {
             <form action="procesar_edicion.php" method="post">
                <div class="row">
                   <div class="col-md-6">
-                     <div class="form-group">
+                      <!-- ... Código HTML anterior ... -->
 
+                      <div class="form-group">
+                          <label for="nombreCliente">Nombre:</label>
+                          <input type="text" id="nombreCliente" name="nombreCliente" value="<?php echo isset($_SESSION['usuario']) ? $_SESSION['usuario']->getNombre() : ''; ?>" class="form-control">
+                      </div>
 
+                      <div class="form-group">
+                          <label for="correoCliente">Correo:</label>
+                          <input type="email" id="correoCliente" name="correoCliente" value="<?php echo isset($_SESSION['usuario']) ? $_SESSION['usuario']->getCorreo() : ''; ?>" class="form-control">
+                      </div>
 
+                      <div class="form-group">
+                          <label for="password">Contraseña:</label>
+                          <input type="password" id="password" name="password"  value="<?php echo isset($_SESSION['usuario']) ? $_SESSION['usuario']->getContrasena() : ''; ?>" class="form-control">
+                      </div>
 
+                      <div class="form-group">
+                          <label for="telefonoCliente">Teléfono:</label>
+                          <input type="text" id="telefonoCliente" name="telefonoCliente" value="<?php echo isset($_SESSION['usuario']) ? $_SESSION['usuario']->getTelefono() : ''; ?>" class="form-control">
+                      </div>
 
+                      <!-- ... Código HTML posterior ... -->
 
-
-                        <label for="nombreCliente">Nombre:</label>
-                         <input type="email" id="correoCliente" name="correoCliente" value="<?php echo isset($usuario) ? $usuario->getNombre() : ''; ?>" class="form-control">
-                     </div>
-                     <div class="form-group">
-                        <label for="correoCliente">Correo:</label>
-                         <input type="email" id="correoCliente" name="correoCliente" value="<?php echo isset($usuario) ? $usuario->getCorreo() : ''; ?>" class="form-control">
-                     </div>
-                     <div class="form-group">
-                        <label for="password">Contraseña:</label>
-                        <input type="password" id="password" name="password" value="<?php echo $password; ?>" class="form-control">
-                     </div>
-                     <div class="form-group">
-                        <label for="telefonoCliente">Teléfono:</label>
-                         <input type="email" id="correoCliente" name="correoCliente" value="<?php echo isset($usuario) ? $usuario->getTelefono() : ''; ?>" class="form-control">
-                     </div>
 
                   </div>
                   <div class="col-md-6">
 
                      <div class="form-group">
                         <label for="provincia">Provincia:</label>
-                        <input type="text" id="provincia" name="provincia" value="<?php echo $provincia; ?>" class="form-control">
+                        <input type="text" id="provincia" name="provincia"  value="<?php echo isset($_SESSION['usuario']) ? $_SESSION['usuario']->getProvincia() : ''; ?>" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="distrito">Distrito:</label>
-                        <input type="text" id="distrito" name="distrito" value="<?php echo $distrito; ?>" class="form-control">
+                        <input type="text" id="distrito" name="distrito"  value="<?php echo isset($_SESSION['usuario']) ? $_SESSION['usuario']->getDistrito() : ''; ?>" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="canton">Canton:</label>
-                        <input type="text" id="canton" name="canton" value="<?php echo $telefonoCcantonliente; ?>" class="form-control">
+                        <input type="text" id="canton" name="canton"  value="<?php echo isset($_SESSION['usuario']) ? $_SESSION['usuario']->getCanton() : ''; ?>" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="otros">Otros:</label>
-                        <input type="text" id="otros" name="otros" value="<?php echo $otros; ?>" class="form-control">
+                        <input type="text" id="otros" name="otros"  value="<?php echo isset($_SESSION['usuario']) ? $_SESSION['usuario']->getOtros() : ''; ?>" class="form-control">
                      </div>
                   </div>
                </div>

@@ -33,8 +33,21 @@
                         <div class="heading3">
                            <h3>Mi Cuenta</h3>
                            <ul class="informacion">
-                              <li><a href="login/register.php">Registrarse </a></li>
-                              <li><a href="login/login.php">Iniciar Sesión</a></li>
+
+                               <?php
+                               if (isset($_SESSION['usuario'])) {
+                                   // Usuario autenticado, muestra el formulario de logout
+                                   echo '<form id="logout" method="post">';
+                                   echo '<li><input type="submit" name="btnlogout">Logout</input></li>';
+                                   echo '</form>';
+                               } else {
+                                   // Usuario no autenticado, muestra el enlace de login
+                                   echo '<li><a href="login/register.php">Registrarse </a></li>';
+                                   echo '<li><a href="login/login.php">Iniciar Sesión</a></li>';
+                               }
+
+                               ?>
+
                            </ul>
                         </div>
                      </div>

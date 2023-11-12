@@ -1,6 +1,8 @@
 <?php
 
-require_once '../Model/Cliente.php';
+require_once '../../Admin/Model/Cliente.php';
+
+require_once '../Model/Registro.php';
 
 if (isset($_GET["op"])) {
     switch ($_GET["op"]) {
@@ -14,7 +16,7 @@ if (isset($_GET["op"])) {
 
             $clavehash = hash('SHA256', trim($contrasena));
 
-            $cliente = new Cliente();
+            $cliente = new Registro();
 
             $cliente->setCorreo($correo);
             $cliente->setnombre($nombre);

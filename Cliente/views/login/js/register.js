@@ -21,21 +21,32 @@ $('#usuario_add').on('submit', function (event) {
         success: function (datos) {
             switch (datos) {
                 case '1':
-                    alert('correo ya existente')
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Correo ya registrado',
+                        text: 'Ya existe un usuario con ese correo electronico.',});
+
+
                     limpiarForms();
 
 
                     break;
                 case '2':
-                    alert('la contraeña debe contener al menos 8 caracteres');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Contraseña invalida',
+                        text: 'la contraseña debe tener al menos 8 caracteres.',});
+
+
                     limpiarForms();
 
                     break;
                 case '3':
 
-                    alert('Usuario Registrado');
+
+
                     limpiarForms();
-                    window.location.href = "../index.php";
+                    window.location.href = "../../index.php";
                     break;
                 case '4':
                     alert('error')
