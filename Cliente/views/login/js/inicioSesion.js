@@ -29,7 +29,6 @@ $('#login').on('submit', function (event) {
 
                     limpiarForms();
                     window.location.href = "../index.php";
-
                     break;
                 case '2':
                     limpiarForms();

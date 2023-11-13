@@ -35,11 +35,12 @@
                            <ul class="informacion">
 
                                <?php
-                               if (isset($_SESSION['usuario'])) {
+                               if (isset($_SESSION['usuarioCliente'])) {
                                    // Usuario autenticado, muestra el formulario de logout
-                                   echo '<form id="logout" method="post">';
-                                   echo '<li><input type="submit" name="btnlogout">Logout</input></li>';
-                                   echo '</form>';
+                                   echo '<form name="logout" id="logout" method="POST" class="form-inline">
+                                 <input type="hidden">
+             <button name="btnlogout" type="submit"  class="btn btn-outline-secondary btn-sm" >Logout</button>
+         </form>';
                                } else {
                                    // Usuario no autenticado, muestra el enlace de login
                                    echo '<li><a href="login/register.php">Registrarse </a></li>';

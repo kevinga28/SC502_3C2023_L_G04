@@ -1,3 +1,29 @@
+<?php
+require_once '../Model/Empleado.php';
+
+
+// Iniciar la sesión
+session_start();
+
+
+// Comprobar si el usuario ha iniciado sesión y si se han almacenado los datos del usuario en la sesión
+if (isset($_SESSION['usuario'])) {
+    $usuario = $_SESSION['usuario'];
+} else {
+    $usuario = null;
+}
+
+// Cerrar la sesión
+if (isset($_GET['cerrar_sesion'])) {
+    session_unset();
+    session_destroy();
+    $usuario = null;
+}
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -42,7 +68,7 @@
       
   
       <?php
-      include 'fragments/asideEstilista.php'
+      include 'fragments/aside.php'
       ?>
     </aside>
 

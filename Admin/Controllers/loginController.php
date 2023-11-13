@@ -13,7 +13,8 @@ switch ($_GET["op"]) {
         $empleado = new Empleado();
 
 
-        $cliente = new InicioSesion;
+        $cliente = new InicioSesion();
+
         if ($cliente->iniciarSesion($correo, $clavehash)) {
             $datosUsuario = $cliente->obtenerDatosUsuario($correo);
 
@@ -30,6 +31,7 @@ switch ($_GET["op"]) {
                 $empleado->setGenero($datosUsuario['genero']);
                 $empleado->setRol($datosUsuario['rol']);
                 $empleado->setContrasena($datosUsuario['contrasena']);
+                $empleado->setOtros($datosUsuario['otros']);
 
 
 
@@ -48,7 +50,6 @@ switch ($_GET["op"]) {
     case 'logout':
 
         $cliente = new InicioSesion();
-
         $cliente->logOut();
         echo 1;
         break;

@@ -345,7 +345,7 @@ class Empleado extends Conexion
         $resultado->execute();
         self::desconectar();
 
-        return $resultado->rowCount(); // Devuelve el número de filas afectadas (debe ser 1 si se eliminó correctamente).
+        return $resultado->rowCount();
     } catch (PDOException $Exception) {
         self::desconectar();
         $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();

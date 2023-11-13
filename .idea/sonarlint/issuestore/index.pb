@@ -41,43 +41,17 @@ G
 Admin/config/global.php,5\8\58b7a93acbc7f426b7017b70c30a5706069d9785
 G
 Admin/Model/Factura.php,1\0\10f6aaca7d7608dda31aa4ed6cd74b9a8dc0f0c4
-Y
-)Admin/Views/fragments/listaInventario.php,b\9\b922cf94facfda6f952867030842ab1b3a423495
-D
-Admin/Views/user.php,8\9\89851361acb74cf57366c2f9d7f08223c8156957
 H
 Admin/Model/Registro.php,0\b\0b2885e8a46b3c55bcb41a3c2760e247dd402c91
-R
-"Admin/Views/fragments/smallBox.php,8\2\8293628b165bcd14f64e95079225f78ba3f90885
 O
 Admin/Views/dist/js/empleado.js,b\3\b37d376936c00a0d1dbc0c8a600ffc66e44a6142
 K
 Admin/Views/dist/js/demo.js,3\c\3c3625c385229151e3d4b6d767a924ca802936c1
 X
 (Admin/Controllers/empleadoController.php,1\a\1abaac618b17fb470d3f9d65f9631e2f33537241
-N
-Cliente/Model/InicioSesion.php,7\9\7902cc62626aed7b73f448b973961f62d651f6d9
-J
-Cliente/Model/Registro.php,4\3\43d24a5f5bc69a3ca04ac2c5a033670422cb588a
-V
-&Admin/Views/logueo/fragments/login.php,d\1\d1239c9c87c08aad77d4e6da0f76733818bd1409
 M
 Admin/Views/logueo/logueo.php,5\3\5321c7459484ab7bf82dbb52124f0ab9eb5b7ebd
-N
-Admin/Views/logueo/js/login.js,4\4\44f289e32f98eeb587fff114d11139f53a0def82
-P
- Cliente/views/login/register.php,6\2\62419e7e4bdba34c3f9dc329a4a4a8d762476c1d
-V
-&Cliente/views/login/js/inicioSesion.js,5\f\5f138fc95ec95d0b40181564537418486f3108ae
 M
 Cliente/views/login/login.php,e\d\edc46f6f03c3b15eccad4d1ec2e2bdaaf438cd4f
-G
-Cliente/views/index.php,e\f\ef78b4674ac4577c67b6adaf21cf2dfd6a1e77e3
-R
-"Cliente/views/fragments/header.php,2\9\29d579302d102ae1246ad3a8983529394137be29
 O
 Admin/Views/logueo/js/logout.js,c\2\c27758987b379a275effbae175bb7764ff1e7b39
-R
-"Cliente/views/login/js/register.js,6\3\630d4906c8d5a572e508d0028ea704f540e7ddba
-X
-(Cliente/views/login/fragments/footer.php,4\8\48f99fed94568a7ccdcd27279f8f3d2e7622643a

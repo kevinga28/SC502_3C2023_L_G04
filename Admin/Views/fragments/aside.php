@@ -65,7 +65,10 @@
                  </a>
              </li>
 
-             <li class="nav-item">
+             <?php
+             if (isset($usuario)&&$usuario->getRol()=='Admin') {
+
+                 echo ' <li class="nav-item">
                  <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-user"></i>
                      <p>
@@ -89,10 +92,8 @@
                      </li>
 
                  </ul>
-             </li>
-
-
-             <li class="nav-item">
+                 
+                 <li class="nav-item">
                  <a href="" class="nav-link">
                      <i class="nav-icon fas fa-copy"></i>
                      <p>
@@ -209,6 +210,70 @@
              </li>
 
          </ul>
+                 
+             </li>';
+
+             } else if (isset($usuario)&&$usuario->getRol()=='Empleado') {
+
+                 echo '<li class="nav-header">Citas</li>
+             <li class="nav-item">
+                 <a href="calendar.html" class="nav-link">
+                     <i class="nav-icon far fa-calendar-alt"></i>
+                     <p>
+                         Calendario
+                         <span class="badge badge-info right">2</span>
+                     </p>
+                 </a>
+             </li>
+              <li class="nav-item">  
+                 <a href="#" class="nav-link">
+                     <i class="nav-icon fas fa-edit"></i>
+                     <p>
+                         Facturas
+                         <i class="fas fa-angle-left right"></i>
+                     </p>
+                 </a>
+                 <ul class="nav nav-treeview">
+                     <li class="nav-item">
+                         <a href="factura/listaFactura.php" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Lista de Facturas</p>
+                         </a>
+                     </li>
+                     <li class="nav-item">
+                         <a href="factura/facturas.php" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Crear Factura</p>
+                         </a>
+                     </li>
+
+                 </ul>
+             </li>
+             
+             <li class="nav-header">Citas</li>
+             <li class="nav-item">
+                 <a href="calendar.html" class="nav-link">
+                     <i class="nav-icon far fa-calendar-alt"></i>
+                     <p>
+                         Calendario
+                         <span class="badge badge-info right">2</span>
+                     </p>
+                 </a>
+             </li>
+             
+             ';
+
+
+
+             }
+
+
+             ?>
+
+
+
+
+
 
      </nav>
      <!-- /.sidebar-menu -->

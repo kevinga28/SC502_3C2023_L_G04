@@ -46,10 +46,11 @@ $('#usuario_add').on('submit', function (event) {
 
 
                     limpiarForms();
-                    window.location.href = "../../index.php";
+                    window.location.href = "../index.php";
                     break;
                 case '4':
                     alert('error')
+                    break;
 
             }
             $('#btnRegistar').removeAttr('disabled');
