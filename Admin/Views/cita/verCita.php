@@ -97,13 +97,14 @@
                                                             <input type="text" class="form-control" id="Etratamiento" name="tratamiento[]" placeholder="Tratamientos" readonly>
                                                         </div>
 
-                                                    </div>
-                                                    <div class=" col-md-6">
-
                                                         <div class="form-group">
                                                             <label for="estilista">Estilista</label>
                                                             <input type="text" class="form-control" id="Eestilista" name="estilista" placeholder="Estilista" readonly>
                                                         </div>
+
+                                                    </div>
+                                                    <div class=" col-md-6">
+
 
                                                         <div class="form-group">
                                                             <label for="fechaCita">Fecha de la Cita</label>
@@ -113,6 +114,11 @@
                                                         <div class="form-group">
                                                             <label for="horaCita">Hora de la Cita</label>
                                                             <input type="time" class="form-control" id="EhoraCita" name="horaCita" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="horaFin">Finalizacion Cita</label>
+                                                            <input type="time" class="form-control" id="EhoraFin" name="horaFin" readonly>
                                                         </div>
 
                                                         <div class="form-group">
@@ -164,27 +170,9 @@
 
     <script src="../dist/js/cita.js"></script>
 
-    <script>
-        // Captura el cambio en la selección de tratamientos
-        $('#Etratamiento').on('change', function() {
-            var total = 0;
-            // Suma los precios de los tratamientos seleccionados
-            $('#Etratamiento option:selected').each(function() {
-                total += parseInt($(this).data('precio'));
-            });
-            // Muestra el total en el campo correspondiente
-            $('#Epagototal').val('₡' + total);
-        });
-    </script>
+    <script src="../dist/js/tratamiento.js"></script>
 
 
-    <script>
-        $(function() {
-            //Initialize Select2 Elements
-            $('.select2').select2()
-
-        })
-    </script>
 </body>
 
 

@@ -142,21 +142,20 @@ const rellenarFormularioCita = async () => {
         $("#Ecorreo").val(datos.correoCliente);
         $("#Eestilista").val(datos.nombreEmpleado + " " + datos.apellidoEmpleado);
 
-        const tratamientos = datos.tratamientos;
-
-        const precios = tratamientos.match(/\$\d+\.\d+/g);
+        const precios = datos.tratamientos.match(/₡\d+(\.\d+)?/g);
         let total = 0;
         if (precios) {
           precios.forEach(precio => {
-            const valorNumerico = parseFloat(precio.replace("$", ""));
+            const valorNumerico = parseFloat(precio.replace("₡", ""));
             total += valorNumerico;
           });
         }
 
-        $("#EpagoTotal").val('$' + total.toFixed(2)); // Se muestra el total
+        $("#EpagoTotal").val('₡' + total.toFixed(2)); // Se muestra el total
         $("#Etratamiento").val(datos.tratamientos);
         $("#EfechaCita").val(datos.fechaCita);
         $("#EhoraCita").val(datos.horaCita);
+        $("#EhoraFin").val(datos.horaFin);
 
       } else {
         console.error("Error al obtener los datos de la cita");
@@ -166,7 +165,6 @@ const rellenarFormularioCita = async () => {
     }
   }
 };
-
 
 rellenarFormularioCita();
 /* ---------------------------------------------------------------EDITAR LOS DATOS DEL CLIENTE--------------------------------------------------------------- */
@@ -361,9 +359,23 @@ function cargarCliente() {
           selectCliente.append('<option value="' + cliente.IdCliente + '">' + cliente.nombre + ' ' + cliente.apellido + '</option>');
         });
 
-        // Obtén el primer cliente en la lista y carga su información al cargar la página
-        var cliente = data[0];
-        cargarInformacionCliente(cliente.IdCliente);
+        // Evento change para el select de clientes
+        selectCliente.change(function () {
+          // Obtiene el cliente seleccionado
+          var selectedClienteId = $(this).val();
+
+          // Encuentra el cliente seleccionado en el array 'data'
+          var selectedCliente = data.find(function (cliente) {
+            return cliente.IdCliente == selectedClienteId;
+          });
+
+          // Llena los campos con la información del cliente seleccionado
+          if (selectedCliente) {
+            $("#nombre").val(selectedCliente.nombre);
+            $("#apellido").val(selectedCliente.apellido);
+            $("#correo").val(selectedCliente.correo);
+          }
+        });
       }
     },
     error: function () {
@@ -372,35 +384,10 @@ function cargarCliente() {
   });
 }
 
-function cargarInformacionCliente(IdCliente) {
-  $.ajax({
-    url: '../../../admin/Controllers/clienteController.php?op=obtener' + IdCliente,
-    type: 'GET',
-    dataType: 'json',
-    success: function (cliente) {
-      // Llena los campos con la información del cliente
-      $('#nombre, #Enombre').val(cliente.nombre);
-      $('#apellido, #Eapellido').val(cliente.apellido);
-      $('#correo, #Ecorreo').val(cliente.correo);
-    },
-    error: function (error) {
-      console.log('Error al obtener información del cliente: ' + error.responseText);
-    }
-  });
-}
-
 $(document).ready(function () {
   cargarCliente();
-
-  // Evento change para el select de clientes
-  $('#cliente, #Ecliente').change(function () {
-    // Obtiene el cliente seleccionado
-    var selectedClienteId = $(this).val();
-
-    // Carga la información del cliente seleccionado
-    cargarInformacionCliente(selectedClienteId);
-  });
 });
+
 
 
 

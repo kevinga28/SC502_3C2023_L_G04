@@ -72,13 +72,10 @@
 
 
                                                         <div class="form-group">
-                                                            <label for="BusquedaCliente">Buscar Cliente</label>
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control" id="EIdCliente" name="BusquedaCliente" placeholder="Cliente" required>
-                                                                <div class="input-group-append">
-                                                                    <input type="button" class="btn btn-primary" value="Buscar" id="EBuscarCliente">
-                                                                </div>
-                                                            </div>
+                                                            <label for="cliente">Buscar Cliente</label>
+                                                            <select class="select2 select2-hidden-accessible" id="Ecliente" name="cliente" data-placeholder="Seleccionar Cliente" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
+                                                                <!-- Clientes cargados desde PHP se insertarán aquí automáticamente -->
+                                                            </select>
                                                         </div>
 
                                                         <div class="form-group">
@@ -124,10 +121,22 @@
                                                         </div>
 
                                                         <div class="form-group">
+                                                            <label for="horaFin">Finalizacion Cita</label>
+                                                            <input type="time" class="form-control" id="EhoraFin" name="horaFin" required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="duracionTotal">Duración Total</label>
+                                                            <input type="time" class="form-control" id="EduracionTotal" name="duracionTotal" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
                                                             <label for="pagoTotal">Total a Pagar</label>
-                                                            <input type="text" class="form-control" id="Epagototal" name="pagoTotal" readonly value="₡0">
+                                                            <input type="text" class="form-control" id="EpagoTotal" name="pagoTotal" readonly value="₡0">
+                                                            <input type="hidden" id="EpagoTotalHidden" name="pagoTotalHidden">
                                                         </div>
                                                     </div>
+
                                                 </div>
                                             </div>
 
@@ -181,9 +190,38 @@
                     total += parseInt($(this).data('precio'));
                 });
                 // Muestra el total en el campo correspondiente
-                $('#Epagototal').val('₡' + total);
+                $('#EpagoTotal').val('₡' + total);
+                $('#EpagoTotalHidden').val(total);
             });
         });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#Etratamiento').on('change', function() {
+                var duracionTotal = 0;
+                $('#Etratamiento option:selected').each(function() {
+                    var duracionComoMinutos = convertirFormatoHoraAMinutos($(this).data('duracion'));
+                    duracionTotal += duracionComoMinutos;
+                });
+                $('#EduracionTotal').val(convertirDuracionAFormatoHora(duracionTotal));
+            });
+        });
+
+
+        function convertirFormatoHoraAMinutos(horaEnFormatoHHMMSS) {
+            var partes = horaEnFormatoHHMMSS.split(":");
+            var horas = parseInt(partes[0]);
+            var minutos = parseInt(partes[1]);
+            var segundos = parseInt(partes[2]);
+            return horas * 60 + minutos + segundos / 60;
+        }
+
+        function convertirDuracionAFormatoHora(duracionEnMinutos) {
+            var horas = Math.floor(duracionEnMinutos / 60);
+            var minutos = duracionEnMinutos % 60;
+            return ('00' + horas).slice(-2) + ':' + ('00' + minutos).slice(-2);
+        }
     </script>
 
     <script>
@@ -198,6 +236,7 @@
     <script src="../dist/js/cita.js"></script>
 
     <script src="../dist/js/tratamiento.js"></script>
+
 
 
 </body>

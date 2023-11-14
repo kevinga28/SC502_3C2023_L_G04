@@ -1,3 +1,28 @@
+<?php
+require_once '../Model/Cliente.php';
+
+
+// Iniciar la sesión
+session_start();
+
+
+// Comprobar si el usuario ha iniciado sesión y si se han almacenado los datos del usuario en la sesión
+if (isset($_SESSION['usuario'])) {
+   $usuario = $_SESSION['usuario'];
+} else {
+   $usuario = null;
+}
+
+// Cerrar la sesión
+if (isset($_GET['cerrar_sesion'])) {
+   session_unset();
+   session_destroy();
+   $usuario = null;
+}
+?>
+
+
+
 <div class="header">
    <div class="container">
       <div class="row">
@@ -46,7 +71,7 @@
 
                   <!-- 
                   <?php
-                  session_start(); // iniciar la sesión 
+
                   if (isset($_SESSION['usuario_logueado'])) {
                      // El usuario ha iniciado sesión, muestra el enlace al perfil.
                      echo '<a href="#" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fas fa-user-circle fa-lg"></i></a>';
@@ -77,15 +102,24 @@
          <div class="modal-body">
             <div class="text-modal">
                <?php
-               // Datos del cliente (puedes obtener estos valores desde tu base de datos o donde los tengas)
+
                $nombreCliente = "Nombre del Cliente";
                $correoCliente = "correo@example.com";
                $telefonoCliente = "(123) 456-7890";
                ?>
+               <?php
+               if (isset($usuario)) {
 
-               <h6 class="nombre-cliente-modal">Cliente: <?php echo $nombreCliente; ?></h6>
-               <p class="correo-cliente-modal">Correo: <?php echo $correoCliente; ?></p>
-               <p class="telefono-cliente-modal">Teléfono: <?php echo $telefonoCliente; ?></p>
+                  echo '<h6 class="nombre-cliente-modal">Cliente:' . $usuario->getNombre() . '</h6>';
+                  echo '<p class="correo-cliente-modal">Correo: ' . $usuario->getCorreo() . '</p>';
+                  echo '<p class="telefono-cliente-modal">Teléfono: ' . $usuario->getTelefono() . '</p>';
+               } else {
+
+                  echo '<h6 class="nombre-cliente-modal">Cliente: No hay datos registrados</h6>';
+                  echo '<p class="correo-cliente-modal">Correo: No hay datos registrados</p>';
+                  echo '<p class="telefono-cliente-modal">Teléfono: No hay datos registrados</p>';
+               }
+               ?>
             </div>
          </div>
          <div class="modal-footer" style="justify-content: space-between;">
@@ -112,12 +146,13 @@
                <div class="row">
                   <div class="col-md-6">
                      <div class="form-group">
+
                         <label for="nombreCliente">Nombre:</label>
-                        <input type="text" id="nombreCliente" name="nombreCliente" value="<?php echo $nombreCliente; ?>" class="form-control">
+                        <input type="email" id="correoCliente" name="correoCliente" value="<?php echo isset($usuario) ? $usuario->getNombre() : ''; ?>" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="correoCliente">Correo:</label>
-                        <input type="email" id="correoCliente" name="correoCliente" value="<?php echo $correoCliente; ?>" class="form-control">
+                        <input type="email" id="correoCliente" name="correoCliente" value="<?php echo isset($usuario) ? $usuario->getCorreo() : ''; ?>" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="password">Contraseña:</label>
@@ -125,7 +160,7 @@
                      </div>
                      <div class="form-group">
                         <label for="telefonoCliente">Teléfono:</label>
-                        <input type="text" id="telefonoCliente" name="telefonoCliente" value="<?php echo $telefonoCliente; ?>" class="form-control">
+                        <input type="email" id="correoCliente" name="correoCliente" value="<?php echo isset($usuario) ? $usuario->getTelefono() : ''; ?>" class="form-control">
                      </div>
 
                   </div>
@@ -149,6 +184,9 @@
                      </div>
                   </div>
                </div>
+
+
+
                <div class="modal-footer" style="justify-content: space-between;">
                   <button type="button" class="btn btn-citas-modal" data-bs-toggle="modal" data-bs-target="#myModal">Volver</button>
                   <button type="submit" class="btn btn-editar-modal">Guardar Cambios</button>
@@ -173,7 +211,7 @@
                <div class="text-modal">
                   <div class="form-group">
                      <label for="tratamiento">Tratamiento:</label>
-                     <input type="text" id="tratamiento" name="tratamiento" class="form-control" value="<?php echo $factura['tratamiento']; ?>" readonly>
+                     <input type="text" id="tratamiento" name="tratamiento" class="form-control" readonly>
                   </div>
                   <div class="form-group">
                      <label for="precio">Precio con IVA:</label>

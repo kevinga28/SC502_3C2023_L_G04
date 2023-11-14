@@ -49,13 +49,15 @@ switch ($_GET["op"]) {
 
     case 'insertar':
         try {
-            $IdCliente = isset($_POST["BusquedaCliente"]) ? intval($_POST["BusquedaCliente"]) : 0;
+            $IdCliente = isset($_POST["cliente"]) ? intval($_POST["cliente"]) : 0;
             $cedulaEmpleado = isset($_POST["cedulaEmpleado"]) ? intval($_POST["cedulaEmpleado"]) : 0;
             $fechaCita = isset($_POST["fechaCita"]) ? trim($_POST["fechaCita"]) : "";
             $horaCita = isset($_POST["horaCita"]) ? trim($_POST["horaCita"]) : "";
+            $horaFin = isset($_POST["horaFin"]) ? trim($_POST["horaFin"]) : "";
+            $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
 
             // Validación de datos
-            if ($IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita)) {
+            if ($IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita) || empty($horaFin) || empty($pagoTotal)) {
                 echo "Error: Debes proporcionar todos los datos necesarios para crear la cita.";
             } else {
                 $cita = new Cita();
@@ -63,6 +65,8 @@ switch ($_GET["op"]) {
                 $cita->setCedulaEmpleado($cedulaEmpleado);
                 $cita->setFechaCita($fechaCita);
                 $cita->setHoraCita($horaCita);
+                $cita->setHoraFin($horaFin);
+                $cita->setPagoTotal($pagoTotal);
 
                 // Crea la cita sin tratamientos y obtén el ID
                 $idCita = $cita->crearCitaSinTratamientos();
@@ -92,11 +96,12 @@ switch ($_GET["op"]) {
             // Obtiene el ID de la cita
             $idCita = isset($_POST["IdCita"]) ? intval($_POST["IdCita"]) : 0;
 
-            $IdCliente = isset($_POST["BusquedaCliente"]) ? intval($_POST["BusquedaCliente"]) : 0;
+            $IdCliente = isset($_POST["cliente"]) ? intval($_POST["cliente"]) : 0;
             $cedulaEmpleado = isset($_POST["cedulaEmpleado"]) ? intval($_POST["cedulaEmpleado"]) : 0;
             $fechaCita = isset($_POST["fechaCita"]) ? trim($_POST["fechaCita"]) : "";
             $horaCita = isset($_POST["horaCita"]) ? trim($_POST["horaCita"]) : "";
             $horaFin = isset($_POST["horaFin"]) ? trim($_POST["horaFin"]) : "";
+            $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
 
             // Verifica si se han enviado tratamientos
             if (isset($_POST["tratamiento"]) && is_array($_POST["tratamiento"])) {
@@ -106,7 +111,7 @@ switch ($_GET["op"]) {
             }
 
             // Validación de datos
-            if ($idCita === 0 || $IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita) || empty($horaFin)) {
+            if ($idCita === 0 || $IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita) || empty($horaFin) || empty($pagoTotal)) {
                 echo "Error: Debes proporcionar todos los datos necesarios para editar la cita.";
             } else {
                 $cita = new Cita();
@@ -116,6 +121,7 @@ switch ($_GET["op"]) {
                 $cita->setFechaCita($fechaCita);
                 $cita->setHoraCita($horaCita);
                 $cita->setHoraFin($horaFin);
+                $cita->setPagoTotal($pagoTotal);
 
                 // Elimina todos los tratamientos de la cita
                 $cita->eliminarTratamientos($idCita);
@@ -140,7 +146,6 @@ switch ($_GET["op"]) {
         break;
 
 
-
     case 'obtener':
         if (isset($_GET['IdCita'])) {
             $IdCita = isset($_GET['IdCita']) ? intval($_GET['IdCita']) : null;
@@ -160,18 +165,24 @@ switch ($_GET["op"]) {
     case 'eliminar':
         if (isset($_POST['id'])) {
             $IdCita = intval($_POST['id']);
-            $cita = new Cita(); 
+            $cita = new Cita();
             $cita->setIdCita($IdCita);
 
             $resultado = $cita->eliminarCita($IdCita);
 
             if ($resultado > 0) {
-                echo "1"; 
+                echo "1";
             } else {
-                echo "2"; 
+                echo "2";
             }
         } else {
-            echo "3"; 
+            echo "3";
         }
+        break;
+
+    case 'cargarCita':
+        $citaModel = new Cita();
+        $citas = $citaModel->obtenerCitas();
+        echo json_encode($citas);
         break;
 }

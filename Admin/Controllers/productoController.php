@@ -127,5 +127,21 @@
                 echo json_encode(["error" => "Codigo del producto no proporcionado"]);
             }
         break;
-      }
-?>
+      
+      
+        case 'lista':
+            try {
+                $conexion = Conexion::conectar();
+                $consulta = "SELECT Codigo, nombre, cantidad, precio FROM producto";  // Eliminé la coma después de 'precio'
+                $resultado = $conexion->query($consulta);
+        
+                $productos = array();
+                while ($fila = $resultado->fetch(PDO::FETCH_ASSOC)) {
+                    $productos[] = $fila;
+                }
+        
+                echo json_encode($productos);
+            } catch (PDOException $ex) {
+                echo json_encode(array("error" => "Error de base de datos: " . $ex->getMessage()));
+            }
+}

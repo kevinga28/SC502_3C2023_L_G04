@@ -172,6 +172,8 @@
   <!-- Custom JavaScript (main.js) -->
   <script src="dist/js/main.js"></script>
 
+  <script src="logueo/js/logout.js"></script>
+
 </body>
 
 </html>

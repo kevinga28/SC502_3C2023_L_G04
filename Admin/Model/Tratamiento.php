@@ -7,6 +7,7 @@ class Tratamiento extends Conexion
     private $IdTratamiento;
     private $nombre;
     private $precio;
+    private $duracion;
 
     private $descripcion;
 
@@ -55,6 +56,15 @@ class Tratamiento extends Conexion
         return $this->descripcion;
     }
 
+    public function setDuracion($duracion)
+    {
+        $this->duracion = $duracion;
+    }
+
+    public function getDuracion()
+    {
+        return $this->duracion;
+    }
 
 
     public static function getConexion()
@@ -94,7 +104,7 @@ class Tratamiento extends Conexion
 
     public function guardarEnDb()
     {
-        $query = "INSERT INTO `tratamiento` (`nombre`, `descripcion`, `precio`) VALUES (:nombre, :descripcion, :precio)";
+        $query = "INSERT INTO `tratamiento` (`nombre`, `descripcion`, `precio`, `duracion`) VALUES (:nombre, :descripcion, :precio, :duracion)";
 
         try {
             self::getConexion();
@@ -102,11 +112,13 @@ class Tratamiento extends Conexion
             $nombre = $this->getNombre();
             $descripcion = $this->getDescripcion();
             $precio = $this->getPrecio();
+            $duracion = $this->getDuracion();
             $resultado = self::$cnx->prepare($query);
 
             $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
             $resultado->bindParam(":descripcion", $descripcion, PDO::PARAM_STR);
             $resultado->bindParam(":precio", $precio, PDO::PARAM_STR);
+            $resultado->bindParam(":duracion", $duracion, PDO::PARAM_STR);
 
 
             $resultado->execute();

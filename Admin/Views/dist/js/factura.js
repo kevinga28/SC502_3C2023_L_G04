@@ -72,70 +72,178 @@ $(function () {
 
 
 /* ---------------------------------------------------------------CREAR LAS FACTURAS--------------------------------------------------------------- */
-
-$(document).ready(function () {
-    $('#crearFactura').on('submit', function (event) {
-        event.preventDefault();
-        $('#btnRegistrar').prop('disabled', true);
-        var formData = new FormData($('#crearFactura')[0]);
-        $.ajax({
-            url: '../../../admin/Controllers/facturaController.php?op=insertar',
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function (datos) {
-                switch (datos) {
-                    case '1':
-                        toastr.success('Factura registrada');
-                        $('#crearFactura')[0].reset();
-                        tabla.api().ajax.reload();
-                        break;
-                    default:
-                        toastr.error(datos);
-                        break;
-                }
-                $('#btnRegistrar').removeAttr('disabled');
+$('#crearFactura').on('submit', function (event) {
+    event.preventDefault();
+    $('#btnRegistrar').prop('disabled', true);
+    var formData = new FormData($('#crearFactura')[0]);
+    $.ajax({
+        url: '../../../admin/Controllers/facturaController.php?op=insertar',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (datos) {
+            switch (datos) {
+                case '1':
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Factura registrada',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            $('#crearFactura')[0].reset();
+                            tabla.api().ajax.reload();
+                        }
+                    });
+                    break;
+                case '2':
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'La Factura ya existe. Corrija e inténtelo nuevamente.',
+                    });
+                    break;
+                default:
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: datos,
+                    });
+                    break;
             }
-        });
+            $('#btnRegistrar').removeAttr('disabled');
+        },
     });
 });
-
 
 /* ---------------------------------------------------------------BUSCAR UNA CITA --------------------------------------------------------------- */
-$(document).ready(function() {
-    $('#buscarCliente').click(function() {
-        var busquedaCitas = $('#busquedaCitas').val();
-        $.ajax({
-            type: 'POST',
-            url: '../../../admin/Controllers/facturaController.php?op=buscarCita',
-            data: { busquedaCitas: busquedaCitas },
-            dataType: 'json',
-            success: function(response) {
-                // Procesar la respuesta del servidor y llenar los campos del formulario
-                if (response.success) {
-                    var cita = response.cita; // Acceder al objeto 'cita' de la respuesta
+$(document).ready(function () {
+    var pagoTotalValue; // Variable para almacenar el valor original de pagoTotal
 
-                    $('#nombre').val(cita.nombreCliente);
-                    $('#apellido').val(cita.apellidoCliente);
-                    $('#correo').val(cita.correo);
-                    $('#estilista').val(cita.nombreEmpleado + ' ' + cita.apellidoEmpleado);
-                    $('#horaCita').val(cita.horaCita);
-                    $('#fechaCita').val(cita.fechaCita);
-                    
-                    // No necesitas actualizar otros campos ya presentes en el formulario
-                } else {
-                    // Manejar el caso en el que no se encontró la cita
-                    alert('Cita no encontrada');
+    function cargarCita() {
+        $('#producto').prop('disabled', true);
+        $.ajax({
+            url: '../../../admin/Controllers/citaController.php?op=cargarCita',
+            type: 'POST',
+            dataType: 'json',
+            success: function (data) {
+                var selectedCita = $('#citas, #Ecitas');
+                selectedCita.empty();
+
+                if (data && data.length > 0) {
+                    $.each(data, function (index, cita) {
+                        selectedCita.append('<option value="' + cita.IdCita + '">' + cita.IdCita + ' ' + cita.nombreCliente + ' ' + cita.apellidoCliente + ' ' + cita.fechaCita + '</option>');
+                    });
+
+                    selectedCita.change(function () {
+                        var selectedCitaId = $(this).val();
+
+                        var selectedCita = data.find(function (cita) {
+                            return cita.IdCita == selectedCitaId;
+                        });
+
+                        if (selectedCita) {
+                            pagoTotalValue = selectedCita.pagoTotal;
+
+                            $("#nombre, #Enombre").val(selectedCita.nombreCliente);
+                            $("#apellido, #Eapellido").val(selectedCita.apellidoCliente);
+                            $("#correo, #Ecorreo").val(selectedCita.correoCliente);
+                            $("#tratamiento, #Etratamiento").val(selectedCita.tratamientos);
+                            $("#estilista,  #Eestilista").val(selectedCita.nombreEmpleado + " " + selectedCita.apellidoEmpleado);
+                            $("#fechaCita,  #EfechaCitao").val(selectedCita.fechaCita);
+                            $("#horaCita, #EhoraCita").val(selectedCita.horaCita);
+                            $("#horaFin, #EhoraFin ").val(selectedCita.horaFin);
+                            $("#pagoTotal, #EpagoTotal ").val(pagoTotalValue);
+                            $("#pagoTotalHidden, #EpagoTotalHidden").val(pagoTotalValue);
+
+                            $('#producto').prop('disabled', false);
+
+                            if (!$('#producto').data('sumado')) {
+                                actualizarTotal();
+                                $('#producto').data('sumado', true);
+                            }
+
+                            $('#producto').on('change', function () {
+                                if ($(this).val().length > 0) {
+                                    $('#cantidadDiv').show();
+                                } else {
+                                    $('#cantidadDiv').hide();
+                                }
+                                actualizarTotal();
+                            });
+
+                            $('#cantidad').on('change', function () {
+                                if (pagoTotalValue !== parseFloat($('#pagoTotalHidden').val())) {
+                                    actualizarTotal();
+                                }
+                            });
+                        }
+                    });
                 }
             },
-            error: function(error) {
-                console.log(error);
-                alert('Error al buscar la cita');
+            error: function () {
+                console.log('Error al cargar citas');
             }
         });
+    }
+    function actualizarTotal() {
+        var totalTratamientos = parseFloat($("#pagoTotalHidden").val()) || 0;
+        var totalProductos = 0;
+    
+        if ($('#producto').val().length > 0) {
+            $('#producto option:selected').each(function () {
+                var precio = parseFloat($(this).data('precio')) || 0;
+                var cantidad = parseInt($('#cantidad').val()) || 1;
+                totalProductos += precio * cantidad;
+            });
+        }
+    
+        var total = totalTratamientos + (totalProductos || 0);
+    
+        $('#pagoTotal').val('₡' + total.toFixed(2));
+        $('#pagoTotalHidden').val(total);
+    
+        if (totalProductos !== 0) {
+            pagoTotalValue = total;
+        }
+    }
+
+    $(document).ready(function () {
+        cargarCita();
     });
 });
+/* ---------------------------------------------------------------BUSCAR UN PRODUCTO --------------------------------------------------------------- */
+
+$(document).ready(function () {
+    $.ajax({
+        url: '../../../admin/Controllers/productoController.php?op=lista',
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            if (data.length > 0) {
+                var select = $('#producto, #Eproducto');
+
+                select.empty();
+
+                $.each(data, function (index, producto) {
+                    var option = $('<option>', {
+                        value: producto.Codigo,
+                        'data-precio': producto.precio,
+                    }).text(producto.nombre + ' - ₡' + producto.precio);
+
+                    select.append(option);
+                });
+            } else {
+                console.log('No se encontraron productos.');
+            }
+        },
+        error: function (error) {
+            console.log('Error en la solicitud AJAX: ' + error.responseText);
+        }
+    });
+});
+
+
 /* ---------------------------------------------------------------RELLANAR FORMULARIO DE FACTURA PARA EDICIÓN--------------------------------------------------------------- */
 
 const rellenarFormularioFactura = async () => {
@@ -150,7 +258,7 @@ const rellenarFormularioFactura = async () => {
 
                 // Rellena el formulario con los datos obtenidos
                 $("#Eid").val(datos.id);
-                $("#EidCita").val(datos.idCita);
+                $("#Eidcita").val(datos.idcita);
                 $("#EcodigoProducto").val(datos.codigoProducto);
                 $("#EmetodoPago").val(datos.metodoPago);
                 $("#EpagoTotal").val(datos.pagoTotal);

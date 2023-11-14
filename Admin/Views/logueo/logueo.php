@@ -96,6 +96,8 @@
     <script src="../plugins/jquery/jquery.min.js"></script>
 
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="js/login.js"></script>
+    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
     <script src="../dist/js/adminlte.min.js?v=3.2.0"></script>
 </body>

@@ -10,17 +10,12 @@ class Cita extends Conexion
     private $IdCita;
     private $IdCliente;
     private $cedulaEmpleado;
-    private $tratamiento;
     private $fechaCita;
     private $horaCita;
     private $horaFin;
 
-    /*========================================================================
-	=            Atributos de la Clase Cliente mediante ID            =
-	========================================================================*/
-    private $nombreCliente;
-    private $apellidoCliente;
-    private $correo;
+    private $pagoTotal;
+
 
 
     /*=============================================
@@ -30,40 +25,6 @@ class Cita extends Conexion
     {
     }
 
-
-    /*=============================================
-	=            Encapsuladores del Cliente       =
-	=============================================*/
-
-    public function setNombreCliente($nombre)
-    {
-        $this->nombreCliente = $nombre;
-    }
-
-    public function setApellidoCliente($apellido)
-    {
-        $this->apellidoCliente = $apellido;
-    }
-
-    public function setCorreo($correo)
-    {
-        $this->correo = $correo;
-    }
-
-    public function getNombreCliente()
-    {
-        return $this->nombreCliente;
-    }
-
-    public function getApellidoCliente()
-    {
-        return $this->apellidoCliente;
-    }
-
-    public function getCorreo()
-    {
-        return $this->correo;
-    }
 
     /*=============================================
 	=            Encapsuladores de la Clase       =
@@ -98,15 +59,6 @@ class Cita extends Conexion
         return $this->cedulaEmpleado;
     }
 
-    public function setTratamiento($tratamiento)
-    {
-        $this->tratamiento = $tratamiento;
-    }
-
-    public function getTratamiento()
-    {
-        return $this->tratamiento;
-    }
 
     public function setFechaCita($fechaCita)
     {
@@ -136,6 +88,16 @@ class Cita extends Conexion
     public function getHoraFin()
     {
         return $this->horaFin;
+    }
+
+    public function setPagoTotal($pagoTotal)
+    {
+        $this->pagoTotal = $pagoTotal;
+    }
+
+    public function getPagoTotal()
+    {
+        return $this->pagoTotal;
     }
 
     /*=============================================
@@ -233,14 +195,18 @@ class Cita extends Conexion
             $cedulaEmpleado = $this->getCedulaEmpleado();
             $fechaCita = $this->getFechaCita();
             $horaCita = $this->getHoraCita();
+            $horaFin = $this->getHoraFin();
+            $pagoTotal = $this->getPagoTotal();
 
-            $queryCita = "INSERT INTO `cita` (`IdCliente`, `cedulaEmpleado`, `fechaCita`, `horaCita`) 
-                      VALUES (:IdCliente, :cedulaEmpleado, :fechaCita, :horaCita)";
+            $queryCita = "INSERT INTO `cita` (`IdCliente`, `cedulaEmpleado`, `fechaCita`, `horaCita`, `horaFin`, `pagoTotal`) 
+                      VALUES (:IdCliente, :cedulaEmpleado, :fechaCita, :horaCita, :horaFin, :pagoTotal)";
             $resultadoCita = self::$cnx->prepare($queryCita);
             $resultadoCita->bindParam(":IdCliente", $IdCliente, PDO::PARAM_INT);
             $resultadoCita->bindParam(":cedulaEmpleado", $cedulaEmpleado, PDO::PARAM_INT);
             $resultadoCita->bindParam(":fechaCita", $fechaCita, PDO::PARAM_STR);
             $resultadoCita->bindParam(":horaCita", $horaCita, PDO::PARAM_STR);
+            $resultadoCita->bindParam(":horaFin", $horaFin, PDO::PARAM_STR);
+            $resultadoCita->bindParam(":pagoTotal", $pagoTotal, PDO::PARAM_STR);
             $resultadoCita->execute();
 
             $idCita = self::$cnx->lastInsertId();
@@ -322,7 +288,7 @@ class Cita extends Conexion
     {
         $query = "UPDATE cita 
         SET IdCliente = :IdCliente, cedulaEmpleado = :cedulaEmpleado, 
-            fechaCita = :fechaCita, horaCita = :horaCita
+            fechaCita = :fechaCita, horaCita = :horaCita, horaFin = :horaFin, pagoTotal = :pagoTotal 
         WHERE IdCita = :IdCita";
 
         try {
@@ -332,6 +298,8 @@ class Cita extends Conexion
             $cedulaEmpleado = $this->getCedulaEmpleado();
             $fechaCita = $this->getFechaCita();
             $horaCita = $this->getHoraCita();
+            $horaFin = $this->getHoraFin();
+            $pagoTotal = $this->getPagoTotal();
             $IdCita = $this->getIdCita();
 
             $resultado = self::$cnx->prepare($query);
@@ -340,7 +308,10 @@ class Cita extends Conexion
             $resultado->bindParam(":cedulaEmpleado", $cedulaEmpleado, PDO::PARAM_INT);
             $resultado->bindParam(":fechaCita", $fechaCita, PDO::PARAM_STR);
             $resultado->bindParam(":horaCita", $horaCita, PDO::PARAM_STR);
+            $resultado->bindParam(":horaFin", $horaFin, PDO::PARAM_STR);
+            $resultado->bindParam(":pagoTotal", $pagoTotal, PDO::PARAM_STR);
             $resultado->bindParam(":IdCita", $IdCita, PDO::PARAM_INT);
+
 
             self::$cnx->beginTransaction(); // Desactiva el autocommit
 
@@ -385,7 +356,9 @@ class Cita extends Conexion
         cl.correo AS correoCliente,
         e.nombre AS nombreEmpleado,
         e.apellido AS apellidoEmpleado,
-        GROUP_CONCAT(CONCAT(t.nombre, ' ($', t.precio, ')') SEPARATOR ', ') AS tratamientos
+        GROUP_CONCAT(CONCAT(t.nombre, ' (₡', t.precio, ')') SEPARATOR ', ') AS tratamientos,
+        c.horaFin,
+        c.pagoTotal
     FROM cita c
     INNER JOIN cliente cl ON c.IdCliente = cl.IdCliente
     INNER JOIN empleado e ON c.cedulaEmpleado = e.cedula
@@ -417,30 +390,30 @@ class Cita extends Conexion
     {
         try {
             self::getConexion();
-    
+
             // Iniciar una transacción
             self::$cnx->beginTransaction();
-    
+
             // 1. Eliminar registros relacionados (por ejemplo, registros de facturación)
             $queryDeleteRelacionados = "DELETE FROM cita_tratamiento WHERE IdCita = :IdCita";
             $stmtDeleteRelacionados = self::$cnx->prepare($queryDeleteRelacionados);
             $stmtDeleteRelacionados->bindParam(":IdCita", $IdCita, PDO::PARAM_INT);
             $stmtDeleteRelacionados->execute();
-    
+
             // 2. Eliminar la cita principal
             $queryEliminarCita = "DELETE FROM cita WHERE IdCita = :IdCita";
             $stmtEliminarCita = self::$cnx->prepare($queryEliminarCita);
             $stmtEliminarCita->bindParam(":IdCita", $IdCita, PDO::PARAM_INT);
             $stmtEliminarCita->execute();
-    
+
             // Confirmar la transacción si no hubo errores
             self::$cnx->commit();
-    
+
             self::desconectar();
-    
+
             // Verificar el número de filas afectadas
             $numFilasEliminadas = $stmtDeleteRelacionados->rowCount() + $stmtEliminarCita->rowCount();
-    
+
             return $numFilasEliminadas; // Devuelve el número de filas eliminadas
         } catch (PDOException $e) {
             // En caso de error, deshacer la transacción
@@ -450,5 +423,35 @@ class Cita extends Conexion
         }
     }
 
+    public function obtenerCitas()
+    {
+        $query = "SELECT c.*,
+            cl.nombre AS nombreCliente,
+            cl.apellido AS apellidoCliente,
+            cl.correo AS correoCliente,
+            e.nombre AS nombreEmpleado,
+            e.apellido AS apellidoEmpleado,
+            GROUP_CONCAT(CONCAT(t.nombre, ' (₡', t.precio, ')') SEPARATOR ', ') AS tratamientos
+        FROM cita c
+        INNER JOIN cliente cl ON c.IdCliente = cl.IdCliente
+        INNER JOIN empleado e ON c.cedulaEmpleado = e.cedula
+        INNER JOIN cita_tratamiento ct ON c.IdCita = ct.IdCita
+        INNER JOIN tratamiento t ON ct.IdTratamiento = t.IdTratamiento
+        GROUP BY c.IdCita";
 
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->query($query);
+
+            $citas = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+            self::desconectar();
+
+            return $citas;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error;
+        }
+    }
 }

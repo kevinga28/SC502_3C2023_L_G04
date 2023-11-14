@@ -7,71 +7,88 @@ switch ($_GET["op"]) {
     case 'listaTabla':
         $factura = new Factura();
         $facturas = $factura->listarFacturas();
-
         $data = array();
         foreach ($facturas as $reg) {
-            // ... (otros campos)
             $data[] = array(
-                "0" => $reg->getIdFactura(),
-                "1" => $reg->getIdCita(),
-                "2" => $reg->getNombreCliente(),
-                "3" => $reg->getApellidoCliente(),
-                "4" => $reg->getCorreo(),
-                "5" => $reg->getNombreProducto(),
-                "6" => $reg->getMetodoPago(),
-                "7" => $reg->getPagoTotal(),
+                "0" => $reg['IdFactura'],
+                "1" => $reg['IdCita'],
+                "2" => $reg['nombreCliente'],
+                "3" => $reg['apellidoCliente'],
+                "4" => $reg['CedulaEmpleado'],
+                "5" => $reg['Tratamientos'],
+                "6" => $reg['FechaCita'],
+                "7" => $reg['HoraCita'],
+                "8" => $reg['HoraFin'],
+
             );
         }
-
         $resultados = array(
             "sEcho" => 1,
             "iTotalRecords" => count($data),
             "iTotalDisplayRecords" => count($data),
             "aaData" => $data
         );
-
         echo json_encode($resultados);
         break;
 
-        case 'buscarCita':
-            // Asegúrate de recibir y validar los datos necesarios para buscar la cita
-            $idCita = isset($_POST["busquedaCitas"]) ? trim($_POST["busquedaCitas"]) : "";
-        
-            // Llama a la función de la clase Factura para buscar la cita por el ID
-            $factura = new Factura();
-            $datosCita = $factura->buscarCitaPorId($idCita);
-        
-            if ($datosCita) {
-                $response = array(
-                    'success' => true,
-                    'cita' => $datosCita // Devuelve todos los datos de la cita y el cliente
-                );
-                echo json_encode($response);
-            } else {
-                $response = array('success' => false);
-                echo json_encode($response);
-            }
-            break;
+    case 'buscarCita':
+        // Asegúrate de recibir y validar los datos necesarios para buscar la cita
+        $idCita = isset($_POST["busquedaCitas"]) ? trim($_POST["busquedaCitas"]) : "";
+
+        // Llama a la función de la clase Factura para buscar la cita por el ID
+        $factura = new Factura();
+        $datosCita = $factura->buscarCitaPorId($idCita);
+
+        if ($datosCita) {
+            $response = array(
+                'success' => true,
+                'cita' => $datosCita // Devuelve todos los datos de la cita y el cliente
+            );
+            echo json_encode($response);
+        } else {
+            $response = array('success' => false);
+            echo json_encode($response);
+        }
+        break;
+
 
     case 'insertar':
-        // Asegúrate de recibir y validar todos los datos necesarios
-        $IdCita = isset($_POST["IdCita"]) ? trim($_POST["IdCita"]) : "";
-        $codigoProducto = isset($_POST["codigoProducto"]) ? trim($_POST["codigoProducto"]) : "";
-        $metodoPago = isset($_POST["metodoPago"]) ? trim($_POST["metodoPago"]) : "";
-        $pagoTotal = isset($_POST["pagoTotal"]) ? trim($_POST["pagoTotal"]) : "";
+        try {
+            $IdCita = isset($_POST["citas"]) ? intval($_POST["citas"]) : 0;
+            $metodoPago = isset($_POST["metodoPago"]) ? trim($_POST["metodoPago"]) : "";
+            $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
 
-        $factura = new Factura();
 
-        // Configura los atributos del objeto Factura
-        $factura->setIdCita($IdCita);
-        $factura->setCodigoProducto($codigoProducto);
-        $factura->setMetodoPago($metodoPago);
-        $factura->setPagoTotal($pagoTotal);
+            // Validación de datos
+            if ($IdCita === 0 || empty($metodoPago) || empty($pagoTotal)) {
+                echo "Error: Debes proporcionar todos los datos necesarios para crear la factura.";
+            } else {
+                $factura = new Factura();
+                $factura->setIdCita($IdCita);
+                $factura->setMetodoPago($metodoPago);
+                $factura->setPagoTotal($pagoTotal);
 
-        $factura->agregarFactura();
+                $idFactura = $factura->agregarFactura();
 
-        echo "Factura agregada exitosamente.";
+                if (is_numeric($idFactura) && $idFactura > 0) {
+                    if (isset($_POST["productos"]) && is_array($_POST["productos"])) {
+                        $productos = $_POST["productos"];
+                        foreach ($productos as $codigoProducto) {
+                            // Asegúrate de tener la función agregarProductoFactura en tu clase Factura
+                            $factura->agregarProductoFactura($idFactura, $codigoProducto, $cantidad, $precioUnitario);
+                        }
+                    }
+                    echo "1"; // Indica éxito
+                } else {
+                    echo "Error: No se pudo crear la factura. Por favor, verifica los datos.";
+                }
+            }
+        } catch (PDOException $Exception) {
+            echo "Error: " . $Exception->getMessage();
+        }
         break;
+
+
 
     case 'editar':
         $IdFactura = isset($_POST["IdFactura"]) ? trim($_POST["IdFactura"]) : "";
@@ -83,7 +100,6 @@ switch ($_GET["op"]) {
         $factura = new Factura();
         $factura->setIdFactura($IdFactura);
         $factura->setIdCita($IdCita);
-        $factura->setCodigoProducto($codigoProducto);
         $factura->setMetodoPago($metodoPago);
         $factura->setPagoTotal($pagoTotal);
 

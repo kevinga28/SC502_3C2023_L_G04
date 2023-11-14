@@ -72,8 +72,6 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
 
-                                                       
-
                                                         <div class="form-group">
                                                             <label for="cliente">Buscar Cliente</label>
                                                             <select class="select2 select2-hidden-accessible" id="cliente" name="cliente" data-placeholder="Seleccionar Cliente" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
@@ -126,13 +124,19 @@
                                                         </div>
 
                                                         <div class="form-group">
+                                                            <label for="horaFin">Finalizacion Cita</label>
+                                                            <input type="time" class="form-control" id="horaFin" name="horaFin" required>
+                                                        </div>
+
+                                                        <div class="form-group">
                                                             <label for="duracionTotal">Duración Total</label>
                                                             <input type="time" class="form-control" id="duracionTotal" name="duracionTotal" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="pagoTotal">Total a Pagar</label>
-                                                            <input type="text" class="form-control" id="pagototal" name="pagoTotal" readonly value="₡0">
+                                                            <input type="text" class="form-control" id="pagoTotal" name="pagoTotal" readonly value="₡0">
+                                                            <input type="hidden" id="pagoTotalHidden" name="pagoTotalHidden">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -175,7 +179,6 @@
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
 
-    <script src="https://momentjs.com/downloads/moment.min.js"></script>
 
 
 
@@ -188,38 +191,39 @@
                     total += parseInt($(this).data('precio'));
                 });
                 // Muestra el total en el campo correspondiente
-                $('#pagototal').val('₡' + total);
+                $('#pagoTotal').val('₡' + total);
+                $('#pagoTotalHidden').val(total);
             });
         });
     </script>
 
-<script>
-    $(document).ready(function() {
-        $('#tratamiento').on('change', function() {
-            var duracionTotal = 0;
-            $('#tratamiento option:selected').each(function() {
-                var duracionComoMinutos = convertirFormatoHoraAMinutos($(this).data('duracion'));
-                duracionTotal += duracionComoMinutos;
+    <script>
+        $(document).ready(function() {
+            $('#tratamiento').on('change', function() {
+                var duracionTotal = 0;
+                $('#tratamiento option:selected').each(function() {
+                    var duracionComoMinutos = convertirFormatoHoraAMinutos($(this).data('duracion'));
+                    duracionTotal += duracionComoMinutos;
+                });
+                $('#duracionTotal').val(convertirDuracionAFormatoHora(duracionTotal));
             });
-            $('#duracionTotal').val(convertirDuracionAFormatoHora(duracionTotal));
         });
-    });
 
- 
-    function convertirFormatoHoraAMinutos(horaEnFormatoHHMMSS) {
-        var partes = horaEnFormatoHHMMSS.split(":");
-        var horas = parseInt(partes[0]);
-        var minutos = parseInt(partes[1]);
-        var segundos = parseInt(partes[2]);
-        return horas * 60 + minutos + segundos / 60;
-    }
 
-    function convertirDuracionAFormatoHora(duracionEnMinutos) {
-        var horas = Math.floor(duracionEnMinutos / 60);
-        var minutos = duracionEnMinutos % 60;
-        return ('00' + horas).slice(-2) + ':' + ('00' + minutos).slice(-2);
-    }
-</script>
+        function convertirFormatoHoraAMinutos(horaEnFormatoHHMMSS) {
+            var partes = horaEnFormatoHHMMSS.split(":");
+            var horas = parseInt(partes[0]);
+            var minutos = parseInt(partes[1]);
+            var segundos = parseInt(partes[2]);
+            return horas * 60 + minutos + segundos / 60;
+        }
+
+        function convertirDuracionAFormatoHora(duracionEnMinutos) {
+            var horas = Math.floor(duracionEnMinutos / 60);
+            var minutos = duracionEnMinutos % 60;
+            return ('00' + horas).slice(-2) + ':' + ('00' + minutos).slice(-2);
+        }
+    </script>
 
     <script>
         $(function() {

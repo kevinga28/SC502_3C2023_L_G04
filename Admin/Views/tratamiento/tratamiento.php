@@ -89,6 +89,11 @@
                               <label for="Precio">Precio</label>
                               <input type="text" class="form-control" id="precio" name="precio" placeholder="Precio" required>
                             </div>
+
+                            <div class="form-group">
+                              <label for="Duracion">Duracion</label>
+                              <input type="time" class="form-control" id="duracion" name="duracion" placeholder="Duracion" required>
+                            </div>
                           </div>
                           
                         </div>

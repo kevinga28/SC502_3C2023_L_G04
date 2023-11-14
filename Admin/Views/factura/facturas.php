@@ -77,17 +77,10 @@
                                                     <div class="col-md-6">
 
                                                         <div class="form-group">
-                                                            <label for="busquedaCitas">Buscar Cita del Cliente</label>
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control" id="busquedaCitas" name="busquedaCitas" placeholder="Citas">
-                                                                <div class="input-group-append">
-                                                                    <button type="button" class="btn btn-primary" id="buscarCliente">Buscar</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div id="resultadosBusqueda">
-                                                            <!-- Aquí se mostrarán los resultados de la búsqueda -->
+                                                            <label for="Cita">Buscar Cita</label>
+                                                            <select class="select2 select2-hidden-accessible" id="citas" name="citas" data-placeholder="Seleccionar Cita" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
+                                                                <!-- Citas cargados desde PHP se insertarán aquí automáticamente -->
+                                                            </select>
                                                         </div>
 
                                                         <div class="form-group">
@@ -105,6 +98,42 @@
                                                             <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresar Correo" readonly>
                                                         </div>
 
+                                                        <div class="form-group">
+                                                            <label for="tratamiento">Tratamiento</label>
+                                                            <input type="text" class="form-control" id="tratamiento" name="tratamiento[]" placeholder="Tratamientos" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="estilista">Estilista</label>
+                                                            <input type="text" class="form-control" id="estilista" name="estilista" placeholder="Estilista" readonly>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class=" col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="fechaCita">Fecha de la Cita</label>
+                                                            <input type="date" class="form-control" id="fechaCita" name="fechaCita" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="horaCita">Hora de la Cita</label>
+                                                            <input type="time" class="form-control" id="horaCita" name="horaCita" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="horaFin">Finalizacion Cita</label>
+                                                            <input type="time" class="form-control" id="EhoraFin" name="horaFin" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="Producto">Producto</label>
+                                                            <select class="select2 select2-hidden-accessible" multiple="multiple" id="producto" name="producto[]" data-placeholder="Buscar Producto" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
+                                                            </select>
+                                                        </div>
+                                                        <div class="form-group" id="cantidadDiv" style="display: none;">
+                                                            <label for="Cantidad">Cantidad</label>
+                                                            <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" min="1">
+                                                        </div>
 
                                                         <div class="form-group">
                                                             <label for="metodoPago">Método de Pago</label>
@@ -117,42 +146,17 @@
                                                             </select>
                                                         </div>
 
-                                                    </div>
-                                                    <div class=" col-md-6">
-
                                                         <div class="form-group">
-                                                            <label for="estilista">Estilista</label>
-                                                            <input type="text" class="form-control" id="estilista" name="estilista" placeholder="Estilista" readonly>
+                                                            <label for="pagoTotal">Total a Pagar</label>
+                                                            <input type="text" class="form-control" id="pagoTotal" name="pagoTotal" readonly value="₡0">
+                                                            <input type="text" id="pagoTotalHidden" name="pagoTotalHidden">
                                                         </div>
-
-                                                        <div class="form-group">
-                                                            <label for="tratamiento">Producto</label>
-                                                            <select class="select2 select2-hidden-accessible" multiple="multiple" id="IdProducto" name="producto[]" data-placeholder="Buscar Producto" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="fechaCita">Fecha de la Cita</label>
-                                                            <input type="date" class="form-control" id="fechaCita" name="fechaCita" readonly>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="horaCita">Hora de la Cita</label>
-                                                            <input type="time" class="form-control" id="horaCita" name="horaCita" readonly>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="total">Total a Pagar</label>
-                                                            <input type="text" class="form-control" id="total" name="total" readonly>
-                                                        </div>
-
-
                                                     </div>
                                                 </div>
                                             </div>
 
                                             <div class="card-footer">
-                                                <input type="submit" class="btn" value="Crear Factura" style="background-color: #202126; color: #F7F4ED;">
+                                                <input type="submit" class="btn" value="Registrar Factura" id="btnRegistrar" style="background-color: #202126; color: #F7F4ED;"></input>
                                             </div>
                                         </form>
 
@@ -217,9 +221,7 @@
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
 
-    <script src="../dist/js/factura.js"></script>
 
-    <!-- Page specific script -->
     <script>
         $(function() {
 
@@ -256,6 +258,8 @@
 
         })
     </script>
+
+    <script src="../dist/js/factura.js"></script>
 
 </body>
 

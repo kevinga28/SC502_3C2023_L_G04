@@ -241,4 +241,5 @@ class Producto extends Conexion
             return $error;
         }
     }
+
 }

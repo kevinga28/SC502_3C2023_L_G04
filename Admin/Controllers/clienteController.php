@@ -162,8 +162,8 @@ switch ($_GET["op"]) {
         break;
 
         case 'cargarCliente':
-        $clienteModel = new Cliente();
-        $clientes = $clienteModel->obtenerCliente();
-        echo json_encode($clientes);
-        break;
+            $clienteModel = new Cliente();
+            $clientes = $clienteModel->obtenerCliente();
+            echo json_encode($clientes);
+            break;
 }

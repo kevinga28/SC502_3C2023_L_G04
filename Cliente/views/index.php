@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -51,7 +55,9 @@
                         <div class="col-md-6">
                            <div class="text-bg">
                               <span>Bienvenidos a</span>
-                              <h1>Evolve</h1>
+
+
+                               <h1>Evolve</h1>
                               <p>
                                  Descubre un oasis de belleza y relajación en nuestro salón de belleza. Nuestros
                                  expertos estilistas
