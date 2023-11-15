@@ -43,36 +43,57 @@
           <div class="box-log">
             <form name="modulos_add" id="usuario_add" method="POST">
               <h2>Registrarse</h2>
+              <div class="row">
 
-              <div class="input-box">
-                <h3> <span class="aste">*</span> Campos Requeridos</h3>
-                  <input type="text" name="nombre" required placeholder="Nombre*">
+
+                <div class="input-box">
+                  <h3> <span class="aste">*</span> Campos Requeridos</h3>
+                  <input type="text" name="nombre" id="nombre" placeholder="Nombre*" required>
+                </div>
+
+                <div class="input-box">
+                  <input type="text" name="apellido" id="apellido" placeholder="Apellido*">
+                </div>
+
+                <div class="input-box">
+                  <input type="email" name="correo" id="correo" required placeholder="Correo Electronico*">
+                </div>
+
+                <div class="input-box">
+                  <input type="password" name="contrasena" id="contrasena" required placeholder="Contraseña*">
+                </div>
+
+                <div class="input-box">
+                  <input type="text" name="provincia" id="provincia" placeholder="Provincia*">
+                </div>
+
+                <div class="input-box">
+                  <input type="text" name="canton" id="canton" placeholder="Canton*">
+                </div>
+
+                <div class="input-box">
+                  <input type="text" name="distrito" id="distrito" placeholder="Distrito*">
+                </div>
+
+                <div class="input-box">
+                  <input type="text" name="otros" id="otros" placeholder="Otros*">
+                </div>
+
+                <div class="input-box">
+                  <input type="hidden" class="form-check-input" value="false" id="tipoCliente" name="tipoCliente">
+                </div>
+
+                <div class="input-box">
+                  <button id="btnRegistar" type="submit" class="btn" value="registrar">Registrarse</button>
+                </div>
+
+
+
+
+                <p id="parrafo">
+                  Al continuar, acepta las Política de privacidad.
+                </p>
               </div>
-
-
-              <div class="input-box">
-                <input type="text" name="apellido"  placeholder="Apellido*">
-              </div>
-
-              <div class="input-box">
-                <input type="email" name="correo" required placeholder="Correo Electronico*">
-              </div>
-
-              <div class="input-box">
-                <input type="password" name="contrasena" required placeholder="Contraseña*">
-              </div>
-
-              <div class="input-box">
-                <input type="text" name="telefono" placeholder="Telefono*">
-              </div>
-
-              <div class="input-box">
-                <button id="btnRegistar" type="submit" class="btn" value="registrar">Registrarse</button>
-              </div>
-
-              <p id="parrafo">
-                Al continuar, acepta las Política de privacidad.
-              </p>
             </form>
           </div>
         </div>

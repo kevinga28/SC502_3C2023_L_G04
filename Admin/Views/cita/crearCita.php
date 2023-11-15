@@ -217,7 +217,7 @@
 
             function generarHorarios() {
     var duracionTotal = convertirFormatoHoraAMinutos($('#duracionTotal').val());
-
+    console.log (duracionTotal);
     if (duracionTotal <= 0) {
         cargarHorariosSelect([]);
         return;
