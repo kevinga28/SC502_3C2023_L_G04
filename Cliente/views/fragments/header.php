@@ -1,5 +1,4 @@
 <?php
-require_once '../../Admin/Model/Cliente.php';
 
 // Iniciar la sesión
 session_start();

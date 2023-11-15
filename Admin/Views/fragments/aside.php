@@ -254,29 +254,7 @@
                      </p>
                  </a>
              </li>
-             <li class="nav-item">
-                 <a href="#" class="nav-link">
-                     <i class="nav-icon fas fa-edit"></i>
-                     <p>
-                         Facturas
-                         <i class="fas fa-angle-left right"></i>
-                     </p>
-                 </a>
-                 <ul class="nav nav-treeview">
-                     <li class="nav-item">
-                         <a href="factura/listaFactura.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Lista de Facturas</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="factura/facturas.php" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>Crear Factura</p>
-                         </a>
-                     </li>
-                 </ul>
-             </li>
+             
 
      </nav>
      <!-- /.sidebar-menu -->

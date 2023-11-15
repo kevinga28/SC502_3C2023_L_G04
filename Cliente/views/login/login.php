@@ -22,7 +22,7 @@
     <!-- Scrollbar Custom CSS -->
     <link rel="stylesheet" href="../css/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="../toastr/toastr.css">
+
 
 </head>
 
@@ -72,8 +72,6 @@
     <script src="../js/bootstrap.bundle.min.js"></script>
     <script src="../js/jquery-3.0.0.min.js"></script>
     <script src="js/inicioSesion.js"></script>
-    <script src="../toastr/toastr.js"></script>
-    <script src="../bootbox/bootbox.min.js"></script>
     <script src="../../../Admin/Views/plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
 </body>
