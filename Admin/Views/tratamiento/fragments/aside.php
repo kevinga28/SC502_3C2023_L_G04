@@ -65,8 +65,8 @@
                  </a>
              </li>
 
-             <li class="nav-item menu-open">
-                 <a href="#" class="nav-link active">
+             <li class="nav-item ">
+                 <a href="#" class="nav-link ">
                      <i class="nav-icon fas fa-user"></i>
                      <p>
                          Clientes
@@ -75,14 +75,14 @@
                  </a>
                  <ul class="nav nav-treeview">
                      <li class="nav-item">
-                         <a href="listaClientes.php" class="nav-link">
+                         <a href="../cliente/listaClientes.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Lista de Clientes</p>
                          </a>
                      </li>
 
                      <li class="nav-item">
-                         <a href="clientes.php" class="nav-link ">
+                         <a href="../cliente/clientes.php" class="nav-link ">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Crear Clientes</p>
                          </a>
@@ -193,6 +193,31 @@
                          </a>
                      </li>
 
+                 </ul>
+             </li>
+
+             <li class="nav-item menu-open">
+                 <a href="#" class="nav-link active">
+                     <i class="nav-icon fas fa-cut"></i>
+                     <p>
+                         Tratamientos
+                         <i class="fas fa-angle-left right"></i>
+                     </p>
+                 </a>
+                 <ul class="nav nav-treeview">
+                     <li class="nav-item">
+                         <a href="listaTratamiento.php" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Lista de Tratamiento</p>
+                         </a>
+                     </li>
+
+                     <li class="nav-item">
+                         <a href="tratamiento.php" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Crear Tratamiento</p>
+                         </a>
+                     </li>
                  </ul>
              </li>
 

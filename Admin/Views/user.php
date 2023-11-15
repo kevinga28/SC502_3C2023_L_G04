@@ -1,33 +1,32 @@
-
 <?php
 require_once '../Model/Empleado.php';
 
-
-// Iniciar la sesión
 session_start();
 
 
-// Comprobar si el usuario ha iniciado sesión y si se han almacenado los datos del usuario en la sesión
-if (isset($_SESSION['usuario'])) {
-    $usuario = $_SESSION['usuario'];
-} else {
-    $usuario = null;
+// Verificar si el usuario está autenticado
+if (!isset($_SESSION['cedula'])) {
+    header("Location: ../views/logueo/logueo.php");
+    exit();
 }
 
-// Cerrar la sesión
-if (isset($_GET['cerrar_sesion'])) {
-    session_unset();
+if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["action"] == "logout") {
+    // Destruir todas las variables de sesión
+    $_SESSION = array();
+
+    if (isset($_COOKIE[session_name()])) {
+        setcookie(session_name(), '', time() - 42000, '/');
+    }
+
+    // Destruir la sesión
     session_destroy();
-    $usuario = null;
+
+    // Redirigir a la página de inicio de sesión
+    header("Location: ../views/logueo/logueo.php");
+    exit();
 }
+
 ?>
-
-
-
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -106,134 +105,103 @@ if (isset($_GET['cerrar_sesion'])) {
                             </div>
                             <!-- /.card -->
 
-                            <!-- About Me Box -->
-                            <div class="card card-primary">
-                                <div class="card-header">
-                                    <h3 class="card-title">About Me</h3>
-                                </div>
-                                <!-- /.card-header -->
-                                <div class="card-body">
-                                    <strong><i class="fas fa-book mr-1"></i> Education</strong>
-
-                                    <p class="text-muted">
-                                        B.S. in Computer Science from the University of Tennessee at Knoxville
-                                    </p>
-
-                                    <hr>
-
-                                    <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
-
-                                    <p class="text-muted">Malibu, California</p>
-
-                                    <hr>
-
-                                    <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
-
-                                    <p class="text-muted">
-                                        <span class="tag tag-danger">UI Design</span>
-                                        <span class="tag tag-success">Coding</span>
-                                        <span class="tag tag-info">Javascript</span>
-                                        <span class="tag tag-warning">PHP</span>
-                                        <span class="tag tag-primary">Node.js</span>
-                                    </p>
-
-                                    <hr>
-
-                                    <strong><i class="far fa-file-alt mr-1"></i> Notes</strong>
-
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
-                                </div>
-                                <!-- /.card-body -->
-                            </div>
-                            <!-- /.card -->
                         </div>
-                        <!-- /.col -->
+                  
                         <div class="col-md-9">
                             <div class="card">
                                 <div class="card-header p-2">
                                     <ul class="nav nav-pills">
-                                        <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">Citas</a></li>
-                                        <li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Cambiar Datos</a></li>
+                                        <li class="nav-item"><a class="nav-link active" href="#settings" data-toggle="tab">Mis Datos</a></li>
                                     </ul>
-                                </div><!-- /.card-header -->
+                                </div>
                                 <div class="card-body">
                                     <div class="tab-content">
-                                        <div class="active tab-pane" id="activity">
-                                            <!-- Post -->
-                                            <div class="post">
-                                                <div class="user-block">
-                                                    <img class="img-circle img-bordered-sm" src="dist/img/user1-128x128.jpg" alt="user image">
-                                                    <span class="username">
-                                                        <a href="#">Jonathan Burke Jr.</a>
-                                                        <a href="#" class="float-right btn-tool"><i class="fas fa-times"></i></a>
-                                                    </span>
-                                                    <span class="description">Shared publicly - 7:30 PM today</span>
-                                                </div>
-                                                <!-- /.user-block -->
-                                                <p>
-                                                    Lorem ipsum represents a long-held tradition for designers,
-                                                    typographers and the like. Some people hate it and argue for
-                                                    its demise, but others ignore the hate as they create awesome
-                                                    tools to help create filler text for everyone from bacon lovers
-                                                    to Charlie Sheen fans.
-                                                </p>
+                                        <div class=" active tab-pane" id="settings">
+                                            <form class="form-horizontal" method="POST" name="empleado_update" id="empleado_update"> <!-- Asegúrate de ajustar la acción del formulario -->
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="Nombre">Cedula</label>
+                                                            <input type="text" class="form-control" id="Ecedula" name="cedula" placeholder="Cedula" readonly>
+                                                        </div>
 
-                                            </div>
-                                            <!-- /.post -->
+                                                        <div class="form-group">
+                                                            <label for="Nombre">Nombre</label>
+                                                            <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Primer Nombre" required>
+                                                        </div>
 
-                                        </div>
+                                                        <div class="form-group">
+                                                            <label for="apellido">Apellido</label>
+                                                            <input type="text" class="form-control" id="Eapellido" name="apellido" placeholder="Apellido" required>
+                                                        </div>
 
-                                        <div class="tab-pane" id="settings">
-                                            <form class="form-horizontal">
-                                                <div class="form-group">
-                                                    <label for="Nombre">Nombre</label>
-                                                    <input type="text" class="form-control" value="<?php echo isset($usuario) ? $usuario->getNombre() : ''; ?>" name="nombre" id="Nombre" placeholder="Primer Nombre" require>
-                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="correo">Correo Electrónico</label>
+                                                            <input type="email" class="form-control" id="Ecorreo" name="correo" placeholder="Correo" readonly>
+                                                        </div>
 
-                                                <div class="form-group">
-                                                    <label for="Apellidos">Apellidos</label>
-                                                    <input type="text" class="form-control" value="<?php echo isset($usuario) ? $usuario->getApellido() : ''; ?>" name="apellidos" id="Apellidos" placeholder="Apellidos" require>
-                                                </div>
 
-                                                <div class="form-group">
-                                                    <label for="correo">Correo Electronico</label>
-                                                    <input type="email" class="form-control" value="<?php echo isset($usuario) ? $usuario->getCorreo() : ''; ?>" name="correo" id="correo" placeholder="Correo" require>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label for="contrasena">Contraseña</label>
-                                                    <input type="password" class="form-control" value="<?php echo isset($usuario) ? $usuario->getContrasena() : ''; ?>" name="contrasena" id="contrasena" placeholder="Contraseña" require>
-                                                </div>
+                                                        <div class="form-group">
+                                                            <label for="telefono">Telefono</label>
+                                                            <input type="number" class="form-control" id="Etelefono" name="telefono" placeholder="Telefono" required>
+                                                        </div>
 
-                                                <div class="form-group">
-                                                    <label for="Telefono">Telefono</label>
-                                                    <input type="text" class="form-control" value="<?php echo isset($usuario) ? $usuario->getTelefono() : ''; ?>" name="telefono" id="Telefono" placeholder="Telefono" require>
-                                                </div>
+                                                    </div>
+                                                    <div class=" col-md-6">
+                                                        <div class="form-group">
+                                                            <label for="fechaCita">Provincia</label>
+                                                            <input type="text" class="form-control" id="Eprovincia" name="provincia" placeholder="Provincia" required>
+                                                        </div>
 
-                                                <div class="form-group ">
-                                                    <div class=" col-sm-10 mt-5">
-                                                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Actualizar</button>
+                                                        <div class="form-group">
+                                                            <label for="distrito">Distrito</label>
+                                                            <input type="text" class="form-control" id="Edistrito" name="distrito" placeholder="Distrito" required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="canton">Canton</label>
+                                                            <input type="text" class="form-control" id="Ecanton" name="canton" placeholder="Canton" required>
+                                                        </div>
+
+
+                                                        <div class="form-group">
+                                                            <label for="otros">Otros</label>
+                                                            <input type="text" class="form-control" id="Eotros" name="otros" placeholder="Otras Señales" required>
+                                                        </div>
+
+
+
+                                                        <div class="form-group">
+                                                            <label for="genero">Genero</label>
+                                                            <input type="text" class="form-control" id="Egenero" name="genero" placeholder="Genero" readonly>
+                                                        </div>
+
                                                     </div>
                                                 </div>
 
+                                                <div class="form-group">
+                                                    <div class="col-sm-10 mt-5">
+                                                        <button type="submit" class="btn" style="background-color: #202126; color: #F7F4ED;">Actualizar</button>
+                                                    </div>
+                                                </div>
                                             </form>
                                         </div>
-                                        
                                     </div>
-                                   
+
                                 </div>
                             </div>
-                           
+
                         </div>
-                       
+
                     </div>
-                   
+
                 </div>
             </section>
             <!-- /.content -->
 
         </div>
 
-      
+
         <footer class="main-footer no-print">
             <?php
             include 'fragments/footer.php'
@@ -241,9 +209,9 @@ if (isset($_GET['cerrar_sesion'])) {
         </footer>
 
 
-    
+
     </div>
-  
+
 
     <!-- jQuery -->
     <script src="plugins/jquery/jquery.min.js"></script>
@@ -251,8 +219,117 @@ if (isset($_GET['cerrar_sesion'])) {
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="dist/js/demo.js"></script>
+    <!-- Datatable -->
+    <script src="plugins/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <!-- SWEETALERT -->
+    <script src="plugins/sweetalert2/sweetalert2.all.min.js"></script>
+
+    <script src="plugins/select2/js/select2.full.min.js"></script>
+    <script src="logueo/js/logout.js"></script>
+
+    <script>
+        const rellenarFormularioDesdeSesion = async () => {
+            // Obtener la cédula desde la sesión (asegúrate de ajustar la clave según tu implementación)
+            const cedula = '<?php echo isset($_SESSION['cedula']) ? $_SESSION['cedula'] : ''; ?>';
+
+            if (cedula) {
+                try {
+                    const response = await fetch(`../../admin/Controllers/empleadoController.php?op=obtener&cedula=${cedula}`);
+                    if (response.ok) {
+                        const datos = await response.json();
+
+                        // Rellena el formulario con los datos obtenidos
+                        $("#Ecedula").val(datos.cedula);
+                        $("#Eimagen").val(datos.imagen);
+                        $("#Egenero").val(datos.genero);
+                        $("#Enombre").val(datos.nombre);
+                        $("#Eapellido").val(datos.apellido);
+                        $("#Ecorreo").val(datos.correo);
+                        $("#Etelefono").val(datos.telefono);
+                        $("#Eprovincia").val(datos.provincia);
+                        $("#Edistrito").val(datos.distrito);
+                        $("#Ecanton").val(datos.canton);
+                        $("#Eotros").val(datos.otros);
+                        $("#Erol").val(datos.rol);
+
+                    } else {
+                        console.error("Error al obtener los datos del empleado");
+                    }
+                } catch (error) {
+                    console.error("Error en la solicitud AJAX:", error);
+                }
+            }
+        };
+
+        rellenarFormularioDesdeSesion(); // Llamar la función al cargar la página
+
+        $('#empleado_update').on('submit', function(event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Confirmación de Modificación',
+                text: '¿Desea modificar los datos?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, modificar',
+                cancelButtonText: 'Cancelar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var formData = new FormData($('#empleado_update')[0]);
+                    modificarEmpleado(formData);
+                }
+            });
+        });
+
+        function modificarEmpleado(formData) {
+            $.ajax({
+                url: '../../admin/Controllers/empleadoController.php?op=editar',
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function(datos) {
+                    switch (datos) {
+                        case '1':
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Éxito',
+                                text: 'Empleado actualizado exitosamente',
+                                showConfirmButton: false
+                            });
+                            setTimeout(function() {
+                                window.location.href = 'user.php'; // Redirige a la lista después de 1 segundo
+                            }, 1000)
+                            break;
+
+                        case '2':
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Error: Cambiar los datos para Actualizar'
+                            });
+                            break;
+
+                        case '3':
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Error: No se pudo editar.'
+                            });
+                        default:
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: datos,
+                            });
+                            break;
+                    }
+                },
+            });
+        }
+    </script>
 </body>
 
 </html>

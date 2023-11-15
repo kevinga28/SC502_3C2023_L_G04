@@ -117,17 +117,19 @@
                                                             <label for="fechaCita">Fecha de la Cita</label>
                                                             <input type="date" class="form-control" id="fechaCita" name="fechaCita" required>
                                                         </div>
-
                                                         <div class="form-group">
                                                             <label for="horaCita">Hora de la Cita</label>
-                                                            <input type="time" class="form-control" id="horaCita" name="horaCita" required>
+                                                            <select class="form-control" id="horaCita" name="horaCita" required>
+                                                                <!-- Opciones de horarios cargadas dinámicamente -->
+                                                            </select>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="horaFin">Finalizacion Cita</label>
-                                                            <input type="time" class="form-control" id="horaFin" name="horaFin" required>
+                                                            <label for="horaFin">Finalización Cita</label>
+                                                            <select class="form-control" id="horaFin" name="horaFin" required>
+                                                                <!-- Opciones de horarios cargadas dinámicamente -->
+                                                            </select>
                                                         </div>
-
                                                         <div class="form-group">
                                                             <label for="duracionTotal">Duración Total</label>
                                                             <input type="time" class="form-control" id="duracionTotal" name="duracionTotal" readonly>
@@ -199,30 +201,119 @@
 
     <script>
         $(document).ready(function() {
+            // Manejar el evento change para el elemento #tratamiento
             $('#tratamiento').on('change', function() {
+                // Calcular la duración total sumando las duraciones de los tratamientos seleccionados
                 var duracionTotal = 0;
                 $('#tratamiento option:selected').each(function() {
                     var duracionComoMinutos = convertirFormatoHoraAMinutos($(this).data('duracion'));
                     duracionTotal += duracionComoMinutos;
                 });
+
                 $('#duracionTotal').val(convertirDuracionAFormatoHora(duracionTotal));
+
+                generarHorarios();
             });
+
+            function generarHorarios() {
+    var duracionTotal = convertirFormatoHoraAMinutos($('#duracionTotal').val());
+
+    if (duracionTotal <= 0) {
+        cargarHorariosSelect([]);
+        return;
+    }
+
+    var horarios = [];
+
+    // Caso especial para duración total de 60 minutos
+    if (duracionTotal === 60) {
+        for (var i = 10; i <= 17; i++) {
+            // Excluir el intervalo de 12:00 PM a 1:00 PM
+            if (i !== 12) {
+                var horaInicioFormato = i + ':00' + (i < 12 ? ' AM' : ' PM');
+                horarios.push(horaInicioFormato);
+            }
+        }
+    } else {
+        // Iterar sobre las horas disponibles (10 AM a 5 PM)
+        for (var i = 10; i <= 17; i++) {
+            // Excluir el intervalo de 12:00 PM a 1:00 PM
+            if (i !== 12) {
+                var minutos = 0;
+                var bloquesDe60Min = Math.floor(duracionTotal / 60); // Obtener la cantidad de bloques de 60 minutos
+                var minutosRestantes = duracionTotal % 60; // Obtener los minutos restantes después de los bloques de 60 minutos
+
+                // Iterar sobre los bloques de 60 minutos
+                for (var bloque = 0; bloque < bloquesDe60Min; bloque++) {
+                    // Verificar que no se supere las 17:00
+                    if ((i + Math.floor(minutos / 60)) < 17) {
+                        var horaInicio = i + Math.floor(minutos / 60);
+                        var minutosInicio = minutos % 60;
+
+                        // Formatear la hora de inicio
+                        var horaInicioFormato = horaInicio + ':' + (minutosInicio === 0 ? '00' : minutosInicio) + (i < 12 ? ' AM' : ' PM');
+
+                        // Evitar repeticiones
+                        if (!horarios.includes(horaInicioFormato)) {
+                            horarios.push(horaInicioFormato);
+                        }
+                    }
+
+                    minutos += 60; // Mover al siguiente bloque de 60 minutos
+                }
+
+                // Verificar si hay minutos restantes para agregar otro bloque
+                if (minutosRestantes > 0 && (i + Math.floor(minutos / 60)) < 17) {
+                    var horaInicioRestante = i + Math.floor(minutos / 60);
+                    var minutosInicioRestante = minutos % 60;
+
+                    // Formatear la hora de inicio del bloque restante
+                    var horaInicioFormatoRestante = horaInicioRestante + ':' + (minutosInicioRestante === 0 ? '00' : minutosInicioRestante) + (i < 12 ? ' AM' : ' PM');
+
+                    // Evitar repeticiones
+                    if (!horarios.includes(horaInicioFormatoRestante)) {
+                        horarios.push(horaInicioFormatoRestante);
+                    }
+                }
+            }
+        }
+    }
+
+    cargarHorariosSelect(horarios);
+}
+
+            function cargarHorariosSelect(horarios) {
+                var selectHoraCita = $('#horaCita');
+                selectHoraCita.empty();
+
+                if (horarios.length > 0) {
+                    horarios.forEach(function(horario) {
+                        selectHoraCita.append('<option value="' + horario + '">' + horario + '</option>');
+                    });
+                } else {
+                    selectHoraCita.append('<option value="">Selecciona al menos un tratamiento</option>');
+                }
+            }
+
+            function convertirFormatoHoraAMinutos(horaEnFormatoHHMMSS) {
+                var partes = horaEnFormatoHHMMSS.split(":");
+                var horas = parseInt(partes[0]);
+                var minutos = parseInt(partes[1]);
+
+                if (partes.length === 3) {
+                    var segundos = parseInt(partes[2]);
+                    return horas * 60 + minutos + segundos / 60;
+                } else {
+                    return horas * 60 + minutos;
+                }
+            }
+
+            function convertirDuracionAFormatoHora(duracionEnMinutos) {
+                var horas = Math.floor(duracionEnMinutos / 60);
+                var minutos = duracionEnMinutos % 60;
+                return ('00' + horas).slice(-2) + ':' + ('00' + minutos).slice(-2);
+            }
         });
-
-
-        function convertirFormatoHoraAMinutos(horaEnFormatoHHMMSS) {
-            var partes = horaEnFormatoHHMMSS.split(":");
-            var horas = parseInt(partes[0]);
-            var minutos = parseInt(partes[1]);
-            var segundos = parseInt(partes[2]);
-            return horas * 60 + minutos + segundos / 60;
-        }
-
-        function convertirDuracionAFormatoHora(duracionEnMinutos) {
-            var horas = Math.floor(duracionEnMinutos / 60);
-            var minutos = duracionEnMinutos % 60;
-            return ('00' + horas).slice(-2) + ':' + ('00' + minutos).slice(-2);
-        }
     </script>
 
     <script>

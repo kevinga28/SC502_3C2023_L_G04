@@ -1,58 +1,38 @@
-<div class="login-box">
-    <div class="card card-outline card-primary">
-        <div class="card-header text-center">
-            <a href="../../index3.html" class="h1">
-                <img src="../../../Cliente\views\images\logo.png" alt="Logo" width="300">
-                <a href="../../index3.html" class="h1"><b></b></a>
-        </div>
-        <div class="card-body">
-            <p class="login-box-msg">Sign in to start your session</p>
-            <form name="modulos_verif" id="login" method="POST">
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                    <input name="correo" type="email" id="form2Example1" class="form-control" required />
-                    <label class="form-label" for="form2Example1">Email address</label>
-                </div>
 
-                <div class="form-outline mb-4">
-                    <input name="contrasena" type="password" id="form2Example2" class="form-control" required />
-                    <label class="form-label" for="form2Example2">
-                        Contraseña
-                        <span class="toggle-password" id="togglePassword"
-                              onclick="togglePasswordVisibility()">&#128065;</span>
-                    </label>
+    <div class="d-lg-flex half">
+    <div class="bg order-1 order-md-2" style="background-image: url('images/bg_1.jpg');"></div>
+    <div class="contents order-2 order-md-1">
 
-                </div>
+      <div class="container">
+        <div class="row align-items-center justify-content-center">
+          <div class="col-md-7">
+            <h3>Logueo <strong>Evolve Salon</strong></h3>
+            <p class="mb-4">Bievenido a Administracion de Evolve Salon</p>
+            <form name="modulos_verif" id="loginForm" method="POST" action="../../../Admin/controllers/loginController.php">
+              <div class="form-group first">
+                <label for="cedula">Cedula</label>
+                <input name="cedula" type="text" id="cedula" class="form-control" required />
+              </div>
+              <div class="form-group last mb-3">
+                <label for="Contrasena">Contraseña</label>
+                <input name="contrasena" type="password" id="contrasena" class="form-control" required />
+              </div>
+              
+              <div class="d-flex mb-5 align-items-center">
+                <label class="control control--checkbox mb-0"><span class="caption">Recordarme</span>
+                  <input type="checkbox" checked="checked"/>
+                  <div class="control__indicator"></div>
+                </label>
+                <span class="ml-auto"><a href="#" class="forgot-pass">Restablecer Contraseña</a></span> 
+              </div>
 
-                <style>
-                    .toggle-password {
-                        cursor: pointer;
-                    }
-                </style>
+              <input type="submit" id="btnLogin"  value="Iniciar Sesion" class="btn btn-block btn-primary">
 
-                <!-- 2 column grid layout for inline styling -->
-                <div class="row mb-4">
-                    <div class="col d-flex justify-content-center">
-                        <!-- Checkbox -->
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
-                            <label class="form-check-label" for="form2Example31"> Remember me </label>
-                        </div>
-                    </div>
-
-                    <div class="col">
-                        <!-- Simple link -->
-                        <a href="#!">Forgot password?</a>
-
-                    </div>
-                </div>
-
-                <!-- Submit button -->
-                <button type="submit" id="btnlogin" class="btn btn-primary btn-block mb-4">Sign in</button>
             </form>
-
+          </div>
         </div>
-
+      </div>
     </div>
 
-    <div/>
+    
+  </div>

@@ -280,14 +280,14 @@ function eliminarCita(id) {
             location.reload(); // Recargar la página o redirigir si es necesario
           }, 1800);
           break;
-          case '2':
+        case '2':
           Swal.fire({
             icon: 'error',
             title: 'Error',
             text: 'Error: No se pudieron cambiar los datos antes de eliminar'
           });
           break;
-          case '3':
+        case '3':
           Swal.fire({
             icon: 'error',
             title: 'Error',
@@ -326,11 +326,13 @@ function cargarEstilistas() {
       var selectEstilista = $('#cedulaEmpleado, #EcedulaEmpleado');
       selectEstilista.empty();
 
+      selectEstilista.append('<option value="" disabled selected>Seleccionar Estilista</option>');
+
       if (data && data.length > 0) {
         $.each(data, function (index, estilista) {
           // Agrega una opción para cada estilista con nombre y apellido
           selectEstilista.append('<option value="' + estilista.cedula + '">' + estilista.nombre + ' ' + estilista.apellido + '</option>');
-          
+
         });
       }
     },
@@ -340,8 +342,11 @@ function cargarEstilistas() {
   });
 }
 
-cargarEstilistas();
 
+
+  cargarEstilistas();
+
+  //
 /* ---------------------------------------------------------------CARGAR LOS CLIENTES-------------------------------------------------------------- */
 
 function cargarCliente() {
@@ -352,6 +357,8 @@ function cargarCliente() {
     success: function (data) {
       var selectCliente = $('#cliente, #Ecliente');
       selectCliente.empty();
+
+      selectCliente.append('<option value="" disabled selected>Seleccionar Cliente</option>');
 
       if (data && data.length > 0) {
         $.each(data, function (index, cliente) {
@@ -390,5 +397,4 @@ $(document).ready(function () {
 
 
 
-
-
+/* ---------------------------------------------------------------CARGAR CITAS DISPONIBLES-------------------------------------------------------------- */

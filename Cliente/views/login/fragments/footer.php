@@ -35,6 +35,9 @@
                            <ul class="informacion">
                               <li><a href="register.php">Registrarse </a></li>
                               <li><a href="login.php">Iniciar Sesión</a></li>
+                               <form>
+
+                               </form>
                            </ul>
                         </div>
                      </div>

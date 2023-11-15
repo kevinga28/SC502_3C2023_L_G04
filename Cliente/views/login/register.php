@@ -100,9 +100,10 @@
   <script src="../js/popper.min.js"></script>
   <script src="../js/bootstrap.bundle.min.js"></script>
   <script src="../js/jquery-3.0.0.min.js"></script>
-  <script src="../js/register.js"></script>
+  <script src="js/register.js"></script>
   <script src="../toastr/toastr.js"></script>
   <script src="../bootbox/bootbox.min.js"></script>
+  <script src="../../../Admin/Views/plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
 </body>
 

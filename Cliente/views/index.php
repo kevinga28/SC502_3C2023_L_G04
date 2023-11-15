@@ -309,6 +309,8 @@
             <a class="carousel-control-next" href="#myCarousel" role="button" data-bs-slide="next">
                <i class="fa fa-chevron-right" aria-hidden="true"></i>
             </a>
+
+
          </div>
       </div>
    </div>
@@ -347,6 +349,7 @@
    <script src="js/popper.min.js"></script>
    <script src="js/bootstrap.bundle.min.js"></script>
    <script src="js/jquery-3.0.0.min.js"></script>
+    <script src="login/js/logout.js"></script>
 
 
 </body>

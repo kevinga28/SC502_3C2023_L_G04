@@ -329,9 +329,6 @@ class Empleado extends Conexion
             return $error;
         }
     }
-
-
-
     public static function obtenerEmpleadoPorCedula($cedula)
     {
         $query = "SELECT * FROM empleado WHERE cedula = :cedula";
@@ -358,7 +355,6 @@ class Empleado extends Conexion
             return null;
         }
     }
-    /*=====  End of Metodos de la Clase  ======*/
 
     public function eliminarEmpleado()
     {
@@ -404,4 +400,21 @@ class Empleado extends Conexion
             return $error;
         }
     }
+    public function login() {
+        // Obtén el array de datos del empleado
+        $dbEmpleadoData = $this->obtenerEmpleadoPorCedula($this->getCedula());
+    
+        // Verifica si se encontró un empleado y la contraseña es válida
+        if ($dbEmpleadoData && $this->getContrasena() == $dbEmpleadoData['contrasena']) {
+            session_start();
+            $_SESSION['cedula'] = $dbEmpleadoData['cedula'];
+            $_SESSION['rol'] = $dbEmpleadoData['rol'];
+    
+            // Devuelve el rol
+            return $dbEmpleadoData['rol'];
+        } else {
+            return false;
+        }
+    }
+    
 }

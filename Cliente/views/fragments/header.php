@@ -1,6 +1,5 @@
 <?php
-require_once '../Model/Cliente.php';
-
+require_once '../../Admin/Model/Cliente.php';
 
 // Iniciar la sesión
 session_start();
@@ -145,7 +144,7 @@ if (isset($_GET['cerrar_sesion'])) {
             <form action="procesar_edicion.php" method="post">
                <div class="row">
                   <div class="col-md-6">
-                     <div class="form-group">
+                      <!-- ... Código HTML anterior ... -->
 
                         <label for="nombreCliente">Nombre:</label>
                         <input type="email" id="correoCliente" name="correoCliente" value="<?php echo isset($usuario) ? $usuario->getNombre() : ''; ?>" class="form-control">
@@ -168,19 +167,19 @@ if (isset($_GET['cerrar_sesion'])) {
 
                      <div class="form-group">
                         <label for="provincia">Provincia:</label>
-                        <input type="text" id="provincia" name="provincia" value="<?php echo $provincia; ?>" class="form-control">
+                        <input type="text" id="provincia" name="provincia"  value="<?php echo isset($_SESSION['usuarioCliente']) ? $_SESSION['usuarioCliente']->getProvincia() : ''; ?>" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="distrito">Distrito:</label>
-                        <input type="text" id="distrito" name="distrito" value="<?php echo $distrito; ?>" class="form-control">
+                        <input type="text" id="distrito" name="distrito"  value="<?php echo isset($_SESSION['usuarioCliente']) ? $_SESSION['usuarioCliente']->getDistrito() : ''; ?>" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="canton">Canton:</label>
-                        <input type="text" id="canton" name="canton" value="<?php echo $telefonoCcantonliente; ?>" class="form-control">
+                        <input type="text" id="canton" name="canton"  value="<?php echo isset($_SESSION['usuarioCliente']) ? $_SESSION['usuarioCliente']->getCanton() : ''; ?>" class="form-control">
                      </div>
                      <div class="form-group">
                         <label for="otros">Otros:</label>
-                        <input type="text" id="otros" name="otros" value="<?php echo $otros; ?>" class="form-control">
+                        <input type="text" id="otros" name="otros"  value="<?php echo isset($_SESSION['usuarioCliente']) ? $_SESSION['usuarioCliente']->getOtros() : ''; ?>" class="form-control">
                      </div>
                   </div>
                </div>

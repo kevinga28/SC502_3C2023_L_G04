@@ -197,6 +197,31 @@
                  </ul>
              </li>
 
+             <li class="nav-item ">
+                 <a href="#" class="nav-link ">
+                     <i class="nav-icon fas fa-cut"></i>
+                     <p>
+                         Tratamientos
+                         <i class="fas fa-angle-left right"></i>
+                     </p>
+                 </a>
+                 <ul class="nav nav-treeview">
+                     <li class="nav-item">
+                         <a href="../tratamiento/listaTratamiento.php" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Lista de Tratamiento</p>
+                         </a>
+                     </li>
+
+                     <li class="nav-item">
+                         <a href="../tratamiento/tratamiento.php" class="nav-link">
+                             <i class="far fa-circle nav-icon"></i>
+                             <p>Crear Tratamiento</p>
+                         </a>
+                     </li>
+                 </ul>
+             </li>
+
              <li class="nav-header">Citas</li>
              <li class="nav-item">
                  <a href="calendar.html" class="nav-link">
