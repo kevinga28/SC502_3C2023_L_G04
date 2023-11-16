@@ -1,8 +1,4 @@
 
-
-
-
-
 const limpiarForms = () => {
     // Selecciona el formulario y restablece su estado
     $('#login')[0].reset();

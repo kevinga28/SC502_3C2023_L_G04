@@ -36,7 +36,6 @@
     float: left; 
     margin-right: 20px; 
     clear: left; 
-    padding-right: 200px;
     padding-bottom: 570px;
 }
 
@@ -47,7 +46,7 @@
 }
 
 .cuadro-beige2 p {
-    font-size: 14px;
+    padding-left: 30px;
 }
 
 /* CSS para la imagen, el nombre de esta etiqueta solo se encuentra en ciertos HTMLs por lo que no debe afectar en todo */
@@ -121,12 +120,12 @@
 }
 
 .boton-estilista {
-    margin-left: 150px; 
+    margin-left: auto; 
     background-color: black;
     color: #fff; 
     border: none; 
     border-radius: 5px;
-    padding: 10px 20px; 
+    padding: 10px 10px; 
     cursor: pointer; 
     font-size: 18px; 
 }
@@ -135,5 +134,24 @@
     font-size: 24px;
     line-height: 27px;
     color: #876B62;
+    margin-top: 20px;
     transition: ease-in all 0.5s;
+}
+
+.perfilEstilista {
+    height: 50px;
+    width: 50px;
+}
+
+.col_vacia{
+    border: 1px none;
+    width: 60px;
+}
+
+.container-estilista{
+    margin: 10px;
+}
+
+.nav-item {
+    display: flex;
 }

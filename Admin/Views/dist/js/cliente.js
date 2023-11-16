@@ -56,9 +56,9 @@ function listarClientesTodos() {
         // Última columna con botones
         data: null,
         render: function (data, type, row) {
-          return '<a type="button" class="btn btn-danger float-right eliminar-cliente" data-id="'+ data[0] + '"><i class="fas fa-trash"></i> Eliminar</a>' +
-          '<a id="modificarCliente" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>' +
-          '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>';
+          return '<a type="button" class="btn btn-danger float-right eliminar-cliente" data-id="' + data[0] + '"><i class="fas fa-trash"></i> Eliminar</a>' +
+            '<a id="modificarCliente" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>' +
+            '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>';
         }
       }
     ]
@@ -73,10 +73,8 @@ $(function () {
 
 $('#crearCliente').on('submit', function (event) {
   event.preventDefault();
-  console.log('Formulario enviado');
   $('#btnRegistrar').prop('disabled', true);
   var formData = new FormData($('#crearCliente')[0]);
-  console.log('Datos del formulario:', formData);
   $.ajax({
     url: '../../../admin/Controllers/clienteController.php?op=insertar',
     type: 'POST',
@@ -84,31 +82,46 @@ $('#crearCliente').on('submit', function (event) {
     contentType: false,
     processData: false,
     success: function (datos) {
-      console.log('Respuesta del servidor:', datos);
       switch (datos) {
         case '1':
-          toastr.success(
-            'Cliente registrado'
-          );
-          $('#crearCliente')[0].reset();
-          tabla.api().ajax.reload();
+          Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: 'Cliente registrado',
+          }).then((result) => {
+            if (result.isConfirmed) {
+              $('#crearCliente')[0].reset();
+              tabla.api().ajax.reload();
+            }
+          });
           break;
         case '2':
-          toastr.error('El correo ya existe. Corrija e inténtelo nuevamente.');
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'No se pudieron actualizar los datos',
+          });
           break;
         case '3':
-          toastr.error('El correo ya existe. Corrija e inténtelo nuevamente.');
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'El correo ya existe. Corrija e inténtelo nuevamente.',
+          });
           break;
-        // Otros casos según tus necesidades
+
         default:
-          toastr.error(datos);
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: datos,
+          });
           break;
       }
       $('#btnRegistrar').removeAttr('disabled');
     },
   });
 });
-
 
 
 /* ---------------------------------------------------------------OBTENER LOS DATOS DEL CLIENTE--------------------------------------------------------------- */
@@ -144,42 +157,74 @@ const rellenarFormulario = async () => {
 rellenarFormulario(); // Llamar la funcion 
 
 /* ---------------------------------------------------------------EDITAR LOS DATOS DEL CLIENTE--------------------------------------------------------------- */
-
-
 $('#cliente_update').on('submit', function (event) {
   event.preventDefault();
-  bootbox.confirm('¿Desea modificar los datos?', function (result) {
-    if (result) {
+  Swal.fire({
+    title: 'Confirmación de Modificación',
+    text: '¿Desea modificar los datos?',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, modificar',
+    cancelButtonText: 'Cancelar'
+  }).then((result) => {
+    if (result.isConfirmed) {
       var formData = new FormData($('#cliente_update')[0]);
-      $.ajax({
-        url: '../../../admin/Controllers/clienteController.php?op=editar',
-        type: 'POST',
-        data: formData,
-        contentType: false,
-        processData: false,
-        success: function (datos) {
-          switch (datos) {
-            case '1':
-              toastr.success('Cliente actualizado exitosamente', 'Éxito');
-              break;
-
-            case '2':
-              toastr.error('Error: No se pudieron actualizar los datos');
-              break;
-
-            case '3':
-              toastr.error('Error: No se pudo editar.');
-              break;
-          }
-        },
-      });
+      modificarCliente(formData);
     }
   });
 });
 
+function modificarCliente(formData) {
+  $.ajax({
+    url: '../../../admin/Controllers/clienteController.php?op=editar',
+    type: 'POST',
+    data: formData,
+    contentType: false,
+    processData: false,
+    success: function (datos) {
+      switch (datos) {
+        case '1':
+          Swal.fire({
+            icon: 'success',
+            title: 'Éxito',
+            text: 'Cliente actualizado exitosamente',
+            showConfirmButton: false
+          });
+          setTimeout(function () {
+            window.location.href = 'listaClientes.php'; // Redirige a la lista después de 1 segundo
+          }, 1000)
+          break;
+
+        case '2':
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error: Cambiar los datos para Actualizar'
+          });
+          break;
+
+        case '3':
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error: No se pudo editar.'
+          });
+        default:
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: datos,
+          });
+          break;
+      }
+    },
+  });
+}
+
 /* ---------------------------------------------------------------ELIMINAR EL CLIENTE MEDIANTE EL ID--------------------------------------------------------------- */
-// Para eliminar un cliente
-$(document).on('click', '.eliminar-cliente', function() {
+$(document).on('click', '.eliminar-cliente', function () {
   var id = $(this).data('id');
   console.log('id del cliente: ' + id);
 
@@ -204,7 +249,7 @@ function eliminarCliente(id) {
     url: '../../../admin/Controllers/clienteController.php?op=eliminar',
     method: 'POST',
     data: { op: 'eliminar', id: id },
-    success: function(response) {
+    success: function (response) {
       if (response === '1') {
         Swal.fire({
           icon: 'error',
@@ -218,12 +263,12 @@ function eliminarCliente(id) {
           text: 'Se eliminó el cliente correctamente',
           showConfirmButton: false
         });
-        setTimeout(function() {
-          location.reload(); 
-        }, 1800); 
+        setTimeout(function () {
+          location.reload();
+        }, 1800);
       }
     },
-    error: function(error) {
+    error: function (error) {
       console.error("Error al eliminar el Cliente:", error);
       Swal.fire({
         icon: 'error',

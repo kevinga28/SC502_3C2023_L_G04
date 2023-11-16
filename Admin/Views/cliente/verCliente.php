@@ -167,12 +167,8 @@
     <!-- Datatable -->
     <script src="../plugins/DataTables/datatables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-    <!-- TOAST -->
-    <script src="../plugins/toastr/toastr.js"></script>
 
     <script src="../dist/js/cliente.js"></script>
-
-    <script src="../plugins/bootbox/bootbox.min.js"></script>
 
 
 

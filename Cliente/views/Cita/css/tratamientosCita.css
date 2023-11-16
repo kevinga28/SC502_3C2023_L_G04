@@ -1,0 +1,165 @@
+
+/* CSS para el cuadro beige que se encuentra junto al logo enorme */
+
+.cuadro-beige h3 {
+    font-size: 27px;
+    margin-bottom: 10px;
+    color: #593326;
+}
+
+.cuadro-beige p {
+    font-size: 14px;
+}
+
+.cortes .nav-item .pelo {
+    font-size: 24px;
+    line-height: 27px;
+    color: #876B62;
+    transition: ease-in all 0.5s;
+}
+
+.cuadro-beige2 {
+    background-color: #F7F4ED;
+    padding: 20px;
+    border-radius: 10px;
+    float: left; 
+    margin-right: 20px; 
+    clear: left; 
+    padding-right: 200px;
+    padding-bottom: 100px;
+}
+
+.cuadro-beige2 h3 {
+    font-size: 27px;
+    margin-bottom: 10px;
+    color: #593326;
+}
+
+.sub-tratamientos {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #593326;
+}
+
+.cuadro-beige2 p {
+    padding-left: 30px;
+}
+
+/* CSS para la imagen, el nombre de esta etiqueta solo se encuentra en ciertos HTMLs por lo que no debe afectar en todo */
+.imag_medio {
+    margin-top: 80px;
+    max-width: 500px;
+    height: auto;
+}
+
+/* CSS para el bloque gris */
+
+.bloque-gris {
+    background-color: #f1f1f1; 
+    padding: 30px;
+    border-radius: 10px;
+    margin-top: 240px; 
+    margin-left: 700px;
+    text-align: right;
+}
+
+.bloque-gris p {
+    font-size: 20px;
+    margin: 0;
+    float: left;
+}
+
+/* CSS del Textarea dentro del bloque gris */
+
+.cuadro-blanco {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    border-radius: 10px;
+    margin: 10px
+}
+
+.cuadro-blanco textarea {
+    width: 100%;
+    height: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    resize: none; 
+}
+
+
+/* CSS del boton del  bloque gris*/
+
+.boton-siguiente {
+    background-color: black;
+    color: #fff; 
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 20px; 
+    cursor: pointer; 
+    margin-top: 5px;
+    font-size: 18px; 
+}
+
+.boton-siguiente:hover {
+    background-color: #593326; 
+}
+
+/* CSS para los estilistas */
+
+.estilistas .nav-item .estilista {
+    font-size: 24px;
+    line-height: 27px;
+    color: #876B62;
+    transition: ease-in all 0.5s;
+}
+
+.boton-estilista {
+    margin-left: auto; 
+    background-color: black;
+    color: #fff; 
+    border: none; 
+    border-radius: 5px;
+    padding: 10px 10px; 
+    cursor: pointer; 
+    font-size: 18px; 
+}
+
+.estilistasJD .nav-item .estilistaJD {
+    font-size: 24px;
+    line-height: 27px;
+    color: #876B62;
+    margin-top: 20px;
+    transition: ease-in all 0.5s;
+}
+
+.perfilEstilista {
+    height: 50px;
+    width: 50px;
+}
+
+.col_vacia{
+    border: 1px none;
+    width: 60px;
+}
+
+.nav-item {
+    display: block;
+}
+
+#sub-tratamiento{
+    font-size: 20px;
+}
+
+.item-tratamiento{
+    color: #593326;
+    font-size: 20px;
+    display: flex;
+}
+
+.precio-tratamiento{
+    margin-left: auto;
+    color: #593326;
+    font-size: 20px;
+}

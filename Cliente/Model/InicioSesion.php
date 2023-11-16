@@ -1,41 +1,39 @@
 <?php
-require_once '../config/Conexion.php';
+
+require_once '../../Admin/config/Conexion.php';
+
 
 class InicioSesion extends Conexion
 {
     protected static $cnx;
+    private $IdCliente;
     private $nombre;
+    private $apellido;
     private $correo;
     private $contrasena;
+    private $telefono;
+    private $tipoCliente;
+    private $provincia;
+    private $distrito;
+    private $canton;
+    private $otros ;
+
+
+
+
+
+
+
+
+
+
+
+
 
     public function __construct()
     {
 
     }
-
-
-
-
-
-
-
-
-    public function getNombre()
-    {
-        return $this->nombre;
-    }
-
-    public function getCorreo()
-    {
-        return $this->correo;
-    }
-
-    public function getContrasena()
-    {
-        return $this->contrasena;
-    }
-
-
     public static function getConexion()
     {
         self::$cnx = Conexion::conectar();
@@ -45,42 +43,6 @@ class InicioSesion extends Conexion
     {
         self::$cnx = null;
     }
-
-    /**
-     * @param mixed $cnx
-     */
-    public static function setCnx($cnx)
-    {
-        self::$cnx = $cnx;
-    }
-
-    /**
-     * @param mixed $nombre
-     */
-    public function setNombre($nombre)
-    {
-        $this->nombre = $nombre;
-    }
-
-    /**
-     * @param mixed $correo
-     */
-    public function setCorreo($correo)
-    {
-        $this->correo = $correo;
-    }
-
-    /**
-     * @param mixed $contrasena
-     */
-    public function setContrasena($contrasena)
-    {
-        $this->contrasena = $contrasena;
-    }
-
-
-
-
 
 
     public function verificarInicioSesion($correo, $contrasena)
@@ -138,17 +100,81 @@ class InicioSesion extends Conexion
         }
     }
 
+    
+
+    public function guardarUsuario()
+    {
+        $sql = "INSERT INTO `cliente` ( `nombre`, `apellido`,  `correo`, `contrasena`, `telefono`, `tipoCliente`, `provincia`, `distrito`, `canton`, `otros`)
+            VALUES ( :nombre, :apellido, :correo, :contrasena, :telefono, :tipoCliente, :provincia, :distrito, :canton, :otros)";
+
+        try {
+            self::getConexion();  // Debes utilizar self::$cnx para acceder a la conexión
+
+            $nombre = strtoupper($this->getNombre());
+            $apellido = strtoupper($this->getApellido());
+            $correo = $this->getCorreo();
+            $contrasena = $this->getContrasena();
+            $telefono = $this->getTelefono();
+
+
+            $stmt = self::$cnx->prepare($sql);  // Cambia $conexion a self::$cnx
+            $stmt->bindParam(':nombre', $nombre);
+            $stmt->bindParam(':apellido', $apellido);
+            $stmt->bindParam(':correo', $correo);
+            $stmt->bindParam(':contrasena', $contrasena);
+            $stmt->bindParam(':telefono', $telefono);
+
+
+            // Ejecutar la consulta
+            $stmt->execute();
+
+
+            if ($stmt->rowCount() > 0) {
+
+                return true;
+            } else {
+
+                return false;
+            }
+
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error ".$Exception->getCode().": ".$Exception->getMessage();
+            return $error;
+        }
+    }
+
+    public function verificarExistenciaCliente()
+    {
+        $query = "SELECT COUNT(*) FROM cliente WHERE correo=:correo";
+
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+
+            $correo = $this->getCorreo();
+
+            $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
+            $resultado->execute();
+
+            $count = $resultado->fetchColumn();
+
+            if ($count > 0) {
+                return true; // El cliente existe
+            } else {
+                return false; // El cliente no existe
+            }
+        } catch (PDOException $Exception) {
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            throw new Exception($error);
+        }
+    }
+
     public function logOut() {
         $_SESSION=[];
         session_destroy();
 
     }
 
-
-
-
-
 }
-
-
 ?>

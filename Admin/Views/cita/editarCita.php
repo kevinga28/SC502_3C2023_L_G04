@@ -18,8 +18,6 @@
     <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
     <link rel="stylesheet" href="../dist/css/style.css">
-
-    <link rel="stylesheet" href="../plugins/toastr/toastr.css">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -67,49 +65,39 @@
                                             <h3 class="card-title">Editar Cita</h3>
                                         </div>
                                         <!-- EMPIEZA EL FORMULARIO -->
-                                        <form method="POST" name="modulos_add" id="crearCita">
+                                        <form method="POST" name="cita_update" id="cita_update">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
 
+
                                                         <div class="form-group">
-                                                            <label for="BusquedaCliente">Buscar Cliente</label>
-                                                            <div class="input-group">
-                                                                <input type="text" class="form-control" id="EBusquedaCliente" name="BusquedaCliente" placeholder="Cedula Cliente">
-                                                                <div class="input-group-append">
-                                                                    <button type="button" class="btn btn-primary" id="BuscarCliente">Buscar</button>
-                                                                </div>
-                                                            </div>
+                                                            <label for="cliente">Buscar Cliente</label>
+                                                            <select class="select2 select2-hidden-accessible" id="Ecliente" name="cliente" data-placeholder="Seleccionar Cliente" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
+                                                                <!-- Clientes cargados desde PHP se insertarán aquí automáticamente -->
+                                                            </select>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="Nombre">Nombre</label>
-                                                            <input type="text" class="form-control" id="nombre" name="Enombre" placeholder="Primer Nombre" readonly>
+                                                            <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Primer Nombre" readonly>
                                                         </div>
 
 
                                                         <div class="form-group">
                                                             <label for="apellido">Apellido</label>
-                                                            <input type="text" class="form-control" id="apellido" name="Eapellido" placeholder="Apellido" readonly>
+                                                            <input type="text" class="form-control" id="Eapellido" name="apellido" placeholder="Apellido" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="correo">Correo Electrónico</label>
-                                                            <input type="email" class="form-control" id="correo" name="Ecorreo" placeholder="Correo" readonly>
+                                                            <input type="email" class="form-control" id="Ecorreo" name="correo" placeholder="Correo" readonly>
                                                         </div>
-
 
                                                         <div class="form-group">
                                                             <label for="tratamiento">Tratamiento</label>
-                                                            <select class="select2 select2-hidden-accessible" multiple="multiple" id="Etratamiento" name="tratamiento[]" data-placeholder="Seleccionar Tratamiento" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
-                                                            <option value="CorteMujer" data-precio="30">Corte Mujer - ₡30</option>
-                                                                <option value="LargoLavadoMujer" data-precio="40">Largo + Lavado Mujer - ₡40</option>
-                                                                <option value="CortoLavadoMujer" data-precio="35">Corto + Lavado Mujer - ₡35</option>
-                                                                <option value="LargoHombre" data-precio="25">Largo Hombre - ₡25</option>
-                                                                <option value="CortoHombre" data-precio="20">Corto Hombre - ₡20</option>
-                                                                <option value="LargoLavadoHombre" data-precio="30">Largo + Lavado Hombre - ₡30 </option>
-                                                                <option value="CortoLavadoHombre" data-precio="25">Corto + Lavado Hombre - ₡25</option>
-                                                                <option value="NinioNinia" data-precio="15">Niño - Niña - ₡15</option>
+                                                            <select class="select2 select2-hidden-accessible" multiple="multiple" id="Etratamiento" name="tratamiento[]" data-placeholder="Seleccionar Tratamiento" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
+                                                                <!-- Tratamientos cargados desde PHP se insertarán aquí automáticamente -->
                                                             </select>
                                                         </div>
                                                     </div>
@@ -117,28 +105,38 @@
 
                                                         <div class="form-group">
                                                             <label for="estilista">Estilista</label>
-                                                            <select class="select2 select2-hidden-accessible" id="Eestilista" name="estilista" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
-                                                                <option>Carol Mejias</option>
-                                                                <option>Marta Delgado</option>
-                                                                <option>Sofia Vargas</option>
+                                                            <select class="select2 select2-hidden-accessible" id="EcedulaEmpleado" name="cedulaEmpleado" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
+                                                                <!-- Tratamientos cargados desde PHP se insertarán aquí automáticamente -->
                                                             </select>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="fechaCita">Fecha de la Cita</label>
-                                                            <input type="date" class="form-control" id="EfechaCita" name="fechaCita">
+                                                            <input type="date" class="form-control" id="EfechaCita" name="fechaCita" required>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="horaCita">Hora de la Cita</label>
-                                                            <input type="time" class="form-control" id="EhoraCita" name="horaCita">
+                                                            <input type="time" class="form-control" id="EhoraCita" name="horaCita" required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="horaFin">Finalizacion Cita</label>
+                                                            <input type="time" class="form-control" id="EhoraFin" name="horaFin" required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="duracionTotal">Duración Total</label>
+                                                            <input type="time" class="form-control" id="EduracionTotal" name="duracionTotal" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="pagoTotal">Total a Pagar</label>
-                                                            <input type="text" class="form-control" id="EpagoTotal" name="pagoTotal" readonly>
+                                                            <input type="text" class="form-control" id="EpagoTotal" name="pagoTotal" readonly value="₡0">
+                                                            <input type="hidden" id="EpagoTotalHidden" name="pagoTotalHidden">
                                                         </div>
                                                     </div>
+
                                                 </div>
                                             </div>
 
@@ -168,8 +166,7 @@
     </div>
 
 
-  <!-- jQuery -->
-  <script src="../plugins/jquery/jquery.min.js"></script>
+    <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
@@ -177,38 +174,69 @@
     <!-- Datatable -->
     <script src="../plugins/DataTables/datatables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-    <!-- TOAST -->
-    <script src="../plugins/toastr/toastr.js"></script>
-
-    <script src="../dist/js/cita.js"></script>
-
-    <script src="../plugins/bootbox/bootbox.min.js"></script>
+    <!-- SWEETALERT -->
+    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
 
 
 
     <script>
-        // Captura el cambio en la selección de tratamientos
-        $('#tratamiento').on('change', function() {
-            var total = 0;
-            // Suma los precios de los tratamientos seleccionados
-            $('#tratamiento option:selected').each(function() {
-                total += parseInt($(this).data('precio'));
+        $(document).ready(function() {
+            $('#Etratamiento').on('change', function() {
+                var total = 0;
+                // Suma los precios de los tratamientos seleccionados
+                $('#Etratamiento option:selected').each(function() {
+                    total += parseInt($(this).data('precio'));
+                });
+                // Muestra el total en el campo correspondiente
+                $('#EpagoTotal').val('₡' + total);
+                $('#EpagoTotalHidden').val(total);
             });
-            // Muestra el total en el campo correspondiente
-            $('#pagototal').val('₡' + total);
         });
     </script>
 
+    <script>
+        $(document).ready(function() {
+            $('#Etratamiento').on('change', function() {
+                var duracionTotal = 0;
+                $('#Etratamiento option:selected').each(function() {
+                    var duracionComoMinutos = convertirFormatoHoraAMinutos($(this).data('duracion'));
+                    duracionTotal += duracionComoMinutos;
+                });
+                $('#EduracionTotal').val(convertirDuracionAFormatoHora(duracionTotal));
+            });
+        });
+
+
+        function convertirFormatoHoraAMinutos(horaEnFormatoHHMMSS) {
+            var partes = horaEnFormatoHHMMSS.split(":");
+            var horas = parseInt(partes[0]);
+            var minutos = parseInt(partes[1]);
+            var segundos = parseInt(partes[2]);
+            return horas * 60 + minutos + segundos / 60;
+        }
+
+        function convertirDuracionAFormatoHora(duracionEnMinutos) {
+            var horas = Math.floor(duracionEnMinutos / 60);
+            var minutos = duracionEnMinutos % 60;
+            return ('00' + horas).slice(-2) + ':' + ('00' + minutos).slice(-2);
+        }
+    </script>
 
     <script>
         $(function() {
             //Initialize Select2 Elements
             $('.select2').select2()
+            passive: true
 
         })
     </script>
+
+    <script src="../dist/js/cita.js"></script>
+
+    <script src="../dist/js/tratamiento.js"></script>
+
 
 
 </body>

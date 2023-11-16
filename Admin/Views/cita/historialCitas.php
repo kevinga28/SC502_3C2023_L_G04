@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-    <!-- TOAST-->
-    <link rel="stylesheet" href="../plugins/toastr/toastr.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+
+    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
 
     <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
@@ -86,10 +86,13 @@
                                                         <tr>
                                                             <th>ID</th>
                                                             <th>Cliente</th>
+                                                            <th>Nombre</th>
+                                                            <th>Apellido</th>
                                                             <th>Estilista</th>
                                                             <th>Tratamiento</th>
                                                             <th>Fecha</th>
                                                             <th>Hora</th>
+                                                            <th>Hora Fin</th>
                                                             <th>Opciones</th>
                                                         </tr>
                                                     </thead>
@@ -118,7 +121,6 @@
     </div>
 
 
-    <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -127,14 +129,12 @@
     <!-- Datatable -->
     <script src="../plugins/DataTables/datatables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-    <!-- TOAST -->
-    <script src="../plugins/toastr/toastr.js"></script>
-
-    <script src="../dist/js/cita.js"></script>
-
-    <script src="../plugins/bootbox/bootbox.min.js"></script>
+    <!-- SWEETALERT -->
+    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
+
+    <script src="../dist/js/cita.js"></script>
 
 
 

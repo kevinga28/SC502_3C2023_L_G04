@@ -3,10 +3,6 @@ N
 Cliente/views/js/jquery.min.js,d\1\d1892da473ffc89c01b0a8c6f5c36e9c4ba5f369
 O
 Cliente/views/servicioBotox.php,b\9\b919619c93ff391704fb30f68febfab6410b3159
-P
- Cliente/views/toastr/toastr.less,d\8\d8a29a50c9fbecf6bb02e4778da4d3d081d4cc07
-N
-Cliente/views/toastr/toastr.js,a\d\adeb8786b7e201619ec14c2e429553d8cbd6fca9
 T
 $Cliente/views/css/bootstrap-grid.css,d\a\daa7a0288b107d8c49b735a0539077bab5930706
 P
@@ -21,24 +17,14 @@ R
 "Admin/Views/cliente/verCliente.php,5\8\583175ddd895869d11491f22b858812fe477aa2e
 U
 %Admin/Views/cliente/editarCliente.php,1\7\17e8ecf8254db4499e17ccf8f3093c90250d445d
-I
-Admin/config/Conexion.php,9\a\9aea813be9be2b7d48eaf3c971a0a58212bfa354
 J
 Cliente/views/Nosotros.php,8\d\8d9392df4811827de5a7ff956bdb80c2834d1f49
 H
 Cliente/views/js/main.js,7\d\7db1464ac015e34239a5dcb4c681a7e5fbd3e36e
-D
-Admin/Model/Cita.php,1\4\1425acf73be5b4ede333128ee5fbe81da92d18bc
 T
 $Admin/Controllers/citaController.php,4\a\4a29a1a2d4dca1eb8b2e81fa1628868bd2e10759
 W
 'Admin/Controllers/clienteController.php,6\1\616f5009821b2827caab8d8bc584be24d853b4ff
-G
-Admin/config/global.php,5\8\58b7a93acbc7f426b7017b70c30a5706069d9785
-G
-Admin/Model/Factura.php,1\0\10f6aaca7d7608dda31aa4ed6cd74b9a8dc0f0c4
-H
-Admin/Model/Registro.php,0\b\0b2885e8a46b3c55bcb41a3c2760e247dd402c91
 O
 Admin/Views/dist/js/empleado.js,b\3\b37d376936c00a0d1dbc0c8a600ffc66e44a6142
 K
@@ -49,7 +35,9 @@ M
 Admin/Views/logueo/logueo.php,5\3\5321c7459484ab7bf82dbb52124f0ab9eb5b7ebd
 O
 Admin/Views/logueo/js/logout.js,c\2\c27758987b379a275effbae175bb7764ff1e7b39
-K
-Cliente/config/Conexion.php,c\4\c4f7a6f2d371512c0bbcf5d372d8faff00a91544
+D
+Admin/Model/Cita.php,1\4\1425acf73be5b4ede333128ee5fbe81da92d18bc
 I
-Cliente/config/global.php,0\b\0ba0b58530f9dc0d172e1878f671302ad79cd92b
+Admin/config/Conexion.php,9\a\9aea813be9be2b7d48eaf3c971a0a58212bfa354
+G
+Admin/config/global.php,5\8\58b7a93acbc7f426b7017b70c30a5706069d9785

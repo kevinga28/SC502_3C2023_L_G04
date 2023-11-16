@@ -1,21 +1,0 @@
-
-b	php:S1131ô"@Remove the useless trailing whitespaces at the end of this line.(ğƒÜØşÿÿÿÿ8…¯€å»1
-]	php:S1131õ"@Remove the useless trailing whitespaces at the end of this line.(õ¥÷8…¯€å»1
-b	php:S1131ö"@Remove the useless trailing whitespaces at the end of this line.(…ØÂÇøÿÿÿÿ8…¯€å»1
-Qphp:S105"EReplace all tab characters in this file by sequences of white-spaces.
-tphp:S116"TRename this field "$ID_Factura" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(İƒÖìûÿÿÿÿ8…¯€å»1
-lphp:S116"QRename this field "$ID_Cita" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(Ã½Ì8…¯€å»1
-sphp:S117%"XRename this parameter "$ID_Factura" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(“÷¨Ã8†¯€å»1
-uphp:S117/"URename this parameter "$ID_Cita" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(öøê„ÿÿÿÿÿ8†¯€å»1
-tphp:S117Ç"XRename this parameter "$ID_Factura" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(”ıé©8†¯€å»1
-~php:S117ü"]Rename this local variable "$ID_Factura" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(›±ç÷øÿÿÿÿ8†¯€å»1
-{php:S117ı"ZRename this local variable "$ID_Cita" to match the regular expression ^[a-z][a-zA-Z0-9]*$.(±ÃÖûÿÿÿÿ8†¯€å»1
-_	php:S1779"RReplace all non line feed end of line characters in this file "Factura.php" by LF.
-i	php:S1192†"GDefine a constant instead of duplicating this literal "Error " 6 times.(Ñëİ±ûÿÿÿÿ8†¯€å»1
-€	php:S1488¢"^Immediately return this expression instead of assigning it to the temporary variable "$error".(Ñëİ±ûÿÿÿÿ8†¯€å»1
-€	php:S1488À"^Immediately return this expression instead of assigning it to the temporary variable "$error".(Ñëİ±ûÿÿÿÿ8†¯€å»1
-€	php:S1488Ó"^Immediately return this expression instead of assigning it to the temporary variable "$error".(Ñëİ±ûÿÿÿÿ8‡¯€å»1
-€	php:S1488“"^Immediately return this expression instead of assigning it to the temporary variable "$error".(Ñëİ±ûÿÿÿÿ8‡¯€å»1
-k	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ğŠº’şÿÿÿÿ
-m	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(±§œİ8‡¯€å»1
-r	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(›—™ıÿÿÿÿÿ8‡¯€å»1

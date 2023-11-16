@@ -3,23 +3,25 @@ require_once '../Model/Cita.php';
 switch ($_GET["op"]) {
 
     case 'listaTabla':
-        $user_login = new Cita();
-        $citas = $user_login->listarCitas();
-        // Prepara los datos para DataTables
+        $cita = new Cita();
+        $citas = $cita->listarCitas();
         $data = array();
         foreach ($citas as $reg) {
             $data[] = array(
-                "0" => $reg->getIdCita(),
-                "1" =>  $reg->getIdCliente(),
-                "2" =>  $reg->getCedulaEmpleado(),
-                "3" =>  $reg->getTratamiento(),
-                "4" => $reg->getFechaCita(),
-                "5" =>  $reg->getHoraCita(),
-                // Agrega otros campos según tus necesidades
+                "0" => $reg['IdCita'],
+                "1" => $reg['IdCliente'],
+                "2" => $reg['NombreCliente'],
+                "3" => $reg['ApellidoCliente'],
+                "4" => $reg['CedulaEmpleado'],
+                "5" => $reg['Tratamientos'],
+                "6" => $reg['FechaCita'],
+                "7" => $reg['HoraCita'],
+                "8" => $reg['HoraFin'],
+
             );
         }
         $resultados = array(
-            "sEcho" => 1, ##informacion para datatables
+            "sEcho" => 1, ##información para datatables
             "iTotalRecords" => count($data), ## total de registros al datatable
             "iTotalDisplayRecords" => count($data), ## enviamos el total de registros a visualizar
             "aaData" => $data
@@ -27,99 +29,122 @@ switch ($_GET["op"]) {
         echo json_encode($resultados);
         break;
 
-    case 'buscarClientePorId':
-        if (isset($_GET['IdCliente'])) {
-            $IdCliente = $_GET['IdCliente']; // Obtén el IdCliente de la solicitud GET
-            $cliente = Cliente::buscarClientePorId($IdCliente);
+    case 'buscarCliente':
+        $idCliente = isset($_POST["busquedaCliente"]) ? trim($_POST["busquedaCliente"]) : "";
 
-            if ($cliente) {
-                // Construye un arreglo con los datos del cliente para enviar como respuesta
-                $clienteData = array(
-                    "Nombre" => $cliente->getNombre(),
-                    "Apellido" => $cliente->getApellido(),
-                    "Correo" => $cliente->getCorreo(),
-                    // Agrega otros campos del cliente según tus necesidades
-                );
+        $cita = new Cita();
+        $datosCliente = $cita->obtenerDatosClientePorId($idCliente);
 
-                echo json_encode($clienteData);
-            } else {
-                echo json_encode(["error" => "Cliente no encontrado"]);
-            }
+        if ($datosCliente) {
+            $response = array(
+                'success' => true,
+                'cliente' => $datosCliente // Devuelve todos los datos del cliente
+            );
+            echo json_encode($response);
         } else {
-            echo json_encode(["error" => "IdCliente no proporcionado"]);
+            $response = array('success' => false);
+            echo json_encode($response);
         }
         break;
 
     case 'insertar':
+        try {
+            $IdCliente = isset($_POST["cliente"]) ? intval($_POST["cliente"]) : 0;
+            $cedulaEmpleado = isset($_POST["cedulaEmpleado"]) ? intval($_POST["cedulaEmpleado"]) : 0;
+            $fechaCita = isset($_POST["fechaCita"]) ? trim($_POST["fechaCita"]) : "";
+            $horaCita = isset($_POST["horaCita"]) ? trim($_POST["horaCita"]) : "";
+            $horaFin = isset($_POST["horaFin"]) ? trim($_POST["horaFin"]) : "";
+            $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
 
-        $IdCliente = isset($_POST["IdCliente"]) ? intval($_POST["IdCliente"]) : 0;
-        $cedulaEmpleado = isset($_POST["cedulaEmpleado"]) ? intval($_POST["cedulaEmpleado"]) : 0;
-        $tratamiento = isset($_POST["tratamiento"]) ? trim($_POST["tratamiento"]) : "";
-        $fechaCita = isset($_POST["fechaCita"]) ? trim($_POST["fechaCita"]) : "";
-        $horaCita = isset($_POST["horaCita"]) ? trim($_POST["horaCita"]) : "";
+            // Validación de datos
+            if ($IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita) || empty($horaFin) || empty($pagoTotal)) {
+                echo "Error: Debes proporcionar todos los datos necesarios para crear la cita.";
+            } else {
+                $cita = new Cita();
+                $cita->setIdCliente($IdCliente);
+                $cita->setCedulaEmpleado($cedulaEmpleado);
+                $cita->setFechaCita($fechaCita);
+                $cita->setHoraCita($horaCita);
+                $cita->setHoraFin($horaFin);
+                $cita->setPagoTotal($pagoTotal);
 
+                // Crea la cita sin tratamientos y obtén el ID
+                $idCita = $cita->crearCitaSinTratamientos();
 
-        $cita = new Cita();
-
-
-        $cita->setIdCliente($IdCliente);
-        $cita->setCedulaEmpleado($cedulaEmpleado);
-        $cita->setTratamiento($tratamiento);
-        $cita->setFechaCita($fechaCita);
-        $cita->setHoraCita($horaCita);
-
-        $insertado = $cita->crearCita();
-
-        if ($insertado) {
-            echo 1; // Éxito en la inserción
-        } else {
-            echo 0; // Fallo en la inserción
+                if (is_numeric($idCita) && $idCita > 0) {
+                    // Verifica si se han enviado tratamientos
+                    if (isset($_POST["tratamiento"]) && is_array($_POST["tratamiento"]) && !empty($_POST["tratamiento"])) {
+                        $tratamientos = $_POST["tratamiento"];
+                        foreach ($tratamientos as $idTratamiento) {
+                            $cita->agregarTratamientoACita($idCita, $idTratamiento);
+                        }
+                        echo "1"; // Indica éxito
+                    } else {
+                        echo "Error: Debes seleccionar al menos un tratamiento.";
+                    }
+                } else {
+                    echo "Error: No se pudo crear la cita. Por favor, verifica los datos.";
+                }
+            }
+        } catch (PDOException $Exception) {
+            echo "Error: " . $Exception->getMessage();
         }
         break;
 
     case 'editar':
+        try {
+            // Obtiene el ID de la cita
+            $idCita = isset($_POST["IdCita"]) ? intval($_POST["IdCita"]) : 0;
 
-        $IdCita = isset($_POST["IdCita"]) ? intval($_POST["IdCita"]) : 0;
-        $IdCliente = isset($_POST["IdCliente"]) ? intval($_POST["IdCliente"]) : 0;
-        $cedulaEmpleado = isset($_POST["cedulaEmpleado"]) ? intval($_POST["cedulaEmpleado"]) : 0;
-        $tratamiento = isset($_POST["tratamiento"]) ? trim($_POST["tratamiento"]) : "";
-        $fechaCita = isset($_POST["fechaCita"]) ? trim($_POST["fechaCita"]) : "";
-        $horaCita = isset($_POST["horaCita"]) ? trim($_POST["horaCita"]) : "";
+            $IdCliente = isset($_POST["cliente"]) ? intval($_POST["cliente"]) : 0;
+            $cedulaEmpleado = isset($_POST["cedulaEmpleado"]) ? intval($_POST["cedulaEmpleado"]) : 0;
+            $fechaCita = isset($_POST["fechaCita"]) ? trim($_POST["fechaCita"]) : "";
+            $horaCita = isset($_POST["horaCita"]) ? trim($_POST["horaCita"]) : "";
+            $horaFin = isset($_POST["horaFin"]) ? trim($_POST["horaFin"]) : "";
+            $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
 
+            // Verifica si se han enviado tratamientos
+            if (isset($_POST["tratamiento"]) && is_array($_POST["tratamiento"])) {
+                $tratamientos = $_POST["tratamiento"];
+            } else {
+                $tratamientos = array();
+            }
 
-        $cita = new Cita();
+            // Validación de datos
+            if ($idCita === 0 || $IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita) || empty($horaFin) || empty($pagoTotal)) {
+                echo "Error: Debes proporcionar todos los datos necesarios para editar la cita.";
+            } else {
+                $cita = new Cita();
+                $cita->setIdCita($idCita);
+                $cita->setIdCliente($IdCliente);
+                $cita->setCedulaEmpleado($cedulaEmpleado);
+                $cita->setFechaCita($fechaCita);
+                $cita->setHoraCita($horaCita);
+                $cita->setHoraFin($horaFin);
+                $cita->setPagoTotal($pagoTotal);
 
-        $cita->setIdCita($IdCita);
-        $cita->setIdCliente($IdCliente);
-        $cita->setCedulaEmpleado($cedulaEmpleado);
-        $cita->setTratamiento($tratamiento);
-        $cita->setFechaCita($fechaCita);
-        $cita->setHoraCita($horaCita);
+                // Elimina todos los tratamientos de la cita
+                $cita->eliminarTratamientos($idCita);
 
-        // Realiza la actualización en la base de datos
-        $actualizado = $cita->actualizarCita();
+                $actualizado = $cita->actualizarCita();
 
-        if ($actualizado) {
-            echo 1; // Éxito en la actualización
-        } else {
-            echo 0; // Fallo en la actualización
+                if ($actualizado) {
+                    // Verifica si se han enviado tratamientos antes de intentar iterar
+                    if (!empty($tratamientos)) {
+                        foreach ($tratamientos as $idTratamiento) {
+                            $cita->agregarTratamientoACita($idCita, $idTratamiento);
+                        }
+                    }
+                    echo "1"; // Éxito en la actualización
+                } else {
+                    echo "Error: No se pudo actualizar la cita. Por favor, verifica los datos.";
+                }
+            }
+        } catch (PDOException $Exception) {
+            echo "Error: " . $Exception->getMessage();
         }
         break;
 
-    case 'eliminar':
-
-        $IdCita = isset($_GET['IdCita']) ? intval($_GET['IdCita']) : 0;
-
-        $cita = new Cita();
-        $cita->setIdCita($IdCita);
-        $eliminado = $cita->eliminarCita();
-
-        if ($eliminado) {
-            echo 1; // Éxito en la eliminación
-        } else {
-            echo 0; // Fallo en la eliminación
-        }
-        break;
 
     case 'obtener':
         if (isset($_GET['IdCita'])) {
@@ -135,5 +160,29 @@ switch ($_GET["op"]) {
         } else {
             echo json_encode(["error" => "IdCita de la cita no proporcionada"]);
         }
+        break;
+
+    case 'eliminar':
+        if (isset($_POST['id'])) {
+            $IdCita = intval($_POST['id']);
+            $cita = new Cita();
+            $cita->setIdCita($IdCita);
+
+            $resultado = $cita->eliminarCita($IdCita);
+
+            if ($resultado > 0) {
+                echo "1";
+            } else {
+                echo "2";
+            }
+        } else {
+            echo "3";
+        }
+        break;
+
+    case 'cargarCita':
+        $citaModel = new Cita();
+        $citas = $citaModel->obtenerCitas();
+        echo json_encode($citas);
         break;
 }

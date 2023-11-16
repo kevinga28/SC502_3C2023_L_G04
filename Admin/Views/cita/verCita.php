@@ -13,6 +13,8 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
+    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+
     <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
     <link rel="stylesheet" href="../dist/css/style.css">
@@ -95,13 +97,14 @@
                                                             <input type="text" class="form-control" id="Etratamiento" name="tratamiento[]" placeholder="Tratamientos" readonly>
                                                         </div>
 
-                                                    </div>
-                                                    <div class=" col-md-6">
-
                                                         <div class="form-group">
                                                             <label for="estilista">Estilista</label>
                                                             <input type="text" class="form-control" id="Eestilista" name="estilista" placeholder="Estilista" readonly>
                                                         </div>
+
+                                                    </div>
+                                                    <div class=" col-md-6">
+
 
                                                         <div class="form-group">
                                                             <label for="fechaCita">Fecha de la Cita</label>
@@ -114,16 +117,22 @@
                                                         </div>
 
                                                         <div class="form-group">
+                                                            <label for="horaFin">Finalizacion Cita</label>
+                                                            <input type="time" class="form-control" id="EhoraFin" name="horaFin" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
                                                             <label for="pagoTotal">Total a Pagar</label>
                                                             <input type="text" class="form-control" id="EpagoTotal" name="pagoTotal" readonly>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
+                                            <div class="col-12 mb-4">
+                                                <a href="historialCitas.php" class="btn btn-secondary">Volver</a>
+                                            </div>
                                         </form>
-                                        <div class="col-12 mb-4">
-                                            <a href="historialCitas.php" class="btn btn-secondary">Volver</a>
-                                        </div>
+
 
                                     </div>
                                 </div>
@@ -146,7 +155,6 @@
 
     </div>
 
-    <!-- jQuery -->
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -155,36 +163,16 @@
     <!-- Datatable -->
     <script src="../plugins/DataTables/datatables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-    <!-- TOAST -->
-    <script src="../plugins/toastr/toastr.js"></script>
-
-    <script src="../dist/js/cita.js"></script>
-
-    <script src="../plugins/bootbox/bootbox.min.js"></script>
+    <!-- SWEETALERT -->
+    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
 
-    <script>
-        // Captura el cambio en la selección de tratamientos
-        $('#tratamiento').on('change', function() {
-            var total = 0;
-            // Suma los precios de los tratamientos seleccionados
-            $('#tratamiento option:selected').each(function() {
-                total += parseInt($(this).data('precio'));
-            });
-            // Muestra el total en el campo correspondiente
-            $('#Pagototal').val('$' + total);
-        });
-    </script>
+    <script src="../dist/js/cita.js"></script>
+
+    <script src="../dist/js/tratamiento.js"></script>
 
 
-    <script>
-        $(function() {
-            //Initialize Select2 Elements
-            $('.select2').select2()
-
-        })
-    </script>
 </body>
 
 

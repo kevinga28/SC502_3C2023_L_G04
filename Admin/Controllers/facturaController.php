@@ -1,109 +1,151 @@
 <?php
-require_once '../models/Factura.php'; // Asegúrate de cambiar el nombre de la clase si es diferente
+require_once '../Model/Factura.php';
+require_once '../Model/Cita.php';
 
-if (isset($_GET["op"])) {
-    $operacion = $_GET["op"];
-    $factura = new Factura(); // Asegúrate de que coincida con el nombre de tu clase
+switch ($_GET["op"]) {
 
-    switch ($operacion) {
-        case 'listar_facturas':
-            $facturas = $factura->listarFacturas();
-            echo json_encode($facturas);
-            break;
+    case 'listaTabla':
+        $factura = new Factura();
+        $facturas = $factura->listarFacturas();
+        $data = array();
+        foreach ($facturas as $reg) {
+            $data[] = array(
+                "0" => $reg['IdFactura'],
+                "1" => $reg['IdCita'],
+                "2" => $reg['nombreCliente'],
+                "3" => $reg['apellidoCliente'],
+                "4" => $reg['CedulaEmpleado'],
+                "5" => $reg['Tratamientos'],
+                "6" => $reg['FechaCita'],
+                "7" => $reg['HoraCita'],
+                "8" => $reg['HoraFin'],
 
-        case 'verificar_existencia':
-            $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
-            $factura->setCorreo($correo);
-            $encontrado = $factura->verificarExistenciaDb();
-            echo $encontrado ? 1 : 0;
-            break;
+            );
+        }
+        $resultados = array(
+            "sEcho" => 1,
+            "iTotalRecords" => count($data),
+            "iTotalDisplayRecords" => count($data),
+            "aaData" => $data
+        );
+        echo json_encode($resultados);
+        break;
+
+    case 'buscarCita':
+        // Asegúrate de recibir y validar los datos necesarios para buscar la cita
+        $idCita = isset($_POST["busquedaCitas"]) ? trim($_POST["busquedaCitas"]) : "";
+
+        // Llama a la función de la clase Factura para buscar la cita por el ID
+        $factura = new Factura();
+        $datosCita = $factura->buscarCitaPorId($idCita);
+
+        if ($datosCita) {
+            $response = array(
+                'success' => true,
+                'cita' => $datosCita // Devuelve todos los datos de la cita y el cliente
+            );
+            echo json_encode($response);
+        } else {
+            $response = array('success' => false);
+            echo json_encode($response);
+        }
+        break;
 
 
-        case 'guardar_factura':
-            // Asegúrate de recibir y validar todos los datos necesarios
-            $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
-            $apellido = isset($_POST["apellido"]) ? trim($_POST["apellido"]) : "";
-            $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
-            $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
-            $tipoCliente = isset($_POST["tipoCliente"]) ? trim($_POST["tipoCliente"]) : "";
-            $tratamiento = isset($_POST["tratamiento"]) ? trim($_POST["tratamiento"]) : "";
+    case 'insertar':
+        try {
+            $IdCita = isset($_POST["citas"]) ? intval($_POST["citas"]) : 0;
             $metodoPago = isset($_POST["metodoPago"]) ? trim($_POST["metodoPago"]) : "";
-            $estilista = isset($_POST["estilista"]) ? trim($_POST["estilista"]) : "";
-            $totalPago = isset($_POST["totalPago"]) ? trim($_POST["totalPago"]) : "";
-            $fechaCita = isset($_POST["fechaCita"]) ? trim($_POST["fechaCita"]) : "";
-            $horaCita = isset($_POST["horaCita"]) ? trim($_POST["horaCita"]) : "";
+            $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
 
 
-            $factura = new Factura();
-            $factura ->setId($id);
-
-            // Configura los atributos del objeto Factura
-            $factura->setNombre($nombre);
-            $factura->setApellido($apellido);
-            $factura->setCorreo($correo);
-            $factura->setTelefono($telefono);
-            $factura->setTipoCliente($tipoCliente);
-            $factura->setTratamiento($tratamiento);
-            $factura->setMetodoPago($metodoPago);
-            $factura->setEstilista($estilista);
-            $factura->setTotalPago($totalPago);
-            $factura->setFechaCita($fechaCita);
-            $factura->setHoraCita($horaCita);
-
-            // Intenta guardar la factura en la base de datos
-            $factura->guardarEnDb();
-
-            break;
-
-        case 'mostrar_factura':
-            $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
-            $factura = Factura::mostrarPorCorreo($correo);
-            echo json_encode($factura);
-            break;
-
-        case 'editar_factura':
-            $id = isset($_POST["id"]) ? trim($_POST["id"]) : "";
-
-            // Asegúrate de recibir y validar todos los datos necesarios
-            $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
-            $apellido = isset($_POST["apellido"]) ? trim($_POST["apellido"]) : "";
-            $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
-            $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
-            $tipoCliente = isset($_POST["tipoCliente"]) ? trim($_POST["tipoCliente"]) : "";
-            $tratamiento = isset($_POST["tratamiento"]) ? trim($_POST["tratamiento"]) : "";
-            $metodoPago = isset($_POST["metodoPago"]) ? trim($_POST["metodoPago"]) : "";
-            $estilista = isset($_POST["estilista"]) ? trim($_POST["estilista"]) : "";
-            $totalPago = isset($_POST["totalPago"]) ? trim($_POST["totalPago"]) : "";
-            $fechaCita = isset($_POST["fechaCita"]) ? trim($_POST["fechaCita"]) : "";
-            $horaCita = isset($_POST["horaCita"]) ? trim($_POST["horaCita"]) : "";
-
-
-            $factura = new Factura();
-            $factura->setId($id);
-            $encontrado = $factura->verificarExistenciaDb();
-            if ($encontrado == 1) {
-                $factura->llenarCampos($id);
-                // Configura los atributos del objeto Factura
-                $factura->setNombre($nombre);
-                $factura->setApellido($apellido);
-                $factura->setCorreo($correo);
-                $factura->setTelefono($telefono);
-                $factura->setTipoCliente($tipoCliente);
-                $factura->setTratamiento($tratamiento);
+            // Validación de datos
+            if ($IdCita === 0 || empty($metodoPago) || empty($pagoTotal)) {
+                echo "Error: Debes proporcionar todos los datos necesarios para crear la factura.";
+            } else {
+                $factura = new Factura();
+                $factura->setIdCita($IdCita);
                 $factura->setMetodoPago($metodoPago);
-                $factura->setEstilista($estilista);
-                $factura->setTotalPago($totalPago);
-                $factura->setFechaCita($fechaCita);
-                $factura->setHoraCita($horaCita);
-                $modificados-> $factura->actualizarFactura();
-                if ($modificados > 0) {
-                    echo 1;
+                $factura->setPagoTotal($pagoTotal);
+
+                $idFactura = $factura->agregarFactura();
+
+                if (is_numeric($idFactura) && $idFactura > 0) {
+                    if (isset($_POST["productos"]) && is_array($_POST["productos"])) {
+                        $productos = $_POST["productos"];
+                        foreach ($productos as $codigoProducto) {
+                            // Asegúrate de tener la función agregarProductoFactura en tu clase Factura
+                            $factura->agregarProductoFactura($idFactura, $codigoProducto, $cantidad, $precioUnitario);
+                        }
+                    }
+                    echo "1"; // Indica éxito
                 } else {
-                    echo 0;
+                    echo "Error: No se pudo crear la factura. Por favor, verifica los datos.";
                 }
             }
-            else{
-                echo 2;
-            }
+        } catch (PDOException $Exception) {
+            echo "Error: " . $Exception->getMessage();
+        }
+        break;
 
-            break;
+
+
+    case 'editar':
+        $IdFactura = isset($_POST["IdFactura"]) ? trim($_POST["IdFactura"]) : "";
+        $IdCita = isset($_POST["IdCita"]) ? trim($_POST["IdCita"]) : "";
+        $codigoProducto = isset($_POST["codigoProducto"]) ? trim($_POST["codigoProducto"]) : "";
+        $metodoPago = isset($_POST["metodoPago"]) ? trim($_POST["metodoPago"]) : "";
+        $pagoTotal = isset($_POST["pagoTotal"]) ? trim($_POST["pagoTotal"]) : "";
+
+        $factura = new Factura();
+        $factura->setIdFactura($IdFactura);
+        $factura->setIdCita($IdCita);
+        $factura->setMetodoPago($metodoPago);
+        $factura->setPagoTotal($pagoTotal);
+
+        $factura->actualizarFactura();
+
+        echo "Factura actualizada exitosamente.";
+        break;
+
+    case 'verificar_existencia_factura':
+        $IdFactura = isset($_POST["IdFactura"]) ? trim($_POST["IdFactura"]) : "";
+        $factura = new Factura();
+        $factura->setIdFactura($IdFactura);
+        $encontrado = $factura->verificarExistenciaFactura();
+        echo $encontrado ? 1 : 0;
+        break;
+
+    case 'obtener':
+        if (isset($_GET['IdFactura'])) {
+            $IdFactura = isset($_GET['IdFactura']) ? intval($_GET['IdFactura']) : null;
+            $factura = Factura::obtenerFacturaPorIdFactura($IdFactura);
+
+            if ($factura) {
+                echo json_encode($factura);
+            } else {
+                echo json_encode(["error" => "No se encontró la factura"]);
+            }
+        } else {
+            echo json_encode(["error" => "IdFactura de la factura no proporcionada"]);
+        }
+        break;
+
+    case 'eliminar':
+        if (isset($_POST['id'])) {
+            $IdFactura = intval($_POST['id']);
+            $factura = new Factura();
+            $factura->setIdFactura($IdFactura);
+
+            $resultado = $factura->eliminarFactura($IdFactura);
+
+            if ($resultado === 1) {
+                echo json_encode(["success" => "Factura eliminada"]);
+            } else {
+                echo json_encode(["error" => "No se pudo eliminar la factura"]);
+            }
+        } else {
+            echo json_encode(["error" => "Id de la factura no proporcionado"]);
+        }
+        break;
+}

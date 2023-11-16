@@ -19,10 +19,6 @@
 
   <link rel="stylesheet" href="../dist/css/style.css">
 
-  <link rel="stylesheet" href="../plugins/toastr/toastr.css">
-
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.4/dist/sweetalert2.min.css">
-
 
 
 </head>
@@ -67,11 +63,6 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-              <div class="callout callout-info">
-                <h5><i class="fas fa-info"></i> Nota:</h5>
-                Esta pagina sera configurada con el mvc
-              </div>
-
 
               <!-- FORMULARIO PARA CREAR UN EMPLEADO -->
               <div class="row">
@@ -82,17 +73,17 @@
                       <h3 class="card-title">Agregar Empleado</h3>
                     </div>
                     <!-- EMPIEZA EL FORMULARIO -->
-                    <form method="POST"name="modulos_add" id="crearEmpleado">
+                    <form method="POST" name="modulos_add" id="crearEmpleado">
                       <div class="card-body">
                         <div class="row">
                           <div class="col-md-6">
 
-                          <div class="form-group">
+                            <div class="form-group">
                               <label for="Nombre">Cedula</label>
                               <input type="text" class="form-control" id="cedula" name="cedula" placeholder="Cedula" required>
                             </div>
 
-                          <div class="form-group">
+                            <div class="form-group">
                               <label for="imagen">Imagen</label>
                               <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
                             </div>
@@ -147,7 +138,7 @@
                               <input type="text" class="form-control" id="otros" name="otros" placeholder="Otras Señales" required>
                             </div>
 
-                            
+
                             <div class="form-group">
                               <label for="rol">genero</label>
                               <select class="select2 select2-hidden-accessible" id="genero" name="genero" data-placeholder="Seleccionar genero" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
@@ -222,27 +213,20 @@
   </div>
 
 
-  <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- ChartJS -->
-  <script src="../plugins/chart.js/Chart.min.js"></script>
   <!-- AdminLTE App -->
   <script src="../dist/js/adminlte.min.js"></script>
-   <!-- Datatable -->
+  <!-- Datatable -->
   <script src="../plugins/DataTables/datatables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-  <!-- TOAST -->
-  <script src="../plugins/toastr/toastr.js"></script>
-
-  <script src="../dist/js/empleado.js"></script>
-
-  <script src="../plugins/bootbox/bootbox.min.js"></script>
+  <!-- SWEETALERT -->
+  <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
   <script src="../plugins/select2/js/select2.full.min.js"></script>
 
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.4/dist/sweetalert2.min.js"></script>
+
   <!-- Page specific script -->
   <script>
     $(function() {
@@ -280,6 +264,8 @@
 
     })
   </script>
+
+  <script src="../dist/js/empleado.js"></script>
 
 </body>
 
