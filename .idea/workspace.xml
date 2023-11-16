@@ -5,34 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8c9abd-086d-4297-a16c-a6018e345d6d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/2/9/29d579302d102ae1246ad3a8983529394137be29" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/3/43d24a5f5bc69a3ca04ac2c5a033670422cb588a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/4/44f289e32f98eeb587fff114d11139f53a0def82" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/8/48f99fed94568a7ccdcd27279f8f3d2e7622643a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/f/5f138fc95ec95d0b40181564537418486f3108ae" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/2/62419e7e4bdba34c3f9dc329a4a4a8d762476c1d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/3/630d4906c8d5a572e508d0028ea704f540e7ddba" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/9/7902cc62626aed7b73f448b973961f62d651f6d9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/2/8293628b165bcd14f64e95079225f78ba3f90885" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/9/89851361acb74cf57366c2f9d7f08223c8156957" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/9/b922cf94facfda6f952867030842ab1b3a423495" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d1239c9c87c08aad77d4e6da0f76733818bd1409" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/f/ef78b4674ac4577c67b6adaf21cf2dfd6a1e77e3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0ba0b58530f9dc0d172e1878f671302ad79cd92b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/4/c4f7a6f2d371512c0bbcf5d372d8faff00a91544" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/e/d/edc46f6f03c3b15eccad4d1ec2e2bdaaf438cd4f" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Controllers/loginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Controllers/loginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Model/Empleado.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Model/Empleado.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/Controller/InicioSesionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/Controller/InicioSesionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/Model/InicioSesion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/Model/InicioSesion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/fragments/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/fragments/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/fragments/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/fragments/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/login/js/inicioSesion.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/js/inicioSesion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/login/js/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/js/logout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/login/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/js/register.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

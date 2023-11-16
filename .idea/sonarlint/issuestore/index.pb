@@ -25,10 +25,6 @@ I
 Admin/config/Conexion.php,9\a\9aea813be9be2b7d48eaf3c971a0a58212bfa354
 J
 Cliente/views/Nosotros.php,8\d\8d9392df4811827de5a7ff956bdb80c2834d1f49
-I
-Cliente/config/global.php,0\b\0ba0b58530f9dc0d172e1878f671302ad79cd92b
-K
-Cliente/config/Conexion.php,c\4\c4f7a6f2d371512c0bbcf5d372d8faff00a91544
 H
 Cliente/views/js/main.js,7\d\7db1464ac015e34239a5dcb4c681a7e5fbd3e36e
 D
@@ -51,7 +47,9 @@ X
 (Admin/Controllers/empleadoController.php,1\a\1abaac618b17fb470d3f9d65f9631e2f33537241
 M
 Admin/Views/logueo/logueo.php,5\3\5321c7459484ab7bf82dbb52124f0ab9eb5b7ebd
-M
-Cliente/views/login/login.php,e\d\edc46f6f03c3b15eccad4d1ec2e2bdaaf438cd4f
 O
 Admin/Views/logueo/js/logout.js,c\2\c27758987b379a275effbae175bb7764ff1e7b39
+K
+Cliente/config/Conexion.php,c\4\c4f7a6f2d371512c0bbcf5d372d8faff00a91544
+I
+Cliente/config/global.php,0\b\0ba0b58530f9dc0d172e1878f671302ad79cd92b
