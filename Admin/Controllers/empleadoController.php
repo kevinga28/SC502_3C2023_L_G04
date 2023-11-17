@@ -104,6 +104,11 @@ switch ($_GET["op"]) {
         $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
         $apellido = isset($_POST["apellido"]) ? trim($_POST["apellido"]) : "";
         $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
+        $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
+        if (strlen($telefono) != 8) {
+            echo 'El teléfono debe tener exactamente 8 dígitos.';
+            exit;
+        }
         $rol = isset($_POST["rol"]) ? trim($_POST["rol"]) : "";
         $provincia = isset($_POST["provincia"]) ? trim($_POST["provincia"]) : "";
         $distrito = isset($_POST["distrito"]) ? trim($_POST["distrito"]) : "";
