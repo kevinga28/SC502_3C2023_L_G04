@@ -50,7 +50,7 @@ function listarFacturas() {
             { data: "1" },  // ID de la cita
             { data: "2" },  // Nombre
             { data: "3" },  // Apellido
-            { data: "4" },  // Correo
+            { data: "4" },  // Tratamiento
             { data: "5" },  // Producto
             { data: "6" },  // Método de pago
             { data: "7" },  // Pago total

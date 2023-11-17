@@ -83,11 +83,30 @@ class Factura extends Conexion
 
     public function listarFacturas()
     {
-        $query = "SELECT f.*, c.nombre AS nombreCliente, c.apellido AS apellidoCliente , p.nombre AS nombreProducto, p.precio AS precioProducto
-        FROM factura f
-        INNER JOIN cita ci ON f.IdCita = ci.IdCita
-        INNER JOIN cliente c ON ci.IdCliente = c.IdCliente
-        INNER JOIN producto p ON f.codigoProducto = p.Codigo;";
+        $query = "SELECT 
+        f.IdFactura, 
+        f.IdCita, 
+        f.metodoPago, 
+        f.pagoTotal, 
+        c.nombre AS nombreCliente, 
+        c.apellido AS apellidoCliente, 
+        GROUP_CONCAT(DISTINCT p.nombre ORDER BY p.nombre SEPARATOR ', ') AS nombresProductos,
+        GROUP_CONCAT(DISTINCT t.nombre ORDER BY t.nombre SEPARATOR ', ') AS nombresTratamientos
+    FROM 
+        factura f
+    INNER JOIN 
+        cita ci ON f.IdCita = ci.IdCita
+    INNER JOIN 
+        cliente c ON ci.IdCliente = c.IdCliente
+    LEFT JOIN 
+        detalle_factura df ON f.IdFactura = df.IdFactura
+    LEFT JOIN 
+        producto p ON df.CodigoProducto = p.codigo
+    LEFT JOIN 
+        cita_tratamiento ct ON ci.IdCita = ct.IdCita
+    LEFT JOIN 
+        tratamiento t ON ct.IdTratamiento = t.IdTratamiento
+    GROUP BY f.IdFactura;";
 
         $facturas = array();
 
@@ -101,12 +120,12 @@ class Factura extends Conexion
                 $factura = array(
                     'IdFactura' => $encontrado['IdFactura'],
                     'IdCita' => $encontrado['IdCita'],
-                    'MetodoPago' => $encontrado['metodoPago'],
-                    'PagoTotal' => $encontrado['pagoTotal'],
                     'NombreCliente' => $encontrado['nombreCliente'],
                     'ApellidoCliente' => $encontrado['apellidoCliente'],
-                    'Correo' => $encontrado['correo'],
-                    'NombreProducto' => $encontrado['nombreProducto'],
+                    'Tratamiento' => $encontrado['nombresTratamientos'],
+                    'NombreProducto' => $encontrado['nombresProductos'],
+                    'MetodoPago' => $encontrado['metodoPago'],
+                    'PagoTotal' => $encontrado['pagoTotal'],
                 );
                 $facturas[] = $factura;
             }
@@ -251,7 +270,7 @@ class Factura extends Conexion
     public function actualizarFactura()
     {
         $query = "UPDATE factura 
-            SET IdCita = :IdCita, codigoProducto = :codigoProducto, metodoPago = :metodoPago,
+            SET IdCita = :IdCita,  metodoPago = :metodoPago,
                 pagoTotal = :pagoTotal
             WHERE IdFactura = :IdFactura";
 
@@ -259,7 +278,6 @@ class Factura extends Conexion
             self::getConexion();
 
             $IdCita = $this->getIdCita();
-            $codigoProducto = $this->getCodigoProducto();
             $metodoPago = $this->getMetodoPago();
             $pagoTotal = $this->getPagoTotal();
             $IdFactura = $this->getIdFactura();
@@ -267,7 +285,6 @@ class Factura extends Conexion
             $resultado = self::$cnx->prepare($query);
 
             $resultado->bindParam(":IdCita", $IdCita, PDO::PARAM_INT);
-            $resultado->bindParam(":codigoProducto", $codigoProducto, PDO::PARAM_INT);
             $resultado->bindParam(":metodoPago", $metodoPago, PDO::PARAM_STR);
             $resultado->bindParam(":pagoTotal", $pagoTotal, PDO::PARAM_STR);
             $resultado->bindParam(":IdFactura", $IdFactura, PDO::PARAM_INT);

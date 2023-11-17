@@ -12,14 +12,12 @@ switch ($_GET["op"]) {
             $data[] = array(
                 "0" => $reg['IdFactura'],
                 "1" => $reg['IdCita'],
-                "2" => $reg['nombreCliente'],
-                "3" => $reg['apellidoCliente'],
-                "4" => $reg['CedulaEmpleado'],
-                "5" => $reg['Tratamientos'],
-                "6" => $reg['FechaCita'],
-                "7" => $reg['HoraCita'],
-                "8" => $reg['HoraFin'],
-
+                "2" => $reg['NombreCliente'],
+                "3" => $reg['ApellidoCliente'],
+                "4" => $reg['Tratamiento'], 
+                "5" => $reg['NombreProducto'], 
+                "6" => $reg['MetodoPago'], 
+                "7" => $reg['PagoTotal']
             );
         }
         $resultados = array(
