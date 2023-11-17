@@ -211,7 +211,7 @@ const ctx = document.getElementById('myChart');
 const data = {
     labels: ['Productos Vendidos', 'Citas Realizadas'],
     datasets: [{
-        label: 'Cantidad',
+        label: 'Ventas y citas',
         data: [<?php echo $cantidadProductos; ?>, <?php echo $cantidadCitas; ?>],
         backgroundColor: [
           'rgba(54, 162, 235, 0.2)',
