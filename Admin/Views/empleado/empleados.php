@@ -1,3 +1,20 @@
+<?php
+require_once '../../../admin/config/global.php';
+require_once '../../../admin/config/conexion.php';
+
+$conexion = Conexion::conectar();
+$query = $conexion->query("SELECT rol, COUNT(*) as cantidad_empleados FROM empleado GROUP BY rol");
+$empleados = $query->fetchAll(PDO::FETCH_ASSOC);
+
+$nombres = [];
+$roles = [];
+
+foreach ($empleados as $empleado) {
+    $nombres[] = $empleado['rol'];
+    $roles[] = $empleado['cantidad_empleados'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -275,10 +292,10 @@
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Gerente', 'Estilista', 'Admin'],
+      labels: <?php echo json_encode($nombres); ?>,
       datasets: [{
         label: 'Rol de Empleados',
-        data: [12, 19, 3],
+        data: <?php echo json_encode($roles); ?>,
         borderWidth: 1
       }]
     },

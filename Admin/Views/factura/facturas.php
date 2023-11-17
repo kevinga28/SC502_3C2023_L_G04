@@ -1,3 +1,20 @@
+<?php
+require_once '../../../admin/config/global.php';
+require_once '../../../admin/config/conexion.php';
+
+$conexion = Conexion::conectar();
+$query = $conexion->query("SELECT metodoPago, COUNT(*) as cantidad_facturas FROM factura GROUP BY metodoPago");
+$facturas = $query->fetchAll(PDO::FETCH_ASSOC);
+
+$nombres = [];
+$metodosPago = [];
+
+foreach ($facturas as $factura) {
+    $nombres[] = $factura['metodoPago'];
+    $metodosPago[] = $factura['cantidad_facturas'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -270,10 +287,10 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-        labels: ['Efectivo', 'Tarjeta de Credito', 'Tarjeta de Debito', 'Transferencia Bancaria', 'Otro'],
+        labels: <?php echo json_encode($nombres); ?>,
         datasets: [{
             label: 'Metodos de pago',
-            data: [12, 19, 3, 5, 2],
+            data: <?php echo json_encode($metodosPago); ?>,
             borderWidth: 1
         }]
         },

@@ -1,3 +1,20 @@
+<?php
+require_once '../../../admin/config/global.php';
+require_once '../../../admin/config/conexion.php';
+
+$conexion = Conexion::conectar();
+$query = $conexion->query("SELECT provincia, COUNT(*) as cantidad_clientes FROM cliente GROUP BY provincia");
+$clientes = $query->fetchAll(PDO::FETCH_ASSOC);
+
+$nombres = [];
+$provincias = [];
+
+foreach ($clientes as $cliente) {
+    $nombres[] = $cliente['provincia'];
+    $provincias[] = $cliente['cantidad_clientes'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -192,6 +209,8 @@
 
   </div>
 
+
+
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
@@ -244,10 +263,10 @@
   new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+      labels: <?php echo json_encode($nombres); ?>,
       datasets: [{
         label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
+        data: <?php echo json_encode($provincias); ?>,
         borderWidth: 1
       }]
     },

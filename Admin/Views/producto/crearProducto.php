@@ -1,3 +1,20 @@
+<?php
+require_once '../../../admin/config/global.php';
+require_once '../../../admin/config/conexion.php';
+
+$conexion = Conexion::conectar();
+$query = $conexion->query("SELECT nombre, cantidad FROM producto");
+$productos = $query->fetchAll(PDO::FETCH_ASSOC);
+
+$nombres = [];
+$cantidades = [];
+
+foreach ($productos as $producto) {
+    $nombres[] = $producto['nombre'];
+    $cantidades[] = $producto['cantidad'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -163,24 +180,6 @@
 
   </div>
 
-  <?php
-    include_once '../../../admin/config/global.php';
-
-
-    $conexion = Conexion::conectar();
-    $query = $conexion->query("SELECT nombre, cantidad FROM `producto`");
-    $productos = $query->fetchAll(PDO::FETCH_ASSOC);
-
-
-    $nombres = [];
-    $cantidades = [];
-
-    foreach ($productos as $producto) {
-        $nombres[] = $producto['nombre'];
-        $cantidades[] = $producto['cantidad'];
-    }
-  ?>
-
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -196,6 +195,7 @@
   <!-- ChartJS -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Estadistica -->
+  
   <script>
     const ctx = document.getElementById('myChart');
     new Chart(ctx, {
