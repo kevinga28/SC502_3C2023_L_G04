@@ -1,3 +1,20 @@
+<?php
+require_once '../../../admin/config/global.php';
+require_once '../../../admin/config/conexion.php';
+
+$conexion = Conexion::conectar();
+$query = $conexion->query("SELECT provincia, COUNT(*) as cantidad_clientes FROM cliente GROUP BY provincia");
+$clientes = $query->fetchAll(PDO::FETCH_ASSOC);
+
+$nombres = [];
+$provincias = [];
+
+foreach ($clientes as $cliente) {
+    $nombres[] = $cliente['provincia'];
+    $provincias[] = $cliente['cantidad_clientes'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -165,8 +182,8 @@
                       </div>
                     </div>
                     <div class="card-body">
-                      <div class="chart">
-                        <canvas id="barChart" style="min-height: 320px; height: 335px; max-height: 335px; max-width: 100%;"></canvas>
+                      <div>
+                        <canvas id="myChart"></canvas>
                       </div>
                     </div>
                     <!-- /.card-body -->
@@ -191,6 +208,8 @@
 
 
   </div>
+
+
 
   <!-- jQuery -->
   <script src="../plugins/jquery/jquery.min.js"></script>
@@ -234,6 +253,32 @@
 
     })
   </script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script>
+  const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: <?php echo json_encode($nombres); ?>,
+      datasets: [{
+        label: '# of Votes',
+        data: <?php echo json_encode($provincias); ?>,
+        borderWidth: 1
+      }]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+</script>
 
 
 

@@ -1,3 +1,20 @@
+<?php
+require_once '../../../admin/config/global.php';
+require_once '../../../admin/config/conexion.php';
+
+$conexion = Conexion::conectar();
+$query = $conexion->query("SELECT metodoPago, COUNT(*) as cantidad_facturas FROM factura GROUP BY metodoPago");
+$facturas = $query->fetchAll(PDO::FETCH_ASSOC);
+
+$nombres = [];
+$metodosPago = [];
+
+foreach ($facturas as $factura) {
+    $nombres[] = $factura['metodoPago'];
+    $metodosPago[] = $factura['cantidad_facturas'];
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -185,9 +202,9 @@
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                            <div class="chart">
-                                                <canvas id="barChart" style="min-height: 320px; height: 335px; max-height: 335px; max-width: 100%;"></canvas>
-                                            </div>
+                                        <div>
+                                            <canvas id="myChart"></canvas>
+                                        </div>
                                         </div>
                                         <!-- /.card-body -->
                                     </div>
@@ -264,6 +281,32 @@
     </script>
 
     <script src="../dist/js/factura.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+    const ctx = document.getElementById('myChart');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+        labels: <?php echo json_encode($nombres); ?>,
+        datasets: [{
+            label: 'Metodos de pago',
+            data: <?php echo json_encode($metodosPago); ?>,
+            borderWidth: 1
+        }]
+        },
+        options: {
+        scales: {
+            y: {
+            beginAtZero: true
+            }
+        }
+        }
+    });
+    </script>
 
 </body>
 
