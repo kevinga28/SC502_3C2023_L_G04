@@ -118,10 +118,7 @@ $('#crearFactura').on('submit', function (event) {
 
 /* ---------------------------------------------------------------BUSCAR UNA CITA --------------------------------------------------------------- */
 $(document).ready(function () {
-    var pagoTotalValue; // Variable para almacenar el valor original de pagoTotal
-
     function cargarCita() {
-        $('#producto').prop('disabled', true);
         $.ajax({
             url: '../../../admin/Controllers/citaController.php?op=cargarCita',
             type: 'POST',
@@ -129,6 +126,8 @@ $(document).ready(function () {
             success: function (data) {
                 var selectedCita = $('#citas, #Ecitas');
                 selectedCita.empty();
+
+                selectedCita.append('<option value="" disabled selected>Seleccionar Cita</option>');
 
                 if (data && data.length > 0) {
                     $.each(data, function (index, cita) {
@@ -143,8 +142,6 @@ $(document).ready(function () {
                         });
 
                         if (selectedCita) {
-                            pagoTotalValue = selectedCita.pagoTotal;
-
                             $("#nombre, #Enombre").val(selectedCita.nombreCliente);
                             $("#apellido, #Eapellido").val(selectedCita.apellidoCliente);
                             $("#correo, #Ecorreo").val(selectedCita.correoCliente);
@@ -153,30 +150,7 @@ $(document).ready(function () {
                             $("#fechaCita,  #EfechaCitao").val(selectedCita.fechaCita);
                             $("#horaCita, #EhoraCita").val(selectedCita.horaCita);
                             $("#horaFin, #EhoraFin ").val(selectedCita.horaFin);
-                            $("#pagoTotal, #EpagoTotal ").val(pagoTotalValue);
-                            $("#pagoTotalHidden, #EpagoTotalHidden").val(pagoTotalValue);
-
-                            $('#producto').prop('disabled', false);
-
-                            if (!$('#producto').data('sumado')) {
-                                actualizarTotal();
-                                $('#producto').data('sumado', true);
-                            }
-
-                            $('#producto').on('change', function () {
-                                if ($(this).val().length > 0) {
-                                    $('#cantidadDiv').show();
-                                } else {
-                                    $('#cantidadDiv').hide();
-                                }
-                                actualizarTotal();
-                            });
-
-                            $('#cantidad').on('change', function () {
-                                if (pagoTotalValue !== parseFloat($('#pagoTotalHidden').val())) {
-                                    actualizarTotal();
-                                }
-                            });
+                            $("#pagoTratamiento, #EpagoTratamiento").val(selectedCita.pagoTotal);
                         }
                     });
                 }
@@ -186,30 +160,41 @@ $(document).ready(function () {
             }
         });
     }
-    function actualizarTotal() {
-        var totalTratamientos = parseFloat($("#pagoTotalHidden").val()) || 0;
+    $(document).ready(function () {
+        cargarCita();
+    });
+});
+
+/* ---------------------------------------------------------------TOTAL--------------------------------------------------------------- */
+
+$(document).ready(function() {
+    function actualizarTotalProductos() {
         var totalProductos = 0;
-    
-        if ($('#producto').val().length > 0) {
-            $('#producto option:selected').each(function () {
+
+        if ($('#producto option:selected').length === 0) {
+            totalProductos = parseFloat($('#pagoTratamiento').val()) || 0;
+        } else {
+            $('#producto option:selected').each(function() {
                 var precio = parseFloat($(this).data('precio')) || 0;
                 var cantidad = parseInt($('#cantidad').val()) || 1;
                 totalProductos += precio * cantidad;
             });
         }
+
+        $('#pagoProductos').val(totalProductos.toFixed(2));
+        return totalProductos;
+    }
     
-        var total = totalTratamientos + (totalProductos || 0);
-    
-        $('#pagoTotal').val('₡' + total.toFixed(2));
-        $('#pagoTotalHidden').val(total);
-    
-        if (totalProductos !== 0) {
-            pagoTotalValue = total;
-        }
+    function actualizarTotal() {
+        var totalProductos = actualizarTotalProductos(); 
+        var totalFinal = totalProductos;
+
+        $('#pagoTotal, #pagoTotalHidden').val(totalFinal.toFixed(2)); 
     }
 
-    $(document).ready(function () {
-        cargarCita();
+    // Detectar cambios en la selección de productos, en la cantidad y en el total de tratamiento
+    $('#producto, #cantidad, #pagoTratamiento').on('change', function() {
+        actualizarTotal(); // Actualizar el total al detectar cambios
     });
 });
 /* ---------------------------------------------------------------BUSCAR UN PRODUCTO --------------------------------------------------------------- */

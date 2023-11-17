@@ -130,7 +130,9 @@
                                                             <select class="select2 select2-hidden-accessible" multiple="multiple" id="producto" name="producto[]" data-placeholder="Buscar Producto" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true">
                                                             </select>
                                                         </div>
-                                                        <div class="form-group" id="cantidadDiv" style="display: none;">
+
+
+                                                        <div class="form-group" id="cantidadDiv" >
                                                             <label for="Cantidad">Cantidad</label>
                                                             <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" min="1">
                                                         </div>
@@ -150,6 +152,8 @@
                                                             <label for="pagoTotal">Total a Pagar</label>
                                                             <input type="text" class="form-control" id="pagoTotal" name="pagoTotal" readonly value="₡0">
                                                             <input type="text" id="pagoTotalHidden" name="pagoTotalHidden">
+                                                            <input type="text" id="pagoProductos" name="pagoTotalProductos">
+                                                            <input type="text" id="pagoTratamiento" name="pagoTratamiento">
                                                         </div>
                                                     </div>
                                                 </div>

@@ -58,35 +58,40 @@ switch ($_GET["op"]) {
             $metodoPago = isset($_POST["metodoPago"]) ? trim($_POST["metodoPago"]) : "";
             $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
 
-
             // Validación de datos
             if ($IdCita === 0 || empty($metodoPago) || empty($pagoTotal)) {
-                echo "Error: Debes proporcionar todos los datos necesarios para crear la factura.";
+                echo "Error: Debes proporcionar todos los datos necesarios para crear la cita.";
             } else {
+
                 $factura = new Factura();
                 $factura->setIdCita($IdCita);
                 $factura->setMetodoPago($metodoPago);
                 $factura->setPagoTotal($pagoTotal);
-
                 $idFactura = $factura->agregarFactura();
 
                 if (is_numeric($idFactura) && $idFactura > 0) {
-                    if (isset($_POST["productos"]) && is_array($_POST["productos"])) {
-                        $productos = $_POST["productos"];
+                    // Verifica si se han enviado producto
+                    if (isset($_POST["producto"]) && is_array($_POST["producto"])) {
+                        $productos = $_POST["producto"];
+
                         foreach ($productos as $codigoProducto) {
-                            // Asegúrate de tener la función agregarProductoFactura en tu clase Factura
-                            $factura->agregarProductoFactura($idFactura, $codigoProducto, $cantidad, $precioUnitario);
+                            // Utiliza el código de producto para encontrar la cantidad correspondiente
+                            $cantidad = isset($_POST["cantidad"]) ? intval($_POST["cantidad"]) : 0;
+                            $factura->agregarProductoFactura($idFactura, $codigoProducto, $cantidad);
                         }
+                        echo "1"; // Indica éxito
+                    } else {
+                        echo "1"; // Indica exito pero sin productos
                     }
-                    echo "1"; // Indica éxito
                 } else {
-                    echo "Error: No se pudo crear la factura. Por favor, verifica los datos.";
+                    echo "Error: No se pudo crear la cita. Por favor, verifica los datos.";
                 }
             }
         } catch (PDOException $Exception) {
             echo "Error: " . $Exception->getMessage();
         }
         break;
+
 
 
 
