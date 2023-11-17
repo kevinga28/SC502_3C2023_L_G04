@@ -1,4 +1,21 @@
 <?php
+require_once '../../admin/config/global.php';
+require_once '../../admin/config/conexion.php';
+
+$conexion = Conexion::conectar();
+// Consulta para obtener la cantidad de productos vendidos
+$queryProductos = $conexion->query("SELECT COUNT(*) as cantidad FROM detalle_factura");
+$resultadoProductos = $queryProductos->fetch(PDO::FETCH_ASSOC);
+$cantidadProductos = $resultadoProductos['cantidad'];
+
+// Consulta para obtener la cantidad de citas realizadas
+$queryCitas = $conexion->query("SELECT COUNT(*) as cantidad FROM cita");
+$resultadoCitas = $queryCitas->fetch(PDO::FETCH_ASSOC);
+$cantidadCitas = $resultadoCitas['cantidad'];
+
+?>
+
+<?php
 require_once '../Model/Empleado.php';
 
 
@@ -183,6 +200,46 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
   <script src="logueo/js/logout.js"></script>
   <!-- Custom JavaScript (main.js) -->
   <script src="dist/js/main.js"></script>
+  <!-- ChartJS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Estadistica -->
+  
+  <script>
+    // Código Chart.js
+const ctx = document.getElementById('myChart');
+
+const data = {
+    labels: ['Productos Vendidos', 'Citas Realizadas'],
+    datasets: [{
+        label: 'Cantidad',
+        data: [<?php echo $cantidadProductos; ?>, <?php echo $cantidadCitas; ?>],
+        backgroundColor: [
+          'rgba(54, 162, 235, 0.2)',
+          'rgba(255, 99, 132, 0.2)'
+        ],
+        borderColor: [
+            'rgba(54, 162, 235, 1)',
+            'rgba(255, 99, 132, 1)'
+        ],
+        borderWidth: 1
+    }]
+};
+
+const config = {
+    type: 'bar',
+    data: data,
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+};
+
+new Chart(ctx, config);
+
+  </script>
 
 
 

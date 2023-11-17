@@ -28,7 +28,7 @@
                             </div>
                         </div>
 
-                        <canvas id="salesChart" height="180" style="height: 180px; display: block; width: 559px;" width="559" class="chartjs-render-monitor"></canvas>
+                        <canvas id="myChart"></canvas>
                     </div>
 
                 </div>
