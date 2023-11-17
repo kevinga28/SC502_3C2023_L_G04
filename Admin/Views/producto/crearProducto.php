@@ -141,8 +141,8 @@
                       </div>
                     </div>
                     <div class="card-body">
-                      <div class="chart">
-                        <canvas id="barChart" style="min-height: 320px; height: 335px; max-height: 335px; max-width: 100%;"></canvas>
+                      <div>
+                        <canvas id="myChart"></canvas>
                       </div>
                     </div>
                   </div>
@@ -163,6 +163,23 @@
 
   </div>
 
+  <?php
+    include_once '../../../admin/config/global.php';
+
+
+    $conexion = Conexion::conectar();
+    $query = $conexion->query("SELECT nombre, cantidad FROM `producto`");
+    $productos = $query->fetchAll(PDO::FETCH_ASSOC);
+
+
+    $nombres = [];
+    $cantidades = [];
+
+    foreach ($productos as $producto) {
+        $nombres[] = $producto['nombre'];
+        $cantidades[] = $producto['cantidad'];
+    }
+  ?>
 
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
@@ -174,10 +191,32 @@
   <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
   <!-- SWEETALERT -->
   <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
-
+  <!-- Productos JS -->
   <script src="../dist/js/producto.js"></script>
-
-
+  <!-- ChartJS -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Estadistica -->
+  <script>
+    const ctx = document.getElementById('myChart');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: <?php echo json_encode($nombres); ?>,
+        datasets: [{
+          label: 'Cantidad de productos',
+          data: <?php echo json_encode($cantidades); ?>,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
 </body>
 
 
