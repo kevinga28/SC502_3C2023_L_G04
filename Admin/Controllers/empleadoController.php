@@ -39,7 +39,10 @@ switch ($_GET["op"]) {
         $genero = isset($_POST["genero"]) ? trim($_POST["genero"]) : "";
         $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
         $contrasena = isset($_POST["contrasena"]) ? trim($_POST["contrasena"]) : "";
-        
+        if (strlen($contrasena) < 8) {
+            echo 'La contraseña debe tener al menos 8 caracteres.';
+            exit;
+        }
         $contrasena = hash('SHA256', $contrasena);
 
         $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
@@ -54,10 +57,7 @@ switch ($_GET["op"]) {
         $canton = isset($_POST["canton"]) ? trim($_POST["canton"]) : "";
         $otros = isset($_POST["otros"]) ? trim($_POST["otros"]) : "";
 
-        if (strlen($contrasena) < 8) {
-            echo 'La contraseña debe tener al menos 8 caracteres.';
-            exit;
-        }
+    
 
         $empleado = new Empleado();
 

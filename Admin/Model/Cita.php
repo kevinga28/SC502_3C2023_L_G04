@@ -454,4 +454,26 @@ class Cita extends Conexion
             return $error;
         }
     }
+
+    public function obtenerHorariosDisponibles($cedulaEmpleado, $diaSemana)
+    {
+        $query = "SELECT horaInicio, horaFin FROM horarios WHERE empleadoCedula = :cedulaEmpleado AND diaSemana = :dia";
+        try {
+            self::getConexion();
+            $stmt = self::$cnx->prepare($query);
+            $stmt->bindParam(':cedulaEmpleado', $cedulaEmpleado, PDO::PARAM_INT);
+            $stmt->bindParam(':dia', $diaSemana, PDO::PARAM_INT);
+            $stmt->execute();
+    
+            $horariosDisponibles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    
+            self::desconectar();
+    
+            return $horariosDisponibles;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error;
+        }
+    }
 }

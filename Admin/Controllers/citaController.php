@@ -185,4 +185,21 @@ switch ($_GET["op"]) {
         $citas = $citaModel->obtenerCitas();
         echo json_encode($citas);
         break;
+
+    case 'horariosDisponibles':
+        $cedulaEmpleado = isset($_POST["cedulaEmpleado"]) ? $_POST["cedulaEmpleado"] : 0;
+        $diaSemana = isset($_POST["diaSemana"]) ? $_POST["diaSemana"] : 0;
+
+        // Aquí llamas a la función que obtiene los horarios disponibles
+        $cita = new Cita();
+        $horarios = $cita->obtenerHorariosDisponibles($cedulaEmpleado, $diaSemana);
+
+        // Verificas si se encontraron horarios
+        if ($horarios) {
+            // Devuelves los datos de los horarios en formato JSON
+            echo json_encode($horarios);
+        } else {
+            echo json_encode(["error" => "No se encontraron horarios"]);
+        }
+        break;
 }

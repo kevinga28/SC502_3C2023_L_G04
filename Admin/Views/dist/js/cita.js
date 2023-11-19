@@ -344,9 +344,9 @@ function cargarEstilistas() {
 
 
 
-  cargarEstilistas();
+cargarEstilistas();
 
-  //
+//
 /* ---------------------------------------------------------------CARGAR LOS CLIENTES-------------------------------------------------------------- */
 
 function cargarCliente() {
@@ -396,5 +396,108 @@ $(document).ready(function () {
 });
 
 
+/* ---------------------------------------------------------------SUMA TOTAL PARA DURACION TOTAL-------------------------------------------------------------- */
+$(document).ready(function() {
+  $('#tratamiento').on('change', function() {
+    calcularDuracionTotal();
+  });
 
-/* ---------------------------------------------------------------CARGAR CITAS DISPONIBLES-------------------------------------------------------------- */
+  $('#fechaCita').change(function () {
+    obtenerHorarios();
+  });
+
+  $('#cedulaEmpleado').change(function () {
+    obtenerHorarios();
+  });
+
+  function calcularDuracionTotal() {
+    var duracionTotal = 0;
+    $('#tratamiento option:selected').each(function() {
+      var duracionComoMinutos = convertirFormatoHoraAMinutos($(this).data('duracion'));
+      duracionTotal += duracionComoMinutos;
+    });
+
+    $('#duracionTotal').val(convertirDuracionAFormatoHora(duracionTotal));
+    obtenerHorarios();
+  }
+
+  function convertirFormatoHoraAMinutos(horaEnFormatoHHMMSS) {
+    var partes = horaEnFormatoHHMMSS.split(":");
+    var horas = parseInt(partes[0]);
+    var minutos = parseInt(partes[1]);
+
+    if (partes.length === 3) {
+      var segundos = parseInt(partes[2]);
+      return horas * 60 + minutos + segundos / 60;
+    } else {
+      return horas * 60 + minutos;
+    }
+  }
+
+  function convertirDuracionAFormatoHora(duracionEnMinutos) {
+    var horas = Math.floor(duracionEnMinutos / 60);
+    var minutos = duracionEnMinutos % 60;
+    return ('00' + horas).slice(-2) + ':' + ('00' + minutos).slice(-2);
+  }
+
+  function obtenerHorarios() {
+    var selectedDate = $('#fechaCita').val();
+    var selectedDay = new Date(selectedDate).getDay();
+    var cedulaEmpleado = $('#cedulaEmpleado').val();
+
+    if (selectedDay !== null && cedulaEmpleado !== null) {
+      $.ajax({
+        url: '../../../admin/Controllers/citaController.php?op=horariosDisponibles',
+        type: 'POST',
+        dataType: 'json',
+        data: {
+          cedulaEmpleado: cedulaEmpleado,
+          diaSemana: selectedDay
+        },
+        success: function (data) {
+          console.log('Horarios disponibles:', data);
+          var duracionTotal = convertirFormatoHoraAMinutos($('#duracionTotal').val());
+          var intervalos = generarIntervalosCitasConDuracion(data, duracionTotal);
+          actualizarHorariosEnSelect(intervalos);
+        },
+        error: function (xhr, status, error) {
+          console.log('Error al obtener los horarios disponibles');
+          console.log(xhr.responseText); 
+        }
+      });
+    }
+  }
+
+  function generarIntervalosCitasConDuracion(horariosDisponibles, duracionTotal) {
+    const intervalos = [];
+
+    for (const horario of horariosDisponibles) {
+      const horaInicio = convertirFormatoHoraAMinutos(horario.horaInicio);
+      const horaFin = convertirFormatoHoraAMinutos(horario.horaFin);
+      let tiempoActual = horaInicio;
+
+      while (tiempoActual + duracionTotal <= horaFin) {
+        const intervalo = {
+          horaInicio: convertirDuracionAFormatoHora(tiempoActual),
+          horaFin: convertirDuracionAFormatoHora(tiempoActual + duracionTotal)
+        };
+        intervalos.push(intervalo);
+        tiempoActual += duracionTotal;
+      }
+    }
+    return intervalos;
+  }
+
+  function actualizarHorariosEnSelect(intervalos) {
+    var selectHorasCita = $('#horaCita');
+    selectHorasCita.empty();
+
+    intervalos.forEach(function(intervalo) {
+      var optionText = intervalo.horaInicio + ' - ' + intervalo.horaFin;
+      selectHorasCita.append($('<option>', {
+        value: optionText,
+        text: optionText
+      }));
+    });
+  }
+});
