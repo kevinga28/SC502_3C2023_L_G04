@@ -22,6 +22,7 @@ $('#login').on('submit', function (event) {
         data: formData,
         contentType: false,
         processData: false,
+
         success: function (datos) {
 
             switch (datos) {

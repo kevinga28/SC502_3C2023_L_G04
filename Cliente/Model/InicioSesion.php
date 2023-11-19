@@ -89,10 +89,10 @@ class InicioSesion extends Conexion
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-                // Devuelve los datos del usuario como un arreglo asociativo
+
                 return $stmt->fetch(PDO::FETCH_ASSOC);
             } else {
-                return null; // Devuelve null si no se encuentra el usuario
+                return null;
             }
         } catch (PDOException $Exception) {
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();

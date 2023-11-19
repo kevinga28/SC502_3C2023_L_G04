@@ -1,0 +1,17 @@
+
+a	php:S1131-"@Remove the useless trailing whitespaces at the end of this line.(ûñğîüÿÿÿÿ8Öıåº½1
+fphp:S103"KSplit this 199 characters long line (which is greater than 120 authorized).(À¿Ú8‰×Şº½1
+fphp:S1030"KSplit this 134 characters long line (which is greater than 120 authorized).(Ú¸ØĞ8‰×Şº½1
+fphp:S103B"KSplit this 132 characters long line (which is greater than 120 authorized).(ŠÌÜù8‰×Şº½1
+fphp:S103_"KSplit this 132 characters long line (which is greater than 120 authorized).(ŠÌÜù8‰×Şº½1
+fphp:S103g"KSplit this 142 characters long line (which is greater than 120 authorized).(Óæâ°8‰×Şº½1
+fphp:S103k"KSplit this 143 characters long line (which is greater than 120 authorized).(‡ßí†8‰×Şº½1
+fphp:S103o"KSplit this 131 characters long line (which is greater than 120 authorized).(úÜ“¾8‰×Şº½1
+fphp:S103s"KSplit this 148 characters long line (which is greater than 120 authorized).(ä—8‰×Şº½1
+ephp:S103{"KSplit this 130 characters long line (which is greater than 120 authorized).(ğÌ!8‰×Şº½1
+fphp:S103"KSplit this 127 characters long line (which is greater than 120 authorized).(†İª8‰×Şº½1
+lphp:S103ƒ"KSplit this 136 characters long line (which is greater than 120 authorized).(ƒ¥Ÿ«şÿÿÿÿ8‰×Şº½1
+lphp:S103Œ"KSplit this 132 characters long line (which is greater than 120 authorized).(¹ÑÑúÿÿÿÿ8‰×Şº½1
+gphp:S103š"KSplit this 132 characters long line (which is greater than 120 authorized).(ŠÌÜù8‰×Şº½1
+lphp:S103·"KSplit this 126 characters long line (which is greater than 120 authorized).(¹ÑÑúÿÿÿÿ8‰×Şº½1
+e	php:S1779"QReplace all non line feed end of line characters in this file "header.php" by LF.8á¬æº½1

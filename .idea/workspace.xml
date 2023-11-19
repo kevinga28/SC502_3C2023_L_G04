@@ -5,306 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8c9abd-086d-4297-a16c-a6018e345d6d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Admin/Controllers/productoController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Controllers/tratamientoController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Model/Producto.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Model/Tratamiento.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/dist/js/factura.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/dist/js/producto.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/dist/js/tratamiento.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/logueo/fonts/icomoon/fonts/icomoon.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/logueo/fonts/icomoon/fonts/icomoon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/logueo/fonts/icomoon/fonts/icomoon.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/logueo/fonts/icomoon/fonts/icomoon.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/logueo/fonts/icomoon/style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/plugins/bootstrap/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/tratamiento/editarTratamiento.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/tratamiento/fragments/aside.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/tratamiento/fragments/footer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/tratamiento/fragments/navbar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/tratamiento/listaTratamiento.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/tratamiento/tratamiento.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/tratamiento/verTratamiento.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cliente/views/Cita/Cita.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cliente/views/Cita/css/tratamientosCita.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cliente/views/Cita/js/cita.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cliente/views/Cita/js/tratamiento.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Cliente/views/js/tratamientos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/SC502_3C2023_L_G04.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0b2885e8a46b3c55bcb41a3c2760e247dd402c91" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/0/b/0ba0b58530f9dc0d172e1878f671302ad79cd92b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/10f6aaca7d7608dda31aa4ed6cd74b9a8dc0f0c4" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/1425acf73be5b4ede333128ee5fbe81da92d18bc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/7/17e8ecf8254db4499e17ccf8f3093c90250d445d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/8/185aac258c5f025fb8a9f34fc98ef1d927ce3528" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/a/1abaac618b17fb470d3f9d65f9631e2f33537241" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/d/1dd51275446d3d75f8271b118fdbe4212d399280" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/3/c/3c3625c385229151e3d4b6d767a924ca802936c1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/4/a/4a29a1a2d4dca1eb8b2e81fa1628868bd2e10759" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/3/5321c7459484ab7bf82dbb52124f0ab9eb5b7ebd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/583175ddd895869d11491f22b858812fe477aa2e" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/58b7a93acbc7f426b7017b70c30a5706069d9785" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/6/1/616f5009821b2827caab8d8bc584be24d853b4ff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/7/d/7db1464ac015e34239a5dcb4c681a7e5fbd3e36e" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/d/8d9392df4811827de5a7ff956bdb80c2834d1f49" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/a/9aea813be9be2b7d48eaf3c971a0a58212bfa354" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/a/d/adeb8786b7e201619ec14c2e429553d8cbd6fca9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/3/b37d376936c00a0d1dbc0c8a600ffc66e44a6142" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/b/9/b919619c93ff391704fb30f68febfab6410b3159" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/2/c27758987b379a275effbae175bb7764ff1e7b39" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/c/4/c4f7a6f2d371512c0bbcf5d372d8faff00a91544" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/1/d1892da473ffc89c01b0a8c6f5c36e9c4ba5f369" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/8/d8a29a50c9fbecf6bb02e4778da4d3d081d4cc07" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/d/a/daa7a0288b107d8c49b735a0539077bab5930706" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/9/f943fbe864e95ad05e536ff5980ce2eb188ff5c4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/f/c/fcd85db26c422c0bbef2ecc1237530826fb82a4d" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/Controllers/citaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Controllers/citaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Controllers/clienteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Controllers/clienteController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Controllers/empleadoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Controllers/empleadoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Controllers/facturaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Controllers/facturaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/Controllers/loginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Controllers/loginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/Model/Cita.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Model/Cita.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Model/Cliente.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Model/Cliente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Model/Empleado.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Model/Empleado.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Model/Factura.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Model/Factura.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/cita/crearCita.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/cita/crearCita.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/cita/editarCita.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/cita/editarCita.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/cita/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/cita/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/cita/historialCitas.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/cita/historialCitas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/cita/verCita.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/cita/verCita.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/cliente/clientes.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/cliente/clientes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/cliente/editarCliente.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/cliente/editarCliente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/cliente/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/cliente/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/cliente/listaClientes.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/cliente/listaClientes.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/cliente/verCliente.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/cliente/verCliente.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/AdminLTELogo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/photo2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/photo3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/photo4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/prod-1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/prod-2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/prod-3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/prod-4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/prod-5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/user1-128x128.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/user2-160x160.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/user3-128x128.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/user4-128x128.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/user5-128x128.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/user6-128x128.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/user7-128x128.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/img/user8-128x128.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/js/cita.js" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/dist/js/cita.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/js/cliente.js" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/dist/js/cliente.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/dist/js/empleado.js" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/dist/js/empleado.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/empleado/editarEmpleado.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/empleado/editarEmpleado.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/empleado/empleados.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/empleado/empleados.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/empleado/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/empleado/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/empleado/listaEmpleado.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/empleado/listaEmpleado.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/empleado/verEmpleado.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/empleado/verEmpleado.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/factura/editarFactura.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/factura/editarFactura.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/factura/facturas.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/factura/facturas.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/factura/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/factura/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/factura/listaFactura.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/factura/listaFactura.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/factura/verFactura.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/factura/verFactura.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/fragments/navbar.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/fragments/navbar.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Views/fragments/calendarioIndex.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/fragments/calendarioIndex.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/fragments/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/fragments/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/js/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/logueo.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/logueo.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/bootbox/bootbox.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/af.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ar-dz.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ar-kw.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ar-ly.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ar-ma.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ar-sa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ar-tn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ar.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/az.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/be.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/bg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/bm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/bn-bd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/bn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/bo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/br.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/bs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/cs.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/cv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/cy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/da.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/de-at.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/de-ch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/de.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/dv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/el.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/en-SG.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/en-au.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/en-ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/en-gb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/en-ie.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/en-il.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/en-in.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/en-nz.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/eo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/es-do.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/es-mx.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/es-us.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/es.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/et.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/eu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/fa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/fi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/fil.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/fo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/fr-ca.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/fr-ch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/fr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/fy.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ga.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/gd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/gl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/gom-deva.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/gom-latn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/gu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/he.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/hi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/hr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/hu.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/hy-am.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/id.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/is.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/it-ch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/it.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ja.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/jv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ka.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/kk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/km.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/kn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ko.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ku.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ky.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/lb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/lo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/lt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/lv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/me.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/mi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/mk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ml.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/mn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/mr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ms-my.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ms.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/mt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/my.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/nb.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ne.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/nl-be.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/nl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/nn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/oc-lnc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/pa-in.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/pl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/pt-br.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/pt.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ro.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ru.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/sd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/se.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/si.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/sk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/sl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/sq.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/sr-cyrl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/sr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ss.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/sv.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/sw.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ta.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/te.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/tet.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/tg.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/th.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/tk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/tl-ph.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/tlh.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/tr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/tzl.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/tzm-latn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/tzm.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ug-cn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/uk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/ur.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/uz-latn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/uz.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/vi.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/x-pseudo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/yo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/zh-cn.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/zh-hk.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/zh-mo.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locale/zh-tw.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locales.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locales.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/locales.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/moment-with-locales.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/moment-with-locales.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/moment-with-locales.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/moment.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/moment/moment.min.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/toastr/toastr.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/toastr/toastr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/toastr/toastr.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/toastr/toastr.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/toastr/toastr.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/toastr/toastr.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/plugins/toastr/toastr.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/producto/crearProducto.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/producto/crearProducto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/producto/editarProducto.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/producto/editarProducto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/producto/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/producto/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/producto/productos.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/producto/productos.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/producto/verProducto.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/producto/verProducto.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/user.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/user.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/config/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/config/global.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/Controller/InicioSesionController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/Controller/UsuarioController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/Model/InicioSesion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/Model/InicioSesion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/Model/Registro.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/config/Conexion.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/config/global.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/Cita/Calendario copy.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/Cita/Calendario.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/Cita/Estilos.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/Cita/css/estilistaCita.css" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/Cita/css/estilistaCita.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/Cita/fragments/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/Cita/fragments/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/bootbox/bootbox.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/fragments/footer.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/fragments/footer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/fragments/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/fragments/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/login/css/register.css" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/css/register.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/views/login/js/inicioSesion.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/js/inicioSesion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/login/js/logout.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/js/logout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/login/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/js/register.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/login/register.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/register.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/toastr/toastr.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/toastr/toastr.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/toastr/toastr.js.map" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/toastr/toastr.less" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/toastr/toastr.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/toastr/toastr.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/toastr/toastr.scss" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -318,6 +29,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -341,19 +53,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/SC502_3C2023_L_G04/Cliente/Model&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "C:/xampp/htdocs/SC502_3C2023_L_G04-main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente\Model" />
@@ -399,7 +112,10 @@
       <workItem from="1699857856381" duration="6813000" />
       <workItem from="1700107015111" duration="3675000" />
       <workItem from="1700113351023" duration="10896000" />
-      <workItem from="1700160208669" duration="1139000" />
+      <workItem from="1700160208669" duration="2570000" />
+      <workItem from="1700177465438" duration="14220000" />
+      <workItem from="1700254668179" duration="1972000" />
+      <workItem from="1700263935574" duration="47529000" />
     </task>
     <servers />
   </component>

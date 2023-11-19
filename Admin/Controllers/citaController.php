@@ -185,4 +185,11 @@ switch ($_GET["op"]) {
         $citas = $citaModel->obtenerCitas();
         echo json_encode($citas);
         break;
+    case 'cargarCitaCalendario':
+
+        $citaModel = new Cita();
+        $citas = $citaModel->obtenerCitasCalendario();
+        echo json_encode($citas);
+        break;
+
 }

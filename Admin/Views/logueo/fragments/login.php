@@ -14,7 +14,7 @@
                 <input name="cedula" type="text" id="cedula" class="form-control" required />
               </div>
               <div class="form-group last mb-3">
-                <label for="Contrasena">Contraseña</label>
+                <label for="contrasena">Contraseña</label>
                 <input name="contrasena" type="password" id="contrasena" class="form-control" required />
               </div>
               

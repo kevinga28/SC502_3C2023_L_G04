@@ -1,0 +1,7 @@
+
+3php:S113"'Add a new line at the end of this file.
+d	php:S1779"PReplace all non line feed end of line characters in this file "login.php" by LF.8ΙψΨΉ½1
+B	php:S2003#"&Replace "include" with "include_once".(ί…Ά…8λω¨²½1
+G	php:S2003B"&Replace "include" with "include_once".(Χ«ρΔωÿÿÿÿ8λω¨²½1
+h	php:S4833#"LReplace "include" with namespace import mechanism through the "use" keyword.(ί…Ά…8λω¨²½1
+m	php:S4833B"LReplace "include" with namespace import mechanism through the "use" keyword.(Χ«ρΔωÿÿÿÿ8λω¨²½1

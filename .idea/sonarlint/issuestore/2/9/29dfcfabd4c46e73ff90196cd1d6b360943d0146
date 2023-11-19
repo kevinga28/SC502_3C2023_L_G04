@@ -1,0 +1,8 @@
+
+m	php:S1779"`Replace all non line feed end of line characters in this file "tratamientoController.php" by LF.
+K	php:S1599-"6Remove the use of this variable variable "$$duracion".(²Ú¤Å
+K	php:S1599S"6Remove the use of this variable variable "$$duracion".(²Ú¤Å
+>	php:S1125)")Remove the literal "false" boolean value.(°ñ¸š
+>	php:S1125N")Remove the literal "false" boolean value.(°ñ¸š
+e	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(ëñÂ 
+Pphp:S131"7Add a "case default" clause to this "switch" statement.(ÇÖ»ùÿÿÿÿ
