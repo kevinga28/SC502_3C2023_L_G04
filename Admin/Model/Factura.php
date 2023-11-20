@@ -82,42 +82,61 @@ class Factura extends Conexion
 
 
     public function listarFacturas()
-{
-    $query = "SELECT f.*, c.nombre AS nombreCliente, c.apellido AS apellidoCliente , p.nombre AS nombreProducto, p.precio AS precioProducto
-        FROM factura f
-        INNER JOIN cita ci ON f.IdCita = ci.IdCita
-        INNER JOIN cliente c ON ci.IdCliente = c.IdCliente
-        INNER JOIN producto p ON f.codigoProducto = p.Codigo;";
+    {
+        $query = "SELECT 
+        f.IdFactura, 
+        f.IdCita, 
+        f.metodoPago, 
+        f.pagoTotal, 
+        c.nombre AS nombreCliente, 
+        c.apellido AS apellidoCliente, 
+        GROUP_CONCAT(DISTINCT p.nombre ORDER BY p.nombre SEPARATOR ', ') AS nombresProductos,
+        GROUP_CONCAT(DISTINCT t.nombre ORDER BY t.nombre SEPARATOR ', ') AS nombresTratamientos
+    FROM 
+        factura f
+    INNER JOIN 
+        cita ci ON f.IdCita = ci.IdCita
+    INNER JOIN 
+        cliente c ON ci.IdCliente = c.IdCliente
+    LEFT JOIN 
+        detalle_factura df ON f.IdFactura = df.IdFactura
+    LEFT JOIN 
+        producto p ON df.CodigoProducto = p.codigo
+    LEFT JOIN 
+        cita_tratamiento ct ON ci.IdCita = ct.IdCita
+    LEFT JOIN 
+        tratamiento t ON ct.IdTratamiento = t.IdTratamiento
+    GROUP BY f.IdFactura;";
 
-    $facturas = array();
+        $facturas = array();
 
-    try {
-        self::getConexion();
-        $resultado = self::$cnx->prepare($query);
-        $resultado->execute();
-        self::desconectar();
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+            $resultado->execute();
+            self::desconectar();
 
-        foreach ($resultado->fetchAll(PDO::FETCH_ASSOC) as $encontrado) {
-            $factura = array(
-                'IdFactura' => $encontrado['IdFactura'],
-                'IdCita' => $encontrado['IdCita'],
-                'MetodoPago' => $encontrado['metodoPago'],
-                'PagoTotal' => $encontrado['pagoTotal'],
-                'NombreCliente' => $encontrado['nombreCliente'],
-                'ApellidoCliente' => $encontrado['apellidoCliente'],
-                'Correo' => $encontrado['correo'],
-                'NombreProducto' => $encontrado['nombreProducto'],
-            );
-            $facturas[] = $factura;
+            foreach ($resultado->fetchAll(PDO::FETCH_ASSOC) as $encontrado) {
+                $factura = array(
+                    'IdFactura' => $encontrado['IdFactura'],
+                    'IdCita' => $encontrado['IdCita'],
+                    'NombreCliente' => $encontrado['nombreCliente'],
+                    'ApellidoCliente' => $encontrado['apellidoCliente'],
+                    'Tratamiento' => $encontrado['nombresTratamientos'],
+                    'NombreProducto' => $encontrado['nombresProductos'],
+                    'MetodoPago' => $encontrado['metodoPago'],
+                    'PagoTotal' => $encontrado['pagoTotal'],
+                );
+                $facturas[] = $factura;
+            }
+
+            return $facturas;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return json_encode($error);
         }
-
-        return $facturas;
-    } catch (PDOException $Exception) {
-        self::desconectar();
-        $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-        return json_encode($error);
     }
-}
     public function buscarCitaPorId($idCita)
     {
         $query = "SELECT c.*, f.*, cli.nombre AS nombreCliente, cli.apellido AS apellidoCliente, cli.correo, emp.nombre AS nombreEmpleado, emp.apellido AS apellidoEmpleado
@@ -126,14 +145,14 @@ class Factura extends Conexion
         INNER JOIN cliente cli ON c.IdCliente = cli.IdCliente
         INNER JOIN empleado emp ON c.cedulaEmpleado = emp.cedula
         WHERE c.IdCita = :idCita";
-    
+
         try {
             self::getConexion();
             $resultado = self::$cnx->prepare($query);
             $resultado->bindParam(":idCita", $idCita, PDO::PARAM_INT);
             $resultado->execute();
             self::desconectar();
-    
+
             $encontrado = $resultado->fetch(PDO::FETCH_ASSOC);
             if ($encontrado) {
                 return $encontrado; // Devuelve todos los datos de la cita y del cliente en un arreglo asociativo
@@ -166,52 +185,55 @@ class Factura extends Conexion
 
             $resultadoFactura->execute();
 
-            $IdFactura = self::$cnx->lastInsertId();
+            $idFactura = self::$cnx->lastInsertId();
 
             self::desconectar();
 
-            return $IdFactura;
+            return $idFactura;
         } catch (PDOException $Exception) {
             self::desconectar();
             throw $Exception;
         }
     }
 
-    public function agregarProductoFactura($IdFactura, $codigo, $cantidad, $precioUnitario)
+    public function agregarProductoFactura($idFactura, $codigo, $cantidad)
     {
         try {
             self::getConexion();
-    
-            // Verifica si existen registros en la tabla factura con el ID proporcionado
-            $consultaFactura = "SELECT COUNT(*) FROM `factura` WHERE `IdFactura` = :IdFactura";
-            $resultadoFactura = self::$cnx->prepare($consultaFactura);
-            $resultadoFactura->bindParam(":IdFactura", $IdFactura, PDO::PARAM_INT);
-            $resultadoFactura->execute();
-            $existeFactura = $resultadoFactura->fetchColumn();
-    
-            // Verifica si existen registros en la tabla producto con el código proporcionado
-            $consultaProducto = "SELECT COUNT(*) FROM `producto` WHERE `codigo` = :codigo";
-            $resultadoProducto = self::$cnx->prepare($consultaProducto);
-            $resultadoProducto->bindParam(":codigo", $codigo, PDO::PARAM_INT);
-            $resultadoProducto->execute();
-            $existeProducto = $resultadoProducto->fetchColumn();
-    
+
+            // Verifica si existe la factura con el ID proporcionado
+            $consultaFactura = "SELECT 1 FROM `factura` WHERE `idFactura` = :IdFactura LIMIT 1";
+            $stmtFactura = self::$cnx->prepare($consultaFactura);
+            $stmtFactura->bindParam(":IdFactura", $idFactura, PDO::PARAM_INT);
+            $stmtFactura->execute();
+            $existeFactura = $stmtFactura->fetchColumn();
+
+            // Verifica si existe el producto con el código proporcionado
+            $consultaProducto = "SELECT 1 FROM `producto` WHERE `codigo` = :codigo LIMIT 1";
+            $stmtProducto = self::$cnx->prepare($consultaProducto);
+            $stmtProducto->bindParam(":codigo", $codigo, PDO::PARAM_INT);
+            $stmtProducto->execute();
+            $existeProducto = $stmtProducto->fetchColumn();
+
             if ($existeFactura && $existeProducto) {
                 // Ambos IDs son válidos, procede a la inserción
-                $queryProducto = "INSERT INTO `detalle_factura` (`IdFactura`, `CodigoProducto`, `Cantidad`, `PrecioUnitario`) 
-                        VALUES (:IdFactura, :CodigoProducto, :Cantidad, :PrecioUnitario)";
-    
-                $resultadoProducto = self::$cnx->prepare($queryProducto);
-                $resultadoProducto->bindParam(":IdFactura", $IdFactura, PDO::PARAM_INT);
-                $resultadoProducto->bindParam(":CodigoProducto", $codigo, PDO::PARAM_INT);
-                $resultadoProducto->bindParam(":Cantidad", $cantidad, PDO::PARAM_INT);
-                $resultadoProducto->bindParam(":PrecioUnitario", $precioUnitario, PDO::PARAM_STR);
-                $resultadoProducto->execute();
-    
+                $queryProducto = "INSERT INTO `detalle_factura` (`idFactura`, `CodigoProducto`, `Cantidad`) 
+                        VALUES (:IdFactura, :CodigoProducto, :Cantidad)";
+
+                $stmtInsert = self::$cnx->prepare($queryProducto);
+                $stmtInsert->bindParam(":IdFactura", $idFactura, PDO::PARAM_INT);
+                $stmtInsert->bindParam(":CodigoProducto", $codigo, PDO::PARAM_INT);
+                $stmtInsert->bindParam(":Cantidad", $cantidad, PDO::PARAM_INT);
+                $stmtInsert->execute();
+
                 // Cierra la conexión a la base de datos
                 self::desconectar();
             } else {
-                echo "Error: El ID de factura o producto no existe.";
+                if (!$existeFactura) {
+                    throw new Exception("Error: El ID de factura ($idFactura) no existe.");
+                } else {
+                    throw new Exception("Error: El código de producto ($codigo) no existe.");
+                }
             }
         } catch (PDOException $Exception) {
             self::desconectar();
@@ -248,7 +270,7 @@ class Factura extends Conexion
     public function actualizarFactura()
     {
         $query = "UPDATE factura 
-            SET IdCita = :IdCita, codigoProducto = :codigoProducto, metodoPago = :metodoPago,
+            SET IdCita = :IdCita,  metodoPago = :metodoPago,
                 pagoTotal = :pagoTotal
             WHERE IdFactura = :IdFactura";
 
@@ -256,7 +278,6 @@ class Factura extends Conexion
             self::getConexion();
 
             $IdCita = $this->getIdCita();
-            $codigoProducto = $this->getCodigoProducto();
             $metodoPago = $this->getMetodoPago();
             $pagoTotal = $this->getPagoTotal();
             $IdFactura = $this->getIdFactura();
@@ -264,7 +285,6 @@ class Factura extends Conexion
             $resultado = self::$cnx->prepare($query);
 
             $resultado->bindParam(":IdCita", $IdCita, PDO::PARAM_INT);
-            $resultado->bindParam(":codigoProducto", $codigoProducto, PDO::PARAM_INT);
             $resultado->bindParam(":metodoPago", $metodoPago, PDO::PARAM_STR);
             $resultado->bindParam(":pagoTotal", $pagoTotal, PDO::PARAM_STR);
             $resultado->bindParam(":IdFactura", $IdFactura, PDO::PARAM_INT);

@@ -71,8 +71,6 @@ $(function () {
 
 /* ---------------------------------------------------------------CREAR LOS Empleados--------------------------------------------------------------- */
 
-
-
 $('#crearEmpleado').on('submit', function (event) {
   event.preventDefault();
   $('#btnRegistrar').prop('disabled', true);
@@ -97,21 +95,6 @@ $('#crearEmpleado').on('submit', function (event) {
             }
           });
           break;
-        case '2':
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'No se pudieron actualizar los datos',
-          });
-          break;
-        case '3':
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'El correo ya existe. Corrija e inténtelo nuevamente.',
-          });
-          break;
-
         default:
           Swal.fire({
             icon: 'error',

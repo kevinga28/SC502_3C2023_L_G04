@@ -279,7 +279,8 @@ class Empleado extends Conexion
         } catch (PDOException $Exception) {
             self::desconectar();
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-            return json_encode($error);
+            echo $error;
+            return json_encode($error); 
         }
     }
 
