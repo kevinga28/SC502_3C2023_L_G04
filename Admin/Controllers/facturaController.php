@@ -14,9 +14,9 @@ switch ($_GET["op"]) {
                 "1" => $reg['IdCita'],
                 "2" => $reg['NombreCliente'],
                 "3" => $reg['ApellidoCliente'],
-                "4" => $reg['Tratamiento'], 
-                "5" => $reg['NombreProducto'], 
-                "6" => $reg['MetodoPago'], 
+                "4" => $reg['Tratamiento'],
+                "5" => $reg['NombreProducto'],
+                "6" => $reg['MetodoPago'],
                 "7" => $reg['PagoTotal']
             );
         }
@@ -91,8 +91,6 @@ switch ($_GET["op"]) {
         break;
 
 
-
-
     case 'editar':
         $IdFactura = isset($_POST["IdFactura"]) ? trim($_POST["IdFactura"]) : "";
         $IdCita = isset($_POST["IdCita"]) ? trim($_POST["IdCita"]) : "";
@@ -120,8 +118,9 @@ switch ($_GET["op"]) {
         break;
 
     case 'obtener':
-        if (isset($_GET['IdFactura'])) {
-            $IdFactura = isset($_GET['IdFactura']) ? intval($_GET['IdFactura']) : null;
+        $IdFactura = isset($_GET['IdFactura']) ? intval($_GET['IdFactura']) : null;
+
+        if (!empty($IdFactura)) {
             $factura = Factura::obtenerFacturaPorIdFactura($IdFactura);
 
             if ($factura) {

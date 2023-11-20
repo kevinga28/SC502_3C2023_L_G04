@@ -134,12 +134,7 @@ foreach ($facturas as $factura) {
 
                                                         <div class="form-group">
                                                             <label for="horaCita">Hora de la Cita</label>
-                                                            <input type="time" class="form-control" id="horaCita" name="horaCita" readonly>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="horaFin">Finalizacion Cita</label>
-                                                            <input type="time" class="form-control" id="EhoraFin" name="horaFin" readonly>
+                                                            <input type="text" class="form-control" id="horaCita" name="horaCita" placeholder="Hora Cita" readonly>
                                                         </div>
 
                                                         <div class="form-group">
@@ -148,8 +143,7 @@ foreach ($facturas as $factura) {
                                                             </select>
                                                         </div>
 
-
-                                                        <div class="form-group" id="cantidadDiv" >
+                                                        <div class="form-group" id="cantidadDiv">
                                                             <label for="Cantidad">Cantidad</label>
                                                             <input type="number" class="form-control" id="cantidad" name="cantidad" placeholder="Cantidad" min="1">
                                                         </div>
@@ -168,9 +162,9 @@ foreach ($facturas as $factura) {
                                                         <div class="form-group">
                                                             <label for="pagoTotal">Total a Pagar</label>
                                                             <input type="text" class="form-control" id="pagoTotal" name="pagoTotal" readonly value="₡0">
-                                                            <input type="text" id="pagoTotalHidden" name="pagoTotalHidden">
-                                                            <input type="text" id="pagoProductos" name="pagoTotalProductos">
-                                                            <input type="text" id="pagoTratamiento" name="pagoTratamiento">
+                                                            <input type="hidden" id="pagoTotalHidden" name="pagoTotalHidden">
+                                                            <input type="hidden" id="pagoProductos" name="pagoTotalProductos">
+                                                            <input type="hidden" id="pagoTratamiento" name="pagoTratamiento">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -202,9 +196,9 @@ foreach ($facturas as $factura) {
                                             </div>
                                         </div>
                                         <div class="card-body">
-                                        <div>
-                                            <canvas id="myChart"></canvas>
-                                        </div>
+                                            <div>
+                                                <canvas id="myChart"></canvas>
+                                            </div>
                                         </div>
                                         <!-- /.card-body -->
                                     </div>
@@ -245,68 +239,38 @@ foreach ($facturas as $factura) {
 
     <script>
         $(function() {
-
-            //-------------
-            //- BAR CHART -
-            //-------------
-            var barChartCanvas = $('#barChart').get(0).getContext('2d')
-            var barChartData = $.extend(true, {}, areaChartData)
-            var temp0 = areaChartData.datasets[0]
-            var temp1 = areaChartData.datasets[1]
-            barChartData.datasets[0] = temp1
-            barChartData.datasets[1] = temp0
-
-            var barChartOptions = {
-                responsive: true,
-                maintainAspectRatio: false,
-                datasetFill: false
-            }
-
-            new Chart(barChartCanvas, {
-                type: 'bar',
-                data: barChartData,
-                options: barChartOptions
-            })
-
-        })
-    </script>
-
-
-    <script>
-        $(function() {
             //Initialize Select2 Elements
             $('.select2').select2()
 
         })
     </script>
 
-    <script src="../dist/js/factura.js"></script>
-
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <script>
-    const ctx = document.getElementById('myChart');
+        const ctx = document.getElementById('myChart');
 
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-        labels: <?php echo json_encode($nombres); ?>,
-        datasets: [{
-            label: 'Metodos de pago',
-            data: <?php echo json_encode($metodosPago); ?>,
-            borderWidth: 1
-        }]
-        },
-        options: {
-        scales: {
-            y: {
-            beginAtZero: true
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: <?php echo json_encode($nombres); ?>,
+                datasets: [{
+                    label: 'Metodos de pago',
+                    data: <?php echo json_encode($metodosPago); ?>,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
             }
-        }
-        }
-    });
+        });
     </script>
+
+    <script src="../dist/js/factura.js"></script>
 
 </body>
 

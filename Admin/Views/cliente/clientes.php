@@ -76,11 +76,6 @@ foreach ($clientes as $cliente) {
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-              <div class="callout callout-info">
-                <h5><i class="fas fa-info"></i> Nota:</h5>
-                Esta pagina sera configurada con el mvc
-              </div>
-
 
               <!-- FORMULARIO PARA CREAR UN CLIENTE -->
               <div class="row">

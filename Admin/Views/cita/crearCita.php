@@ -126,13 +126,6 @@
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="horaFin">Finalización Cita</label>
-                                                            <select class="form-control" id="horaFin" name="horaFin" required>
-                                                                <!-- Opciones de horarios cargadas dinámicamente -->
-                                                            </select>
-                                                        </div>
-
-                                                        <div class="form-group">
                                                             <label for="duracionTotal">Duración Total</label>
                                                             <input type="time" class="form-control" id="duracionTotal" name="duracionTotal" readonly>
                                                         </div>
@@ -209,10 +202,6 @@
             passive: true
 
         })
-    </script>
-
-    <script>
-       
     </script>
 
     <script src="../dist/js/cita.js"></script>

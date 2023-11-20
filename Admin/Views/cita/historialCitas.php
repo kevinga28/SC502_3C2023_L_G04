@@ -92,7 +92,6 @@
                                                             <th>Tratamiento</th>
                                                             <th>Fecha</th>
                                                             <th>Hora</th>
-                                                            <th>Hora Fin</th>
                                                             <th>Opciones</th>
                                                         </tr>
                                                     </thead>
