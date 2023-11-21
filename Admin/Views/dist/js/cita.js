@@ -55,7 +55,6 @@ function listarCitasTodas() {
       { data: "5" },  // Tratamiento
       { data: "6" },  // Fecha
       { data: "7" },  // Hora
-      { data: "8" },  // HoraFin
       {
         // Última columna con botones
         data: null,
@@ -378,9 +377,9 @@ function cargarCliente() {
 
           // Llena los campos con la información del cliente seleccionado
           if (selectedCliente) {
-            $("#nombre").val(selectedCliente.nombre);
-            $("#apellido").val(selectedCliente.apellido);
-            $("#correo").val(selectedCliente.correo);
+            $("#nombre, #Enombre").val(selectedCliente.nombre);
+            $("#apellido, #Eapellido").val(selectedCliente.apellido);
+            $("#correo, #Ecorreo").val(selectedCliente.correo);
           }
         });
       }
@@ -398,26 +397,26 @@ $(document).ready(function () {
 
 /* ---------------------------------------------------------------SUMA TOTAL PARA DURACION TOTAL-------------------------------------------------------------- */
 $(document).ready(function() {
-  $('#tratamiento').on('change', function() {
+  $('#tratamiento, #Etratamiento').on('change', function() {
     calcularDuracionTotal();
   });
 
-  $('#fechaCita').change(function () {
+  $('#fechaCita, #EfechaCita').change(function () {
     obtenerHorarios();
   });
 
-  $('#cedulaEmpleado').change(function () {
+  $('#cedulaEmpleado, #EcedulaEmpleado').change(function () {
     obtenerHorarios();
   });
 
   function calcularDuracionTotal() {
     var duracionTotal = 0;
-    $('#tratamiento option:selected').each(function() {
+    $('#tratamiento option:selected,#Etratamiento option:selected').each(function() {
       var duracionComoMinutos = convertirFormatoHoraAMinutos($(this).data('duracion'));
       duracionTotal += duracionComoMinutos;
     });
 
-    $('#duracionTotal').val(convertirDuracionAFormatoHora(duracionTotal));
+    $('#duracionTotal, #EduracionTotal').val(convertirDuracionAFormatoHora(duracionTotal));
     obtenerHorarios();
   }
 
@@ -441,9 +440,9 @@ $(document).ready(function() {
   }
 
   function obtenerHorarios() {
-    var selectedDate = $('#fechaCita').val();
+    var selectedDate = $('#fechaCita, #EfechaCita').val();
     var selectedDay = new Date(selectedDate).getDay();
-    var cedulaEmpleado = $('#cedulaEmpleado').val();
+    var cedulaEmpleado = $('#cedulaEmpleado, #EcedulaEmpleado').val();
 
     if (selectedDay !== null && cedulaEmpleado !== null) {
       $.ajax({
@@ -456,7 +455,7 @@ $(document).ready(function() {
         },
         success: function (data) {
           console.log('Horarios disponibles:', data);
-          var duracionTotal = convertirFormatoHoraAMinutos($('#duracionTotal').val());
+          var duracionTotal = convertirFormatoHoraAMinutos($('#duracionTotal, #EduracionTotal').val());
           var intervalos = generarIntervalosCitasConDuracion(data, duracionTotal);
           actualizarHorariosEnSelect(intervalos);
         },
@@ -489,7 +488,7 @@ $(document).ready(function() {
   }
 
   function actualizarHorariosEnSelect(intervalos) {
-    var selectHorasCita = $('#horaCita');
+    var selectHorasCita = $('#horaCita, #EhoraCita');
     selectHorasCita.empty();
 
     intervalos.forEach(function(intervalo) {

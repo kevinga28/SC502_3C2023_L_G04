@@ -16,7 +16,6 @@ switch ($_GET["op"]) {
                 "5" => $reg['Tratamientos'],
                 "6" => $reg['FechaCita'],
                 "7" => $reg['HoraCita'],
-                "8" => $reg['HoraFin'],
 
             );
         }
@@ -53,11 +52,10 @@ switch ($_GET["op"]) {
             $cedulaEmpleado = isset($_POST["cedulaEmpleado"]) ? intval($_POST["cedulaEmpleado"]) : 0;
             $fechaCita = isset($_POST["fechaCita"]) ? trim($_POST["fechaCita"]) : "";
             $horaCita = isset($_POST["horaCita"]) ? trim($_POST["horaCita"]) : "";
-            $horaFin = isset($_POST["horaFin"]) ? trim($_POST["horaFin"]) : "";
             $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
 
             // Validación de datos
-            if ($IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita) || empty($horaFin) || empty($pagoTotal)) {
+            if ($IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita) ||  empty($pagoTotal)) {
                 echo "Error: Debes proporcionar todos los datos necesarios para crear la cita.";
             } else {
                 $cita = new Cita();
@@ -65,7 +63,6 @@ switch ($_GET["op"]) {
                 $cita->setCedulaEmpleado($cedulaEmpleado);
                 $cita->setFechaCita($fechaCita);
                 $cita->setHoraCita($horaCita);
-                $cita->setHoraFin($horaFin);
                 $cita->setPagoTotal($pagoTotal);
 
                 // Crea la cita sin tratamientos y obtén el ID
@@ -100,7 +97,6 @@ switch ($_GET["op"]) {
             $cedulaEmpleado = isset($_POST["cedulaEmpleado"]) ? intval($_POST["cedulaEmpleado"]) : 0;
             $fechaCita = isset($_POST["fechaCita"]) ? trim($_POST["fechaCita"]) : "";
             $horaCita = isset($_POST["horaCita"]) ? trim($_POST["horaCita"]) : "";
-            $horaFin = isset($_POST["horaFin"]) ? trim($_POST["horaFin"]) : "";
             $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
 
             // Verifica si se han enviado tratamientos
@@ -111,8 +107,9 @@ switch ($_GET["op"]) {
             }
 
             // Validación de datos
-            if ($idCita === 0 || $IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita) || empty($horaFin) || empty($pagoTotal)) {
+            if ($idCita === 0 || $IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita) || empty($pagoTotal)) {
                 echo "Error: Debes proporcionar todos los datos necesarios para editar la cita.";
+                var_dump($IdCliente, $cedulaEmpleado,$fechaCita, $horaCita,$pagoTotal);
             } else {
                 $cita = new Cita();
                 $cita->setIdCita($idCita);
@@ -120,7 +117,6 @@ switch ($_GET["op"]) {
                 $cita->setCedulaEmpleado($cedulaEmpleado);
                 $cita->setFechaCita($fechaCita);
                 $cita->setHoraCita($horaCita);
-                $cita->setHoraFin($horaFin);
                 $cita->setPagoTotal($pagoTotal);
 
                 // Elimina todos los tratamientos de la cita

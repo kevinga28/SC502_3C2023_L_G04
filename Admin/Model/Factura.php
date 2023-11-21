@@ -304,7 +304,41 @@ class Factura extends Conexion
 
     public static function obtenerFacturaPorIdFactura($IdFactura)
     {
-        $query = "SELECT * FROM factura WHERE IdFactura = :IdFactura";
+        $query = "SELECT 
+        f.IdFactura, 
+        f.IdCita, 
+        f.metodoPago, 
+        f.pagoTotal, 
+        c.nombre AS nombreCliente, 
+        c.apellido AS apellidoCliente,
+        c.correo AS correoCliente,
+        e.nombre AS nombreEstilista,
+        e.apellido AS apellidoEstilista,
+        ci.fechaCita,
+        ci.horaCita,
+        df.Cantidad AS cantidad,
+        GROUP_CONCAT(DISTINCT p.nombre ORDER BY p.nombre SEPARATOR ', ') AS nombresProductos,
+        GROUP_CONCAT(DISTINCT t.nombre ORDER BY t.nombre SEPARATOR ', ') AS nombresTratamientos
+    FROM 
+        factura f
+    INNER JOIN 
+        cita ci ON f.IdCita = ci.IdCita
+    INNER JOIN 
+        cliente c ON ci.IdCliente = c.IdCliente
+    LEFT JOIN 
+        detalle_factura df ON f.IdFactura = df.IdFactura
+    LEFT JOIN 
+        producto p ON df.CodigoProducto = p.Codigo
+    LEFT JOIN 
+        cita_tratamiento ct ON ci.IdCita = ct.IdCita
+    LEFT JOIN 
+        tratamiento t ON ct.IdTratamiento = t.IdTratamiento
+    LEFT JOIN 
+        empleado e ON ci.cedulaEmpleado = e.cedula
+    WHERE 
+        f.IdFactura = :IdFactura
+    GROUP BY f.IdFactura";
+
         try {
             self::getConexion();
 

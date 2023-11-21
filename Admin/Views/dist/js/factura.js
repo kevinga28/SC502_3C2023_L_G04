@@ -149,7 +149,6 @@ $(document).ready(function () {
                             $("#estilista,  #Eestilista").val(selectedCita.nombreEmpleado + " " + selectedCita.apellidoEmpleado);
                             $("#fechaCita,  #EfechaCitao").val(selectedCita.fechaCita);
                             $("#horaCita, #EhoraCita").val(selectedCita.horaCita);
-                            $("#horaFin, #EhoraFin ").val(selectedCita.horaFin);
                             $("#pagoTratamiento, #EpagoTratamiento").val(selectedCita.pagoTotal);
                         }
                     });
@@ -167,14 +166,14 @@ $(document).ready(function () {
 
 /* ---------------------------------------------------------------TOTAL--------------------------------------------------------------- */
 
-$(document).ready(function() {
+$(document).ready(function () {
     function actualizarTotalProductos() {
         var totalProductos = 0;
 
         if ($('#producto option:selected').length === 0) {
             totalProductos = parseFloat($('#pagoTratamiento').val()) || 0;
         } else {
-            $('#producto option:selected').each(function() {
+            $('#producto option:selected').each(function () {
                 var precio = parseFloat($(this).data('precio')) || 0;
                 var cantidad = parseInt($('#cantidad').val()) || 1;
                 totalProductos += precio * cantidad;
@@ -184,16 +183,16 @@ $(document).ready(function() {
         $('#pagoProductos').val(totalProductos.toFixed(2));
         return totalProductos;
     }
-    
+
     function actualizarTotal() {
-        var totalProductos = actualizarTotalProductos(); 
+        var totalProductos = actualizarTotalProductos();
         var totalFinal = totalProductos;
 
-        $('#pagoTotal, #pagoTotalHidden').val(totalFinal.toFixed(2)); 
+        $('#pagoTotal, #pagoTotalHidden').val(totalFinal.toFixed(2));
     }
 
     // Detectar cambios en la selección de productos, en la cantidad y en el total de tratamiento
-    $('#producto, #cantidad, #pagoTratamiento').on('change', function() {
+    $('#producto, #cantidad, #pagoTratamiento').on('change', function () {
         actualizarTotal(); // Actualizar el total al detectar cambios
     });
 });
@@ -237,16 +236,22 @@ const rellenarFormularioFactura = async () => {
 
     if (idFactura) {
         try {
-            const response = await fetch(`../../../admin/Controllers/facturaController.php?op=obtener&id=${idFactura}`);
+            const response = await fetch(`../../../admin/Controllers/facturaController.php?op=obtener&IdFactura=${idFactura}`);
             if (response.ok) {
                 const datos = await response.json();
 
-                // Rellena el formulario con los datos obtenidos
-                $("#Eid").val(datos.id);
-                $("#Eidcita").val(datos.idcita);
-                $("#EcodigoProducto").val(datos.codigoProducto);
+                $("#Enombre").val(datos.nombreCliente);
+                $("#Eapellido").val(datos.apellidoCliente);
+                $("#Ecorreo").val(datos.correoCliente);
+                $("#Etratamiento").val(datos.nombresTratamientos);
+                $("#Eestilista").val(datos.nombreEstilista + " " + datos.apellidoEstilista);
+                $("#EfechaCita").val(datos.fechaCita);
+                $("#EhoraCita").val(datos.horaCita);
+                $("#Eproducto").val(datos.nombresProductos);
+                $("#Ecantidad").val(datos.cantidad);
                 $("#EmetodoPago").val(datos.metodoPago);
                 $("#EpagoTotal").val(datos.pagoTotal);
+
             } else {
                 console.error("Error al obtener los datos de la factura");
             }
@@ -256,7 +261,7 @@ const rellenarFormularioFactura = async () => {
     }
 };
 
-rellenarFormularioFactura(); // Llama a la función para rellenar el formulario
+rellenarFormularioFactura();
 
 /* ---------------------------------------------------------------EDITAR LOS DATOS DE LA FACTURA--------------------------------------------------------------- */
 $('#factura_update').on('submit', function (event) {

@@ -103,31 +103,29 @@
                                                     </div>
                                                     <div class=" col-md-6">
 
+
                                                         <div class="form-group">
                                                             <label for="estilista">Estilista</label>
-                                                            <select class="select2 select2-hidden-accessible" id="EcedulaEmpleado" name="cedulaEmpleado" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
+                                                            <select class="select2 select2-hidden-accessible" id="cedulaEmpleado" name="cedulaEmpleado" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
                                                                 <!-- Tratamientos cargados desde PHP se insertarán aquí automáticamente -->
                                                             </select>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="fechaCita">Fecha de la Cita</label>
-                                                            <input type="date" class="form-control" id="EfechaCita" name="fechaCita" required>
+                                                            <input type="date" class="form-control" id="fechaCita" name="fechaCita" required>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="horaCita">Hora de la Cita</label>
-                                                            <input type="time" class="form-control" id="EhoraCita" name="horaCita" required>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="horaFin">Finalizacion Cita</label>
-                                                            <input type="time" class="form-control" id="EhoraFin" name="horaFin" required>
+                                                            <select class="form-control" id="horaCita" name="horaCita" required>
+                                                                <!-- Opciones de horarios cargadas dinámicamente -->
+                                                            </select>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="duracionTotal">Duración Total</label>
-                                                            <input type="time" class="form-control" id="EduracionTotal" name="duracionTotal" readonly>
+                                                            <input type="time" class="form-control" id="duracionTotal" name="duracionTotal" readonly>
                                                         </div>
 
                                                         <div class="form-group">
@@ -135,8 +133,8 @@
                                                             <input type="text" class="form-control" id="EpagoTotal" name="pagoTotal" readonly value="₡0">
                                                             <input type="hidden" id="EpagoTotalHidden" name="pagoTotalHidden">
                                                         </div>
-                                                    </div>
 
+                                                    </div>
                                                 </div>
                                             </div>
 
@@ -180,7 +178,6 @@
     <script src="../plugins/select2/js/select2.full.min.js"></script>
 
 
-
     <script>
         $(document).ready(function() {
             $('#Etratamiento').on('change', function() {
@@ -197,34 +194,6 @@
     </script>
 
     <script>
-        $(document).ready(function() {
-            $('#Etratamiento').on('change', function() {
-                var duracionTotal = 0;
-                $('#Etratamiento option:selected').each(function() {
-                    var duracionComoMinutos = convertirFormatoHoraAMinutos($(this).data('duracion'));
-                    duracionTotal += duracionComoMinutos;
-                });
-                $('#EduracionTotal').val(convertirDuracionAFormatoHora(duracionTotal));
-            });
-        });
-
-
-        function convertirFormatoHoraAMinutos(horaEnFormatoHHMMSS) {
-            var partes = horaEnFormatoHHMMSS.split(":");
-            var horas = parseInt(partes[0]);
-            var minutos = parseInt(partes[1]);
-            var segundos = parseInt(partes[2]);
-            return horas * 60 + minutos + segundos / 60;
-        }
-
-        function convertirDuracionAFormatoHora(duracionEnMinutos) {
-            var horas = Math.floor(duracionEnMinutos / 60);
-            var minutos = duracionEnMinutos % 60;
-            return ('00' + horas).slice(-2) + ':' + ('00' + minutos).slice(-2);
-        }
-    </script>
-
-    <script>
         $(function() {
             //Initialize Select2 Elements
             $('.select2').select2()
@@ -236,7 +205,6 @@
     <script src="../dist/js/cita.js"></script>
 
     <script src="../dist/js/tratamiento.js"></script>
-
 
 
 </body>

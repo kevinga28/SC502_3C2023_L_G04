@@ -145,6 +145,19 @@ const rellenarFormulario = async () => {
         $("#Edistrito").val(datos.distrito);
         $("#Ecanton").val(datos.canton);
         $("#Eotros").val(datos.otros);
+        var tipo = datos.tipoCliente;
+        var valorMostrado;
+        
+        if (tipo === 0) {
+            valorMostrado = 'Cliente';
+        } else if (tipo === 1) {
+            valorMostrado = 'Empleado';
+        } else {
+            // Manejar otro caso si es necesario
+            valorMostrado = 'Desconocido';
+        }
+        
+        $("#EtipoCliente").val(valorMostrado);
       } else {
         console.error("Error al obtener los datos del cliente");
       }

@@ -113,12 +113,7 @@
 
                                                         <div class="form-group">
                                                             <label for="horaCita">Hora de la Cita</label>
-                                                            <input type="time" class="form-control" id="EhoraCita" name="horaCita" readonly>
-                                                        </div>
-
-                                                        <div class="form-group">
-                                                            <label for="horaFin">Finalizacion Cita</label>
-                                                            <input type="time" class="form-control" id="EhoraFin" name="horaFin" readonly>
+                                                            <input type="text" class="form-control" id="EhoraCita" name="horaCita" readonly>
                                                         </div>
 
                                                         <div class="form-group">
