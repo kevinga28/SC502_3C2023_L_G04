@@ -89,12 +89,12 @@
                         <table id="tblistadoFactura" class="table table-striped table-bordered table-hover">
                           <thead>
                             <tr>
-                              <th>ID</th>
+                              <th>ID Factura</th>
                               <th>ID Cita</th>
                               <th>Nombre</th>
                               <th>Apellido</th>
-                              <th>Correo</th>
-                              <th>Nombre Producto</th>
+                              <th>Tratamientos</th>
+                              <th>Productos</th>
                               <th>Metodo Pago</th>
                               <th>Total</th>
                               <th>Opciones</th>

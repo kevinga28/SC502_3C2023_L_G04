@@ -57,8 +57,8 @@ function listarEmpleados() {
         data: null,
         render: function (data, type, row) {
           return '<a type="button" class="btn btn-danger float-right eliminar-empleado" data-ced="' + data[0] + '"><i class="fas fa-trash"></i> Eliminar</a>' +
-     '<a id="modificarEmpleado" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarEmpleado.php?cedula=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>' +
-     '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verEmpleado.php?cedula=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>';
+            '<a id="modificarEmpleado" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarEmpleado.php?cedula=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>' +
+            '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verEmpleado.php?cedula=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>';
         }
       }
     ]
@@ -70,8 +70,6 @@ $(function () {
 });
 
 /* ---------------------------------------------------------------CREAR LOS Empleados--------------------------------------------------------------- */
-
-
 
 $('#crearEmpleado').on('submit', function (event) {
   event.preventDefault();
@@ -100,15 +98,15 @@ $('#crearEmpleado').on('submit', function (event) {
         case '2':
           Swal.fire({
             icon: 'error',
-            title: 'Error',
-            text: 'No se pudieron actualizar los datos',
+            title: 'Errror',
+            text: 'Error al insertar Empleado',
           });
           break;
         case '3':
           Swal.fire({
             icon: 'error',
-            title: 'Error',
-            text: 'El correo ya existe. Corrija e inténtelo nuevamente.',
+            title: 'Errror',
+            text: 'Cedula o correo ya existe',
           });
           break;
 
@@ -150,7 +148,7 @@ const rellenarFormulario = async () => {
         $("#Ecanton").val(datos.canton);
         $("#Eotros").val(datos.otros);
         $("#Erol").val(datos.rol);
-        
+
       } else {
         console.error("Error al obtener los datos del empleado");
       }

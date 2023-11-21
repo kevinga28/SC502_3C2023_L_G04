@@ -12,7 +12,6 @@ class Cita extends Conexion
     private $cedulaEmpleado;
     private $fechaCita;
     private $horaCita;
-    private $horaFin;
 
     private $pagoTotal;
 
@@ -80,15 +79,6 @@ class Cita extends Conexion
         return $this->horaCita;
     }
 
-    public function setHoraFin($horaFin)
-    {
-        $this->horaFin = $horaFin;
-    }
-
-    public function getHoraFin()
-    {
-        return $this->horaFin;
-    }
 
     public function setPagoTotal($pagoTotal)
     {
@@ -149,8 +139,6 @@ class Cita extends Conexion
                     'Tratamientos' => $encontrado['tratamientos'],
                     'FechaCita' => $encontrado['fechaCita'],
                     'HoraCita' => $encontrado['horaCita'],
-                    'HoraFin' => $encontrado['horaFin'],
-
                 );
                 $citas[] = $cita;
             }
@@ -195,17 +183,15 @@ class Cita extends Conexion
             $cedulaEmpleado = $this->getCedulaEmpleado();
             $fechaCita = $this->getFechaCita();
             $horaCita = $this->getHoraCita();
-            $horaFin = $this->getHoraFin();
             $pagoTotal = $this->getPagoTotal();
 
-            $queryCita = "INSERT INTO `cita` (`IdCliente`, `cedulaEmpleado`, `fechaCita`, `horaCita`, `horaFin`, `pagoTotal`) 
-                      VALUES (:IdCliente, :cedulaEmpleado, :fechaCita, :horaCita, :horaFin, :pagoTotal)";
+            $queryCita = "INSERT INTO `cita` (`IdCliente`, `cedulaEmpleado`, `fechaCita`, `horaCita`,  `pagoTotal`) 
+                      VALUES (:IdCliente, :cedulaEmpleado, :fechaCita, :horaCita, :pagoTotal)";
             $resultadoCita = self::$cnx->prepare($queryCita);
             $resultadoCita->bindParam(":IdCliente", $IdCliente, PDO::PARAM_INT);
             $resultadoCita->bindParam(":cedulaEmpleado", $cedulaEmpleado, PDO::PARAM_INT);
             $resultadoCita->bindParam(":fechaCita", $fechaCita, PDO::PARAM_STR);
             $resultadoCita->bindParam(":horaCita", $horaCita, PDO::PARAM_STR);
-            $resultadoCita->bindParam(":horaFin", $horaFin, PDO::PARAM_STR);
             $resultadoCita->bindParam(":pagoTotal", $pagoTotal, PDO::PARAM_STR);
             $resultadoCita->execute();
 
@@ -288,7 +274,7 @@ class Cita extends Conexion
     {
         $query = "UPDATE cita 
         SET IdCliente = :IdCliente, cedulaEmpleado = :cedulaEmpleado, 
-            fechaCita = :fechaCita, horaCita = :horaCita, horaFin = :horaFin, pagoTotal = :pagoTotal 
+            fechaCita = :fechaCita, horaCita = :horaCita,  pagoTotal = :pagoTotal 
         WHERE IdCita = :IdCita";
 
         try {
@@ -298,7 +284,6 @@ class Cita extends Conexion
             $cedulaEmpleado = $this->getCedulaEmpleado();
             $fechaCita = $this->getFechaCita();
             $horaCita = $this->getHoraCita();
-            $horaFin = $this->getHoraFin();
             $pagoTotal = $this->getPagoTotal();
             $IdCita = $this->getIdCita();
 
@@ -308,7 +293,6 @@ class Cita extends Conexion
             $resultado->bindParam(":cedulaEmpleado", $cedulaEmpleado, PDO::PARAM_INT);
             $resultado->bindParam(":fechaCita", $fechaCita, PDO::PARAM_STR);
             $resultado->bindParam(":horaCita", $horaCita, PDO::PARAM_STR);
-            $resultado->bindParam(":horaFin", $horaFin, PDO::PARAM_STR);
             $resultado->bindParam(":pagoTotal", $pagoTotal, PDO::PARAM_STR);
             $resultado->bindParam(":IdCita", $IdCita, PDO::PARAM_INT);
 
@@ -357,7 +341,6 @@ class Cita extends Conexion
         e.nombre AS nombreEmpleado,
         e.apellido AS apellidoEmpleado,
         GROUP_CONCAT(CONCAT(t.nombre, ' (₡', t.precio, ')') SEPARATOR ', ') AS tratamientos,
-        c.horaFin,
         c.pagoTotal
     FROM cita c
     INNER JOIN cliente cl ON c.IdCliente = cl.IdCliente
@@ -455,6 +438,27 @@ class Cita extends Conexion
         }
     }
 
+    public function obtenerHorariosDisponibles($cedulaEmpleado, $diaSemana)
+    {
+        $query = "SELECT horaInicio, horaFin FROM horarios WHERE empleadoCedula = :cedulaEmpleado AND diaSemana = :dia";
+        try {
+            self::getConexion();
+            $stmt = self::$cnx->prepare($query);
+            $stmt->bindParam(':cedulaEmpleado', $cedulaEmpleado, PDO::PARAM_INT);
+            $stmt->bindParam(':dia', $diaSemana, PDO::PARAM_INT);
+            $stmt->execute();
+
+            $horariosDisponibles = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            self::desconectar();
+
+            return $horariosDisponibles;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error;
+        }
+    }
 
     public function obtenerCitasCalendarioAdmin($rol)
     {
@@ -510,8 +514,7 @@ class Cita extends Conexion
             CONCAT(cl.nombre, ' ', cl.apellido) AS title,
             cl.correo AS correoCliente,
             CONCAT(e.nombre, ' ', e.apellido) as nombreEmpleado,
-            CONCAT(c.fechaCita, ' ', c.horaCita) AS start,
-            CONCAT(c.fechaCita, ' ', c.horaFin) AS end,
+            CONCAT(c.fechaCita, ' ', c.horaCita) AS start
             GROUP_CONCAT(CONCAT(t.nombre, ' (₡', t.precio, ')') SEPARATOR ', ') AS tratamientos
         FROM 
             cita c

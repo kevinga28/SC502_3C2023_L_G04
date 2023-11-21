@@ -58,11 +58,6 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-12">
-                            <div class="callout callout-info">
-                                <h5><i class="fas fa-info"></i> Nota:</h5>
-                                Esta pagina sera configurada con el mvc
-                            </div>
-
 
                             <!-- FORMULARIO PARA CREAR UN PAGO O FACTURA -->
                             <div class="row">
@@ -99,7 +94,7 @@
                                                         </div>
                                                     </div>
                                                     <div class=" col-md-6">
-                                                        
+
 
                                                         <div class="form-group">
                                                             <label for="provincia">Provincia</label>
@@ -123,9 +118,9 @@
                                                         </div>
 
 
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" value="false" id="EtipoCliente" name="tipoCliente">
-                                                            <label class="form-check-label" for="EmpleadoCheck">Empleado</label>
+                                                        <div class="form-group">
+                                                            <label for="Emppleado">Empleado</label>
+                                                            <input type="text" class="form-control" id="EtipoCliente" name="tipoCliente" readonly>
                                                         </div>
 
                                                     </div>
@@ -158,8 +153,8 @@
     </div>
 
 
-      <!-- jQuery -->
-      <script src="../plugins/jquery/jquery.min.js"></script>
+    <!-- jQuery -->
+    <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->

@@ -55,8 +55,6 @@
                         <div class="col-md-6">
                            <div class="text-bg">
                               <span>Bienvenidos a</span>
-
-
                                <h1>Evolve</h1>
                               <p>
                                  Descubre un oasis de belleza y relajación en nuestro salón de belleza. Nuestros
@@ -78,69 +76,6 @@
                   </div>
                </div>
             </div>
-            <div class="carousel-item">
-               <div class="container-fluid">
-                  <div class="carousel-caption">
-                     <div class="row">
-                        <div class="col-md-6">
-                           <div class="text-bg">
-                              <span>Bienvenidos a</span>
-                              <h1>Evolve</h1>
-                              <p>
-                                 Descubre un oasis de belleza y relajación en nuestro salón de belleza. Nuestros
-                                 expertos estilistas
-                                 y esteticistas están dedicados a realzar tu belleza natural. Te ofrecemos una amplia
-                                 gama de servicios
-                                 de belleza y tratamientos personalizados para que te sientas renovada y radiante.
-                                 Ven y déjate consentir en un ambiente de lujo y tranquilidad.
-                              </p>
-                              <a href="Nosotros.php">Leer Más </a> <a href="#servicio">Servicios</a>
-                           </div>
-                        </div>
-                        <div class="col-md-6">
-                           <div class="text_img">
-                              <figure><img src="images/girl.png" alt="#" /></figure>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="carousel-item">
-               <div class="container-fluid">
-                  <div class="carousel-caption">
-                     <div class="row">
-                        <div class="col-md-6">
-                           <div class="text-bg">
-                              <span>Bienvenidos a</span>
-                              <h1>Evolve</h1>
-                              <p>
-                                 Descubre un oasis de belleza y relajación en nuestro salón de belleza. Nuestros
-                                 expertos estilistas
-                                 y esteticistas están dedicados a realzar tu belleza natural. Te ofrecemos una amplia
-                                 gama de servicios
-                                 de belleza y tratamientos personalizados para que te sientas renovada y radiante.
-                                 Ven y déjate consentir en un ambiente de lujo y tranquilidad.
-                              </p>
-                              <a href="Nosotros.php">Leer Más </a> <a href="#servicio">Servicios</a>
-                           </div>
-                        </div>
-                        <div class="col-md-6">
-                           <div class="text_img">
-                              <figure><img src="images/girl.png" alt="#" /></figure>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-         <a class="carousel-control-prev" type="button" data-bs-target="#banner1" data-bs-slide="prev">
-            <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
-         </a>
-         <a class="carousel-control-next" type="button" data-bs-target="#banner1" data-bs-slide="next">
-            <i class="fa fa-long-arrow-right" aria-hidden="true"></i>
-         </a>
       </div>
    </section>
    <!-- final banner -->
@@ -349,7 +284,10 @@
    <script src="js/popper.min.js"></script>
    <script src="js/bootstrap.bundle.min.js"></script>
    <script src="js/jquery-3.0.0.min.js"></script>
-    <script src="login/js/logout.js"></script>
+   <script src="login/js/logout.js"></script>
+   <script src="../../Admin/views/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+
+   <script src="js/cliente.js"></script>
 
 
 </body>

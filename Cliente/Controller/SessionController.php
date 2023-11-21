@@ -19,6 +19,7 @@ switch ($_GET["op"]) {
             $datosUsuario = $clienteSession->obtenerDatosUsuario($correo);
 
             if ($datosUsuario) {
+                $cliente->setIdCliente($datosUsuario['IdCliente']);
                 $cliente->setCorreo($datosUsuario['correo']);
                 $cliente->setNombre($datosUsuario['nombre']);
                 $cliente->setApellido($datosUsuario['apellido']);

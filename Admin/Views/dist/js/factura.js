@@ -50,7 +50,7 @@ function listarFacturas() {
             { data: "1" },  // ID de la cita
             { data: "2" },  // Nombre
             { data: "3" },  // Apellido
-            { data: "4" },  // Correo
+            { data: "4" },  // Tratamiento
             { data: "5" },  // Producto
             { data: "6" },  // Método de pago
             { data: "7" },  // Pago total
@@ -118,10 +118,7 @@ $('#crearFactura').on('submit', function (event) {
 
 /* ---------------------------------------------------------------BUSCAR UNA CITA --------------------------------------------------------------- */
 $(document).ready(function () {
-    var pagoTotalValue; // Variable para almacenar el valor original de pagoTotal
-
     function cargarCita() {
-        $('#producto').prop('disabled', true);
         $.ajax({
             url: '../../../admin/Controllers/citaController.php?op=cargarCita',
             type: 'POST',
@@ -129,6 +126,8 @@ $(document).ready(function () {
             success: function (data) {
                 var selectedCita = $('#citas, #Ecitas');
                 selectedCita.empty();
+
+                selectedCita.append('<option value="" disabled selected>Seleccionar Cita</option>');
 
                 if (data && data.length > 0) {
                     $.each(data, function (index, cita) {
@@ -143,8 +142,6 @@ $(document).ready(function () {
                         });
 
                         if (selectedCita) {
-                            pagoTotalValue = selectedCita.pagoTotal;
-
                             $("#nombre, #Enombre").val(selectedCita.nombreCliente);
                             $("#apellido, #Eapellido").val(selectedCita.apellidoCliente);
                             $("#correo, #Ecorreo").val(selectedCita.correoCliente);
@@ -152,31 +149,7 @@ $(document).ready(function () {
                             $("#estilista,  #Eestilista").val(selectedCita.nombreEmpleado + " " + selectedCita.apellidoEmpleado);
                             $("#fechaCita,  #EfechaCitao").val(selectedCita.fechaCita);
                             $("#horaCita, #EhoraCita").val(selectedCita.horaCita);
-                            $("#horaFin, #EhoraFin ").val(selectedCita.horaFin);
-                            $("#pagoTotal, #EpagoTotal ").val(pagoTotalValue);
-                            $("#pagoTotalHidden, #EpagoTotalHidden").val(pagoTotalValue);
-
-                            $('#producto').prop('disabled', false);
-
-                            if (!$('#producto').data('sumado')) {
-                                actualizarTotal();
-                                $('#producto').data('sumado', true);
-                            }
-
-                            $('#producto').on('change', function () {
-                                if ($(this).val().length > 0) {
-                                    $('#cantidadDiv').show();
-                                } else {
-                                    $('#cantidadDiv').hide();
-                                }
-                                actualizarTotal();
-                            });
-
-                            $('#cantidad').on('change', function () {
-                                if (pagoTotalValue !== parseFloat($('#pagoTotalHidden').val())) {
-                                    actualizarTotal();
-                                }
-                            });
+                            $("#pagoTratamiento, #EpagoTratamiento").val(selectedCita.pagoTotal);
                         }
                     });
                 }
@@ -186,30 +159,41 @@ $(document).ready(function () {
             }
         });
     }
-    function actualizarTotal() {
-        var totalTratamientos = parseFloat($("#pagoTotalHidden").val()) || 0;
+    $(document).ready(function () {
+        cargarCita();
+    });
+});
+
+/* ---------------------------------------------------------------TOTAL--------------------------------------------------------------- */
+
+$(document).ready(function () {
+    function actualizarTotalProductos() {
         var totalProductos = 0;
-    
-        if ($('#producto').val().length > 0) {
+
+        if ($('#producto option:selected').length === 0) {
+            totalProductos = parseFloat($('#pagoTratamiento').val()) || 0;
+        } else {
             $('#producto option:selected').each(function () {
                 var precio = parseFloat($(this).data('precio')) || 0;
                 var cantidad = parseInt($('#cantidad').val()) || 1;
                 totalProductos += precio * cantidad;
             });
         }
-    
-        var total = totalTratamientos + (totalProductos || 0);
-    
-        $('#pagoTotal').val('₡' + total.toFixed(2));
-        $('#pagoTotalHidden').val(total);
-    
-        if (totalProductos !== 0) {
-            pagoTotalValue = total;
-        }
+
+        $('#pagoProductos').val(totalProductos.toFixed(2));
+        return totalProductos;
     }
 
-    $(document).ready(function () {
-        cargarCita();
+    function actualizarTotal() {
+        var totalProductos = actualizarTotalProductos();
+        var totalFinal = totalProductos;
+
+        $('#pagoTotal, #pagoTotalHidden').val(totalFinal.toFixed(2));
+    }
+
+    // Detectar cambios en la selección de productos, en la cantidad y en el total de tratamiento
+    $('#producto, #cantidad, #pagoTratamiento').on('change', function () {
+        actualizarTotal(); // Actualizar el total al detectar cambios
     });
 });
 /* ---------------------------------------------------------------BUSCAR UN PRODUCTO --------------------------------------------------------------- */
@@ -252,16 +236,22 @@ const rellenarFormularioFactura = async () => {
 
     if (idFactura) {
         try {
-            const response = await fetch(`../../../admin/Controllers/facturaController.php?op=obtener&id=${idFactura}`);
+            const response = await fetch(`../../../admin/Controllers/facturaController.php?op=obtener&IdFactura=${idFactura}`);
             if (response.ok) {
                 const datos = await response.json();
 
-                // Rellena el formulario con los datos obtenidos
-                $("#Eid").val(datos.id);
-                $("#Eidcita").val(datos.idcita);
-                $("#EcodigoProducto").val(datos.codigoProducto);
+                $("#Enombre").val(datos.nombreCliente);
+                $("#Eapellido").val(datos.apellidoCliente);
+                $("#Ecorreo").val(datos.correoCliente);
+                $("#Etratamiento").val(datos.nombresTratamientos);
+                $("#Eestilista").val(datos.nombreEstilista + " " + datos.apellidoEstilista);
+                $("#EfechaCita").val(datos.fechaCita);
+                $("#EhoraCita").val(datos.horaCita);
+                $("#Eproducto").val(datos.nombresProductos);
+                $("#Ecantidad").val(datos.cantidad);
                 $("#EmetodoPago").val(datos.metodoPago);
                 $("#EpagoTotal").val(datos.pagoTotal);
+
             } else {
                 console.error("Error al obtener los datos de la factura");
             }
@@ -271,7 +261,7 @@ const rellenarFormularioFactura = async () => {
     }
 };
 
-rellenarFormularioFactura(); // Llama a la función para rellenar el formulario
+rellenarFormularioFactura();
 
 /* ---------------------------------------------------------------EDITAR LOS DATOS DE LA FACTURA--------------------------------------------------------------- */
 $('#factura_update').on('submit', function (event) {

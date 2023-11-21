@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -63,9 +63,9 @@
                   <input type="password" name="contrasena" id="contrasena" required placeholder="Contraseña*">
                 </div>
 
-                  <div class="input-box">
-                      <input type="text" name="telefono" id="telefono" required placeholder="telefono*">
-                  </div>
+                <div class="input-box">
+                  <input type="number" name="telefono" id="telefono" required placeholder="telefono*">
+                </div>
 
                 <div class="input-box">
                   <input type="text" name="provincia" id="provincia" placeholder="Provincia*">
@@ -83,8 +83,8 @@
                   <input type="text" name="otros" id="otros" placeholder="Otros*">
                 </div>
 
-                <div class="input-box">
-                  <input type="hidden" class="form-check-input" value="false" id="tipoCliente" name="tipoCliente">
+                <div class="input-box" style="display: none;">
+                  <input type="checkbox" class="form-check-input" value="false" id="tipoCliente" name="tipoCliente">
                 </div>
 
                 <div class="input-box">

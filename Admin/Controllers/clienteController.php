@@ -161,9 +161,53 @@ switch ($_GET["op"]) {
         }
         break;
 
-        case 'cargarCliente':
-            $clienteModel = new Cliente();
-            $clientes = $clienteModel->obtenerCliente();
-            echo json_encode($clientes);
-            break;
+    case 'cargarCliente':
+        $clienteModel = new Cliente();
+        $clientes = $clienteModel->obtenerCliente();
+        echo json_encode($clientes);
+        break;
+
+    case 'editarCliente':
+        $IdCliente = isset($_POST["IdCliente"]) ? trim($_POST["IdCliente"]) : "";
+        $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
+        $apellido = isset($_POST["apellido"]) ? trim($_POST["apellido"]) : "";
+        $contrasena = isset($_POST["contrasena"]) ? trim($_POST["contrasena"]) : "";
+        if (strlen($contrasena) < 8) {
+            echo 'La contraseña debe tener al menos 8 caracteres.';
+            exit;
+        }
+        $contrasena = hash('SHA256', $contrasena);
+        $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
+        if (strlen($telefono) != 8) {
+            echo 'El teléfono debe tener exactamente 8 dígitos.';
+            exit;
+        }
+        $provincia = isset($_POST["provincia"]) ? trim($_POST["provincia"]) : "";
+        $distrito = isset($_POST["distrito"]) ? trim($_POST["distrito"]) : "";
+        $canton = isset($_POST["canton"]) ? trim($_POST["canton"]) : "";
+        $otros = isset($_POST["otros"]) ? trim($_POST["otros"]) : "";
+
+        $cliente = new Cliente();
+        $encontrado = $cliente->verificarExistenciaCliente();
+
+        if ($encontrado == false) {
+            $cliente->setIdCliente($IdCliente);
+            $cliente->setNombre($nombre);
+            $cliente->setApellido($apellido);
+            $cliente->setContrasena($contrasena);
+            $cliente->setTelefono($telefono);
+            $cliente->setProvincia($provincia);
+            $cliente->setDistrito($distrito);
+            $cliente->setCanton($canton);
+            $cliente->setOtros($otros);
+
+            if ($cliente->actualizarClienteVC()) {
+                echo 1; //exito en la actualizacion
+            } else {
+                echo 2;  //Error al guardar en la base de datos
+            }
+        } else {
+            echo 3; //Este valor se muestra si el cliente no existe
+        }
+        break;
 }

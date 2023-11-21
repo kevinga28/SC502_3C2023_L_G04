@@ -39,7 +39,10 @@ switch ($_GET["op"]) {
         $genero = isset($_POST["genero"]) ? trim($_POST["genero"]) : "";
         $correo = isset($_POST["correo"]) ? trim($_POST["correo"]) : "";
         $contrasena = isset($_POST["contrasena"]) ? trim($_POST["contrasena"]) : "";
-        
+        if (strlen($contrasena) < 8) {
+            echo 'La contraseña debe tener al menos 8 caracteres.';
+            exit;
+        }
         $contrasena = hash('SHA256', $contrasena);
 
         $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
@@ -54,10 +57,7 @@ switch ($_GET["op"]) {
         $canton = isset($_POST["canton"]) ? trim($_POST["canton"]) : "";
         $otros = isset($_POST["otros"]) ? trim($_POST["otros"]) : "";
 
-        if (strlen($contrasena) < 8) {
-            echo 'La contraseña debe tener al menos 8 caracteres.';
-            exit;
-        }
+    
 
         $empleado = new Empleado();
 
@@ -81,10 +81,10 @@ switch ($_GET["op"]) {
             if ($empleado->verificarExistenciaEmpleado()) {
                 echo 1; // Éxito
             } else {
-                echo 'Error al insertar el empleado.';
+                echo 2;
             }
         } else {
-            echo 'La cédula, correo o teléfono ya existen en la base de datos.';
+            echo 3;
         }
         break;
 
@@ -104,6 +104,10 @@ switch ($_GET["op"]) {
         $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
         $apellido = isset($_POST["apellido"]) ? trim($_POST["apellido"]) : "";
         $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
+        if (strlen($telefono) != 8) {
+            echo 'El teléfono debe tener exactamente 8 dígitos.';
+            exit;
+        }
         $rol = isset($_POST["rol"]) ? trim($_POST["rol"]) : "";
         $provincia = isset($_POST["provincia"]) ? trim($_POST["provincia"]) : "";
         $distrito = isset($_POST["distrito"]) ? trim($_POST["distrito"]) : "";

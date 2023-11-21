@@ -76,56 +76,64 @@
                                                 <div class="row">
                                                     <div class="col-md-6">
 
-
                                                         <div class="form-group">
                                                             <label for="nombre">Nombre</label>
-                                                            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Primer Nombre" readonly>
+                                                            <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Primer Nombre" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="apellido">Apellido</label>
-                                                            <input type="text" class="form-control" id="apellido" name="apellido" placeholder="Apellido" readonly>
+                                                            <input type="text" class="form-control" id="Eapellido" name="apellido" placeholder="Apellido" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="correo">Correo Electrónico</label>
-                                                            <input type="email" class="form-control" id="correo" name="correo" placeholder="Correo" readonly>
+                                                            <input type="email" class="form-control" id="Ecorreo" name="correo" placeholder="Correo" readonly>
                                                         </div>
 
-
                                                         <div class="form-group">
-                                                            <label for="metodoPago">Método de Pago</label>
-                                                            <input type="text" class="form-control" id="metodoPago" name="metodoPago"  placeholder="Metodo Pago"readonly>
+                                                            <label for="tratamiento">Tratamiento</label>
+                                                            <input type="text" class="form-control" id="Etratamiento" name="tratamiento[]" placeholder="Tratamientos" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="estilista">Estilista</label>
-                                                            <input type="text" class="form-control" id="estilista" name="estilista" placeholder="Estilista" readonly>
+                                                            <input type="text" class="form-control" id="Eestilista" name="estilista" placeholder="Estilista" readonly>
                                                         </div>
 
                                                     </div>
                                                     <div class=" col-md-6">
 
                                                         <div class="form-group">
-                                                            <label for="producto">Producto</label>
-                                                            <input type="text" class="form-control" id="producto" name="producto" placeholder="Productos" readonly>
-                                                        </div>
-
-                                                        <div class="form-group">
                                                             <label for="fechaCita">Fecha de la Cita</label>
-                                                            <input type="date" class="form-control" id="fechaCita" name="fechaCita" readonly>
+                                                            <input type="date" class="form-control" id="EfechaCita" name="fechaCita" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="horaCita">Hora de la Cita</label>
-                                                            <input type="time" class="form-control" id="horaCita" name="horaCita"  readonly>
+                                                            <input type="text" class="form-control" id="EhoraCita" name="horaCita" readonly>
                                                         </div>
 
                                                         <div class="form-group">
-                                                            <label for="total">Total a Pagar</label>
-                                                            <input type="text" class="form-control" id="total" name="total" placeholder="Total" readonly>
+                                                            <label for="Producto">Producto</label>
+                                                            <input type="text" class="form-control" id="Eproducto" name="producto[]" placeholder="Productos" readonly>
                                                         </div>
 
+                                                        <div class="form-group" id="cantidadDiv">
+                                                            <label for="Cantidad">Cantidad</label>
+                                                            <input type="number" class="form-control" id="Ecantidad" name="cantidad" placeholder="Cantidad" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="metodoPago">Método de Pago</label>
+                                                            <input type="text" class="form-control" id="EmetodoPago" name="metodoPago" placeholder="Metodo de Pago" readonly>
+
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="pagoTotal">Total a Pagar</label>
+                                                            <input type="text" class="form-control" id="EpagoTotal" name="pagoTotal" readonly value="₡0">
+                                                        </div>
 
                                                     </div>
                                                 </div>
