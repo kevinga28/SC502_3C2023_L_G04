@@ -1,5 +1,5 @@
 <?php
-require_once '../../Admin/Model/Cliente.php';
+
 require_once '../../Admin/config/Conexion.php';
 
 
@@ -17,6 +17,7 @@ class InicioSesion extends Conexion
     private $distrito;
     private $canton;
     private $otros ;
+
 
 
     public function __construct()
@@ -78,10 +79,10 @@ class InicioSesion extends Conexion
             $stmt->execute();
 
             if ($stmt->rowCount() > 0) {
-                // Devuelve los datos del usuario como un arreglo asociativo
+
                 return $stmt->fetch(PDO::FETCH_ASSOC);
             } else {
-                return null; // Devuelve null si no se encuentra el usuario
+                return null;
             }
         } catch (PDOException $Exception) {
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
@@ -89,75 +90,6 @@ class InicioSesion extends Conexion
         }
     }
 
-    
-
-    public function guardarUsuario()
-    {
-        $sql = "INSERT INTO cliente(nombre, apellido, correo, contrasena, telefono) 
-        VALUES (:nombre, :apellido, :correo, :contrasena, :telefono)";
-
-        try {
-            self::getConexion();  // Debes utilizar self::$cnx para acceder a la conexión
-
-            $nombre = strtoupper($this->getNombre());
-            $apellido = strtoupper($this->getApellido());
-            $correo = $this->getCorreo();
-            $contrasena = $this->getContrasena();
-            $telefono = $this->getTelefono();
-
-
-            $stmt = self::$cnx->prepare($sql);  // Cambia $conexion a self::$cnx
-            $stmt->bindParam(':nombre', $nombre);
-            $stmt->bindParam(':apellido', $apellido);
-            $stmt->bindParam(':correo', $correo);
-            $stmt->bindParam(':contrasena', $contrasena);
-            $stmt->bindParam(':telefono', $telefono);
-
-
-            // Ejecutar la consulta
-            $stmt->execute();
-
-
-            if ($stmt->rowCount() > 0) {
-
-                return true;
-            } else {
-
-                return false;
-            }
-
-        } catch (PDOException $Exception) {
-            self::desconectar();
-            $error = "Error ".$Exception->getCode().": ".$Exception->getMessage();
-            return $error;
-        }
-    }
-
-    public function verificarExistenciaCliente()
-    {
-        $query = "SELECT COUNT(*) FROM cliente WHERE correo=:correo";
-
-        try {
-            self::getConexion();
-            $resultado = self::$cnx->prepare($query);
-
-            $correo = $this->getCorreo();
-
-            $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
-            $resultado->execute();
-
-            $count = $resultado->fetchColumn();
-
-            if ($count > 0) {
-                return true; // El cliente existe
-            } else {
-                return false; // El cliente no existe
-            }
-        } catch (PDOException $Exception) {
-            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-            throw new Exception($error);
-        }
-    }
 
     public function logOut() {
         $_SESSION=[];

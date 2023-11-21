@@ -52,7 +52,6 @@ foreach ($empleados as $empleado) {
 
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar elevation-4 color-custom">
-
       <?php
       include 'fragments/aside.php'
       ?>

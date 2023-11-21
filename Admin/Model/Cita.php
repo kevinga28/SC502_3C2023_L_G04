@@ -447,11 +447,11 @@ class Cita extends Conexion
             $stmt->bindParam(':cedulaEmpleado', $cedulaEmpleado, PDO::PARAM_INT);
             $stmt->bindParam(':dia', $diaSemana, PDO::PARAM_INT);
             $stmt->execute();
-    
+
             $horariosDisponibles = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    
+
             self::desconectar();
-    
+
             return $horariosDisponibles;
         } catch (PDOException $Exception) {
             self::desconectar();
@@ -459,4 +459,97 @@ class Cita extends Conexion
             return $error;
         }
     }
+
+    public function obtenerCitasCalendarioAdmin($rol)
+    {
+        // Verificar si el usuario logueado es un admin
+        if ($rol === 'Admin') {
+            // Si es admin, traer todas las citas
+            $query = "SELECT 
+            CONCAT(cl.nombre, ' ', cl.apellido) AS title,
+            cl.correo AS correoCliente,
+            CONCAT(e.nombre, ' ', e.apellido) as nombreEmpleado,
+            CONCAT(c.fechaCita, ' ', c.horaCita) AS start,
+            CONCAT(c.fechaCita, ' ', c.horaFin) AS end,
+            GROUP_CONCAT(CONCAT(t.nombre, ' (₡', t.precio, ')') SEPARATOR ', ') AS tratamientos
+        FROM 
+            cita c
+            INNER JOIN cliente cl ON c.IdCliente = cl.IdCliente
+            INNER JOIN empleado e ON c.cedulaEmpleado = e.cedula
+            LEFT JOIN cita_tratamiento ct ON c.IdCita = ct.IdCita
+            LEFT JOIN tratamiento t ON ct.IdTratamiento = t.IdTratamiento
+        GROUP BY 
+            c.IdCita";
+        }
+
+        try {
+            self::getConexion();
+            $stmt = self::$cnx->prepare($query);
+
+            // Si no es admin, bindear el parámetro :idEmpleado
+
+
+            $stmt->execute();
+
+            $citas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            self::desconectar();
+
+            return $citas;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error;
+        }
+    }
+
+
+
+    public function obtenerCitasCalendarioEstilista($cedula,$rol)
+    {
+        // Verificar si el usuario logueado es un admin
+        if ($rol === 'Estilista') {
+            // Si es admin, traer todas las citas
+            $query = "SELECT 
+            CONCAT(cl.nombre, ' ', cl.apellido) AS title,
+            cl.correo AS correoCliente,
+            CONCAT(e.nombre, ' ', e.apellido) as nombreEmpleado,
+            CONCAT(c.fechaCita, ' ', c.horaCita) AS start
+            GROUP_CONCAT(CONCAT(t.nombre, ' (₡', t.precio, ')') SEPARATOR ', ') AS tratamientos
+        FROM 
+            cita c
+            INNER JOIN cliente cl ON c.IdCliente = cl.IdCliente
+            INNER JOIN empleado e ON c.cedulaEmpleado = e.cedula
+            LEFT JOIN cita_tratamiento ct ON c.IdCita = ct.IdCita
+            LEFT JOIN tratamiento t ON ct.IdTratamiento = t.IdTratamiento
+        WHERE 
+            e.cedula = :cedula
+        GROUP BY 
+            c.IdCita";
+        }
+
+        try {
+            self::getConexion();
+            $stmt = self::$cnx->prepare($query);
+            $stmt->bindParam(':cedula', $cedula, PDO::PARAM_INT);
+
+            // Si no es admin, bindear el parámetro :idEmpleado
+
+
+            $stmt->execute();
+
+            $citas = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+            self::desconectar();
+
+            return $citas;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error;
+        }
+    }
+
+
+
 }

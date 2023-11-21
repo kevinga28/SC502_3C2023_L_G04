@@ -10,7 +10,7 @@ $('#usuario_add').on('submit', function (event) {
     $('#btnRegistar').prop('disabled', true);
     var formData = new FormData($('#usuario_add')[0]);
     $.ajax({
-        url: '../../Controller/UsuarioController.php?op=insertar',
+        url: '../../Controller/SessionController.php?op=insertar',
         type: 'POST',
         data: formData,
         contentType: false,
@@ -36,8 +36,12 @@ $('#usuario_add').on('submit', function (event) {
                         icon: 'Success',
                         title: 'Registro Exitoso',
                         text: 'El cliente se registro exitosamente',});
+
                     limpiarForms();
-                    window.location.href = "../index.php";
+                    window.location.href = 'login.php';
+                    break;
+
+
                     break;
                 case '4':
                     alert('error')

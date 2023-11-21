@@ -81,10 +81,10 @@ switch ($_GET["op"]) {
             if ($empleado->verificarExistenciaEmpleado()) {
                 echo 1; // Éxito
             } else {
-                echo 'Error al insertar el empleado.';
+                echo 2;
             }
         } else {
-            echo 'La cédula, correo o teléfono ya existen en la base de datos.';
+            echo 3;
         }
         break;
 
@@ -104,7 +104,10 @@ switch ($_GET["op"]) {
         $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
         $apellido = isset($_POST["apellido"]) ? trim($_POST["apellido"]) : "";
         $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
+<<<<<<< HEAD
         $telefono = isset($_POST["telefono"]) ? trim($_POST["telefono"]) : "";
+=======
+>>>>>>> 7881e9dcef4fa5aea6b4bbdad5144f6a11c65184
         if (strlen($telefono) != 8) {
             echo 'El teléfono debe tener exactamente 8 dígitos.';
             exit;

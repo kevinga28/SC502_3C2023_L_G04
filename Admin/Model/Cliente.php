@@ -1,5 +1,6 @@
 <?php
-require_once '../config/Conexion.php';
+require_once(__DIR__ . '/../config/conexion.php');
+
 
 class Cliente extends Conexion
 {
@@ -223,7 +224,7 @@ class Cliente extends Conexion
 
     public function guardarEnDb()
     {
-        $query = "INSERT INTO `cliente` ( `nombre`, `apellido`,  `correo`, `contrasena`, `telefono`, `tipoCliente`, `provincia`, `distrito`, `canton`, `otros`)
+        $query = "INSERT INTO cliente ( `nombre`, `apellido`,  `correo`, `contrasena`, `telefono`, `tipoCliente`, `provincia`, `distrito`, `canton`, `otros`)
             VALUES ( :nombre, :apellido, :correo, :contrasena, :telefono, :tipoCliente, :provincia, :distrito, :canton, :otros)";
 
         try {
@@ -254,6 +255,15 @@ class Cliente extends Conexion
             $resultado->bindParam(":otros", $otros, PDO::PARAM_STR);
 
             $resultado->execute();
+
+            if ($resultado->rowCount() > 0) {
+
+                return true;
+            } else {
+
+                return false;
+            }
+
             self::desconectar();
         } catch (PDOException $Exception) {
             self::desconectar();
@@ -290,6 +300,53 @@ class Cliente extends Conexion
             $resultado->bindParam(":apellido", $apellido, PDO::PARAM_STR);
             $resultado->bindParam(":telefono", $telefono, PDO::PARAM_STR);
             $resultado->bindParam(":tipoCliente", $tipoCliente, PDO::PARAM_BOOL);
+            $resultado->bindParam(":provincia", $provincia, PDO::PARAM_STR);
+            $resultado->bindParam(":distrito", $distrito, PDO::PARAM_STR);
+            $resultado->bindParam(":canton", $canton, PDO::PARAM_STR);
+            $resultado->bindParam(":otros", $otros, PDO::PARAM_STR);
+            $resultado->bindParam(":IdCliente", $IdCliente, PDO::PARAM_INT);
+
+            self::$cnx->beginTransaction(); // Desactiva el autocommit
+
+            $resultado->execute();
+            self::$cnx->commit(); // Realiza el commit y vuelve al modo autocommit
+            self::desconectar();
+            return $resultado->rowCount();
+        } catch (PDOException $Exception) {
+            self::$cnx->rollBack();
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error;
+        }
+    }
+
+    public function actualizarClienteVC()
+    {
+        $query = "UPDATE cliente 
+                    SET nombre = :nombre, apellido = :apellido, telefono = :telefono, 
+                        contrasena = :contrasena, provincia = :provincia, 
+                        distrito = :distrito, canton = :canton, otros = :otros 
+                    WHERE IdCliente = :IdCliente";
+
+        try {
+            self::getConexion();
+
+            $nombre = $this->getNombre();
+            $apellido = $this->getApellido();
+            $telefono = $this->getTelefono();
+            $contrasena = $this->getContrasena();
+            $provincia = $this->getProvincia();
+            $distrito = $this->getDistrito();
+            $canton = $this->getCanton();
+            $otros = $this->getOtros();
+            $IdCliente = $this->getIdCliente();
+
+            $resultado = self::$cnx->prepare($query);
+
+            $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+            $resultado->bindParam(":apellido", $apellido, PDO::PARAM_STR);
+            $resultado->bindParam(":telefono", $telefono, PDO::PARAM_STR);
+            $resultado->bindParam(":contrasena", $contrasena, PDO::PARAM_STR);
             $resultado->bindParam(":provincia", $provincia, PDO::PARAM_STR);
             $resultado->bindParam(":distrito", $distrito, PDO::PARAM_STR);
             $resultado->bindParam(":canton", $canton, PDO::PARAM_STR);

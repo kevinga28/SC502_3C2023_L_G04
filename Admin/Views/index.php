@@ -97,59 +97,49 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
     </aside>
 
 
-    <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
+  
       <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0">Sistema Evolve</h1>
-            </div><!-- /.col -->
+            </div>
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
                 <li class="breadcrumb-item"><a href="#">Inicio</a></li>
                 <li class="breadcrumb-item active">General</li>
               </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
+            </div>
+          </div>
+        </div>
       </div>
-      <!-- /.content-header -->
+    
 
-      <!-- Main content -->
+     
       <section class="content">
         <div class="container-fluid">
 
-          <!-- Small boxes (CARTAS DE ESTADISTICAS GENERAL box) -->
           <div class="row">
             <?php
             include 'fragments/smallBox.php'
             ?>
 
           </div>
-          <!-- /.row -->
 
-          <!-- Main row -->
           <div class="row">
-            <!-- COLUMNA IZQUIERDA DEL MAIN-->
 
             <section class="col-lg-9 connectedSortable">
-              <!-- GRAFICOS DE BARRAS Y ESTADISTICAS -->
               <div class="row">
                 <?php
                 include 'fragments/estadistica.php'
                 ?>
               </div>
-              <!-- /.TERMINA EL CODIGO DE BARRAS Y ESTADISTICAS -->
 
             </section>
-            <!-- /.Left col -->
 
-            <!-- right col (We are only adding the ID to make the widgets sortable)-->
             <section class="col-lg-3 connectedSortable">
 
-              <!-- LISTA DE INVENTARIO MEDIANTE PHP -->
               <div class="card">
                 <?php
                 include 'fragments/listaInventario.php'
@@ -160,7 +150,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
 
             <section class="col-lg-9 connectedSortable">
 
-              <!-- CALENDARIO -->
               <div class="card">
                 <?php
                 include 'fragments/calendarioIndex.php'
@@ -170,14 +159,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
             </section>
 
 
-            <!-- right col -->
+         
           </div>
-          <!-- /.row (main row) -->
-        </div><!-- /.container-fluid -->
+         
+        </div>
       </section>
-      <!-- /.content -->
     </div>
-    <!-- /.content-wrapper -->
+
     <footer class="main-footer no-print">
       <?php
       include 'fragments/footer.php'
@@ -226,7 +214,7 @@ const data = {
 };
 
 const config = {
-    type: 'bar',
+    type: 'line',
     data: data,
     options: {
         scales: {
