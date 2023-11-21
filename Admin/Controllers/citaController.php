@@ -109,7 +109,6 @@ switch ($_GET["op"]) {
             // Validación de datos
             if ($idCita === 0 || $IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita) || empty($pagoTotal)) {
                 echo "Error: Debes proporcionar todos los datos necesarios para editar la cita.";
-                var_dump($IdCliente, $cedulaEmpleado,$fechaCita, $horaCita,$pagoTotal);
             } else {
                 $cita = new Cita();
                 $cita->setIdCita($idCita);
@@ -200,10 +199,16 @@ switch ($_GET["op"]) {
         break;
 
     case 'cargarCitaCalendario':
+        $cedulaEmpleado = $_SESSION['cedula'];
+        $rol = $_SESSION['rol'];
 
         $citaModel = new Cita();
-        $citas = $citaModel->obtenerCitasCalendario();
+        if ($_SESSION['rol'] === 'Admin') {
+            $citas = $citaModel->obtenerCitasCalendarioAdmin($_SESSION['rol']);
+        } else if ($_SESSION['rol'] === 'Estilista') {
+            $citas = $citaModel->obtenerCitasCalendarioEstilista($_SESSION['cedula'], $_SESSION['rol']);
+        }
+
         echo json_encode($citas);
         break;
-
 }
