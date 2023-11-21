@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../Model/Cita.php';
 switch ($_GET["op"]) {
 
@@ -186,9 +187,18 @@ switch ($_GET["op"]) {
         echo json_encode($citas);
         break;
     case 'cargarCitaCalendario':
+        $cedulaEmpleado = $_SESSION['cedula'];
+        $rol = $_SESSION['rol'];
 
         $citaModel = new Cita();
-        $citas = $citaModel->obtenerCitasCalendario();
+        if($_SESSION['rol']==='Admin'){
+            $citas = $citaModel->obtenerCitasCalendarioAdmin($_SESSION['rol']);
+
+        }else if($_SESSION['rol']==='Estilista'){
+            $citas =$citaModel->obtenerCitasCalendarioEstilista($_SESSION['cedula'],$_SESSION['rol']);
+
+        }
+
         echo json_encode($citas);
         break;
 

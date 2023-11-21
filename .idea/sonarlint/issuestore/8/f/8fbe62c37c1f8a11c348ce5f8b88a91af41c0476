@@ -1,0 +1,14 @@
+
+U	php:S1131("@Remove the useless trailing whitespaces at the end of this line.(°ñ¸š
+U	php:S11310"@Remove the useless trailing whitespaces at the end of this line.(éğ¨
+U	php:S1131W"@Remove the useless trailing whitespaces at the end of this line.(éğ¨
+Z	php:S1131Y"@Remove the useless trailing whitespaces at the end of this line.(îıãÓüÿÿÿÿ
+Z	php:S1131\"@Remove the useless trailing whitespaces at the end of this line.(§ıª“øÿÿÿÿ
+ephp:S103‡"KSplit this 124 characters long line (which is greater than 120 authorized).(ë½–üÿÿÿÿ
+D	php:S1808V"/Remove all space after the opening parenthesis.(šØ½î
+[	php:S1808@"FPut one space between this "else" keyword and the opening curly brace.(å¥‡
+j	php:S1779"]Replace all non line feed end of line characters in this file "productoController.php" by LF.
+>	php:S1125(")Remove the literal "false" boolean value.(°ñ¸š
+>	php:S1125O")Remove the literal "false" boolean value.(°ñ¸š
+k	php:S4833"QReplace "require_once" with namespace import mechanism through the "use" keyword.(™ğİıÿÿÿÿ
+Pphp:S131"7Add a "case default" clause to this "switch" statement.(ÇÖ»ùÿÿÿÿ

@@ -5,17 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8c9abd-086d-4297-a16c-a6018e345d6d" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/4/1425acf73be5b4ede333128ee5fbe81da92d18bc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/5/8/58b7a93acbc7f426b7017b70c30a5706069d9785" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/1/0/10f6aaca7d7608dda31aa4ed6cd74b9a8dc0f0c4" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/8/6/8649e9e76ddce3fd43c37ffb0bd1009988ea2c80" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/9/a/9aea813be9be2b7d48eaf3c971a0a58212bfa354" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/Controllers/citaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Controllers/citaController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/Controllers/loginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Controllers/loginController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/Model/Cita.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Model/Cita.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/fragments/calendarioIndex.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/fragments/calendarioIndex.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/logueo/fragments/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/logueo/fragments/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/Model/InicioSesion.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/Model/InicioSesion.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/login/js/inicioSesion.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/js/inicioSesion.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,20 +50,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/SC502_3C2023_L_G04-main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/SC502_3C2023_L_G04-main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Cliente\Model" />
@@ -115,7 +112,10 @@
       <workItem from="1700160208669" duration="2570000" />
       <workItem from="1700177465438" duration="14220000" />
       <workItem from="1700254668179" duration="1972000" />
-      <workItem from="1700263935574" duration="47529000" />
+      <workItem from="1700263935574" duration="48527000" />
+      <workItem from="1700518466598" duration="4850000" />
+      <workItem from="1700532940731" duration="596000" />
+      <workItem from="1700544197337" duration="10954000" />
     </task>
     <servers />
   </component>

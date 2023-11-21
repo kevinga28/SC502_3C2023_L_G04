@@ -1,12 +1,8 @@
 
 N
 Cliente/views/js/jquery.min.js,d\1\d1892da473ffc89c01b0a8c6f5c36e9c4ba5f369
-O
-Cliente/views/servicioBotox.php,b\9\b919619c93ff391704fb30f68febfab6410b3159
 T
 $Cliente/views/css/bootstrap-grid.css,d\a\daa7a0288b107d8c49b735a0539077bab5930706
-P
- Cliente/views/servicioCortes.php,f\9\f943fbe864e95ad05e536ff5980ce2eb188ff5c4
 P
  Admin/Views/logueo/css/login.css,1\8\185aac258c5f025fb8a9f34fc98ef1d927ce3528
 P
@@ -33,20 +29,14 @@ R
 "Cliente/views/fragments/footer.php,a\2\a2052863a0bd785e104754369285aa88f84579c0
 X
 (Cliente/views/login/fragments/footer.php,4\8\48f99fed94568a7ccdcd27279f8f3d2e7622643a
-X
-(Cliente/views/login/fragments/header.php,8\6\8649e9e76ddce3fd43c37ffb0bd1009988ea2c80
 P
  Cliente/views/login/register.php,6\2\62419e7e4bdba34c3f9dc329a4a4a8d762476c1d
 T
 $Cliente/views/login/css/register.css,3\0\308c1cbfe5080d27727acf2621ef3cf8d78e52f9
 P
  Cliente/views/login/js/logout.js,9\7\979ddb888485693dca9f77f4b2a6074b91a6bb1d
-G
-Admin/Model/Factura.php,1\0\10f6aaca7d7608dda31aa4ed6cd74b9a8dc0f0c4
 H
 Admin/Model/Registro.php,0\b\0b2885e8a46b3c55bcb41a3c2760e247dd402c91
-I
-Admin/config/Conexion.php,9\a\9aea813be9be2b7d48eaf3c971a0a58212bfa354
 W
 'Admin/Controllers/facturaController.php,8\3\83a9fdfa34bd52b0903f6e6e0791679e9eeeaf69
 [
@@ -55,3 +45,27 @@ X
 (Admin/Views/fragments/asideEstilista.php,a\0\a03e8c2f5cc0c25cf0454c3efdd1b0accf3d673a
 T
 $Cliente/views/js/bootstrap.bundle.js,7\9\7953497c1d658aca1ec3364745231541966719d4
+U
+%Admin/Views/fragments/estadistica.php,5\f\5f85bfbd33f655c0da43a6216c2f2b505e40d282
+E
+Admin/Views/index.php,5\2\520781c66d87dff514a05d22224705f394ca15b5
+V
+&Cliente/views/login/js/inicioSesion.js,5\f\5f138fc95ec95d0b40181564537418486f3108ae
+M
+Admin/Views/logueo/logueo.php,5\3\5321c7459484ab7bf82dbb52124f0ab9eb5b7ebd
+V
+&Admin/Views/logueo/fragments/login.php,d\1\d1239c9c87c08aad77d4e6da0f76733818bd1409
+X
+(Admin/Controllers/empleadoController.php,1\a\1abaac618b17fb470d3f9d65f9631e2f33537241
+N
+Admin/Views/logueo/js/login.js,4\4\44f289e32f98eeb587fff114d11139f53a0def82
+W
+'Admin/Controllers/clienteController.php,6\1\616f5009821b2827caab8d8bc584be24d853b4ff
+X
+(Admin/Views/plugins/fullcalendar/main.js,1\8\1827f3e656848968c82bf3eaa6d46d97aaa5c077
+Y
+)Admin/Views/fragments/calendarioIndex.php,a\6\a6e5478f4122deff21c991f3f469bbcbee0e4906
+R
+"Cliente/views/login/js/register.js,6\3\630d4906c8d5a572e508d0028ea704f540e7ddba
+X
+(Admin/Controllers/productoController.php,8\f\8fbe62c37c1f8a11c348ce5f8b88a91af41c0476

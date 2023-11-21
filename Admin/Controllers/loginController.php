@@ -53,6 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $_SESSION['cedula'] = $empleado->getCedula();
         $_SESSION['datosEmpleado'] = $empleado->obtenerEmpleadoPorCedula($empleado->getCedula());
         $_SESSION['nombre'] = $_SESSION['datosEmpleado']['nombre'];
+        $_SESSION['rol'] = $_SESSION['datosEmpleado']['rol'];
         $_SESSION['apellido'] = $_SESSION['datosEmpleado']['apellido'];
         $_SESSION['imagen'] = $_SESSION['datosEmpleado']['imagen'];
         $_SESSION['genero'] = $_SESSION['datosEmpleado']['genero'];
