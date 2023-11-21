@@ -17,11 +17,12 @@ $('#login').on('submit', function (event) {
     var formData = new FormData($('#login')[0]);
     $.ajax({
         //url: 'http://localhost/SC502_3C2023_L_G04/Cliente/Controller/InicioSesionController.php?op=login',
-        url: '../../Controller/InicioSesionController.php?op=login',
+        url: '../../Controller/SessionController.php?op=login',
         type: 'POST',
         data: formData,
         contentType: false,
         processData: false,
+
         success: function (datos) {
 
             switch (datos) {
@@ -39,7 +40,7 @@ $('#login').on('submit', function (event) {
                     break;
 
             }
-            $('#btnRegistar').removeAttr('disabled');
+            $('#btnlogin').removeAttr('disabled');
         },
     });
 });

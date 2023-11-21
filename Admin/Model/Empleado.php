@@ -21,6 +21,7 @@ class Empleado extends Conexion
     private $canton;
     private $otros;
 
+
     public function __construct()
     {
         // Constructor vacío
@@ -244,7 +245,7 @@ class Empleado extends Conexion
 
         try {
             self::getConexion();
-            $cedula = $this->getCedula();
+            $cedula = $this-> getCedula();
             $imagen = $this->getImagen();
             $nombre = $this->getNombre();
             $apellido = $this->getApellido();
@@ -275,6 +276,15 @@ class Empleado extends Conexion
             $resultado->bindParam(":otros", $otros, PDO::PARAM_STR);
 
             $resultado->execute();
+
+            if ($resultado->rowCount() > 0) {
+
+                return true;
+            } else {
+
+                return false;
+            }
+
             self::desconectar();
         } catch (PDOException $Exception) {
             self::desconectar();
@@ -402,17 +412,14 @@ class Empleado extends Conexion
         }
     }
     public function login() {
-        // Obtén el array de datos del empleado
         $dbEmpleadoData = $this->obtenerEmpleadoPorCedula($this->getCedula());
     
         // Verifica si se encontró un empleado y la contraseña es válida
         if ($dbEmpleadoData && $this->getContrasena() == $dbEmpleadoData['contrasena']) {
             session_start();
             $_SESSION['cedula'] = $dbEmpleadoData['cedula'];
-            $_SESSION['rol'] = $dbEmpleadoData['rol'];
-    
-            // Devuelve el rol
-            return $dbEmpleadoData['rol'];
+            $_SESSION['rol'] = !empty($dbEmpleadoData['rol']) ? $dbEmpleadoData['rol'] : 'Unknown';
+            return true;
         } else {
             return false;
         }

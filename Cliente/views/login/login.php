@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -46,10 +46,10 @@
                         <h2>Registrar o Iniciar Sesion</h2>
                         <a class="registrarse" href="register.php">Crear una cuenta</a>
                         <div class="input-box">
-                            <input type="email" name="correo" placeholder="Correo Electronico">
+                            <input type="email" id="correo" name="correo" placeholder="Correo Electronico">
                         </div>
                         <div class="input-box">
-                            <input  type="password"   name="contrasena" placeholder="Contraseña">
+                            <input  type="password" id="contrasena"   name="contrasena" placeholder="Contraseña">
                         </div>
                         <div class="input-box">
                             <button name="btnlogin" type="submit" class="btn">Iniciar Sesion</button>

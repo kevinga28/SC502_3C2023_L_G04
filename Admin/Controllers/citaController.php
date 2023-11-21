@@ -198,4 +198,12 @@ switch ($_GET["op"]) {
             echo json_encode(["error" => "No se encontraron horarios"]);
         }
         break;
+
+    case 'cargarCitaCalendario':
+
+        $citaModel = new Cita();
+        $citas = $citaModel->obtenerCitasCalendario();
+        echo json_encode($citas);
+        break;
+
 }

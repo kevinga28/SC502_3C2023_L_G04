@@ -1,6 +1,6 @@
 .box-log{
     width: 510px;
-    height:1000px;
+    height:1100px;
     background-color:#F7F4ED;
 }
 
@@ -20,12 +20,12 @@
 
 .box-log .btn{
     justify-content: center;
-    padding:10px;
-    width:30%;
+    padding:5px;
+    width:40%;
     color:white;
     background-color:#202126;
     border-radius:12px;
-    margin-top:50px;
+    margin-top:10px;
     font-weight: bold;
 }
 
@@ -56,7 +56,7 @@
     font-size: 12px;
 }
 .input-box-fechas input {
-    text-align: center; 
+    text-align: center;
 }
 
 .fecha_nacimiento input{
