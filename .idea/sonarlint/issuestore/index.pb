@@ -59,8 +59,6 @@ X
 (Admin/Controllers/empleadoController.php,1\a\1abaac618b17fb470d3f9d65f9631e2f33537241
 N
 Admin/Views/logueo/js/login.js,4\4\44f289e32f98eeb587fff114d11139f53a0def82
-W
-'Admin/Controllers/clienteController.php,6\1\616f5009821b2827caab8d8bc584be24d853b4ff
 X
 (Admin/Views/plugins/fullcalendar/main.js,1\8\1827f3e656848968c82bf3eaa6d46d97aaa5c077
 Y
