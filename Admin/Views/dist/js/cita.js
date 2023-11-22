@@ -73,7 +73,7 @@ $(function () {
 
 
 
-/* ---------------------------------------------------------------CREAR LOS CLIENTES--------------------------------------------------------------- */
+/* ---------------------------------------------------------------CREAR LAS CITAS--------------------------------------------------------------- */
 $('#crearCita').on('submit', function (event) {
   event.preventDefault();
   $('#btnRegistrarCita').prop('disabled', true);
@@ -395,7 +395,7 @@ $(document).ready(function () {
 });
 
 
-/* ---------------------------------------------------------------SUMA TOTAL PARA DURACION TOTAL-------------------------------------------------------------- */
+/* ---------------------------------------------------------------FUNCIONAMIENTO DE INTERVALOS-------------------------------------------------------------- */
 $(document).ready(function() {
   $('#tratamiento, #Etratamiento').on('change', function() {
     calcularDuracionTotal();

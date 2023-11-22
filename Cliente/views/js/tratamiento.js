@@ -3,7 +3,7 @@
 
 $(document).ready(function () {
   $.ajax({
-    url: '../../../admin/Controllers/tratamientoController.php?op=listaTratamiento',
+    url: '../../admin/Controllers/tratamientoController.php?op=listaTratamiento',
     type: 'GET',
     dataType: 'json',
     success: function (data) {
