@@ -1,6 +1,5 @@
 <?php
 require_once '../Model/Empleado.php';
-require_once '../Views/dist/img/avatar.png';
 switch ($_GET["op"]) {
 
     case 'listaEmpleados':
@@ -58,7 +57,7 @@ switch ($_GET["op"]) {
         $canton = isset($_POST["canton"]) ? trim($_POST["canton"]) : "";
         $otros = isset($_POST["otros"]) ? trim($_POST["otros"]) : "";
 
-    
+
 
         $empleado = new Empleado();
 

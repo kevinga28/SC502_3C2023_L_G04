@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8c9abd-086d-4297-a16c-a6018e345d6d" name="Changes" comment="plugin phpmailer">
-      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Controllers/empleadoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Controllers/empleadoController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/config/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/config/global.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/Controller/SessionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/Controller/SessionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/login/js/actualizarPassword.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/js/actualizarPassword.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +52,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SONARLINT_PRECOMMIT_ANALYSIS": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/SC502_3C2023_L_G04",
+    "last_opened_file_path": "C:/xampp/htdocs/testing",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -216,7 +214,7 @@
       <workItem from="1700704166484" duration="20327000" />
       <workItem from="1700765441195" duration="2608000" />
       <workItem from="1700769456080" duration="1510000" />
-      <workItem from="1700773984455" duration="1411000" />
+      <workItem from="1700773984455" duration="4383000" />
     </task>
     <task id="LOCAL-00001" summary="calendario y recuperar password por email">
       <created>1700765536530</created>
