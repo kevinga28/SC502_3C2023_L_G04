@@ -21,11 +21,13 @@ $('#actualizarPassword').on('submit', function (event) {
             switch (dataS) {
                 case '1':
                     Swal.fire({
-                        icon: 'Success',
+                        icon: 'success',
                         title: 'Contraseña actualizada',
                         text: ' ',
+                        willClose: function () {
+                            window.location.href = 'login.php';
+                        }
                     });
-                    window.location.href = 'login.php';
                     break;
                 case '2':
                     Swal.fire({
@@ -34,8 +36,17 @@ $('#actualizarPassword').on('submit', function (event) {
                         text: ' ',
                     });
                     break;
+
+                case '3':
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Contraseña Invalida',
+                        text: ' La contraseña debe tener al menos 8 caracteres',
+                    });
+                    break;
             }
             $('#btnR').removeAttr('disabled');
         },
     });
 });
+

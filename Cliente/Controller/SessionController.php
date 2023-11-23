@@ -143,7 +143,7 @@ switch ($_GET["op"]) {
                 $mail->isHTML(true);
                 $mail->Subject = 'Recuperar Contraseña';
 
-                $mail->Body =   'Para recuperar su contraseña, por favor ingrese al siguiente link: <a href="http://localhost/Evol/Cliente/views/login/actualizarPassword.php?id='.$datosUsuario['IdCliente']. '&token='.$token.'">click</a>';
+                $mail->Body =   'Para recuperar su contraseña, por favor ingrese al siguiente link: <a href="http://localhost/SC502_3C2023_L_G04/Cliente/views/login/actualizarPassword.php?id='.$datosUsuario['IdCliente']. '&token='.$token.'">click</a>';
 
                 //$mail->Body    = 'Para recuperar su contraseña por favor ingrese al siguiente link<a href="http://localhost/Evol/Cliente/views/login/actualizarPassword.php?id='.$datosUsuario['IdCliente'].'">click</a>';
 
@@ -175,6 +175,8 @@ switch ($_GET["op"]) {
         break;
 
     case 'actualizarPassword':
+
+
         $cliente = new Cliente();
         $contrasena = isset($_POST["contrasena"]) ? trim($_POST["contrasena"]) : "";
         $id = isset($_POST["id"]) ? trim($_POST["id"]) : "";
@@ -186,14 +188,23 @@ switch ($_GET["op"]) {
         $cliente->setIdCliente($id);
 
         // Agrega la lógica para verificar el token, puedes compararlo con el token almacenado en la base de datos
+        if (strlen($contrasena) > 8){
 
-        if ($cliente->actualizarContrasenaCliente()) {
-            echo 1;
-            break;
-        } else {
-            echo 2;
+
+            if ($cliente->actualizarContrasenaCliente()) {
+                echo 1;
+                break;
+            } else {
+                echo 2;
+                break;
+            }
+
+
+        }else{
+            echo 3;
             break;
         }
+
 
 
 

@@ -23,14 +23,10 @@ K
 Admin/Views/dist/js/demo.js,3\c\3c3625c385229151e3d4b6d767a924ca802936c1
 O
 Admin/Views/logueo/js/logout.js,c\2\c27758987b379a275effbae175bb7764ff1e7b39
-M
-Cliente/views/login/login.php,e\d\edc46f6f03c3b15eccad4d1ec2e2bdaaf438cd4f
 R
 "Cliente/views/fragments/footer.php,a\2\a2052863a0bd785e104754369285aa88f84579c0
 X
 (Cliente/views/login/fragments/footer.php,4\8\48f99fed94568a7ccdcd27279f8f3d2e7622643a
-P
- Cliente/views/login/register.php,6\2\62419e7e4bdba34c3f9dc329a4a4a8d762476c1d
 T
 $Cliente/views/login/css/register.css,3\0\308c1cbfe5080d27727acf2621ef3cf8d78e52f9
 P
@@ -47,8 +43,6 @@ U
 %Admin/Views/fragments/estadistica.php,5\f\5f85bfbd33f655c0da43a6216c2f2b505e40d282
 E
 Admin/Views/index.php,5\2\520781c66d87dff514a05d22224705f394ca15b5
-V
-&Cliente/views/login/js/inicioSesion.js,5\f\5f138fc95ec95d0b40181564537418486f3108ae
 M
 Admin/Views/logueo/logueo.php,5\3\5321c7459484ab7bf82dbb52124f0ab9eb5b7ebd
 V
