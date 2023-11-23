@@ -262,7 +262,7 @@ class Empleado extends Conexion
             $resultado = self::$conn->prepare($query);
 
             $resultado->bindParam(":cedula", $cedula, PDO::PARAM_INT);
-            $resultado->bindParam(":imagen", $imagen, PDO::PARAM_LOB);
+            $resultado->bindParam(":imagen", $imagen, PDO::PARAM_STR);
             $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
             $resultado->bindParam(":apellido", $apellido, PDO::PARAM_STR);
             $resultado->bindParam(":genero", $genero, PDO::PARAM_STR);

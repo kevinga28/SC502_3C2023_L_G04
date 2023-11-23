@@ -33,7 +33,22 @@ switch ($_GET["op"]) {
             echo 'La cédula debe tener exactamente 9 dígitos.';
             exit;
         }
-        $imagen = isset($_POST["imagen"]) ? file_get_contents($_POST["imagen"]) : "";
+        if (!empty($_FILES['imagen']['name'])) {
+            // Ruta de la carpeta donde se guardará la imagen
+            $carpetaDestino = '../Views/dist/img/';
+        
+            // Nombre de la imagen
+            $imagen = $_FILES['imagen']['name'];
+        
+            // Ruta completa donde se guardará la imagen
+            $rutaImagen = $carpetaDestino . $imagen;
+        
+            move_uploaded_file($_FILES['imagen']['tmp_name'], $rutaImagen);
+        } else {
+            // No se ha enviado ninguna imagen
+            echo 'Debe seleccionar una imagen.';
+            exit;
+        }
         $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
         $apellido = isset($_POST["apellido"]) ? trim($_POST["apellido"]) : "";
         $genero = isset($_POST["genero"]) ? trim($_POST["genero"]) : "";
