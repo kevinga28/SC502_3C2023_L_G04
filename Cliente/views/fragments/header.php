@@ -1,13 +1,28 @@
 <?php
 require_once '../../Admin/Model/Cliente.php';
+require_once '../../Admin/config/global.php';  
+require_once '../../Admin/config/Conexion.php'; 
+
+// Crear una instancia de la clase Conexion
+$conexion = new Conexion();
+$pdo = $conexion->conectar();
 
 // Iniciar la sesión
 session_start();
 
-
 // Comprobar si el usuario ha iniciado sesión y si se han almacenado los datos del usuario en la sesión
 if (isset($_SESSION['usuarioCliente'])) {
     $usuario = $_SESSION['usuarioCliente'];
+    $idCliente = $usuario->getIdCliente();
+
+    // Consultar facturas del cliente
+    $queryFacturas = $pdo->prepare("SELECT f.IdFactura, f.IdCita, f.metodoPago, f.pagoTotal
+                                    FROM factura f
+                                    INNER JOIN cita c ON f.IdCita = c.IdCita
+                                    WHERE c.idCliente = :idCliente");
+    $queryFacturas->bindParam(':idCliente', $idCliente, PDO::PARAM_INT);
+    $queryFacturas->execute();
+    $facturas = $queryFacturas->fetchAll(PDO::FETCH_ASSOC);
 } else {
     $usuario = null;
 }
@@ -198,52 +213,47 @@ if (isset($usuario)) {
     </div>
 
 
-    <!-- MODAL FACTURA-->
 
-    <div class="modal fade" id="facturaModal" tabindex="-1" aria-labelledby="facturaModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content" style="background-color: #F7F4ED;">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="facturaModalLabel">Información de Factura</h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 20px;"></button>
-                </div>
-                <div class="modal-body" style="max-height: 500px; overflow-y: auto;">
-                    <?php foreach ($facturas as $factura) : ?>
-                        <div class="text-modal">
-                            <div class="form-group">
-                                <label for="tratamiento">Tratamiento:</label>
-                                <input type="text" id="tratamiento" name="tratamiento" class="form-control" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="precio">Precio con IVA:</label>
-                                <input type="text" id="precio" name="precio" class="form-control" value="<?php echo $factura['precio']; ?>" readonly>
-                            </div>
-                            <div class="form-group">
-                                <label for="fecha">Fecha:</label>
-                                <div class="row">
-                                    <div class="col">
-                                        <input type="text" id="dia" name="dia" class="form-control" value="<?php echo date('d', strtotime($factura['fecha'])); ?>" readonly>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" id="mes" name="mes" class="form-control" value="<?php echo date('m', strtotime($factura['fecha'])); ?>" readonly>
-                                    </div>
-                                    <div class="col">
-                                        <input type="text" id="año" name="año" class="form-control" value="<?php echo date('Y', strtotime($factura['fecha'])); ?>" readonly>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                </div>
-                <div class="modal-footer" style="justify-content: space-between;">
-                    <button type="button" class="btn btn-citas-modal" data-bs-toggle="modal" data-bs-target="#myModal">Volver</button>
-                </div>
+<!-- MODAL FACTURA -->
+<div class="modal fade" id="facturaModal" tabindex="-1" aria-labelledby="facturaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content" style="background-color: #F7F4ED;">
+            <div class="modal-header">
+                <h4 class="modal-title" id="facturaModalLabel">Información de Factura</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="margin-right: 20px;"></button>
+            </div>
+            <div class="modal-body" style="max-height: 500px; overflow-y: auto;">
+                <?php if (isset($facturas) && count($facturas) > 0) : ?>
+                    <table id="tablaFacturas" class="table">
+                        <thead>
+                            <tr>
+                                <th>Id Factura</th>
+                                <th>Id Cita</th>
+                                <th>Método de Pago</th>
+                                <th>Pago Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($facturas as $factura) : ?>
+                                <tr>
+                                    <td><?php echo $factura['IdFactura']; ?></td>
+                                    <td><?php echo $factura['IdCita']; ?></td>
+                                    <td><?php echo $factura['metodoPago']; ?></td>
+                                    <td><?php echo $factura['pagoTotal']; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else : ?>
+                    <p>No hay facturas disponibles.</p>
+                <?php endif; ?>
+            </div>
+            <div class="modal-footer" style="justify-content: space-between;">
+                <button type="button" class="btn btn-citas-modal" data-bs-toggle="modal" data-bs-target="#myModal">Volver</button>
             </div>
         </div>
     </div>
-
-
-
+</div>
 
 <?php
 }
