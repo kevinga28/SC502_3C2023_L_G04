@@ -23,6 +23,9 @@
 <div id="calendar"></div>
 
 <script>
+
+
+
     document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('calendar');
         var calendar = new FullCalendar.Calendar(calendarEl, {
@@ -31,16 +34,33 @@
                 center: 'title',
                 right: 'dayGridMonth, timeGridWeek, timeGridDay'
             },
-            events: {
-                url: '../Controllers/citaController.php?op=cargarCitaCalendario',
-                method: 'GET',
-                failure: function () {
-                    alert('Error al cargar eventos desde el servidor');
-                }
+            events: function (fetchInfo, successCallback, failureCallback) {
+                // Realizar la solicitud AJAX para obtener los eventos
+                $.ajax({
+                    url: '../Controllers/citaController.php?op=cargarCitaCalendario',
+                    method: 'GET',
+                    success: function (response) {
+                        var eventos = JSON.parse(response);
+
+                        // Verificar si hay eventos
+                        if (eventos.length > 0) {
+                            // Si hay eventos, llamar a successCallback con los eventos
+                            successCallback(eventos);
+
+                        } else {
+                            // Si no hay eventos, mostrar un mensaje o hacer lo que desees
+                            // También puedes llamar a successCallback con un array vacío
+                            successCallback([]);
+                        }
+                    },
+                    error: function (error) {
+                        // Manejar el error, por ejemplo, mostrar un mensaje de error
+                        alert('Error al cargar eventos desde el servidor');
+                        failureCallback(error);
+                    }
+                });
             },
             eventClick: function (info) {
-
-
                 var cliente = info.event.title;
                 var descripcion = info.event.extendedProps.tratamientos;
                 var nombreEmpleado = info.event.extendedProps.nombreEmpleado;
@@ -51,28 +71,27 @@
 
                 // Crear el contenido HTML para Swal.fire
                 var content = '<div>' +
-                    '<strong>CITA:</strong> '  + ' ' +
+                    '<strong>CITA:</strong> ' + ' ' +
                     '<p><strong>Cliente:</strong> ' + cliente + '</p>' +
                     '<p><strong>Estilista:</strong> ' + nombreEmpleado + '</p>' +
                     '<p><strong>Tratamiento:</strong> ' + descripcion + '</p>' +
                     '<p><strong>Fecha:</strong> ' + fecha + '</p>' +
-                    '<p><strong>Hora:</strong> ' + horaInicio + " - "+" "+" " + horaFinal+'</p>' +
-
-
+                    '<p><strong>Hora:</strong> ' + horaInicio + " - " + " " + horaFinal + '</p>' +
                     '</div>';
 
                 // Mostrar la ventana modal con la información de la cita
                 Swal.fire({
                     title: 'Detalles de la Cita',
                     html: content
-
                 });
-            },
-
+            }
         });
 
         calendar.render();
     });
+
+
+
 </script>
 </body>
 </html>

@@ -9,10 +9,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Realizar la verificación del usuario y contraseña
     $empleado = new Empleado();
+
+    $clavehash = hash('SHA256', trim($contrasena));
     $empleado->setCedula($cedula);
-    $empleado->setContrasena($contrasena);
+    $empleado->setContrasena($clavehash);
+
+
 
     if ($empleado->login()) {
+        $datosUsuario = $empleado->obtenerEmpleadoPorCedula($empleado->getCedula());
+
+        $empleado->setCedula($datosUsuario['cedula']);
+        $empleado->setCorreo($datosUsuario['correo']);
+        $empleado->setNombre($datosUsuario['nombre']);
+        $empleado->setApellido($datosUsuario['apellido']);
+        $empleado->setTelefono($datosUsuario['telefono']);
+        $empleado->setContrasena($datosUsuario['contrasena']);
+        $empleado->setDistrito($datosUsuario['distrito']);
+        $empleado->setCanton($datosUsuario['canton']);
+        $empleado->setRol($datosUsuario['rol']);
+        $empleado->setProvincia($datosUsuario['provincia']);
+        $empleado->setOtros($datosUsuario['otros']);
+
+
+
+
+
+
         // Obtener el rol del usuario
         $rol = $empleado->getRol();
         $_SESSION['rol'] = $rol;
@@ -28,7 +51,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             case 'Estilista':
                 $allowedPages = ['index.php', 'calendar.php'];
                 break;
-            case 'Empleado':
+            case 'Gerente':
                 $allowedPages = ['index.php', 'employee_dashboard.php'];
                 break;
             default:

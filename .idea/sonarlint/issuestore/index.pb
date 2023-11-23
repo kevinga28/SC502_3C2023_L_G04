@@ -41,8 +41,6 @@ W
 'Admin/Controllers/facturaController.php,8\3\83a9fdfa34bd52b0903f6e6e0791679e9eeeaf69
 [
 +Admin/Controllers/tratamientoController.php,2\9\29dfcfabd4c46e73ff90196cd1d6b360943d0146
-X
-(Admin/Views/fragments/asideEstilista.php,a\0\a03e8c2f5cc0c25cf0454c3efdd1b0accf3d673a
 T
 $Cliente/views/js/bootstrap.bundle.js,7\9\7953497c1d658aca1ec3364745231541966719d4
 U

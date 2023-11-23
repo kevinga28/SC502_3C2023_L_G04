@@ -1,5 +1,6 @@
 <?php
 require_once '../Model/Empleado.php';
+require_once '../Views/dist/img/avatar.png';
 switch ($_GET["op"]) {
 
     case 'listaEmpleados':
