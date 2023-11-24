@@ -32,14 +32,14 @@ require_once '../../Controllers/AuthController.php';
   session_start();
 
   // Verifica si el rol está establecido en la sesión
-  if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+  if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Admin') {
     // Si el rol no es el adecuado, redirecciona o muestra un mensaje de acceso denegado
     header('Location: ../acceso_denegado.php');
     exit;
   }
 
   $authController = new AuthController();
-  $authController->verificarAcceso(['admin']);
+  $authController->verificarAcceso(['Admin']);
   ?>
 
   <div class="wrapper">

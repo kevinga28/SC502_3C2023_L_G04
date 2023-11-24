@@ -28,13 +28,13 @@ require_once '../../Controllers/AuthController.php';
     <?php
     session_start();
 
-    if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+    if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Admin') {
         header('Location: ../acceso_denegado.php');
         exit;
     }
 
     $authController = new AuthController();
-    $authController->verificarAcceso(['admin']);
+    $authController->verificarAcceso(['Admin']);
     ?>
 
     <div class="wrapper">

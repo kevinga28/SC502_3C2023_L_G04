@@ -18,7 +18,7 @@ foreach ($facturas as $factura) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -45,7 +45,7 @@ foreach ($facturas as $factura) {
     <?php
     session_start();
 
-    $rolesPermitidos = ['admin', 'empleado', 'estilista'];
+    $rolesPermitidos = ['Admin', 'Gerente', 'Estilista'];
 
     if (!isset($_SESSION['rol']) || !in_array($_SESSION['rol'], $rolesPermitidos)) {
         header('Location: ../acceso_denegado.php');
@@ -53,7 +53,7 @@ foreach ($facturas as $factura) {
     }
 
     $authController = new AuthController();
-    $authController->verificarAcceso(['admin', 'estilista', 'empleado']);
+    $authController->verificarAcceso(['Admin', 'Estilista', 'Gerente']);
     ?>
 
     <div class="wrapper">

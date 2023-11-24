@@ -42,7 +42,7 @@ foreach ($clientes as $cliente) {
   <?php
   session_start();
 
-  $rolesPermitidos = ['admin', 'empleado', 'estilista'];
+  $rolesPermitidos = ['Admin', 'Gerente', 'Estilista'];
 
   if (!isset($_SESSION['rol']) || !in_array($_SESSION['rol'], $rolesPermitidos)) {
     header('Location: ../acceso_denegado.php');
@@ -50,7 +50,7 @@ foreach ($clientes as $cliente) {
   }
 
   $authController = new AuthController();
-  $authController->verificarAcceso(['admin', 'estilista', 'empleado']);
+  $authController->verificarAcceso(['Admin', 'Estilista', 'Gerente']);
   ?>
 
   <div class="wrapper">

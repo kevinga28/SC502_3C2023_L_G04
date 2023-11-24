@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once '../Model/Cita.php';
 switch ($_GET["op"]) {
 
@@ -203,12 +204,12 @@ switch ($_GET["op"]) {
         $rol = $_SESSION['rol'];
 
         $citaModel = new Cita();
-        if ($_SESSION['rol'] === 'Admin') {
-            $citas = $citaModel->obtenerCitasCalendarioAdmin($_SESSION['rol']);
+        if ($_SESSION['rol'] === 'Admin' || $_SESSION['rol'] === 'Gerente') {
+            $citaModel = $citaModel->obtenerCitasCalendarioAdmin($_SESSION['rol']);
         } else if ($_SESSION['rol'] === 'Estilista') {
-            $citas = $citaModel->obtenerCitasCalendarioEstilista($_SESSION['cedula'], $_SESSION['rol']);
+            $citaModel = $citaModel->obtenerCitasCalendarioEstilista($_SESSION['cedula'], $_SESSION['rol']);
         }
 
-        echo json_encode($citas);
+        echo json_encode($citaModel);
         break;
 }

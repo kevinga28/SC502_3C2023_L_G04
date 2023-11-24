@@ -31,15 +31,15 @@ require_once '../../Controllers/AuthController.php';
   <?php
   session_start();
 
-  $rolesPermitidos = ['admin', 'estilista', 'gerente'];
+  $rolesPermitidos = ['Admin', 'Gerente', 'Estilista'];
 
   if (!isset($_SESSION['rol']) || !in_array($_SESSION['rol'], $rolesPermitidos)) {
-      header('Location: ../acceso_denegado.php');
-      exit;
+    header('Location: ../acceso_denegado.php');
+    exit;
   }
 
   $authController = new AuthController();
-  $authController->verificarAcceso(['admin', 'estilista', 'gerente']);
+  $authController->verificarAcceso(['Admin', 'Estilista', 'Gerente']);
   ?>
 
   <div class="wrapper">

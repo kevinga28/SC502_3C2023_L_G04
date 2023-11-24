@@ -1,6 +1,6 @@
 
     <div class="d-lg-flex half">
-    <div class="bg order-1 order-md-2" style="background-image: url('images/bg_1.jpg');"></div>
+    <div class="bg order-1 order-md-2" style="background-image: url('../dist/img/calendar_bg.jpg');"></div>
     <div class="contents order-2 order-md-1">
 
       <div class="container">

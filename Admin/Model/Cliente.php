@@ -438,4 +438,62 @@ class Cliente extends Conexion
             return $error;
         }
     }
+
+    public function actualizarContrasenaCliente()
+    {
+        $query = "UPDATE cliente 
+                    SET contrasena = :contrasena 
+                    WHERE IdCliente = :IdCliente";
+
+        try {
+            self::getConexion();
+
+            $contrasena = $this->getContrasena();
+            $IdCliente = $this->getIdCliente();
+
+
+            $resultado = self::$cnx->prepare($query);
+
+            $resultado->bindParam(":contrasena", $contrasena, PDO::PARAM_STR);
+            $resultado->bindParam(":IdCliente", $IdCliente, PDO::PARAM_STR);
+
+
+            self::$cnx->beginTransaction(); // Desactiva el autocommit
+
+            $resultado->execute();
+            self::$cnx->commit(); // Realiza el commit y vuelve al modo autocommit
+
+
+
+            if ($resultado->rowCount() > 0) {
+                return true;
+
+            } else {
+                return false;
+            }
+
+
+
+            self::desconectar();
+
+        } catch (PDOException $Exception) {
+            self::$cnx->rollBack();
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error;
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

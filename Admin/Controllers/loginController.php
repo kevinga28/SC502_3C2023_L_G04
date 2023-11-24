@@ -11,7 +11,7 @@ if ($authController->login()) {
 }
 
 // Verificar acceso para diferentes roles
-$authController->verificarAcceso(['admin']);
-$authController->verificarAcceso(['gerente', 'estilista']);
-$authController->verificarAcceso(['admin','estilista','gerente']);
+$authController->verificarAcceso(['Admin']);
+$authController->verificarAcceso(['Gerente', 'Estilista']);
+$authController->verificarAcceso(['Admin','Estilista','Gerente']);
 ?>

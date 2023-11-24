@@ -30,7 +30,7 @@ require_once '../../Controllers/AuthController.php';
   <?php
   session_start();
 
-  $rolesPermitidos = ['admin', 'empleado', 'estilista'];
+  $rolesPermitidos = ['Admin', 'Gerente', 'Estilista'];
 
   if (!isset($_SESSION['rol']) || !in_array($_SESSION['rol'], $rolesPermitidos)) {
     header('Location: ../acceso_denegado.php');
@@ -38,7 +38,7 @@ require_once '../../Controllers/AuthController.php';
   }
 
   $authController = new AuthController();
-  $authController->verificarAcceso(['admin', 'estilista', 'empleado']);
+  $authController->verificarAcceso(['Admin', 'Estilista', 'Gerente']);
   ?>
 
   <div class="wrapper">
@@ -126,9 +126,9 @@ require_once '../../Controllers/AuthController.php';
 
     </div>
 
-   <a type="button" class="btn btn-danger float-right eliminar-cliente" data-id="' + data[0] + '"><i class="fas fa-trash"></i> Eliminar</a>
-            <a id="modificarCliente" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>
-            <a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>
+    <a type="button" class="btn btn-danger float-right eliminar-cliente" data-id="' + data[0] + '"><i class="fas fa-trash"></i> Eliminar</a>
+    <a id="modificarCliente" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>
+    <a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>
 
     <footer class="main-footer no-print">
       <?php
