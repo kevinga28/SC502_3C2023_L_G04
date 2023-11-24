@@ -1,3 +1,6 @@
+<?php
+require_once '../../Controllers/AuthController.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,6 +26,20 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+    <?php
+    session_start();
+
+    $rolesPermitidos = ['admin', 'empleado', 'estilista'];
+
+    if (!isset($_SESSION['rol']) || !in_array($_SESSION['rol'], $rolesPermitidos)) {
+        header('Location: ../acceso_denegado.php');
+        exit;
+    }
+
+    $authController = new AuthController();
+    $authController->verificarAcceso(['admin', 'estilista', 'empleado']);
+    ?>
+
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand ">

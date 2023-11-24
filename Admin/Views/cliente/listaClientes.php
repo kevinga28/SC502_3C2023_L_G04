@@ -1,3 +1,7 @@
+<?php
+require_once '../../Controllers/AuthController.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,6 +27,20 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+  <?php
+  session_start();
+
+  $rolesPermitidos = ['admin', 'empleado', 'estilista'];
+
+  if (!isset($_SESSION['rol']) || !in_array($_SESSION['rol'], $rolesPermitidos)) {
+    header('Location: ../acceso_denegado.php');
+    exit;
+  }
+
+  $authController = new AuthController();
+  $authController->verificarAcceso(['admin', 'estilista', 'empleado']);
+  ?>
+
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand ">
@@ -108,6 +126,10 @@
 
     </div>
 
+   <a type="button" class="btn btn-danger float-right eliminar-cliente" data-id="' + data[0] + '"><i class="fas fa-trash"></i> Eliminar</a>
+            <a id="modificarCliente" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>
+            <a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>
+
     <footer class="main-footer no-print">
       <?php
       include 'fragments/footer.php'
@@ -119,7 +141,7 @@
 
   <!-- jQuery -->
 
-  
+
   <script src="../plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -128,8 +150,8 @@
   <!-- Datatable -->
   <script src="../plugins/DataTables/datatables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-   <!-- SWEETALERT -->
-   <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
+  <!-- SWEETALERT -->
+  <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
   <script src="../dist/js/cliente.js"></script>
 

@@ -1,3 +1,7 @@
+<?php
+require_once '../../Controllers/AuthController.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -24,6 +28,20 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+  <?php
+  session_start();
+
+  // Verifica si el rol está establecido en la sesión
+  if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+    // Si el rol no es el adecuado, redirecciona o muestra un mensaje de acceso denegado
+    header('Location: ../acceso_denegado.php');
+    exit;
+  }
+
+  $authController = new AuthController();
+  $authController->verificarAcceso(['admin']);
+  ?>
+
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand ">

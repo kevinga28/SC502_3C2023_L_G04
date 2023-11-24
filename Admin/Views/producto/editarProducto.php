@@ -1,3 +1,7 @@
+<?php
+require_once '../../Controllers/AuthController.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,21 +10,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Evolve</title>
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-  <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
+    <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
-  <link rel="stylesheet" href="../dist/css/style.css">
+    <link rel="stylesheet" href="../dist/css/style.css">
 
 
 </head>
 
 <body class="hold-transition sidebar-mini">
+
+    <?php
+    session_start();
+
+    // Verifica si el rol está establecido en la sesión
+    if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+        // Si el rol no es el adecuado, redirecciona o muestra un mensaje de acceso denegado
+        header('Location: ../acceso_denegado.php');
+        exit;
+    }
+
+    $authController = new AuthController();
+    $authController->verificarAcceso(['admin']);
+    ?>
 
     <div class="wrapper">
         <!-- Navbar -->

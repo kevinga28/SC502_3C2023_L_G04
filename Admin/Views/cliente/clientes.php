@@ -1,6 +1,7 @@
 <?php
 require_once '../../../admin/config/global.php';
 require_once '../../../admin/config/conexion.php';
+require_once '../../Controllers/AuthController.php';
 
 $conexion = Conexion::conectar();
 $query = $conexion->query("SELECT provincia, COUNT(*) as cantidad_clientes FROM cliente GROUP BY provincia");
@@ -10,8 +11,8 @@ $nombres = [];
 $provincias = [];
 
 foreach ($clientes as $cliente) {
-    $nombres[] = $cliente['provincia'];
-    $provincias[] = $cliente['cantidad_clientes'];
+  $nombres[] = $cliente['provincia'];
+  $provincias[] = $cliente['cantidad_clientes'];
 }
 ?>
 
@@ -37,6 +38,21 @@ foreach ($clientes as $cliente) {
 </head>
 
 <body class="hold-transition sidebar-mini">
+
+  <?php
+  session_start();
+
+  $rolesPermitidos = ['admin', 'empleado', 'estilista'];
+
+  if (!isset($_SESSION['rol']) || !in_array($_SESSION['rol'], $rolesPermitidos)) {
+    header('Location: ../acceso_denegado.php');
+    exit;
+  }
+
+  $authController = new AuthController();
+  $authController->verificarAcceso(['admin', 'estilista', 'empleado']);
+  ?>
+
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand ">
@@ -253,27 +269,27 @@ foreach ($clientes as $cliente) {
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
-  const ctx = document.getElementById('myChart');
+    const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: <?php echo json_encode($nombres); ?>,
-      datasets: [{
-        label: '# of Votes',
-        data: <?php echo json_encode($provincias); ?>,
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: <?php echo json_encode($nombres); ?>,
+        datasets: [{
+          label: '# of Votes',
+          data: <?php echo json_encode($provincias); ?>,
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
       }
-    }
-  });
-</script>
+    });
+  </script>
 
 
 

@@ -1,3 +1,7 @@
+<?php
+require_once '../../Controllers/AuthController.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -23,6 +27,21 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+
+  <?php
+  session_start();
+
+  $rolesPermitidos = ['admin', 'estilista', 'gerente'];
+
+  if (!isset($_SESSION['rol']) || !in_array($_SESSION['rol'], $rolesPermitidos)) {
+      header('Location: ../acceso_denegado.php');
+      exit;
+  }
+
+  $authController = new AuthController();
+  $authController->verificarAcceso(['admin', 'estilista', 'gerente']);
+  ?>
+
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand ">
@@ -125,8 +144,8 @@
   <!-- Datatable -->
   <script src="../plugins/DataTables/datatables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-   <!-- SWEETALERT -->
-   <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
+  <!-- SWEETALERT -->
+  <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
   <script src="../dist/js/tratamiento.js"></script>
 

@@ -1,5 +1,5 @@
  <!-- Brand Logo -->
- <a href="index.php" class="brand-link">
+ <a href="../index.php" class="brand-link">
      <img src="dist/img/logo.png" alt="Evolve_Logo" class="brand-image img-circle " >
      <span class="brand-text font-weight-light">Evolve</span>
  </a>

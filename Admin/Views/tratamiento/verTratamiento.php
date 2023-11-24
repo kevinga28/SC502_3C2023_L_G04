@@ -1,3 +1,7 @@
+<?php
+require_once '../../Controllers/AuthController.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,6 +24,19 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+
+    <?php
+    session_start();
+
+    if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'admin') {
+        header('Location: ../acceso_denegado.php');
+        exit;
+    }
+
+    $authController = new AuthController();
+    $authController->verificarAcceso(['admin']);
+    ?>
+
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand ">
@@ -69,7 +86,7 @@
                                             <h3 class="card-title">Ver Tratamiento</h3>
                                         </div>
                                         <!-- EMPIEZA EL FORMULARIO -->
-                                        <form >
+                                        <form>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -141,4 +158,3 @@
 
 
 </html>
-

@@ -416,9 +416,8 @@ class Empleado extends Conexion
     
         // Verifica si se encontró un empleado y la contraseña es válida
         if ($dbEmpleadoData && $this->getContrasena() == $dbEmpleadoData['contrasena']) {
-            session_start();
             $_SESSION['cedula'] = $dbEmpleadoData['cedula'];
-            $_SESSION['rol'] = !empty($dbEmpleadoData['rol']) ? $dbEmpleadoData['rol'] : 'Unknown';
+            $_SESSION['rol'] = $dbEmpleadoData['rol']; // Almacena el rol en la sesión
             return true;
         } else {
             return false;
