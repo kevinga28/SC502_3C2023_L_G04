@@ -95,10 +95,10 @@ require_once '../../Controllers/AuthController.php';
                                                             <input type="text" class="form-control" id="Ecedula" name="cedula" placeholder="Cedula" readonly>
                                                         </div>
 
-                                                        <div class="form-group">
-                                                            <label for="Imagen">Imagen</label>
-                                                            <input type="text" class="form-control" id="Eimagen" name="imagen" placeholder="Imagen" readonly>
-                                                        </div>
+                                                            <div class="form-group">
+                                                                <label for="imagen">Imagen</label>
+                                                                <img id="imagenPreview" src="" alt="Vista previa de la imagen" style="max-width: 50%; max-height: 50px;">
+                                                            </div>
                                                         <div class="form-group">
                                                             <label for="Nombre">Nombre</label>
                                                             <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Primer Nombre" readonly>

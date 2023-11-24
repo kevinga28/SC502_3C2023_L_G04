@@ -117,7 +117,10 @@ foreach ($empleados as $empleado) {
 
                             <div class="form-group">
                               <label for="imagen">Imagen</label>
-                              <input type="file" class="form-control" id="imagen" name="imagen" accept="image/*" required>
+                              <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="imagen" name="imagen" accept="image/*" required>
+                                <label class="custom-file-label" for="imagen" data-browse="Elegir archivo">Seleccionar archivo</label>
+                              </div>
                             </div>
 
                             <div class="form-group">
@@ -291,7 +294,13 @@ foreach ($empleados as $empleado) {
       }
     });
   </script>
-
+<script>
+    document.getElementById('imagen').addEventListener('change', function () {
+        var fileName = document.getElementById('imagen').files[0].name;
+        var nextSibling = document.querySelector('.custom-file-label');
+        nextSibling.innerText = fileName;
+    });
+</script>
   <script src="../dist/js/empleado.js"></script>
 
 </body>
