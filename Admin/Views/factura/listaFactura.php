@@ -1,3 +1,7 @@
+<?php
+require_once '../../Controllers/AuthController.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -9,23 +13,38 @@
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap4.min.css">
 
 
-    <!-- Google Font: Source Sans Pro -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css">
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
-    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+  <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
 
-    <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
+  <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
-    <link rel="stylesheet" href="../dist/css/style.css">
+  <link rel="stylesheet" href="../dist/css/style.css">
 
 
 </head>
 
 <body class="hold-transition sidebar-mini">
+
+  <?php
+  session_start();
+
+  $rolesPermitidos = ['Admin', 'Gerente', 'Estilista'];
+
+  if (!isset($_SESSION['rol']) || !in_array($_SESSION['rol'], $rolesPermitidos)) {
+    header('Location: ../acceso_denegado.php');
+    exit;
+  }
+
+  $authController = new AuthController();
+  $authController->verificarAcceso(['Admin', 'Estilista', 'Gerente']);
+  ?>
+
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand ">
@@ -124,21 +143,21 @@
 
   <!-- jQuery -->
 
-  
+
   <script src="../plugins/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
-    <!-- Datatable -->
-    <script src="../plugins/DataTables/datatables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-    <!-- SWEETALERT -->
-    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="../dist/js/adminlte.min.js"></script>
+  <!-- Datatable -->
+  <script src="../plugins/DataTables/datatables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+  <!-- SWEETALERT -->
+  <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
-    <script src="../plugins/select2/js/select2.full.min.js"></script>
+  <script src="../plugins/select2/js/select2.full.min.js"></script>
 
-    <script src="../dist/js/factura.js"></script>
+  <script src="../dist/js/factura.js"></script>
 
 
 

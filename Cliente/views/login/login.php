@@ -51,6 +51,9 @@
                         <div class="input-box">
                             <input  type="password" id="contrasena"   name="contrasena" placeholder="Contraseña">
                         </div>
+                        <div>
+                            <a href="recuperarPassword.php">Recuperar Contrasena</a>
+                        </div>
                         <div class="input-box">
                             <button name="btnlogin" type="submit" class="btn">Iniciar Sesion</button>
                         </div>

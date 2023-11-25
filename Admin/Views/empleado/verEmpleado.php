@@ -1,5 +1,9 @@
+<?php
+require_once '../../Controllers/AuthController.php';
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -20,6 +24,19 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+    <?php
+    session_start();
+
+    // Verifica si el rol está establecido en la sesión
+    if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Admin') {
+        // Si el rol no es el adecuado, redirecciona o muestra un mensaje de acceso denegado
+        header('Location: ../acceso_denegado.php');
+        exit;
+    }
+    $authController = new AuthController();
+    $authController->verificarAcceso(['Admin']);
+    ?>
+
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand ">
@@ -60,8 +77,8 @@
                     <div class="row">
                         <div class="col-12">
 
-                           <!-- FORMULARIO PARA CREAR UN PAGO O FACTURA -->
-                           <div class="row">
+                            <!-- FORMULARIO PARA CREAR UN PAGO O FACTURA -->
+                            <div class="row">
                                 <div class="col-sm-12">
                                     <!-- TITULO DEL FORMULARIO -->
                                     <div class="card card-primary">
@@ -69,14 +86,14 @@
                                             <h3 class="card-title">Ver Empleado</h3>
                                         </div>
                                         <!-- EMPIEZA EL FORMULARIO -->
-                                        <form >
+                                        <form>
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
-                                                         <div class="form-group">
+                                                        <div class="form-group">
                                                             <label for="Nombre">Cedula</label>
                                                             <input type="text" class="form-control" id="Ecedula" name="cedula" placeholder="Cedula" readonly>
-                                                            </div>
+                                                        </div>
 
                                                             <div class="form-group">
                                                                 <label for="imagen">Imagen</label>
@@ -95,7 +112,7 @@
                                                         <div class="form-group">
                                                             <label for="correo">Correo Electrónico</label>
                                                             <input type="email" class="form-control" id="Ecorreo" name="correo" placeholder="Correo" readonly>
-                                                         </div>
+                                                        </div>
 
 
                                                         <div class="form-group">
@@ -108,38 +125,38 @@
                                                     <div class=" col-md-6">
 
 
-                                                    <div class="form-group">
-                                                        <label for="fechaCita">Provincia</label>
-                                                        <input type="text" class="form-control" id="Eprovincia" name="provincia" placeholder="Provincia" readonly>
+                                                        <div class="form-group">
+                                                            <label for="fechaCita">Provincia</label>
+                                                            <input type="text" class="form-control" id="Eprovincia" name="provincia" placeholder="Provincia" readonly>
                                                         </div>
 
-                                                    <div class="form-group">
-                                                        <label for="distrito">Distrito</label>
-                                                        <input type="text" class="form-control" id="Edistrito" name="distrito" placeholder="Distrito" readonly>
-                                                    </div>
+                                                        <div class="form-group">
+                                                            <label for="distrito">Distrito</label>
+                                                            <input type="text" class="form-control" id="Edistrito" name="distrito" placeholder="Distrito" readonly>
+                                                        </div>
 
-                                                    <div class="form-group">
-                                                        <label for="canton">Canton</label>
-                                                        <input type="text" class="form-control" id="Ecanton" name="canton" placeholder="Canton" readonly>
-                                                    </div>
+                                                        <div class="form-group">
+                                                            <label for="canton">Canton</label>
+                                                            <input type="text" class="form-control" id="Ecanton" name="canton" placeholder="Canton" readonly>
+                                                        </div>
 
 
-                                                    <div class="form-group">
-                                                        <label for="otros">Otros</label>
-                                                        <input type="text" class="form-control" id="Eotros" name="otros" placeholder="Otras Señales" readonly>
-                                                    </div>
+                                                        <div class="form-group">
+                                                            <label for="otros">Otros</label>
+                                                            <input type="text" class="form-control" id="Eotros" name="otros" placeholder="Otras Señales" readonly>
+                                                        </div>
 
-                                                        
 
-                                                    <div class="form-group">
-                                                        <label for="genero">Genero</label>
-                                                        <input type="text" class="form-control" id="Egenero" name="genero" placeholder="Genero" readonly>
-                                                    </div>
 
-                                                    <div class="form-group">
-                                                        <label for="Rol">Rol</label>
-                                                        <input type="text" class="form-control" id="Erol" name="rol" placeholder="Rol" readonly>
-                                                    </div>
+                                                        <div class="form-group">
+                                                            <label for="genero">Genero</label>
+                                                            <input type="text" class="form-control" id="Egenero" name="genero" placeholder="Genero" readonly>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="Rol">Rol</label>
+                                                            <input type="text" class="form-control" id="Erol" name="rol" placeholder="Rol" readonly>
+                                                        </div>
 
                                                     </div>
                                                 </div>
@@ -170,19 +187,19 @@
     </div>
 
     <script src="../plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="../dist/js/adminlte.min.js"></script>
-  <!-- Datatable -->
-  <script src="../plugins/DataTables/datatables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
-  <!-- SWEETALERT -->
-  <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="../dist/js/adminlte.min.js"></script>
+    <!-- Datatable -->
+    <script src="../plugins/DataTables/datatables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap4.min.js"></script>
+    <!-- SWEETALERT -->
+    <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
-  <script src="../plugins/select2/js/select2.full.min.js"></script>
+    <script src="../plugins/select2/js/select2.full.min.js"></script>
 
-  <script src="../dist/js/empleado.js"></script>
+    <script src="../dist/js/empleado.js"></script>
 
 </body>
 

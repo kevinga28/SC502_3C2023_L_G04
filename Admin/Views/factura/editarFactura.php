@@ -1,5 +1,9 @@
+<?php
+require_once '../../Controllers/AuthController.php';
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -23,6 +27,22 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+
+    <?php
+    session_start();
+
+    $rolesPermitidos = ['Admin', 'Gerente', 'Estilista'];
+
+    if (!isset($_SESSION['rol']) || !in_array($_SESSION['rol'], $rolesPermitidos)) {
+        header('Location: ../acceso_denegado.php');
+        exit;
+    }
+
+    $authController = new AuthController();
+    $authController->verificarAcceso(['Admin', 'Estilista', 'Gerente']);
+    ?>
+
+
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand ">
@@ -129,7 +149,7 @@
                                                         </div>
 
 
-                                                        <div class="form-group" id="cantidadDiv" >
+                                                        <div class="form-group" id="cantidadDiv">
                                                             <label for="Cantidad">Cantidad</label>
                                                             <input type="number" class="form-control" id="cantidad" name="Ecantidad" placeholder="Cantidad" min="1">
                                                         </div>
@@ -155,16 +175,16 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-12 mb-4">
                                                 <a href="listaFactura.php" class="btn btn-secondary">Volver</a>
                                                 <input type="submit" value="Actualizar Facturas" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
                                             </div>
-                                            
+
                                         </form>
 
 
-                                       
+
 
                                     </div>
                                 </div>

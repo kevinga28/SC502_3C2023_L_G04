@@ -1,6 +1,8 @@
 <?php
 require_once '../../admin/config/global.php';
 require_once '../../admin/config/conexion.php';
+require_once '../Controllers/AuthController.php';
+
 
 $conexion = Conexion::conectar();
 // Consulta para obtener la cantidad de productos vendidos
@@ -19,13 +21,15 @@ $cantidadCitas = $resultadoCitas['cantidad'];
 require_once '../Model/Empleado.php';
 
 
-// Iniciar la sesión
 session_start();
+
+$authController = new AuthController();
+$rol = $authController->obtenerRolUsuario();
 
 // Verificar si el usuario está autenticado
 if (!isset($_SESSION['cedula'])) {
-    header("Location: ../views/logueo/logueo.php");
-    exit();
+  header("Location: ../views/logueo/logueo.php");
+  exit();
 }
 
 
@@ -34,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
   $_SESSION = array();
 
   if (isset($_COOKIE[session_name()])) {
-      setcookie(session_name(), '', time() - 42000, '/');
+    setcookie(session_name(), '', time() - 42000, '/');
   }
 
   // Destruir la sesión
@@ -49,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -89,8 +93,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar elevation-4 color-custom">
 
-      
-  
+
+
       <?php
       include 'fragments/aside.php'
       ?>
@@ -98,7 +102,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
 
 
     <div class="content-wrapper">
-  
+
       <div class="content-header">
         <div class="container-fluid">
           <div class="row mb-2">
@@ -114,9 +118,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
           </div>
         </div>
       </div>
-    
 
-     
+
+
       <section class="content">
         <div class="container-fluid">
 
@@ -159,9 +163,9 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
             </section>
 
 
-         
+
           </div>
-         
+
         </div>
       </section>
     </div>
@@ -191,14 +195,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
   <!-- ChartJS -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Estadistica -->
-  
+
   <script>
     // Código Chart.js
-const ctx = document.getElementById('myChart');
+    const ctx = document.getElementById('myChart');
 
-const data = {
-    labels: ['Productos Vendidos', 'Citas Realizadas'],
-    datasets: [{
+    const data = {
+      labels: ['Productos Vendidos', 'Citas Realizadas'],
+      datasets: [{
         label: 'Ventas y citas',
         data: [<?php echo $cantidadProductos; ?>, <?php echo $cantidadCitas; ?>],
         backgroundColor: [
@@ -206,27 +210,26 @@ const data = {
           'rgba(255, 99, 132, 0.2)'
         ],
         borderColor: [
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 99, 132, 1)'
+          'rgba(54, 162, 235, 1)',
+          'rgba(255, 99, 132, 1)'
         ],
         borderWidth: 1
-    }]
-};
+      }]
+    };
 
-const config = {
-    type: 'line',
-    data: data,
-    options: {
+    const config = {
+      type: 'line',
+      data: data,
+      options: {
         scales: {
-            y: {
-                beginAtZero: true
-            }
+          y: {
+            beginAtZero: true
+          }
         }
-    }
-};
+      }
+    };
 
-new Chart(ctx, config);
-
+    new Chart(ctx, config);
   </script>
 
 

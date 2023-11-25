@@ -1,6 +1,8 @@
 <?php
 require_once '../../../admin/config/global.php';
 require_once '../../../admin/config/conexion.php';
+require_once '../../Controllers/AuthController.php';
+
 
 $conexion = Conexion::conectar();
 $query = $conexion->query("SELECT metodoPago, COUNT(*) as cantidad_facturas FROM factura GROUP BY metodoPago");
@@ -16,7 +18,7 @@ foreach ($facturas as $factura) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -39,6 +41,21 @@ foreach ($facturas as $factura) {
 </head>
 
 <body class="hold-transition sidebar-mini">
+
+    <?php
+    session_start();
+
+    $rolesPermitidos = ['Admin', 'Gerente', 'Estilista'];
+
+    if (!isset($_SESSION['rol']) || !in_array($_SESSION['rol'], $rolesPermitidos)) {
+        header('Location: ../acceso_denegado.php');
+        exit;
+    }
+
+    $authController = new AuthController();
+    $authController->verificarAcceso(['Admin', 'Estilista', 'Gerente']);
+    ?>
+
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand ">

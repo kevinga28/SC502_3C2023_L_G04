@@ -18,6 +18,41 @@ class InicioSesion extends Conexion
     private $canton;
     private $otros ;
 
+    /**
+     * @return mixed
+     */
+    public function getIdCliente()
+    {
+        return $this->IdCliente;
+    }
+
+    /**
+     * @param mixed $IdCliente
+     */
+    public function setIdCliente($IdCliente)
+    {
+        $this->IdCliente = $IdCliente;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCorreo()
+    {
+        return $this->correo;
+    }
+
+    /**
+     * @param mixed $correo
+     */
+    public function setCorreo($correo)
+    {
+        $this->correo = $correo;
+    }
+
+
+
+
 
 
     public function __construct()
@@ -69,26 +104,26 @@ class InicioSesion extends Conexion
 
 
     public function obtenerDatosUsuario($correo)
-    {
-        $query = "SELECT * FROM cliente WHERE correo = :correo";
+{
+    $query = "SELECT * FROM cliente WHERE correo = :correo";
 
-        try {
-            self::getConexion();
-            $stmt = self::$cnx->prepare($query);
-            $stmt->bindParam(":correo", $correo);
-            $stmt->execute();
+    try {
+        self::getConexion();
+        $stmt = self::$cnx->prepare($query);
+        $stmt->bindParam(":correo", $correo);
+        $stmt->execute();
 
-            if ($stmt->rowCount() > 0) {
+        if ($stmt->rowCount() > 0) {
 
-                return $stmt->fetch(PDO::FETCH_ASSOC);
-            } else {
-                return null;
-            }
-        } catch (PDOException $Exception) {
-            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-            throw new Exception($error);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } else {
+            return null;
         }
+    } catch (PDOException $Exception) {
+        $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+        throw new Exception($error);
     }
+}
 
 
     public function logOut() {

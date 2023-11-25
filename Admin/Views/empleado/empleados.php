@@ -1,6 +1,9 @@
 <?php
 require_once '../../../admin/config/global.php';
 require_once '../../../admin/config/conexion.php';
+require_once '../../Controllers/AuthController.php';
+
+
 
 $conexion = Conexion::conectar();
 $query = $conexion->query("SELECT rol, COUNT(*) as cantidad_empleados FROM empleado GROUP BY rol");
@@ -16,7 +19,7 @@ foreach ($empleados as $empleado) {
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -41,6 +44,19 @@ foreach ($empleados as $empleado) {
 </head>
 
 <body class="hold-transition sidebar-mini">
+  <?php
+  session_start();
+
+  // Verifica si el rol está establecido en la sesión
+  if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Admin') {
+    // Si el rol no es el adecuado, redirecciona o muestra un mensaje de acceso denegado
+    header('Location: ../acceso_denegado.php');
+    exit;
+  }
+
+  $authController = new AuthController();
+  $authController->verificarAcceso(['Admin']);
+  ?>
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand ">
