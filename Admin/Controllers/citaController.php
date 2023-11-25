@@ -47,69 +47,76 @@ switch ($_GET["op"]) {
         }
         break;
 
-        case 'insertar':
-            try {
-                $IdCliente = isset($_POST["cliente"]) ? intval($_POST["cliente"]) : 0;
-                $cedulaEmpleado = isset($_POST["cedulaEmpleado"]) ? intval($_POST["cedulaEmpleado"]) : 0;
-                $fechaCita = isset($_POST["fechaCita"]) ? trim($_POST["fechaCita"]) : "";
-                $horaCita = isset($_POST["horaCita"]) ? trim($_POST["horaCita"]) : "";
-                $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
-        
-                // Validación de datos
-                if ($IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita) ||  empty($pagoTotal)) {
-                    echo "Error: Debes proporcionar todos los datos necesarios para crear la cita.";
-                } else {
-                    $cita = new Cita();
-        
-                    // Establecer datos en el objeto cita
-                    $cita->setIdCliente($IdCliente);
-                    $cita->setCedulaEmpleado($cedulaEmpleado);
-                    $cita->setFechaCita($fechaCita);
-                    $cita->setHoraCita($horaCita);
-                    $cita->setPagoTotal($pagoTotal);
-        
-                    // Verificar existencia de fecha y hora
-                    if (!$cita->verificarExistenciaHoraFecha()) {
-                        // Si no existe, intentar crear la cita
-                        $idCita = $cita->crearCitaSinTratamientos();
-        
-                        if (is_numeric($idCita) && $idCita > 0) {
-                            // Verificar si se enviaron tratamientos
-                            if (isset($_POST["tratamiento"]) && is_array($_POST["tratamiento"]) && !empty($_POST["tratamiento"])) {
-                                $tratamientos = $_POST["tratamiento"];
-        
-                                foreach ($tratamientos as $idTratamiento) {
-                                    $cita->agregarTratamientoACita($idCita, $idTratamiento);
-                                }
-                                echo "1"; // Éxito
-                            } else {
-                                echo "Error: Debes seleccionar al menos un tratamiento.";
+    case 'insertar':
+        try {
+            $IdCliente = isset($_POST["cliente"]) ? intval($_POST["cliente"]) : 0;
+            $cedulaEmpleado = isset($_POST["cedulaEmpleado"]) ? intval($_POST["cedulaEmpleado"]) : 0;
+            $fechaCita = isset($_POST["fechaCita"]) ? trim($_POST["fechaCita"]) : "";
+            $horaCita = isset($_POST["horaCita"]) ? trim($_POST["horaCita"]) : "";
+            $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
+
+            // Validación de datos
+            if ($IdCliente === 0 || $cedulaEmpleado === 0 || empty($fechaCita) || empty($horaCita) ||  empty($pagoTotal)) {
+                echo "Error: Debes proporcionar todos los datos necesarios para crear la cita.";
+            } else {
+                $cita = new Cita();
+
+                // Establecer datos en el objeto cita
+                $cita->setIdCliente($IdCliente);
+                $cita->setCedulaEmpleado($cedulaEmpleado);
+                $cita->setFechaCita($fechaCita);
+                $cita->setHoraCita($horaCita);
+                $cita->setPagoTotal($pagoTotal);
+
+                // Verificar existencia de fecha y hora
+                if (!$cita->verificarExistenciaHoraFecha()) {
+                    // Si no existe, intentar crear la cita
+                    $idCita = $cita->crearCitaSinTratamientos();
+
+                    if (is_numeric($idCita) && $idCita > 0) {
+                        // Verificar si se enviaron tratamientos
+                        if (isset($_POST["tratamiento"]) && is_array($_POST["tratamiento"]) && !empty($_POST["tratamiento"])) {
+                            $tratamientos = $_POST["tratamiento"];
+
+                            foreach ($tratamientos as $idTratamiento) {
+                                $cita->agregarTratamientoACita($idCita, $idTratamiento);
                             }
+                            echo "1"; // Éxito
                         } else {
-                            echo "Error: No se pudo crear la cita. Por favor, verifica los datos.";
+                            echo "Error: Debes seleccionar al menos un tratamiento.";
                         }
                     } else {
-                        echo "Error: La fecha y hora seleccionadas ya están ocupadas.";
+                        echo "Error: No se pudo crear la cita. Por favor, verifica los datos.";
                     }
+                } else {
+                    echo "Error: La fecha y hora seleccionadas ya están ocupadas.";
                 }
-            } catch (PDOException $Exception) {
-                echo "Error: " . $Exception->getMessage();
             }
-            break;
-        
-
-            case 'verificar_existencia_Hora_Fecha':
-                $IdCita = isset($_POST["IdCita"]) ? trim($_POST["IdCita"]) : "";
-                $cita = new Cita();
-                $cita->setCita($cita);
-                $encontrado = $cita->verificarExistenciaHoraFecha();
-                if ($encontrado != null) {
-                    echo 1;
-                }else{
-                    echo 0;
-                }
+        } catch (PDOException $Exception) {
+            echo "Error: " . $Exception->getMessage();
+        }
         break;
-    
+
+
+    case 'verificar_existencia_Hora_Fecha':
+        $fechaCita = isset($_POST["fechaCita"]) ? $_POST["fechaCita"] : "";
+        $horaCita = isset($_POST["horaCita"]) ? $_POST["horaCita"] : "";
+        $cedulaEmpleado = isset($_POST["cedulaEmpleado"]) ? $_POST["cedulaEmpleado"] : "";
+
+        $cita = new Cita();
+        $cita->setFechaCita($fechaCita);
+        $cita->setHoraCita($horaCita); // Establecer la hora de la cita
+
+        // Verificar si existe una cita en el rango de tiempo proporcionado
+        $existeCita = $cita->verificarExistenciaHoraFecha($horaCita);
+
+        if ($existeCita) {
+            echo 1;
+        } else {
+            echo 0;
+        }
+        break;
+
     case 'editar':
         try {
             // Obtiene el ID de la cita
@@ -233,8 +240,4 @@ switch ($_GET["op"]) {
 
         echo json_encode($citaModel);
         break;
-
-        
 }
-
-    

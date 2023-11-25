@@ -13,10 +13,11 @@ class AuthController
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $cedula = isset($_POST["cedula"]) ? trim($_POST["cedula"]) : "";
             $contrasena = isset($_POST["contrasena"]) ? trim($_POST["contrasena"]) : "";
-
+            $clavehash = hash('SHA256', trim($contrasena));
             $empleado = new Empleado();
             $empleado->setCedula($cedula);
-            $empleado->setContrasena($contrasena);
+            $empleado->setContrasena($clavehash);
+
 
             if ($empleado->login()) {
                 $_SESSION['cedula'] = $empleado->getCedula();

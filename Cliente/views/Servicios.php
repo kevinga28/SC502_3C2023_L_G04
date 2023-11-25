@@ -73,7 +73,7 @@
                                 <p>Condiciones: <?php echo $row["descripcion"]; ?></p>
                                 <div class="boton">
                                     <div class="citas_servicio_icono">
-                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                                        <i class="fa-regular fa-calendar"></i>
                                     </div>
                                     <div class="citas_servicio_text">
                                         <a href="Cita.php">Citas</a>

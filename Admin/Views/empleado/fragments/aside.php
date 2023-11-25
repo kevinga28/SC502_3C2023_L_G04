@@ -8,9 +8,6 @@
  <div class="sidebar">
      <!-- USUARIO ADMIN O ESTILISTA -->
      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-         <div class="image">
-             <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-         </div>
          <div class="info">
              <a id="nombreCompleto" href="../user.php">
                  <?php echo isset($_SESSION['datosEmpleado']['nombre']) ? $_SESSION['datosEmpleado']['nombre'] : ''; ?>

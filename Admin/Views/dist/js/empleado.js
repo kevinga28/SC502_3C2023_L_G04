@@ -247,12 +247,12 @@ $(document).on('click', '.eliminar-empleado', function () {
     cancelButtonText: 'Cancelar'
   }).then((result) => {
     if (result.isConfirmed) {
-      eliminarempleado(ced);
+      eliminarEmpleado(ced);
     }
   });
 });
 
-function eliminarempleado(ced) {
+function eliminarEmpleado(ced) {
   $.ajax({
     url: '../../../admin/Controllers/empleadoController.php?op=eliminar',
     method: 'POST',
@@ -286,6 +286,7 @@ function eliminarempleado(ced) {
     }
   });
 }
+
 
 
 
