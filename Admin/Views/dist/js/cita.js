@@ -242,7 +242,6 @@ function modificarCita(formData) {
 // Eliminar una cita
 $(document).on('click', '.eliminar-cita', function () {
   var id = $(this).data('id');
-  console.log('Id de la cita: ' + id);
 
   Swal.fire({
     title: 'Confirmación de Eliminación',
@@ -280,13 +279,6 @@ function eliminarCita(id) {
           }, 1800);
           break;
         case '2':
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Error: No se pudieron cambiar los datos antes de eliminar'
-          });
-          break;
-        case '3':
           Swal.fire({
             icon: 'error',
             title: 'Error',

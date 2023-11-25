@@ -59,8 +59,8 @@ function listarFacturas() {
                 data: null,
                 render: function (data, type, row) {
                     return '<a type="button" class="btn btn-danger float-right eliminar-factura" data-id="' + data[0] + '"><i class="fas fa-trash"></i> Eliminar</a>' +
-                        '<a id="modificarFactura" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarFactura.php?id=' + data[0] + '"><i class="fas fa-pencil-alt"></i> Editar</a>' +
-                        '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verFactura.php?id=' + data[0] + '"><i class="fas fa-eye"></i> Ver</a>';
+                        '<a id="modificarFactura" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarFactura.php?IdFactura=' + data[0] + '"><i class="fas fa-pencil-alt"></i> Editar</a>' +
+                        '<a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verFactura.php?IdFactura=' + data[0] + '"><i class="fas fa-eye"></i> Ver</a>';
                 }
             }
         ]
@@ -147,7 +147,7 @@ $(document).ready(function () {
                             $("#correo, #Ecorreo").val(selectedCita.correoCliente);
                             $("#tratamiento, #Etratamiento").val(selectedCita.tratamientos);
                             $("#estilista,  #Eestilista").val(selectedCita.nombreEmpleado + " " + selectedCita.apellidoEmpleado);
-                            $("#fechaCita,  #EfechaCitao").val(selectedCita.fechaCita);
+                            $("#fechaCita,  #EfechaCita").val(selectedCita.fechaCita);
                             $("#horaCita, #EhoraCita").val(selectedCita.horaCita);
                             $("#pagoTratamiento, #EpagoTratamiento").val(selectedCita.pagoTotal);
                         }
@@ -170,17 +170,17 @@ $(document).ready(function () {
     function actualizarTotalProductos() {
         var totalProductos = 0;
 
-        if ($('#producto option:selected').length === 0) {
-            totalProductos = parseFloat($('#pagoTratamiento').val()) || 0;
+        if ($('#producto option:selected, #Eproducto option:selected').length === 0) {
+            totalProductos = parseFloat($('#pagoTratamiento, #EpagoTratamiento').val()) || 0;
         } else {
-            $('#producto option:selected').each(function () {
+            $('#producto option:selected, #Eproducto option:selected').each(function () {
                 var precio = parseFloat($(this).data('precio')) || 0;
-                var cantidad = parseInt($('#cantidad').val()) || 1;
+                var cantidad = parseInt($('#cantidad, #Ecantidad').val()) || 1;
                 totalProductos += precio * cantidad;
             });
         }
 
-        $('#pagoProductos').val(totalProductos.toFixed(2));
+        $('#pagoProductos, #EpagoProductos').val(totalProductos.toFixed(2));
         return totalProductos;
     }
 
@@ -188,11 +188,11 @@ $(document).ready(function () {
         var totalProductos = actualizarTotalProductos();
         var totalFinal = totalProductos;
 
-        $('#pagoTotal, #pagoTotalHidden').val(totalFinal.toFixed(2));
+        $('#pagoTotal, #pagoTotalHidden, #EpagoTotal, #EpagoTotalHidden').val(totalFinal.toFixed(2));
     }
 
     // Detectar cambios en la selección de productos, en la cantidad y en el total de tratamiento
-    $('#producto, #cantidad, #pagoTratamiento').on('change', function () {
+    $('#producto, #cantidad, #pagoTratamiento, #Eproducto, #Ecantidad, #EpagoTratamiento').on('change', function () {
         actualizarTotal(); // Actualizar el total al detectar cambios
     });
 });
@@ -232,7 +232,7 @@ $(document).ready(function () {
 
 const rellenarFormularioFactura = async () => {
     const urlSearchParams = new URLSearchParams(window.location.search);
-    const idFactura = urlSearchParams.get("id");
+    const idFactura = urlSearchParams.get("IdFactura");
 
     if (idFactura) {
         try {
@@ -265,57 +265,137 @@ rellenarFormularioFactura();
 
 /* ---------------------------------------------------------------EDITAR LOS DATOS DE LA FACTURA--------------------------------------------------------------- */
 $('#factura_update').on('submit', function (event) {
+
     event.preventDefault();
-    bootbox.confirm('¿Desea modificar los datos?', function (result) {
-        if (result) {
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var IdFactura = urlParams.get('IdFactura');
+   
+    Swal.fire({
+        title: 'Confirmación de Modificación',
+        text: '¿Desea modificar los datos de la Factura?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, modificar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
             var formData = new FormData($('#factura_update')[0]);
-            $.ajax({
-                url: '../../../admin/Controllers/facturaController.php?op=editar',
-                type: 'POST',
-                data: formData,
-                contentType: false,
-                processData: false,
-                success: function (datos) {
-                    switch (datos) {
-                        case '1':
-                            toastr.success('Factura actualizada exitosamente', 'Éxito');
-                            break;
-
-                        case '2':
-                            toastr.error('Error: No se pudieron actualizar los datos');
-                            break;
-
-                        case '3':
-                            toastr.error('Error: No se pudo editar.');
-                            break;
-                    }
-                },
-            });
+            formData.append('IdFactura', IdFactura);
+            modificarFactura(formData);
         }
     });
 });
 
+function modificarFactura(formData) {
+    $.ajax({
+        url: '../../../admin/Controllers/facturaController.php?op=editar',
+        type: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function (datos) {
+            switch (datos) {
+                case '1':
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Factura actualizada exitosamente',
+                        showConfirmButton: false
+                    });
+                    setTimeout(function () {
+                        window.location.href = 'listaFactura.php'; // Redirige a la lista después de 1 segundo
+                    }, 1000)
+                    break;
+                case '2':
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Error: Cambiar los datos para actualizar'
+                    });
+                    break;
+                case '3':
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Error: No se pudo editar la Factura.'
+                    });
+                default:
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: datos,
+                    });
+                    break;
+            }
+        },
+    });
+}
 /* ---------------------------------------------------------------ELIMINAR LA FACTURA MEDIANTE EL ID--------------------------------------------------------------- */
-$(document).on('click', '.eliminar-factura', function () {
-    var idFactura = $(this).data('id');
 
-    if (idFactura !== undefined) {
-        if (confirm("¿Estás seguro de que deseas eliminar esta factura?")) {
-            $.ajax({
-                url: '../../../admin/Controllers/facturaController.php?op=eliminar',
-                method: 'POST',
-                data: { op: 'eliminar', id: idFactura },
-                success: function (response) {
-                    if (response === '1') {
-                        toastr.error("No se pudo eliminar la factura. Inténtalo de nuevo");
-                    } else {
-                        location.reload();
-                    }
-                },
-                error: function (error) {
-                    console.error("Error al eliminar la factura:", error);
-                }
+// Eliminar una factura
+$(document).on('click', '.eliminar-factura', function () {
+    var id = $(this).data('id');
+
+    Swal.fire({
+        title: 'Confirmación de Eliminación',
+        text: '¿Estás seguro de que deseas eliminar esta Factura?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            eliminarFactura(id);
+        }
+    });
+});
+
+
+function eliminarFactura(id) {
+    $.ajax({
+        url: '../../../admin/Controllers/facturaController.php?op=eliminar',
+        method: 'POST',
+        data: { op: 'eliminar', id: id },
+        success: function (response) {
+            switch (response) {
+                case '1':
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Éxito',
+                        text: 'Factura eliminada exitosamente',
+                        showConfirmButton: false
+                    });
+                    setTimeout(function () {
+                        location.reload(); // Recargar la página o redirigir si es necesario
+                    }, 1800);
+                    break;
+                case '2':
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'No se pudo eliminar la Factura.'
+                    });
+                    break;
+                default:
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Error inesperado. No se pudo eliminar la Factura.'
+                    });
+            }
+        },
+        error: function (error) {
+            console.error("Error al eliminar la Factura:", error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo eliminar la Factura. Inténtalo de nuevo'
             });
         }
-    }
-});
+    });
+}

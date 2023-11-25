@@ -146,7 +146,7 @@ const rellenarFormulario = async () => {
               $("#Edistrito").val(datos.distrito);
               $("#Ecanton").val(datos.canton);
               $("#Eotros").val(datos.otros);
-              $("#Erol").val(datos.rol);
+              $("#Erol").val(datos.rol).trigger("change");
 
               // Muestra la imagen en la etiqueta <img>
               const rutaImagen = `../../../admin/Views/dist/img/${datos.imagen}`;
