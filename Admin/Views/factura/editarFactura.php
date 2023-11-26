@@ -168,9 +168,9 @@ require_once '../../Controllers/AuthController.php';
                                                         <div class="form-group">
                                                             <label for="pagoTotal">Total a Pagar</label>
                                                             <input type="text" class="form-control" id="EpagoTotal" name="pagoTotal" readonly value="₡0">
-                                                            <input type="text" id="EpagoTotalHidden" name="pagoTotalHidden">
-                                                            <input type="text" id="EpagoProductos" name="pagoTotalProductos">
-                                                            <input type="text" id="EpagoTratamiento" name="pagoTratamiento">
+                                                            <input type="hidden" id="EpagoTotalHidden" name="pagoTotalHidden">
+                                                            <input type="hidden" id="EpagoProductos" name="pagoTotalProductos">
+                                                            <input type="hidden" id="EpagoTratamiento" name="pagoTratamiento">
                                                         </div>
                                                     </div>
                                                 </div>

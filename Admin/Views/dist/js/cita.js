@@ -446,15 +446,10 @@ $(document).ready(function() {
           diaSemana: selectedDay
         },
         success: function (data) {
-          console.log('Horarios disponibles:', data);
           var duracionTotal = convertirFormatoHoraAMinutos($('#duracionTotal, #EduracionTotal').val());
           var intervalos = generarIntervalosCitasConDuracion(data, duracionTotal);
           actualizarHorariosEnSelect(intervalos);
         },
-        error: function (xhr, status, error) {
-          console.log('Error al obtener los horarios disponibles');
-          console.log(xhr.responseText); 
-        }
       });
     }
   }
