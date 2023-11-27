@@ -92,21 +92,47 @@ switch ($_GET["op"]) {
 
 
     case 'editar':
-        $IdFactura = isset($_POST["IdFactura"]) ? trim($_POST["IdFactura"]) : "";
-        $IdCita = isset($_POST["IdCita"]) ? trim($_POST["IdCita"]) : "";
-        $codigoProducto = isset($_POST["codigoProducto"]) ? trim($_POST["codigoProducto"]) : "";
-        $metodoPago = isset($_POST["metodoPago"]) ? trim($_POST["metodoPago"]) : "";
-        $pagoTotal = isset($_POST["pagoTotal"]) ? trim($_POST["pagoTotal"]) : "";
+        try {
+            $IdFactura = isset($_POST["IdFactura"]) ? intval($_POST["IdFactura"]) : 0;
+            $IdCita = isset($_POST["citas"]) ? intval($_POST["citas"]) : 0;
+            $metodoPago = isset($_POST["metodoPago"]) ? trim($_POST["metodoPago"]) : "";
+            $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
 
-        $factura = new Factura();
-        $factura->setIdFactura($IdFactura);
-        $factura->setIdCita($IdCita);
-        $factura->setMetodoPago($metodoPago);
-        $factura->setPagoTotal($pagoTotal);
+            if ($IdFactura === 0 || $IdCita === 0 || empty($metodoPago) || empty($pagoTotal)) {
+                var_dump( $IdFactura);
+                echo "Error: Debes proporcionar todos los datos necesarios para editar la factura.";
+            } else {
+                $factura = new Factura();
+                $factura->setIdFactura($IdFactura);
+                $factura->setIdCita($IdCita);
+                $factura->setMetodoPago($metodoPago);
+                $factura->setPagoTotal($pagoTotal);
 
-        $factura->actualizarFactura();
+                $resultadoActualizacion = $factura->actualizarFactura();
 
-        echo "Factura actualizada exitosamente.";
+                if ($resultadoActualizacion > 0) {
+                    // Verificar si se han enviado productos
+                    if (isset($_POST["producto"]) && is_array($_POST["producto"])) {
+                        $productos = $_POST["producto"];
+
+                        // Eliminar productos actuales asociados a la factura
+                        $factura->eliminarProductos($IdFactura);
+
+                        foreach ($productos as $codigoProducto) {
+                            $cantidad = isset($_POST["cantidad"][$codigoProducto]) ? intval($_POST["cantidad"][$codigoProducto]) : 0;
+                            $factura->agregarProductoFactura($IdFactura, $codigoProducto, $cantidad);
+                        }
+                        echo "1"; // Indica éxito con productos
+                    } else {
+                        echo "1"; // Indica éxito sin productos
+                    }
+                } else {
+                    echo "Error: No se pudo actualizar la factura. Por favor, verifica los datos.";
+                }
+            }
+        } catch (PDOException $Exception) {
+            echo "Error: " . $Exception->getMessage();
+        }
         break;
 
     case 'verificar_existencia_factura':
@@ -141,13 +167,13 @@ switch ($_GET["op"]) {
 
             $resultado = $factura->eliminarFactura($IdFactura);
 
-            if ($resultado === 1) {
-                echo json_encode(["success" => "Factura eliminada"]);
+            if ($resultado > 0) {
+                echo "1";
             } else {
-                echo json_encode(["error" => "No se pudo eliminar la factura"]);
+                echo "2";
             }
         } else {
-            echo json_encode(["error" => "Id de la factura no proporcionado"]);
+            echo "3";
         }
         break;
 }

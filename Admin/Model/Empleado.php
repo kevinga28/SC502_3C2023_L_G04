@@ -245,7 +245,7 @@ class Empleado extends Conexion
 
         try {
             self::getConexion();
-            $cedula = $this-> getCedula();
+            $cedula = $this->getCedula();
             $imagen = $this->getImagen();
             $nombre = $this->getNombre();
             $apellido = $this->getApellido();
@@ -290,7 +290,7 @@ class Empleado extends Conexion
             self::desconectar();
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
             echo $error;
-            return json_encode($error); 
+            return json_encode($error);
         }
     }
 
@@ -367,24 +367,35 @@ class Empleado extends Conexion
         }
     }
 
-    public function eliminarEmpleado()
+    public function eliminarEmpleado($cedula)
     {
-        $query = "DELETE FROM empleado WHERE cedula = :cedula";
-
         try {
             self::getConexion();
-            $cedula = $this->getCedula();
 
-            $resultado = self::$conn->prepare($query);
-            $resultado->bindParam(":cedula", $cedula, PDO::PARAM_INT);
-            $resultado->execute();
+            self::$conn->beginTransaction();
+
+            $queryDeleteRelacionados = "DELETE FROM horarios WHERE EmpleadoCedula = :cedula";
+            $stmtDeleteRelacionados = self::$conn->prepare($queryDeleteRelacionados);
+            $stmtDeleteRelacionados->bindParam(":cedula", $cedula, PDO::PARAM_INT);
+            $stmtDeleteRelacionados->execute();
+
+            $queryEliminarEmpleado = "DELETE FROM empleado WHERE cedula = :cedula";
+            $stmtEliminarEmpleado = self::$conn->prepare($queryEliminarEmpleado);
+            $stmtEliminarEmpleado->bindParam(":cedula", $cedula, PDO::PARAM_INT);
+            $stmtEliminarEmpleado->execute();
+
+            self::$conn->commit();
+
             self::desconectar();
 
-            return $resultado->rowCount(); // Devuelve el número de filas afectadas (debe ser 1 si se eliminó correctamente).
-        } catch (PDOException $Exception) {
+            $numFilasEliminadas = $stmtDeleteRelacionados->rowCount() + $stmtEliminarEmpleado->rowCount();
+
+            return $numFilasEliminadas;
+        } catch (PDOException $e) {
+
+            self::$conn->rollBack();
             self::desconectar();
-            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-            return $error;
+            return 0;
         }
     }
 
@@ -411,9 +422,10 @@ class Empleado extends Conexion
             return $error;
         }
     }
-    public function login() {
+    public function login()
+    {
         $dbEmpleadoData = $this->obtenerEmpleadoPorCedula($this->getCedula());
-    
+
         // Verifica si se encontró un empleado y la contraseña es válida
         if ($dbEmpleadoData && $this->getContrasena() == $dbEmpleadoData['contrasena']) {
             $_SESSION['cedula'] = $dbEmpleadoData['cedula'];
@@ -423,5 +435,4 @@ class Empleado extends Conexion
             return false;
         }
     }
-    
 }

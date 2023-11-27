@@ -53,7 +53,7 @@
     <div id="calendario" class="calendario">
         <div class="container">
             <form method="POST" name="modulos_add" id="crearCitaVC">
-                <div class="row">
+                <div class="row">   
 
                     <div class="col-md-6 mt-5">
 

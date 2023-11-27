@@ -17,9 +17,12 @@ require_once '../../Controllers/AuthController.php';
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
+    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+
     <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
     <link rel="stylesheet" href="../dist/css/style.css">
+
 
 </head>
 
@@ -189,6 +192,8 @@ require_once '../../Controllers/AuthController.php';
 
     </div>
 
+
+
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -201,6 +206,14 @@ require_once '../../Controllers/AuthController.php';
     <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
+
+    <script>
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+        })
+    </script>
 
     <script src="../dist/js/empleado.js"></script>
 

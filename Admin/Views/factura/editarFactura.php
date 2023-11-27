@@ -92,7 +92,7 @@ require_once '../../Controllers/AuthController.php';
                                         </div>
 
                                         <!-- EMPIEZA EL FORMULARIO -->
-                                        <form method="POST" name="modulos_add" id="crearFactura">
+                                        <form method="POST" name="factura_update" id="factura_update">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -151,7 +151,7 @@ require_once '../../Controllers/AuthController.php';
 
                                                         <div class="form-group" id="cantidadDiv">
                                                             <label for="Cantidad">Cantidad</label>
-                                                            <input type="number" class="form-control" id="cantidad" name="Ecantidad" placeholder="Cantidad" min="1">
+                                                            <input type="number" class="form-control" id="Ecantidad" name="cantidad" placeholder="Cantidad" min="1">
                                                         </div>
 
                                                         <div class="form-group">
@@ -168,9 +168,9 @@ require_once '../../Controllers/AuthController.php';
                                                         <div class="form-group">
                                                             <label for="pagoTotal">Total a Pagar</label>
                                                             <input type="text" class="form-control" id="EpagoTotal" name="pagoTotal" readonly value="₡0">
-                                                            <input type="text" id="pagoTotalHidden" name="pagoTotalHidden">
-                                                            <input type="text" id="pagoProductos" name="pagoTotalProductos">
-                                                            <input type="text" id="pagoTratamiento" name="pagoTratamiento">
+                                                            <input type="hidden" id="EpagoTotalHidden" name="pagoTotalHidden">
+                                                            <input type="hidden" id="EpagoProductos" name="pagoTotalProductos">
+                                                            <input type="hidden" id="EpagoTratamiento" name="pagoTratamiento">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -223,22 +223,6 @@ require_once '../../Controllers/AuthController.php';
     <script src="../plugins/select2/js/select2.full.min.js"></script>
 
     <script src="../dist/js/factura.js"></script>
-
-
-
-    <script>
-        // Captura el cambio en la selección de tratamientos
-        $('#tratamiento').on('change', function() {
-            var total = 0;
-            // Suma los precios de los tratamientos seleccionados
-            $('#tratamiento option:selected').each(function() {
-                total += parseInt($(this).data('precio'));
-            });
-            // Muestra el total en el campo correspondiente
-            $('#total').val('₡' + total);
-        });
-    </script>
-
 
     <script>
         $(function() {

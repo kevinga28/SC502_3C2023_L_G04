@@ -5,8 +5,6 @@ const limpiarForms = () => {
 };
 
 
-
-
 $('#login').on('submit', function (event) {
     event.preventDefault();
     $('#btnlogin').prop('disabled', true);

@@ -143,7 +143,7 @@ switch ($_GET["op"]) {
                 $mail->isHTML(true);
                 $mail->Subject = 'Recuperar Contraseña';
 
-                $mail->Body =   'Para recuperar su contraseña, por favor ingrese al siguiente link: <a href="http://localhost/SC502_3C2023_L_G04/Cliente/views/login/actualizarPassword.php?id='.$datosUsuario['IdCliente']. '&token='.$token.'">click</a>';
+                $mail->Body =   'Para recuperar su contraseña, por favor ingrese al siguiente link: <a href="http://localhost/Proyecto_Ambiente_Web/Cliente/views/login/actualizarPassword.php?id='.$datosUsuario['IdCliente']. '&token='.$token.'">click</a>';
 
                 //$mail->Body    = 'Para recuperar su contraseña por favor ingrese al siguiente link<a href="http://localhost/Evol/Cliente/views/login/actualizarPassword.php?id='.$datosUsuario['IdCliente'].'">click</a>';
 

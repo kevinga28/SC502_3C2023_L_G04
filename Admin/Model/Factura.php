@@ -302,6 +302,26 @@ class Factura extends Conexion
         }
     }
 
+    public function eliminarProductos($IdFactura)
+    {
+        try {
+            self::getConexion();
+
+            // Elimina los registros de cita_tratamiento asociados a esta cita
+            $queryEliminar = "DELETE FROM detalle_factura WHERE IdFactura = :IdFactura";
+            $stmtEliminar = self::$cnx->prepare($queryEliminar);
+            $stmtEliminar->bindParam(":IdFactura", $IdFactura, PDO::PARAM_INT); 
+            $stmtEliminar->execute();
+
+            // Cierra la conexión a la base de datos
+            self::desconectar();
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            throw new Exception($error);
+        }
+    }
+
     public static function obtenerFacturaPorIdFactura($IdFactura)
     {
         $query = "SELECT 
@@ -359,20 +379,38 @@ class Factura extends Conexion
 
     public function eliminarFactura($IdFactura)
     {
-        $query = "DELETE FROM factura WHERE IdFactura = :IdFactura";
-
         try {
             self::getConexion();
-            $resultado = self::$cnx->prepare($query);
-            $resultado->bindParam(":IdFactura", $IdFactura, PDO::PARAM_INT);
-            $resultado->execute();
+
+            // Iniciar una transacción
+            self::$cnx->beginTransaction();
+
+            // 1. Eliminar registros relacionados 
+            $queryDeleteRelacionados = "DELETE FROM detalle_factura WHERE IdFactura = :IdFactura";
+            $stmtDeleteRelacionados = self::$cnx->prepare($queryDeleteRelacionados);
+            $stmtDeleteRelacionados->bindParam(":IdFactura", $IdFactura, PDO::PARAM_INT);
+            $stmtDeleteRelacionados->execute();
+
+            // 2. Eliminar la Factura principal
+            $queryEliminarFactura = "DELETE FROM factura WHERE IdFactura = :IdFactura";
+            $stmtEliminarFactura = self::$cnx->prepare($queryEliminarFactura);
+            $stmtEliminarFactura->bindParam(":IdFactura", $IdFactura, PDO::PARAM_INT);
+            $stmtEliminarFactura->execute();
+
+            // Confirmar la transacción si no hubo errores
+            self::$cnx->commit();
+
             self::desconectar();
 
-            return $resultado->rowCount();
-        } catch (PDOException $Exception) {
+            // Verificar el número de filas afectadas
+            $numFilasEliminadas = $stmtDeleteRelacionados->rowCount() + $stmtEliminarFactura->rowCount();
+
+            return $numFilasEliminadas; // Devuelve el número de filas eliminadas
+        } catch (PDOException $e) {
+            // En caso de error, deshacer la transacción
+            self::$cnx->rollBack();
             self::desconectar();
-            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-            return $error;
+            return 0; // Error
         }
     }
 }

@@ -46,10 +46,10 @@
                         <h2>Registrar o Iniciar Sesion</h2>
                         <a class="registrarse" href="register.php">Crear una cuenta</a>
                         <div class="input-box">
-                            <input type="email" id="correo" name="correo" placeholder="Correo Electronico">
+                            <input type="email" id="correo" name="correo" placeholder="Correo Electronico" required>
                         </div>
                         <div class="input-box">
-                            <input  type="password" id="contrasena"   name="contrasena" placeholder="Contraseña">
+                            <input  type="password" id="contrasena"   name="contrasena" placeholder="Contraseña" required>
                         </div>
                         <div>
                             <a href="recuperarPassword.php">Recuperar Contrasena</a>

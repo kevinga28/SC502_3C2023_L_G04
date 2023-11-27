@@ -126,10 +126,6 @@ require_once '../../Controllers/AuthController.php';
 
     </div>
 
-    <a type="button" class="btn btn-danger float-right eliminar-cliente" data-id="' + data[0] + '"><i class="fas fa-trash"></i> Eliminar</a>
-    <a id="modificarCliente" class="editar-btn btn btn-success float-right" style="margin-right: 8px;" href="editarCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-pencil-alt"></i>Editar</a>
-    <a type="button" class="btn btn-primary float-right" style="margin-right: 8px;" href="verCliente.php?IdCliente=' + data[0] + '"><i class="fas fa-eye"></i>Ver</a>
-
     <footer class="main-footer no-print">
       <?php
       include 'fragments/footer.php'
