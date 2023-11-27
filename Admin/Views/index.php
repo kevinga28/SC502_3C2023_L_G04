@@ -190,8 +190,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
 
   <script src="plugins/select2/js/select2.full.min.js"></script>
   <script src="logueo/js/logout.js"></script>
-  <!-- Custom JavaScript (main.js) -->
-  <script src="dist/js/main.js"></script>
   <!-- ChartJS -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Estadistica -->
