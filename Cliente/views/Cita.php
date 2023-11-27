@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="form-group mb-2">
-                            <label for="estilista">Estilista</label>
+                            <label for="cedulaEmpleado">Estilista</label>
                             <select class="select2 select2-hidden-accessible" id="cedulaEmpleado" name="cedulaEmpleado" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
                                 <!-- Tratamientos cargados desde PHP se insertarán aquí automáticamente -->
                             </select>
