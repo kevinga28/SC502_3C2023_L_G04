@@ -21,7 +21,8 @@ $('#usuario_add').on('submit', function (event) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Correo ya registrado',
-                        text: 'Ya existe un usuario con ese correo electronico.',});
+                        text: 'Ya existe una cuenta con ese correo electronico.',
+                    });
                     limpiarForms();
                     break;
                 case '2':
@@ -35,16 +36,29 @@ $('#usuario_add').on('submit', function (event) {
                     Swal.fire({
                         icon: 'Success',
                         title: 'Registro Exitoso',
-                        text: 'El cliente se registro exitosamente',});
+                        text: 'El cliente se registro exitosamente',
+                        willClose: function () {
+                            window.location.href = 'login.php';
+                        },
+                    });
 
                     limpiarForms();
-                    window.location.href = 'login.php';
+
                     break;
 
 
                     break;
                 case '4':
-                    alert('error')
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Registro Exitoso',
+                        text: 'El cliente se registro exitosamente',
+                        willClose: function () {
+                            window.location.href = 'login.php';
+                        },
+                    });
+
+                    limpiarForms();
                     break;
 
             }

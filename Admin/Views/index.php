@@ -94,7 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
     <aside class="main-sidebar elevation-4 color-custom">
 
 
-
       <?php
       include 'fragments/aside.php'
       ?>

@@ -95,7 +95,6 @@
                      <p>
                          Citas
                          <i class="fas fa-angle-left right"></i>
-                         <span class="badge badge-info right">6</span>
                      </p>
                  </a>
 
@@ -217,11 +216,10 @@
 
              <li class="nav-header">Citas</li>
              <li class="nav-item">
-                 <a href="calendar.html" class="nav-link">
+                 <a href="calendario/calendario.php" class="nav-link">
                      <i class="nav-icon far fa-calendar-alt"></i>
                      <p>
                          Calendario
-                         <span class="badge badge-info right">2</span>
                      </p>
                  </a>
              </li>
