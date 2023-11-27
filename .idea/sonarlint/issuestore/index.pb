@@ -17,8 +17,6 @@ J
 Cliente/views/Nosotros.php,8\d\8d9392df4811827de5a7ff956bdb80c2834d1f49
 H
 Cliente/views/js/main.js,7\d\7db1464ac015e34239a5dcb4c681a7e5fbd3e36e
-O
-Admin/Views/dist/js/empleado.js,b\3\b37d376936c00a0d1dbc0c8a600ffc66e44a6142
 K
 Admin/Views/dist/js/demo.js,3\c\3c3625c385229151e3d4b6d767a924ca802936c1
 O
@@ -29,8 +27,6 @@ X
 (Cliente/views/login/fragments/footer.php,4\8\48f99fed94568a7ccdcd27279f8f3d2e7622643a
 T
 $Cliente/views/login/css/register.css,3\0\308c1cbfe5080d27727acf2621ef3cf8d78e52f9
-P
- Cliente/views/login/js/logout.js,9\7\979ddb888485693dca9f77f4b2a6074b91a6bb1d
 H
 Admin/Model/Registro.php,0\b\0b2885e8a46b3c55bcb41a3c2760e247dd402c91
 W
@@ -47,15 +43,11 @@ M
 Admin/Views/logueo/logueo.php,5\3\5321c7459484ab7bf82dbb52124f0ab9eb5b7ebd
 V
 &Admin/Views/logueo/fragments/login.php,d\1\d1239c9c87c08aad77d4e6da0f76733818bd1409
-X
-(Admin/Controllers/empleadoController.php,1\a\1abaac618b17fb470d3f9d65f9631e2f33537241
 N
 Admin/Views/logueo/js/login.js,4\4\44f289e32f98eeb587fff114d11139f53a0def82
 X
 (Admin/Views/plugins/fullcalendar/main.js,1\8\1827f3e656848968c82bf3eaa6d46d97aaa5c077
 Y
 )Admin/Views/fragments/calendarioIndex.php,a\6\a6e5478f4122deff21c991f3f469bbcbee0e4906
-R
-"Cliente/views/login/js/register.js,6\3\630d4906c8d5a572e508d0028ea704f540e7ddba
 X
 (Admin/Controllers/productoController.php,8\f\8fbe62c37c1f8a11c348ce5f8b88a91af41c0476

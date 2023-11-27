@@ -224,7 +224,7 @@
 
              <li class="nav-header">Citas</li>
              <li class="nav-item">
-                 <a href="calendar.html" class="nav-link">
+                 <a href="../calendario/calendario.php" class="nav-link">
                      <i class="nav-icon far fa-calendar-alt"></i>
                      <p>
                          Calendario

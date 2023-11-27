@@ -1,23 +1,20 @@
  <!-- Brand Logo -->
- <a href="index.php" class="brand-link">
-     <img src="dist/img/logo.png" alt="Evolve_Logo" class="brand-image img-circle " >
+ <a href="index.html" class="brand-link">
+     <img src="../dist/img/AdminLTELogo.png" alt="Evolve_Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
      <span class="brand-text font-weight-light">Evolve</span>
  </a>
 
  <!-- Sidebar -->
  <div class="sidebar">
+     <!-- USUARIO ADMIN O ESTILISTA -->
      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
          <div class="image">
-             <img src="" class="img-circle elevation-2" alt="User Image">
+             <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
          </div>
          <div class="info">
-             <a id="nombreCompleto" href="user.php">
-                 <?php echo isset($_SESSION['datosEmpleado']['nombre']) ? $_SESSION['datosEmpleado']['nombre'] : ''; ?>
-                 <?php echo isset($_SESSION['datosEmpleado']['apellido']) ? $_SESSION['datosEmpleado']['apellido'] : ''; ?>
-             </a>
+             <a href="../user.php" class="d-block">Administrador</a>
          </div>
      </div>
-
 
      <!-- SidebarSearch Form -->
      <style>
@@ -49,17 +46,17 @@
 
      <!-- Sidebar Menu -->
 
-      <style>
+     <style>
          /* Cambiar el color del icono y lista */
          .nav-pills .nav-link {
              color: #202126;
          }
      </style>
-     
+
      <nav class="mt-2">
          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
-         <li class="nav-item">
+             <li class="nav-item">
                  <a href="../index.php" class="nav-link">
                      <i class="nav-icon fas fa-home"></i>
                      <p>
@@ -72,7 +69,7 @@
                  <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-user"></i>
                      <p>
-                        Clientes
+                         Clientes
                          <i class="fas fa-angle-left right"></i>
                      </p>
                  </a>
@@ -93,6 +90,7 @@
 
                  </ul>
              </li>
+
 
              <li class="nav-item">
                  <a href="" class="nav-link">
@@ -148,8 +146,8 @@
                  </ul>
              </li>
 
-             <li class="nav-item menu-open">  
-                 <a href="#" class="nav-link active">
+             <li class="nav-item">
+                 <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-edit"></i>
                      <p>
                          Facturas
@@ -158,13 +156,13 @@
                  </a>
                  <ul class="nav nav-treeview">
                      <li class="nav-item">
-                         <a href="listaFactura.php" class="nav-link">
+                         <a href="../factura/listaFactura.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Lista de Facturas</p>
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="facturas.php" class="nav-link">
+                         <a href="../factura/facturas.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Crear Factura</p>
                          </a>
@@ -173,8 +171,8 @@
                  </ul>
              </li>
 
-             <li class="nav-item">
-                 <a href="#" class="nav-link">
+             <li class="nav-item menu-open">
+                 <a href="#" class="nav-link active">
                      <i class="nav-icon fas fa-table"></i>
                      <p>
                          Gestion de Empleados
@@ -226,7 +224,7 @@
 
              <li class="nav-header">Citas</li>
              <li class="nav-item">
-                 <a href="../calendario/calendario.php" class="nav-link">
+                 <a href="calendario.php" class="nav-link">
                      <i class="nav-icon far fa-calendar-alt"></i>
                      <p>
                          Calendario

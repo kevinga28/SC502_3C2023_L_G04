@@ -36,7 +36,8 @@ $('#login').on('submit', function (event) {
                     Swal.fire({
                         icon: 'error',
                         title: 'Credenciales Incorrectas',
-                        text: 'Logueado.',});
+                        text: 'Logueado.',
+                    });
                     break;
 
             }
