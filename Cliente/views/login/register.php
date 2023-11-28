@@ -64,26 +64,45 @@
                 </div>
 
                 <div class="input-box">
-                  <input type="number" name="telefono" id="telefono" required placeholder="telefono*">
+                  <input type="number" name="telefono" id="telefono" required placeholder="Telefono*">
+                </div>
+
+                <style>
+                  label {
+                    display: block;
+                    font-weight: bold;
+                  }
+
+                  select,
+                  input[type="text"] {
+                    width: 88%;
+                    padding: 8px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    font-size: 16px;
+                  }
+
+                  select:focus,
+                  input[type="text"]:focus {
+                    outline: none;
+                    border-color: #0056b3;
+                    box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+                  }
+                </style>
+                <div class="input-box">
+                  <select name="pais" id="pais" data-placeholder="Seleccionar Pais"></select>
                 </div>
 
                 <div class="input-box">
-                  <label for="pais">País:</label>
-                  <select name="country" id="pais"></select>
+                  <select name="provincia" id="Provincia" data-placeholder="Seleccionar Provincia"></select>
                 </div>
 
                 <div class="input-box">
-                  <label for="Provincia">Estado:</label>
-                  <select name="state" id="Provincia"></select>
+                  <select name="distrito" id="Distrito" data-placeholder="Seleccionar Distrito"></select>
                 </div>
 
                 <div class="input-box">
-                  <label for="Distrito">Ciudad:</label>
-                  <select name="city" id="Distrito"></select>
-                </div>
-
-                <div class="input-box">
-                  <input type="canton" name="canton" id="canton" placeholder="Canton*" required>
+                  <input type="text" name="canton" id="canton" placeholder="Canton*" required>
                 </div>
 
                 <div class="input-box">
@@ -126,6 +145,12 @@
   <script src="../../../Admin/views/plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
   <script>
+    $(document).ready(function() {
+      // Agregar placeholders a los selectores usando jQuery
+      $('#pais').append('<option value="" disabled selected>Seleccionar País</option>');
+      $('#Provincia').append('<option value="" disabled selected>Seleccionar Provincia</option>');
+      $('#Distrito').append('<option value="" disabled selected>Seleccionar Distrito</option>');
+    });
     $.ajax({
       url: 'https://www.universal-tutorial.com/api/getaccesstoken',
       method: 'GET',
