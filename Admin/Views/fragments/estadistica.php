@@ -1,3 +1,31 @@
+<?php
+// Tu lógica para conectarte a la base de datos y realizar las consultas
+require_once '../../admin/config/global.php';
+require_once '../../admin/config/conexion.php';
+
+// Establecer conexión a la base de datos
+$conexion = Conexion::conectar();
+
+// Realizar consultas para obtener los datos necesarios
+$queryProductosComprados = "SELECT COUNT(IdDetalle) AS ProductosComprados FROM detalle_factura";
+$queryCitas = "SELECT COUNT(IdCita) AS TotalCitas FROM cita";
+$queryVisitas = "SELECT COUNT(IdCliente) AS TotalClientes FROM cliente";
+
+$resultadoProductos = $conexion->query($queryProductosComprados);
+$resultadoCitas = $conexion->query($queryCitas);
+$resultadoVisitas = $conexion->query($queryVisitas);
+
+// Obtener los valores de las consultas
+$datosProductos = $resultadoProductos->fetch(PDO::FETCH_ASSOC);
+$datosCitas = $resultadoCitas->fetch(PDO::FETCH_ASSOC);
+$datosVisitas = $resultadoVisitas->fetch(PDO::FETCH_ASSOC);
+
+// Definir los valores obtenidos para usarlos en el diseño
+$totalProductos = $datosProductos['ProductosComprados'];
+$totalCitas = $datosCitas['TotalCitas'];
+$totalVisitas = $datosVisitas['TotalClientes'];
+?>
+
 <div class="col-md-12">
     <div class="card">
         <div class="card-header">
@@ -15,9 +43,6 @@
         <div class="card-body">
             <div class="row">
                 <div class="col-md-8">
-                    <p class="text-center">
-                        <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
-                    </p>
                     <div class="chart">
                         <div class="chartjs-size-monitor">
                             <div class="chartjs-size-monitor-expand">
@@ -27,10 +52,8 @@
                                 <div class=""></div>
                             </div>
                         </div>
-
                         <canvas id="myChart"></canvas>
                     </div>
-
                 </div>
 
                 <div class="col-md-4">
@@ -39,33 +62,29 @@
                     </p>
                     <div class="progress-group">
                         Productos Comprados
-                        <span class="float-right"><b>160</b>/200</span>
+                        <span class="float-right"><b><?php echo $totalProductos; ?></b>/200</span>
                         <div class="progress progress-sm">
-                            <div class="progress-bar bg-primary" style="width: 80%"></div>
+                            <div class="progress-bar bg-primary" style="width: <?php echo ($totalProductos / 200) * 100; ?>%"></div>
                         </div>
                     </div>
 
                     <div class="progress-group">
                         Citas
-                        <span class="float-right"><b>310</b>/400</span>
+                        <span class="float-right"><b><?php echo $totalCitas; ?></b>/400</span>
                         <div class="progress progress-sm">
-                            <div class="progress-bar bg-danger" style="width: 75%"></div>
+                            <div class="progress-bar bg-danger" style="width: <?php echo ($totalCitas / 400) * 100; ?>%"></div>
                         </div>
                     </div>
 
                     <div class="progress-group">
                         <span class="progress-text">Visitas</span>
-                        <span class="float-right"><b>480</b>/800</span>
+                        <span class="float-right"><b><?php echo $totalVisitas; ?></b>/800</span>
                         <div class="progress progress-sm">
-                            <div class="progress-bar bg-success" style="width: 60%"></div>
+                            <div class="progress-bar bg-success" style="width: <?php echo ($totalVisitas / 800) * 100; ?>%"></div>
                         </div>
                     </div>
-
-
                 </div>
-
             </div>
-
         </div>
 
         <div class="card-footer">
@@ -76,7 +95,6 @@
                         <h5 class="description-header">$35,210.43</h5>
                         <span class="description-text">TOTAL PRODUCTOS</span>
                     </div>
-
                 </div>
 
                 <div class="col-sm-6 col-6">
@@ -85,16 +103,8 @@
                         <h5 class="description-header">$10,390.90</h5>
                         <span class="description-text">TOTAL CITAS</span>
                     </div>
-
                 </div>
-
-               
-
-               
             </div>
-
         </div>
-
     </div>
-
 </div>
