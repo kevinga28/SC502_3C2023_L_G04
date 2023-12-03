@@ -194,33 +194,31 @@ class Cliente extends Conexion
             return json_encode($error);
         }
     }
-
     public function verificarExistenciaCliente()
     {
-        $query = "SELECT IdCliente, correo FROM cliente WHERE IdCliente=:IdCliente OR correo=:correo";
+        $query = "SELECT 1 FROM cliente WHERE telefono=:telefono OR correo=:correo LIMIT 1";
 
         try {
             self::getConexion();
-            $IdCliente = $this->getIdCliente();
+            $telefono = $this->getTelefono();
             $correo = $this->getCorreo();
-            $resultado = self::$cnx->prepare($query);
-            $resultado->bindParam(":IdCliente", $IdCliente, PDO::PARAM_INT);
-            $resultado->bindParam(":correo", $correo, PDO::PARAM_STR);
-            $resultado->execute();
+
+            $stmt = self::$cnx->prepare($query);
+            $stmt->bindParam(":telefono", $telefono, PDO::PARAM_STR);
+            $stmt->bindParam(":correo", $correo, PDO::PARAM_STR);
+            $stmt->execute();
+
+            $existeCliente = $stmt->fetch(PDO::FETCH_ASSOC);
+
             self::desconectar();
 
-            $encontrado = false;
-            foreach ($resultado->fetchAll() as $reg) {
-                $encontrado = true;
-            }
-            return $encontrado;
+            return ($existeCliente !== false); // Devuelve true si se encontró al menos un cliente
         } catch (PDOException $Exception) {
             self::desconectar();
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
             return $error;
         }
     }
-
 
     public function guardarEnDb()
     {
@@ -373,20 +371,20 @@ class Cliente extends Conexion
         try {
             // Conecta a la base de datos
             self::getConexion();
-    
+
             // Prepara la consulta
             $stmt = self::$cnx->prepare($query);
-    
+
             // Asigna el valor de la cédula y ejecuta la consulta
             $stmt->bindParam(":IdCliente", $IdCliente, PDO::PARAM_INT);
             $stmt->execute();
-    
+
             // Obtiene los resultados y los devuelve como un arreglo asociativo
             $cliente = $stmt->fetch(PDO::FETCH_ASSOC);
-    
+
             // Cierra la conexión a la base de datos
             self::desconectar();
-    
+
             return $cliente;
         } catch (PDOException $e) {
             // Manejo de errores, por ejemplo, loguear el error
@@ -467,7 +465,6 @@ class Cliente extends Conexion
 
             if ($resultado->rowCount() > 0) {
                 return true;
-
             } else {
                 return false;
             }
@@ -475,7 +472,6 @@ class Cliente extends Conexion
 
 
             self::desconectar();
-
         } catch (PDOException $Exception) {
             self::$cnx->rollBack();
             self::desconectar();
@@ -483,17 +479,4 @@ class Cliente extends Conexion
             return $error;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -101,8 +101,8 @@ switch ($_GET["op"]) {
         } else if ($cliente->guardarEnDb()) {
             echo 3; // Cliente registrado exitosamente
 
-        } else {
-            echo 4; // Error al registrar el cliente
+        } else if(strlen($telefono) < 8) {
+            echo 4; //
         }
         break;
 

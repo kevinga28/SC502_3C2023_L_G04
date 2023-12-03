@@ -94,7 +94,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
     <aside class="main-sidebar elevation-4 color-custom">
 
 
-
       <?php
       include 'fragments/aside.php'
       ?>
@@ -152,7 +151,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
 
             </section>
 
-            <section class="col-lg-9 connectedSortable">
+            <section class="col-lg-12 connectedSortable">
+              <div class="row">
+                <?php
+                include 'fragments/estadistica2.php'
+                ?>
+              </div>
+
+            </section>
+
+
+            <section class="col-lg-12 connectedSortable">
 
               <div class="card">
                 <?php
@@ -190,20 +199,17 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
 
   <script src="plugins/select2/js/select2.full.min.js"></script>
   <script src="logueo/js/logout.js"></script>
-  <!-- Custom JavaScript (main.js) -->
-  <script src="dist/js/main.js"></script>
   <!-- ChartJS -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <!-- Estadistica -->
-
+  
+  <!-- Script 1: Gráfico de Ventas y Citas -->
   <script>
-    // Código Chart.js
-    const ctx = document.getElementById('myChart');
-
-    const data = {
+    var ctx = document.getElementById('myChart');
+    var data = {
       labels: ['Productos Vendidos', 'Citas Realizadas'],
       datasets: [{
-        label: 'Ventas y citas',
+        label: 'Ventas y Citas',
         data: [<?php echo $cantidadProductos; ?>, <?php echo $cantidadCitas; ?>],
         backgroundColor: [
           'rgba(54, 162, 235, 0.2)',
@@ -216,7 +222,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
         borderWidth: 1
       }]
     };
-
     const config = {
       type: 'line',
       data: data,
@@ -228,10 +233,116 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
         }
       }
     };
-
     new Chart(ctx, config);
   </script>
 
+  <!-- Script 2: Gráfico de Citas por Día -->
+  <script>
+    var labels = <?php echo json_encode($labels); ?>;
+    var data = <?php echo json_encode($data); ?>;
+    var ctx1 = document.getElementById('total-citas').getContext('2d');
+    var myChart1 = new Chart(ctx1, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Citas por Día',
+          data: data,
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
+  <!-- Script 3: Gráfico de Reporte de Facturas -->
+  <script>
+    var labels = <?php echo json_encode($labels); ?>;
+    var data = <?php echo json_encode($data); ?>;
+    var ctx2 = document.getElementById('reporte-ventas').getContext('2d');
+    var myChart2 = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Reporte de Facturas',
+          data: data,
+          backgroundColor: [
+            'rgba(0,123,255,0.8)',
+            'rgba(255,193,7,0.8)',
+          ],
+          borderColor: [
+            'rgb(0,123,255)',
+            'rgb(255,193,7)',
+          ],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+
+
+<!-- Script 4: Gráfico de Rentabilidad de Tratamientos -->
+<script>
+    var labels4 = <?php echo json_encode($labels4); ?>;
+    var ingresos4 = <?php echo json_encode($ingresos4); ?>;
+    var citas4 = <?php echo json_encode($citas4); ?>;
+    var rentabilidad4 = <?php echo json_encode($rentabilidad4); ?>;
+    var ctx4 = document.getElementById('rentabilidad-tratamientos').getContext('2d');
+    var myChart4 = new Chart(ctx4, {
+        type: 'bar',
+        data: {
+            labels: labels4,
+            datasets: [{
+                    label: 'Ingresos',
+                    data: ingresos4,
+                    backgroundColor: 'rgba(75, 192, 192, 0.8)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Costos',
+                    data: citas4,
+                    backgroundColor: 'rgba(255, 99, 132, 0.8)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1
+                },
+                {
+                    label: 'Rentabilidad',
+                    data: rentabilidad4,
+                    backgroundColor: 'rgba(54, 162, 235, 0.8)',
+                    borderColor: 'rgba(54, 162, 235, 1)',
+                    borderWidth: 1
+                }
+            ]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
 
 
 </body>

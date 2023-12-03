@@ -137,6 +137,24 @@ class Factura extends Conexion
             return json_encode($error);
         }
     }
+
+    public function existeFacturaParaCita($IdCita)
+    {
+        try {
+            self::getConexion();
+            $consulta = self::$cnx->prepare("SELECT COUNT(*) as total FROM factura WHERE IdCita = :IdCita");
+            $consulta->bindParam(':IdCita', $IdCita);
+            $consulta->execute();
+
+            $resultado = $consulta->fetch(PDO::FETCH_ASSOC);
+
+            // Si la consulta devuelve un total mayor que 0, significa que existe al menos una factura para esa cita
+            return $resultado['total'] > 0;
+        } catch (PDOException $e) {
+            // Manejo de errores si la consulta falla
+            throw new Exception("Error al verificar la existencia de factura para la cita: " . $e->getMessage());
+        }
+    }
     public function buscarCitaPorId($idCita)
     {
         $query = "SELECT c.*, f.*, cli.nombre AS nombreCliente, cli.apellido AS apellidoCliente, cli.correo, emp.nombre AS nombreEmpleado, emp.apellido AS apellidoEmpleado
@@ -310,7 +328,7 @@ class Factura extends Conexion
             // Elimina los registros de cita_tratamiento asociados a esta cita
             $queryEliminar = "DELETE FROM detalle_factura WHERE IdFactura = :IdFactura";
             $stmtEliminar = self::$cnx->prepare($queryEliminar);
-            $stmtEliminar->bindParam(":IdFactura", $IdFactura, PDO::PARAM_INT); 
+            $stmtEliminar->bindParam(":IdFactura", $IdFactura, PDO::PARAM_INT);
             $stmtEliminar->execute();
 
             // Cierra la conexión a la base de datos

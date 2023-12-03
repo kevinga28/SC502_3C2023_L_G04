@@ -53,12 +53,12 @@
     <div id="calendario" class="calendario">
         <div class="container">
             <form method="POST" name="modulos_add" id="crearCitaVC">
-                <div class="row">   
+                <div class="row">
 
                     <div class="col-md-6 mt-5">
 
                         <div class="form-group ">
-                            <input type="hidden" class="form-control" id="cliente" name="cliente"  value="<?php echo isset($_SESSION['usuarioCliente']) ? $_SESSION['usuarioCliente']->getIdCliente() : ''; ?>">
+                            <input type="hidden" class="form-control" id="cliente" name="cliente" value="<?php echo isset($_SESSION['usuarioCliente']) ? $_SESSION['usuarioCliente']->getIdCliente() : ''; ?>">
                         </div>
 
                         <div class="form-group mb-2">
@@ -69,7 +69,7 @@
                         </div>
 
                         <div class="form-group mb-2">
-                            <label for="estilista">Estilista</label>
+                            <label for="cedulaEmpleado">Estilista</label>
                             <select class="select2 select2-hidden-accessible" id="cedulaEmpleado" name="cedulaEmpleado" data-placeholder="Seleccionar Estilista" data-dropdown-css-class="select2-danger" style="width: 100%;" tabindex="1" aria-hidden="true" required>
                                 <!-- Tratamientos cargados desde PHP se insertarán aquí automáticamente -->
                             </select>
@@ -192,9 +192,44 @@
                                 </table>
                             </div>
                         </div>
-                        <!-- FIN DEL CALENDARIO -->
-                    </div>
 
+                        <style>
+                            .circulo {
+                                width: 14%;
+                                border-radius: 50%;
+                                cursor: pointer;
+                                -webkit-transition: all 0.2s ease-in;
+                                -o-transition: all 0.2s ease-in;
+                                transition: all 0.2s ease-in;
+                                position: relative;
+                                z-index: 0;
+                            }
+                        </style>
+                        <div class="container">
+                            <div class="row">
+                                <div class="d-flex mt-2 col-md-6">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                                        <circle cx="20" cy="20" r="20" fill="#e13a9d" />
+                                    </svg>
+                                    <p style="color: #000;" class="ms-2 mt-2">
+                                        Este color define el dia de hoy!
+                                    </p>
+                                </div>
+
+
+                                <div class="d-flex mt-2 col-md-6">
+                                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 40 40">
+                                        <circle cx="20" cy="20" r="20" fill="#2a3246" />
+                                    </svg>
+                                    <p style="color: #000" class="ms-2 mt-2">
+                                        Este color es su hora de cita!
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- FIN DEL CALENDARIO -->
                 </div>
                 <div class="card-footer">
                     <input type="submit" class="btn" value="Agregar Cita" id="btnRegistrarCita" style="background-color: #202126; color: #F7F4ED;"></input>
@@ -211,7 +246,7 @@
     <script src="js/jquery.min.js"></script>
     <script src="js/popper.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    
+
 
     <!-- SWEETALERT -->
     <script src="../../Admin/Views/plugins/sweetalert2/sweetalert2.all.min.js"></script>

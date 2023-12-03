@@ -6,6 +6,7 @@
 
  <!-- Sidebar -->
  <div class="sidebar">
+     <!-- USUARIO ADMIN O ESTILISTA -->
      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
          <div class="info">
              <a id="nombreCompleto" href="../user.php">
@@ -14,7 +15,6 @@
              </a>
          </div>
      </div>
-
 
      <!-- SidebarSearch Form -->
      <style>
@@ -91,6 +91,7 @@
                  </ul>
              </li>
 
+
              <li class="nav-item">
                  <a href="" class="nav-link">
                      <i class="nav-icon fas fa-copy"></i>
@@ -144,8 +145,8 @@
                  </ul>
              </li>
 
-             <li class="nav-item menu-open">
-                 <a href="#" class="nav-link active">
+             <li class="nav-item">
+                 <a href="#" class="nav-link">
                      <i class="nav-icon fas fa-edit"></i>
                      <p>
                          Facturas
@@ -154,13 +155,13 @@
                  </a>
                  <ul class="nav nav-treeview">
                      <li class="nav-item">
-                         <a href="listaFactura.php" class="nav-link">
+                         <a href="../factura/listaFactura.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Lista de Facturas</p>
                          </a>
                      </li>
                      <li class="nav-item">
-                         <a href="facturas.php" class="nav-link">
+                         <a href="../factura/facturas.php" class="nav-link">
                              <i class="far fa-circle nav-icon"></i>
                              <p>Crear Factura</p>
                          </a>
@@ -170,7 +171,7 @@
              </li>
 
              <li class="nav-item">
-                 <a href="#" class="nav-link">
+                 <a href="#" class="nav-link ">
                      <i class="nav-icon fas fa-table"></i>
                      <p>
                          Gestion de Empleados
@@ -221,8 +222,8 @@
              </li>
 
              <li class="nav-header">Citas</li>
-             <li class="nav-item">
-                 <a href="../calendario/calendario.php" class="nav-link">
+             <li class="nav-item menu-open">
+                 <a href="calendario.php" class="nav-link active">
                      <i class="nav-icon far fa-calendar-alt"></i>
                      <p>
                          Calendario

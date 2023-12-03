@@ -64,19 +64,45 @@
                 </div>
 
                 <div class="input-box">
-                  <input type="number" name="telefono" id="telefono" required placeholder="telefono*">
+                  <input type="number" name="telefono" id="telefono" required placeholder="Telefono*">
+                </div>
+
+                <style>
+                  label {
+                    display: block;
+                    font-weight: bold;
+                  }
+
+                  select,
+                  input[type="text"] {
+                    width: 88%;
+                    padding: 8px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    font-size: 16px;
+                  }
+
+                  select:focus,
+                  input[type="text"]:focus {
+                    outline: none;
+                    border-color: #0056b3;
+                    box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+                  }
+                </style>
+                <div class="input-box">
+                  <select name="pais" id="pais" data-placeholder="Seleccionar Pais"></select>
                 </div>
 
                 <div class="input-box">
-                  <input type="text" name="provincia" id="provincia" placeholder="Provincia*">
+                  <select name="provincia" id="Provincia" data-placeholder="Seleccionar Provincia"></select>
                 </div>
 
                 <div class="input-box">
-                  <input type="text" name="canton" id="canton" placeholder="Canton*">
+                  <select name="distrito" id="Distrito" data-placeholder="Seleccionar Distrito"></select>
                 </div>
 
                 <div class="input-box">
-                  <input type="text" name="distrito" id="distrito" placeholder="Distrito*">
+                  <input type="text" name="canton" id="canton" placeholder="Canton*" required>
                 </div>
 
                 <div class="input-box">
@@ -117,6 +143,106 @@
   <script src="../js/jquery-3.0.0.min.js"></script>
 
   <script src="../../../Admin/views/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+
+  <script>
+    $(document).ready(function() {
+      // Agregar placeholders a los selectores usando jQuery
+      $('#pais').append('<option value="" disabled selected>Seleccionar País</option>');
+      $('#Provincia').append('<option value="" disabled selected>Seleccionar Provincia</option>');
+      $('#Distrito').append('<option value="" disabled selected>Seleccionar Distrito</option>');
+    });
+    $.ajax({
+      url: 'https://www.universal-tutorial.com/api/getaccesstoken',
+      method: 'GET',
+      headers: {
+        "Accept": "application/json",
+        "api-token": "gKFgtSAtW3sSO4nMw1-ZkSd2iccjdr5QxMfLkqtlrJM3xQZJfhcbPrEPEWZLMKoJNp4",
+        "user-email": "hersalalfarocisneros@gmail.com"
+      },
+      success: function(data) {
+        if (data.auth_token) {
+          var auth_token = data.auth_token;
+          $.ajax({
+            url: 'https://www.universal-tutorial.com/api/countries/',
+            method: 'GET',
+            headers: {
+              "Authorization": "Bearer " + auth_token,
+              "Accept": "application/json"
+            },
+            success: function(data) {
+              var countries = data;
+              var comboCountries = "<option value=''>Seleccionar</option>";
+              countries.forEach(element => {
+                comboCountries += '<option value="' + element['country_name'] + '">' + element['country_name'] + '</option>';
+              });
+              $("#pais").html(comboCountries);
+              // State list
+              $("#pais").on("change", function() {
+                var country = this.value;
+                $.ajax({
+                  url: 'https://www.universal-tutorial.com/api/states/' + country,
+                  method: 'GET',
+                  headers: {
+                    "Authorization": "Bearer " + auth_token,
+                    "Accept": "application/json"
+                  },
+                  success: function(data) {
+                    var states = data;
+                    var comboStates = "<option value=''>Seleccionar</option>";
+                    states.forEach(element => {
+                      comboStates += '<option value="' + element['state_name'] + '">' + element['state_name'] + '</option>';
+                    });
+                    $("#Provincia").html(comboStates);
+                    // City list
+                    $("#Provincia").on("change", function() {
+                      var state = this.value;
+                      $.ajax({
+                        url: 'https://www.universal-tutorial.com/api/cities/' + state,
+                        method: 'GET',
+                        headers: {
+                          "Authorization": "Bearer " + auth_token,
+                          "Accept": "application/json"
+                        },
+                        success: function(data) {
+                          var cities = data;
+                          var comboCities = "<option value=''>Seleccionar</option>";
+                          cities.forEach(element => {
+                            comboCities += '<option value="' + element['city_name'] + '">' + element['city_name'] + '</option>';
+                          });
+                          $("#Distrito").html(comboCities);
+                          if (thisClass.cityValue) {
+                            $("#Distrito").val(thisClass.cityValue).trigger("change");
+                          }
+                        },
+                        error: function(e) {
+                          console.log("Error al obtener countries: " + e);
+                        }
+                      });
+                    });
+                    if (thisClass.stateValue) {
+                      $("#Provincia").val(thisClass.stateValue).trigger("change");
+                    }
+                  },
+                  error: function(e) {
+                    console.log("Error al obtener countries: " + e);
+                  }
+                });
+              });
+              if (thisClass.countryValue) {
+                $("#pais").val(thisClass.countryValue).trigger("change");
+              }
+            },
+            error: function(e) {
+              console.log("Error al obtener countries: " + e);
+            }
+          });
+        }
+      },
+      error: function(e) {
+        console.log("Error al obtener countries: " + e);
+      }
+    });
+  </script>
 
   <script src="js/register.js"></script>
 

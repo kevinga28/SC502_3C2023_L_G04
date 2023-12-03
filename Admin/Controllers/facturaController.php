@@ -60,29 +60,33 @@ switch ($_GET["op"]) {
             if ($IdCita === 0 || empty($metodoPago) || empty($pagoTotal)) {
                 echo "Error: Debes proporcionar todos los datos necesarios para crear la cita.";
             } else {
-
                 $factura = new Factura();
-                $factura->setIdCita($IdCita);
-                $factura->setMetodoPago($metodoPago);
-                $factura->setPagoTotal($pagoTotal);
-                $idFactura = $factura->agregarFactura();
-
-                if (is_numeric($idFactura) && $idFactura > 0) {
-                    // Verifica si se han enviado producto
-                    if (isset($_POST["producto"]) && is_array($_POST["producto"])) {
-                        $productos = $_POST["producto"];
-
-                        foreach ($productos as $codigoProducto) {
-                            // Utiliza el código de producto para encontrar la cantidad correspondiente
-                            $cantidad = isset($_POST["cantidad"]) ? intval($_POST["cantidad"]) : 0;
-                            $factura->agregarProductoFactura($idFactura, $codigoProducto, $cantidad);
-                        }
-                        echo "1"; // Indica éxito
-                    } else {
-                        echo "1"; // Indica exito pero sin productos
-                    }
+                $existeFactura = $factura->existeFacturaParaCita($IdCita); 
+                if ($existeFactura) {
+                    echo "Error: Ya existe una factura asociada a esta cita.";
                 } else {
-                    echo "Error: No se pudo crear la cita. Por favor, verifica los datos.";
+                    $factura->setIdCita($IdCita);
+                    $factura->setMetodoPago($metodoPago);
+                    $factura->setPagoTotal($pagoTotal);
+                    $idFactura = $factura->agregarFactura();
+
+                    if (is_numeric($idFactura) && $idFactura > 0) {
+                        // Verifica si se han enviado producto
+                        if (isset($_POST["producto"]) && is_array($_POST["producto"])) {
+                            $productos = $_POST["producto"];
+
+                            foreach ($productos as $codigoProducto) {
+                                // Utiliza el código de producto para encontrar la cantidad correspondiente
+                                $cantidad = isset($_POST["cantidad"]) ? intval($_POST["cantidad"]) : 0;
+                                $factura->agregarProductoFactura($idFactura, $codigoProducto, $cantidad);
+                            }
+                            echo "1"; // Indica éxito
+                        } else {
+                            echo "1"; // Indica exito pero sin productos
+                        }
+                    } else {
+                        echo "Error: No se pudo crear la cita. Por favor, verifica los datos.";
+                    }
                 }
             }
         } catch (PDOException $Exception) {
@@ -99,7 +103,7 @@ switch ($_GET["op"]) {
             $pagoTotal = isset($_POST["pagoTotalHidden"]) ? trim($_POST["pagoTotalHidden"]) : "";
 
             if ($IdFactura === 0 || $IdCita === 0 || empty($metodoPago) || empty($pagoTotal)) {
-                var_dump( $IdFactura);
+                var_dump($IdFactura);
                 echo "Error: Debes proporcionar todos los datos necesarios para editar la factura.";
             } else {
                 $factura = new Factura();

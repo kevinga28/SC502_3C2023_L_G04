@@ -106,7 +106,7 @@ $('#crearCliente').on('submit', function (event) {
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'El correo ya existe. Corrija e inténtelo nuevamente.',
+            text: 'El cliente ya existe. Corrija e inténtelo nuevamente.',
           });
           break;
 
