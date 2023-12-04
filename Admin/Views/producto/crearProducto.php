@@ -6,7 +6,7 @@ require_once '../../Controllers/AuthController.php';
 
 
 $conexion = Conexion::conectar();
-$query = $conexion->query("SELECT nombre, cantidad FROM producto");
+$query = $conexion->query("SELECT nombre, cantidad FROM producto ORDER BY cantidad DESC LIMIT 3");
 $productos = $query->fetchAll(PDO::FETCH_ASSOC);
 
 $nombres = [];

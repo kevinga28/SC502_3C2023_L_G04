@@ -207,4 +207,192 @@
     </div>
 </div>
 
+<div class="col-md-4">
+    <?php
+    // Obtener la lista de productos
+    $query_productos = "SELECT p.Codigo, p.nombre
+    FROM producto p
+    INNER JOIN detalle_factura df ON p.Codigo = df.CodigoProducto";
+
+    $stmt_productos = $conexion->prepare($query_productos);
+    $stmt_productos->execute();
+
+    $productos = $stmt_productos->fetchAll(PDO::FETCH_ASSOC);
+
+    // Obtener el producto seleccionado (por defecto, todos)
+    $productoSeleccionado = isset($_GET['producto']) ? $_GET['producto'] : 'todos';
+
+    // Construir la consulta según la selección del usuario
+    if ($productoSeleccionado === 'todos') {
+        $query_ventas_productos = "
+            SELECT p.nombre AS nombre_producto, SUM(df.Cantidad) AS cantidad_vendida
+            FROM producto p
+            INNER JOIN detalle_factura df ON p.Codigo = df.CodigoProducto
+            INNER JOIN factura f ON df.IdFactura = f.IdFactura
+            GROUP BY p.Codigo
+        ";
+    } else {
+        $query_ventas_productos = "
+            SELECT p.nombre AS nombre_producto, SUM(df.Cantidad) AS cantidad_vendida
+            FROM producto p
+            INNER JOIN detalle_factura df ON p.Codigo = df.CodigoProducto
+            INNER JOIN factura f ON df.IdFactura = f.IdFactura
+            WHERE p.Codigo = :producto
+            GROUP BY p.Codigo
+        ";
+    }
+
+    $stmt_ventas_productos = $conexion->prepare($query_ventas_productos);
+
+    // Bind para el parámetro :producto si no es 'todos'
+    if ($productoSeleccionado !== 'todos') {
+        $stmt_ventas_productos->bindParam(':producto', $productoSeleccionado, PDO::PARAM_INT);
+    }
+
+    $stmt_ventas_productos->execute();
+
+    $labels_productos = [];
+    $data_ventas_productos = [];
+
+    if ($stmt_ventas_productos->rowCount() > 0) {
+        while ($row = $stmt_ventas_productos->fetch(PDO::FETCH_ASSOC)) {
+            $labels_productos[] = $row['nombre_producto'];
+            $data_ventas_productos[] = $row['cantidad_vendida'];
+        }
+    }
+    ?>
+
+    <div class="card">
+        <div class="card-header border-0">
+            <div class="card-tools">
+                <div class="btn-group ml-4">
+                    <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52" aria-expanded="true">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="dropdown-menu" role="menu" x-placement="bottom-start">
+                        <a href="?tipo=semana" class="dropdown-item">Semana</a>
+                        <a href="?tipo=mes" class="dropdown-item">Mes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <h3 class="card-title">Productos Vendidos</h3>
+                <a href="javascript:void(0);">Ver Reporte</a>
+            </div>
+        </div>
+        <div class="card-body">
+        
+            <form method="GET" action="">
+                <label for="producto">Seleccione un producto:</label>
+                <div class="input-group mb-3">
+    <select class="custom-select" name="producto" id="producto">
+        <option value="todos">Todos</option>
+        <?php foreach ($productos as $producto) : ?>
+            <option value="<?php echo $producto['Codigo']; ?>" <?php echo ($productoSeleccionado == $producto['Codigo']) ? 'selected' : ''; ?>>
+                <?php echo $producto['nombre']; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+    <div class="input-group-append">
+        <label class="input-group-text" for="producto">Producto</label>
+    </div>
+</div>
+
+            </form>
+
+            <div class="position-relative mb-4">
+                <canvas id="productos-vendidos" height="170px"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="col-md-4">
+    <?php
+    // Obtener los rangos de precio seleccionados
+    $rangosPrecio = isset($_GET['rangoPrecio']) ? $_GET['rangoPrecio'] : [];
+
+    // Construir la parte de la consulta según los rangos seleccionados
+    $whereRangoPrecio = '';
+    if (!empty($rangosPrecio)) {
+        $rangosCondicion = [];
+        foreach ($rangosPrecio as $rango) {
+            if ($rango === '12000-inf') {
+                $rangosCondicion[] = "(t.precio >= 12000)";
+            } else {
+                list($min, $max) = explode('-', $rango);
+                $rangosCondicion[] = "(t.precio BETWEEN $min AND $max)";
+            }
+        }
+        $whereRangoPrecio = ' AND (' . implode(' OR ', $rangosCondicion) . ')';
+    }
+
+    // Consulta para obtener los tratamientos filtrados por rango de precio
+    $query_tratamientos_filtrados = "
+        SELECT t.nombre AS nombre_tratamiento, COUNT(ct.IdCita) AS cantidad_vendida
+        FROM tratamiento t
+        LEFT JOIN cita_tratamiento ct ON t.IdTratamiento = ct.IdTratamiento
+        LEFT JOIN cita c ON ct.IdCita = c.IdCita
+        WHERE 1 $whereRangoPrecio
+        GROUP BY t.nombre
+    ";
+
+    $stmt_tratamientos_filtrados = $conexion->prepare($query_tratamientos_filtrados);
+    $stmt_tratamientos_filtrados->execute();
+
+    $labels_tratamientos_filtrados = [];
+    $data_tratamientos_filtrados = [];
+
+    if ($stmt_tratamientos_filtrados->rowCount() > 0) {
+        while ($row = $stmt_tratamientos_filtrados->fetch(PDO::FETCH_ASSOC)) {
+            $labels_tratamientos_filtrados[] = $row['nombre_tratamiento'];
+            $data_tratamientos_filtrados[] = $row['cantidad_vendida'];
+        }
+    }
+    ?>
+<div class="card">
+        <div class="card-header border-0">
+            <div class="card-tools">
+                <div class="btn-group ml-4">
+                    <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52" aria-expanded="true">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="dropdown-menu" role="menu" x-placement="bottom-start">
+                        <a href="?tipo=semana" class="dropdown-item">Semana</a>
+                        <a href="?tipo=mes" class="dropdown-item">Mes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <h3 class="card-title">Tratamientos Vendidos</h3>
+                <a href="javascript:void(0);">Ver Reporte</a>
+            </div>
+        </div>
+        <div class="card-body">
+        <label class="checkbox-container">1000 - 3000
+                        <input type="checkbox" name="rangoPrecio[]" value="1000-3000">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">3000 - 7000
+                        <input type="checkbox" name="rangoPrecio[]" value="3000-7000">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">7000 - 12000
+                        <input type="checkbox" name="rangoPrecio[]" value="7000-12000">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="checkbox-container">12000 en adelante
+                        <input type="checkbox" name="rangoPrecio[]" value="12000-inf">
+                        <span class="checkmark"></span>
+                    </label>
+</div>
+
+            </form>
+
+            <div class="position-relative mb-4">
+                <canvas id="tratamientos-vendidos-filtrados" height="170px"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
 
