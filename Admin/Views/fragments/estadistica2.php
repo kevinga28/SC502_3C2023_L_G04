@@ -57,6 +57,7 @@
 
 
 
+</style>
 
 
 <div class="col-md-4">
@@ -308,42 +309,36 @@
 </div>
 <div class="col-md-4">
     <?php
-    // Obtener los rangos de precio seleccionados
-    $rangosPrecio = isset($_GET['rangoPrecio']) ? $_GET['rangoPrecio'] : [];
+    // Obtener los valores mínimos y máximos del rango de precio
+    $minPrecio = isset($_GET['minPrecio']) ? $_GET['minPrecio'] : '';
+    $maxPrecio = isset($_GET['maxPrecio']) ? $_GET['maxPrecio'] : '';
 
-    // Construir la parte de la consulta según los rangos seleccionados
+    // Construir la parte de la consulta según los valores ingresados
     $whereRangoPrecio = '';
-    if (!empty($rangosPrecio)) {
-        $rangosCondicion = [];
-        foreach ($rangosPrecio as $rango) {
-            if ($rango === '12000-inf') {
-                $rangosCondicion[] = "(t.precio >= 12000)";
-            } else {
-                list($min, $max) = explode('-', $rango);
-                $rangosCondicion[] = "(t.precio BETWEEN $min AND $max)";
-            }
-        }
-        $whereRangoPrecio = ' AND (' . implode(' OR ', $rangosCondicion) . ')';
+    if ($minPrecio !== '' && $maxPrecio !== '') {
+        $whereRangoPrecio = " AND t.precio BETWEEN :minPrecio AND :maxPrecio";
     }
 
     // Consulta para obtener los tratamientos filtrados por rango de precio
     $query_tratamientos_filtrados = "
-        SELECT 
-            CASE
-                WHEN t.precio BETWEEN 1000 AND 3000 THEN '1000-3000'
-                WHEN t.precio BETWEEN 3000 AND 7000 THEN '3000-7000'
-                WHEN t.precio BETWEEN 7000 AND 12000 THEN '7000-12000'
-                WHEN t.precio >= 12000 THEN '12000-inf'
-            END AS rango_precio,
-            COUNT(ct.IdCita) AS cantidad_vendida
-        FROM tratamiento t
-        LEFT JOIN cita_tratamiento ct ON t.IdTratamiento = ct.IdTratamiento
-        LEFT JOIN cita c ON ct.IdCita = c.IdCita
-        WHERE 1 $whereRangoPrecio
-        GROUP BY rango_precio
-    ";
+    SELECT 
+        t.precio AS rango_precio,
+        COUNT(ct.IdCita) AS cantidad_vendida
+    FROM tratamiento t
+    LEFT JOIN cita_tratamiento ct ON t.IdTratamiento = ct.IdTratamiento
+    LEFT JOIN cita c ON ct.IdCita = c.IdCita
+    WHERE 1 $whereRangoPrecio
+    GROUP BY t.precio
+";
 
     $stmt_tratamientos_filtrados = $conexion->prepare($query_tratamientos_filtrados);
+
+    // Bind para el parámetro :minPrecio
+    if ($minPrecio !== '' && $maxPrecio !== '') {
+        $stmt_tratamientos_filtrados->bindParam(':minPrecio', $minPrecio, PDO::PARAM_INT);
+        $stmt_tratamientos_filtrados->bindParam(':maxPrecio', $maxPrecio, PDO::PARAM_INT);
+    }
+
     $stmt_tratamientos_filtrados->execute();
 
     $labels_tratamientos_filtrados = [];
@@ -356,6 +351,31 @@
         }
     }
     ?>
+
+    <style>
+        #rangoForm {
+            text-align: center;
+        }
+
+        #rangoForm label,
+        #rangoForm input {
+            display: inline-block;
+            vertical-align: top;
+            margin: 5px;
+        }
+
+        #rangoForm input {
+            width: 60px; /* Ajusta el ancho según tus preferencias */
+        }
+
+        #rangoForm button {
+            display: block;
+            margin: 5px auto; /* Ajusta el margen superior e inferior según tus preferencias */
+            padding: 3px 8px; /* Ajusta el padding según tus preferencias */
+            font-size: 12px; /* Ajusta el tamaño del texto según tus preferencias */
+        }
+    </style>
+
     <div class="card">
         <div class="card-header border-0">
             <div class="card-tools">
@@ -369,45 +389,37 @@
                     </div>
                 </div>
             </div>
-            <div class="d-flex justify-content-between">
-                <h3 class="card-title">Tratamientos Vendidos</h3>
-                <a href="javascript:void(0);" id="ver-reporte">Ver Reporte</a>
-            </div>
         </div>
         <div class="card-body">
-            <label class="checkbox-container">1000 - 3000
-                <input type="checkbox" name="rangoPrecio[]" value="1000-3000">
-                <span class="checkmark"></span>
-            </label>
-            <label class="checkbox-container">3000 - 7000
-                <input type="checkbox" name="rangoPrecio[]" value="3000-7000">
-                <span class="checkmark"></span>
-            </label>
-            <label class="checkbox-container">7000 - 12000
-                <input type="checkbox" name="rangoPrecio[]" value="7000-12000">
-                <span class="checkmark"></span>
-            </label>
-            <label class="checkbox-container">12000 en adelante
-                <input type="checkbox" name="rangoPrecio[]" value="12000-inf">
-                <span class="checkmark"></span>
-            </label>
-        </div>
+            <form id="rangoForm">
+                <div>
+                    <label for="minPrecio">Precio Mínimo:</label>
+                    <input type="number" name="minPrecio" id="minPrecio" value="<?php echo $minPrecio; ?>">
 
+                    <label for="maxPrecio">Precio Máximo:</label>
+                    <input type="number" name="maxPrecio" id="maxPrecio" value="<?php echo $maxPrecio; ?>">
+                    <button type="submit">Actualizar Gráfico</button>
+                </div>
+            </form>
+        </div>
         <div class="position-relative mb-4">
-            <canvas id="tratamientos-vendidos-filtrados" height="170px"></canvas>
+            <canvas id="tratamientos-vendidos-filtrados" width="300px" height="170px"></canvas>
         </div>
     </div>
-</div>
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
     $(document).ready(function () {
         // Función para obtener los datos y actualizar el gráfico
         function updateChart() {
+            // Obtener los valores ingresados por el usuario
+            var minPrecio = $('#minPrecio').val();
+            var maxPrecio = $('#maxPrecio').val();
+
+            // Realizar la solicitud AJAX
             $.ajax({
-                url: window.location.href,
+                url: 'estadistica2.php',
                 method: "GET",
-                data: { rangoPrecio: $('input[name="rangoPrecio[]"]:checked').map(function () { return this.value; }).get() },
+                data: { minPrecio: minPrecio, maxPrecio: maxPrecio },
                 success: function (data) {
                     var newData = JSON.parse(data);
 
@@ -428,7 +440,19 @@
         // Llamamos a la función al cargar la página
         updateChart();
 
-        // Configuramos el evento change para los checkboxes
-        $('input[name="rangoPrecio[]"]').on('change', updateChart);
+        // Configuramos el evento submit para el formulario
+        $('#rangoForm').submit(function (event) {
+            event.preventDefault();  // Evitar que el formulario se envíe y recargue la página
+            updateChart();
+        });
     });
+
 </script>
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
