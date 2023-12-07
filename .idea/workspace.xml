@@ -5,24 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f8c9abd-086d-4297-a16c-a6018e345d6d" name="Changes" comment="plugin phpmailer">
-      <change afterPath="$PROJECT_DIR$/Admin/Views/calendario/calendario.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/calendario/fragments/aside.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/calendario/fragments/footer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Admin/Views/calendario/fragments/navbar.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/cita/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/cita/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/cliente/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/cliente/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/empleado/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/empleado/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/factura/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/factura/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/producto/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/producto/fragments/aside.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Admin/Views/tratamiento/fragments/aside.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/tratamiento/fragments/aside.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Controllers/clienteController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Controllers/clienteController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Admin/Views/calendario/calendario.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/Views/calendario/calendario.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Admin/config/global.php" beforeDir="false" afterPath="$PROJECT_DIR$/Admin/config/global.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Cliente/Controller/SessionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/Controller/SessionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/login/js/inicioSesion.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/js/inicioSesion.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cliente/views/login/js/register.js" beforeDir="false" afterPath="$PROJECT_DIR$/Cliente/views/login/js/register.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,21 +48,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/SC502_3C2023_L_G04/Admin/Views/calendario/fragments",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SONARLINT_PRECOMMIT_ANALYSIS&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/dashboard_adminlte&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\SC502_3C2023_L_G04\Admin\Views\calendario\fragments" />
@@ -235,7 +223,12 @@
       <workItem from="1700948226508" duration="1174000" />
       <workItem from="1700949573432" duration="3637000" />
       <workItem from="1700959175537" duration="71000" />
-      <workItem from="1701074631508" duration="1550000" />
+      <workItem from="1701074631508" duration="2248000" />
+      <workItem from="1701121521992" duration="7914000" />
+      <workItem from="1701644791639" duration="1805000" />
+      <workItem from="1701715469181" duration="706000" />
+      <workItem from="1701723126161" duration="12173000" />
+      <workItem from="1701937404642" duration="891000" />
     </task>
     <task id="LOCAL-00001" summary="calendario y recuperar password por email">
       <created>1700765536530</created>

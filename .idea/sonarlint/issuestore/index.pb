@@ -7,8 +7,6 @@ P
  Admin/Views/logueo/css/login.css,1\8\185aac258c5f025fb8a9f34fc98ef1d927ce3528
 P
  Admin/Views/cliente/clientes.php,1\d\1dd51275446d3d75f8271b118fdbe4212d399280
-U
-%Admin/Views/cliente/listaClientes.php,f\c\fcd85db26c422c0bbef2ecc1237530826fb82a4d
 R
 "Admin/Views/cliente/verCliente.php,5\8\583175ddd895869d11491f22b858812fe477aa2e
 U
@@ -17,8 +15,6 @@ J
 Cliente/views/Nosotros.php,8\d\8d9392df4811827de5a7ff956bdb80c2834d1f49
 H
 Cliente/views/js/main.js,7\d\7db1464ac015e34239a5dcb4c681a7e5fbd3e36e
-K
-Admin/Views/dist/js/demo.js,3\c\3c3625c385229151e3d4b6d767a924ca802936c1
 O
 Admin/Views/logueo/js/logout.js,c\2\c27758987b379a275effbae175bb7764ff1e7b39
 R

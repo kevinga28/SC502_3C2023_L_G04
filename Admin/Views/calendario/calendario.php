@@ -102,6 +102,7 @@
                                         events: function (fetchInfo, successCallback, failureCallback) {
                                             // Realizar la solicitud AJAX para obtener los eventos
                                             $.ajax({
+
                                                 url: '../../Controllers/citaController.php?op=cargarCitaCalendario',
                                                 method: 'GET',
                                                 success: function (response) {
