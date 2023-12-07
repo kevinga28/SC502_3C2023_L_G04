@@ -124,39 +124,43 @@ $('#crearEmpleado').on('submit', function (event) {
 });
 
 /* ---------------------------------------------------------------OBTENER LOS DATOS DEL EMPLEADO--------------------------------------------------------------- */
-
 const rellenarFormulario = async () => {
   const urlSearchParams = new URLSearchParams(window.location.search);
   const cedula = urlSearchParams.get("cedula");
 
   if (cedula) {
-    try {
-      const response = await fetch(`../../../admin/Controllers/empleadoController.php?op=obtener&cedula=${cedula}`);
-      if (response.ok) {
-        const datos = await response.json();
+      try {
+          const response = await fetch(`../../../admin/Controllers/empleadoController.php?op=obtener&cedula=${cedula}`);
+          if (response.ok) {
+              const datos = await response.json();
 
-        // Rellena el formulario con los datos obtenidos
-        $("#Ecedula").val(datos.cedula);
-        $("#Eimagen").val(datos.imagen);
-        $("#Egenero").val(datos.genero);
-        $("#Enombre").val(datos.nombre);
-        $("#Eapellido").val(datos.apellido);
-        $("#Ecorreo").val(datos.correo);
-        $("#Etelefono").val(datos.telefono);
-        $("#Eprovincia").val(datos.provincia);
-        $("#Edistrito").val(datos.distrito);
-        $("#Ecanton").val(datos.canton);
-        $("#Eotros").val(datos.otros);
-        $("#Erol").val(datos.rol);
+              // Rellena el formulario con los datos obtenidos
+              $("#Ecedula").val(datos.cedula);
+              $("#Eimagen").val(datos.imagen);
+              $("#Egenero").val(datos.genero);
+              $("#Enombre").val(datos.nombre);
+              $("#Eapellido").val(datos.apellido);
+              $("#Ecorreo").val(datos.correo);
+              $("#Etelefono").val(datos.telefono);
+              $("#Eprovincia").val(datos.provincia);
+              $("#Edistrito").val(datos.distrito);
+              $("#Ecanton").val(datos.canton);
+              $("#Eotros").val(datos.otros);
+              $("#Erol").val(datos.rol).trigger("change");
 
-      } else {
-        console.error("Error al obtener los datos del empleado");
+              // Muestra la imagen en la etiqueta <img>
+              const rutaImagen = `../../../admin/Views/dist/img/${datos.imagen}`;
+              $("#imagenPreview").attr("src", rutaImagen);
+
+          } else {
+              console.error("Error al obtener los datos del empleado");
+          }
+      } catch (error) {
+          console.error("Error en la solicitud AJAX:", error);
       }
-    } catch (error) {
-      console.error("Error en la solicitud AJAX:", error);
-    }
   }
 };
+
 
 rellenarFormulario(); // Llamar la funcion 
 
@@ -243,12 +247,12 @@ $(document).on('click', '.eliminar-empleado', function () {
     cancelButtonText: 'Cancelar'
   }).then((result) => {
     if (result.isConfirmed) {
-      eliminarempleado(ced);
+      eliminarEmpleado(ced);
     }
   });
 });
 
-function eliminarempleado(ced) {
+function eliminarEmpleado(ced) {
   $.ajax({
     url: '../../../admin/Controllers/empleadoController.php?op=eliminar',
     method: 'POST',
@@ -282,6 +286,7 @@ function eliminarempleado(ced) {
     }
   });
 }
+
 
 
 

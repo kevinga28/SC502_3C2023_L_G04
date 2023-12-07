@@ -1,6 +1,6 @@
  <!-- Brand Logo -->
- <a href="index.html" class="brand-link">
-     <img src="../dist/img/AdminLTELogo.png" alt="Evolve_Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+ <a href="../index.php" class="brand-link">
+     <img src="../dist/img/logo.png" alt="Evolve_Logo" class="brand-image img-circle ">
      <span class="brand-text font-weight-light">Evolve</span>
  </a>
 
@@ -8,11 +8,11 @@
  <div class="sidebar">
      <!-- USUARIO ADMIN O ESTILISTA -->
      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-         <div class="image">
-             <img src="../dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-         </div>
          <div class="info">
-             <a href="../user.php" class="d-block">Administrador</a>
+             <a id="nombreCompleto" href="../user.php">
+                 <?php echo isset($_SESSION['datosEmpleado']['nombre']) ? $_SESSION['datosEmpleado']['nombre'] : ''; ?>
+                 <?php echo isset($_SESSION['datosEmpleado']['apellido']) ? $_SESSION['datosEmpleado']['apellido'] : ''; ?>
+             </a>
          </div>
      </div>
 
@@ -97,7 +97,6 @@
                      <p>
                          Citas
                          <i class="fas fa-angle-left right"></i>
-                         <span class="badge badge-info right">6</span>
                      </p>
                  </a>
 
@@ -227,7 +226,6 @@
                      <i class="nav-icon far fa-calendar-alt"></i>
                      <p>
                          Calendario
-                         <span class="badge badge-info right">2</span>
                      </p>
                  </a>
              </li>

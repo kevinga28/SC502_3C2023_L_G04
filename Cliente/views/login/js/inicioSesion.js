@@ -16,7 +16,7 @@ $('#login').on('submit', function (event) {
     $('#btnlogin').prop('disabled', true);
     var formData = new FormData($('#login')[0]);
     $.ajax({
-        //url: 'http://localhost/SC502_3C2023_L_G04/Cliente/Controller/InicioSesionController.php?op=login',
+        //url: 'http://localhost/Proyecto_Ambiente_Web/Cliente/Controller/InicioSesionController.php?op=login',
         url: '../../Controller/SessionController.php?op=login',
         type: 'POST',
         data: formData,

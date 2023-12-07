@@ -1,5 +1,9 @@
+<?php
+require_once '../../Controllers/AuthController.php';
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -23,6 +27,22 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+
+    <?php
+    session_start();
+
+    $rolesPermitidos = ['Admin', 'Gerente', 'Estilista'];
+
+    if (!isset($_SESSION['rol']) || !in_array($_SESSION['rol'], $rolesPermitidos)) {
+        header('Location: ../acceso_denegado.php');
+        exit;
+    }
+
+    $authController = new AuthController();
+    $authController->verificarAcceso(['Admin', 'Estilista', 'Gerente']);
+    ?>
+
+
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand ">
@@ -72,7 +92,7 @@
                                         </div>
 
                                         <!-- EMPIEZA EL FORMULARIO -->
-                                        <form method="POST" name="modulos_add" id="crearFactura">
+                                        <form method="POST" name="factura_update" id="factura_update">
                                             <div class="card-body">
                                                 <div class="row">
                                                     <div class="col-md-6">
@@ -129,9 +149,9 @@
                                                         </div>
 
 
-                                                        <div class="form-group" id="cantidadDiv" >
+                                                        <div class="form-group" id="cantidadDiv">
                                                             <label for="Cantidad">Cantidad</label>
-                                                            <input type="number" class="form-control" id="cantidad" name="Ecantidad" placeholder="Cantidad" min="1">
+                                                            <input type="number" class="form-control" id="Ecantidad" name="cantidad" placeholder="Cantidad" min="1">
                                                         </div>
 
                                                         <div class="form-group">
@@ -148,23 +168,23 @@
                                                         <div class="form-group">
                                                             <label for="pagoTotal">Total a Pagar</label>
                                                             <input type="text" class="form-control" id="EpagoTotal" name="pagoTotal" readonly value="₡0">
-                                                            <input type="text" id="pagoTotalHidden" name="pagoTotalHidden">
-                                                            <input type="text" id="pagoProductos" name="pagoTotalProductos">
-                                                            <input type="text" id="pagoTratamiento" name="pagoTratamiento">
+                                                            <input type="hidden" id="EpagoTotalHidden" name="pagoTotalHidden">
+                                                            <input type="hidden" id="EpagoProductos" name="pagoTotalProductos">
+                                                            <input type="hidden" id="EpagoTratamiento" name="pagoTratamiento">
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-12 mb-4">
                                                 <a href="listaFactura.php" class="btn btn-secondary">Volver</a>
                                                 <input type="submit" value="Actualizar Facturas" class="btn float-right" style="background-color: #202126; color: #F7F4ED;">
                                             </div>
-                                            
+
                                         </form>
 
 
-                                       
+
 
                                     </div>
                                 </div>
@@ -203,22 +223,6 @@
     <script src="../plugins/select2/js/select2.full.min.js"></script>
 
     <script src="../dist/js/factura.js"></script>
-
-
-
-    <script>
-        // Captura el cambio en la selección de tratamientos
-        $('#tratamiento').on('change', function() {
-            var total = 0;
-            // Suma los precios de los tratamientos seleccionados
-            $('#tratamiento option:selected').each(function() {
-                total += parseInt($(this).data('precio'));
-            });
-            // Muestra el total en el campo correspondiente
-            $('#total').val('₡' + total);
-        });
-    </script>
-
 
     <script>
         $(function() {

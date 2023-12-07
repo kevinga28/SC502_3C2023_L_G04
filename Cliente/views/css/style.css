@@ -600,7 +600,7 @@ ul.email li a {
 
 
 .text-bg-servicios {
-    text-align: center;
+    text-align: left;
     padding-left: 100px;
 }
 
@@ -780,19 +780,19 @@ ul.email li a {
     display: block;
 }
 
-.hover_servicio:hover.servicio_box {
+#hover_servicio:hover.servicio_box {
     background: #bc1939;
     transition: ease-in all 0.5s;
     border-radius: 20px;
     cursor: pointer;
 }
 
-.hover_servicio:hover.servicio_box h3 {
+#hover_servicio:hover.servicio_box h3 {
     color: #fff;
     transition: ease-in all 0.5s;
 }
 
-.hover_servicio:hover.servicio_box p {
+#hover_servicio:hover.servicio_box p {
     color: #fff;
     transition: ease-in all 0.5s;
 }
@@ -837,7 +837,6 @@ ul.email li a {
     background: #bc1939;
     color: #F7F4ED !important;
 }
-
 
 
 .modern-about-us {

@@ -73,7 +73,7 @@ $(function () {
 
 
 
-/* ---------------------------------------------------------------CREAR LOS CLIENTES--------------------------------------------------------------- */
+/* ---------------------------------------------------------------CREAR LAS CITAS--------------------------------------------------------------- */
 $('#crearCita').on('submit', function (event) {
   event.preventDefault();
   $('#btnRegistrarCita').prop('disabled', true);
@@ -242,7 +242,6 @@ function modificarCita(formData) {
 // Eliminar una cita
 $(document).on('click', '.eliminar-cita', function () {
   var id = $(this).data('id');
-  console.log('Id de la cita: ' + id);
 
   Swal.fire({
     title: 'Confirmación de Eliminación',
@@ -280,13 +279,6 @@ function eliminarCita(id) {
           }, 1800);
           break;
         case '2':
-          Swal.fire({
-            icon: 'error',
-            title: 'Error',
-            text: 'Error: No se pudieron cambiar los datos antes de eliminar'
-          });
-          break;
-        case '3':
           Swal.fire({
             icon: 'error',
             title: 'Error',
@@ -395,7 +387,7 @@ $(document).ready(function () {
 });
 
 
-/* ---------------------------------------------------------------SUMA TOTAL PARA DURACION TOTAL-------------------------------------------------------------- */
+/* ---------------------------------------------------------------FUNCIONAMIENTO DE INTERVALOS-------------------------------------------------------------- */
 $(document).ready(function() {
   $('#tratamiento, #Etratamiento').on('change', function() {
     calcularDuracionTotal();
@@ -454,15 +446,10 @@ $(document).ready(function() {
           diaSemana: selectedDay
         },
         success: function (data) {
-          console.log('Horarios disponibles:', data);
           var duracionTotal = convertirFormatoHoraAMinutos($('#duracionTotal, #EduracionTotal').val());
           var intervalos = generarIntervalosCitasConDuracion(data, duracionTotal);
           actualizarHorariosEnSelect(intervalos);
         },
-        error: function (xhr, status, error) {
-          console.log('Error al obtener los horarios disponibles');
-          console.log(xhr.responseText); 
-        }
       });
     }
   }

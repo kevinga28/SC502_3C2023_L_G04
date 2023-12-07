@@ -29,14 +29,14 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>AdminLTE 3 | User Profile</title>
+    <title>Evolve | Perfil</title>
 
-    <!-- Google Font: Source Sans Pro -->
+    <!-- Google Font: Source Sansa Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
@@ -93,7 +93,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
                             <div class="card card-primary card-outline">
                                 <div class="card-body box-profile">
                                     <div class="text-center">
-                                        <img class="profile-user-img img-fluid img-circle" src="dist/img/user4-128x128.jpg" alt="User profile picture">
+                                    <img id="imagenPreview" src="" alt="No hay imagen" style="max-width: 50%; max-height: 50px;">
                                     </div>
 
                                     <h3 class="profile-username text-center"><?php echo isset($usuario) ? $usuario->getRol() : ''; ?></h3>
@@ -252,7 +252,8 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
                         $("#Ecanton").val(datos.canton);
                         $("#Eotros").val(datos.otros);
                         $("#Erol").val(datos.rol);
-
+                        const rutaImagen = `dist/img/${datos.imagen}`;
+                        $("#imagenPreview").attr("src", rutaImagen);
                     } else {
                         console.error("Error al obtener los datos del empleado");
                     }

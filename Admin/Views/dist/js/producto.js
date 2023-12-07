@@ -16,7 +16,8 @@ function listarProductos() {
       dataType: 'json',
       error: function (e) {
         console.log(e.responseText);
-        },
+      },
+
       bDestroy: true,
       iDisplayLength: 5,
 

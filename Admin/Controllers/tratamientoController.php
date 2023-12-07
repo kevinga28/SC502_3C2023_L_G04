@@ -42,7 +42,7 @@ if (isset($_GET["op"])) {
                 $tratamiento->setNombre($nombre);
                 $tratamiento->setDescripcion($descripcion);
                 $tratamiento->setPrecio($precio);
-                $tratamiento->setDuracion($$duracion);
+                $tratamiento->setDuracion($duracion);
                 $tratamiento->guardarEnDb();
                 if ($tratamiento->verificarExistenciaTratamiento()) {
                     echo 1;

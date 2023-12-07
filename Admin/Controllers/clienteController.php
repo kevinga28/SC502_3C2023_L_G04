@@ -70,7 +70,7 @@ switch ($_GET["op"]) {
             $cliente->setOtros($otros);
             $cliente->guardarEnDb();
 
-
+            
             if ($cliente->verificarExistenciaCliente()) {
                 echo 1;
             } else {
@@ -127,7 +127,7 @@ switch ($_GET["op"]) {
                 echo 2;  //Error al guardar en la base de datos
             }
         } else {
-            echo 3;
+            echo 3; 
         }
         break;
 

@@ -1,3 +1,7 @@
+<?php
+require_once '../../Controllers/AuthController.php';
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,6 +24,19 @@
 </head>
 
 <body class="hold-transition sidebar-mini">
+
+  <?php
+  session_start();
+
+  if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Admin') {
+    header('Location: ../acceso_denegado.php');
+    exit;
+  }
+
+  $authController = new AuthController();
+  $authController->verificarAcceso(['Admin']);
+  ?>
+
   <div class="wrapper">
     <!-- Navbar -->
     <nav class="main-header navbar navbar-expand ">
@@ -59,7 +76,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-12">
-              
+
               <!-- FORMULARIO PARA CREAR UN tratamiento -->
               <div class="row">
                 <div class="col-sm-12">
@@ -91,11 +108,18 @@
                             </div>
 
                             <div class="form-group">
-                              <label for="Duracion">Duracion</label>
-                              <input type="time" class="form-control" id="duracion" name="duracion" placeholder="Duracion" required>
+                              <label for="Duracion">Duración</label>
+                              <select class="select2 select2-hidden-accessible" id="duracion" name="duracion" data-placeholder="Seleccionar Duracion" data-dropdown-css-class="select2-danger" style="width: 100%;" aria-hidden="true">
+                                <option value="00:30:00">30 Min</option>
+                                <option value="01:00:00">1 Hora</option>
+                              </select>
                             </div>
+
                           </div>
-                          
+
+
+
+
                         </div>
                       </div>
 

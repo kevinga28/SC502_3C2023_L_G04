@@ -101,7 +101,6 @@
                      y segura de ti misma.
                   </p>
                </div>
-               <a class="leer_mas" href="servicioCortes.php">Ver</a>
             </div>
 
             <div class="col-md-4">
@@ -114,7 +113,6 @@
                      tu belleza y hacer que tu cabello destaque.
                   </p>
                </div>
-               <a class="leer_mas" href="servicioColor.php">Ver</a>
             </div>
 
             <div class="col-md-4">
@@ -127,11 +125,10 @@
                      una experiencia rejuvenecedora para tu cabello.
                   </p>
                </div>
-               <a class="leer_mas" href="servicioCapilar.php">Ver</a>
             </div>
          </div>
 
-         <div class="col-md-4 mt-5 mx-auto">
+         <div class="col-md-4 mt-4 mx-auto">
             <div id="hover_servicio" class="servicio_box">
                <i><img src="images/thr3.png" alt="#" /></i>
                <h3>Botox Capilar</h3>
@@ -141,9 +138,9 @@
                   para brindarte resultados sorprendentes y un cabello espectacularmente hermoso.
                </p>
             </div>
-            <a class="leer_mas" href="servicioBotox.php">Ver</a>
+          
          </div>
-
+         <a class="leer_mas" href="Servicios.php">Ver Todos Los Servicios</a>
       </div>
    </div>
    <!-- final servicios -->

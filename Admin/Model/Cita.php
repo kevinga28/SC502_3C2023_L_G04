@@ -150,6 +150,34 @@ class Cita extends Conexion
             return json_encode($error);
         }
     }
+
+    public function verificarExistenciaHoraFecha()
+    { $query = "SELECT  fechaCita, horaCita, cedulaEmpleado FROM cita WHERE fechaCita = :fechaCita AND horaCita = :horaCita AND cedulaEmpleado = :cedulaEmpleado";
+        try {
+            self::getConexion();
+            $resultado = self::$cnx->prepare($query);
+            $fechaCita = $this->getFechaCita();
+            $horaCita = $this->getHoraCita();
+            $cedulaEmpleado = $this->getCedulaEmpleado();
+
+            $resultado->bindParam(":fechaCita", $fechaCita, PDO::PARAM_STR);
+            $resultado->bindParam(":horaCita", $horaCita, PDO::PARAM_STR);
+            $resultado->bindParam(":cedulaEmpleado", $cedulaEmpleado, PDO::PARAM_STR);
+            $resultado->execute();
+            self::desconectar();
+    
+            $encontrar = false;
+            foreach ($resultado->fetchAll() as $encontrado) {
+                $encontrar = true;
+            }
+            return $encontrar;
+        } catch (PDOException $Exception) {
+            self::desconectar();
+            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
+            return $error;
+        }
+    }
+
     public function obtenerDatosClientePorId($idCliente)
     {
         $query = "SELECT nombre, apellido, correo FROM cliente WHERE IdCliente = :idCliente";
@@ -246,29 +274,6 @@ class Cita extends Conexion
         }
     }
 
-    public function verificarExistenciaCita()
-    {
-        $query = "SELECT IdCita FROM cita WHERE IdCita = :IdCita";
-
-        try {
-            self::getConexion();
-            $IdCita = $this->getIdCita();
-            $resultado = self::$cnx->prepare($query);
-            $resultado->bindParam(":IdCita", $IdCita, PDO::PARAM_INT);
-            $resultado->execute();
-            self::desconectar();
-
-            $encontrado = false;
-            foreach ($resultado->fetchAll() as $reg) {
-                $encontrado = true;
-            }
-            return $encontrado;
-        } catch (PDOException $Exception) {
-            self::desconectar();
-            $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
-            return $error;
-        }
-    }
 
     public function actualizarCita()
     {
@@ -553,6 +558,7 @@ GROUP BY
         }
     }
 
+    
 
 
 }

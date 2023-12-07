@@ -1,5 +1,9 @@
+<?php
+require_once '../../Controllers/AuthController.php';
+?>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="utf-8">
@@ -13,13 +17,31 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="../dist/css/adminlte.min.css">
 
+    <link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+
     <link rel="stylesheet" href="../dist/css/adminlte.min.css?v=3.2.0">
 
     <link rel="stylesheet" href="../dist/css/style.css">
 
+
 </head>
 
 <body class="hold-transition sidebar-mini">
+    <?php
+    session_start();
+
+    // Verifica si el rol está establecido en la sesión
+    if (!isset($_SESSION['rol']) || $_SESSION['rol'] !== 'Admin') {
+        // Si el rol no es el adecuado, redirecciona o muestra un mensaje de acceso denegado
+        header('Location: ../acceso_denegado.php');
+        exit;
+    }
+
+    $authController = new AuthController();
+    $authController->verificarAcceso(['Admin']);
+    ?>
+
+
     <div class="wrapper">
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand ">
@@ -170,6 +192,8 @@
 
     </div>
 
+
+
     <script src="../plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -182,6 +206,14 @@
     <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
     <script src="../plugins/select2/js/select2.full.min.js"></script>
+
+    <script>
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+        })
+    </script>
 
     <script src="../dist/js/empleado.js"></script>
 
