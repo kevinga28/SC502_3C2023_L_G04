@@ -344,32 +344,10 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["action"]) && $_GET["acti
     });
 </script>
 
-<script>
-    var labels_productos = <?php echo json_encode($labels_productos); ?>;
-    var data_ventas_productos = <?php echo json_encode($data_ventas_productos); ?>;
-    var ctx_productos = document.getElementById('productos-vendidos').getContext('2d');
-    var myChart_productos = new Chart(ctx_productos, {
-        type: 'bar',
-        data: {
-            labels: labels_productos,
-            datasets: [{
-                label: 'Productos Vendidos',
-                data: data_ventas_productos,
-                backgroundColor: 'rgba(75, 192, 192, 0.8)',
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-</script>
+
+
+
+
 
 <!-- Script para el gráfico de tratamientos filtrados -->
 <script>
