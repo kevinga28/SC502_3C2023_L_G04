@@ -61,7 +61,7 @@
 
 <div class="col-md-4">
     <?php
-  
+
     // Obtener el tipo de reporte seleccionado
     $tipoReporte = isset($_GET['tipo']) ? $_GET['tipo'] : 'semana'; // Si no se proporciona un tipo, se asume 'semana'
 
@@ -173,19 +173,8 @@
 
 
 
-<div class="card">
+    <div class="card">
         <div class="card-header border-0">
-            <div class="card-tools">
-                <div class="btn-group ml-4">
-                    <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52" aria-expanded="true">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="dropdown-menu" role="menu" x-placement="bottom-start">
-                        <a href="?tipo=semana" class="dropdown-item">Semana</a>
-                        <a href="?tipo=mes" class="dropdown-item">Mes</a>
-                    </div>
-                </div>
-            </div>
             <div class="d-flex justify-content-between">
                 <h3 class="card-title">Reporte de Rentabilidad Tratamientos </h3>
                 <a href="javascript:void(0);" onclick="showReport('<?php echo $tipoReporte; ?>')">Ver Reporte</a>
@@ -194,18 +183,22 @@
         <div class="card-body">
             <div class="d-flex">
                 <p class="d-flex flex-column">
-                    
+
                 </p>
 
             </div>
 
             <div class="position-relative mb-4">
-            <canvas id="rentabilidad-tratamientos" height="170px"></canvas>
+                <canvas id="rentabilidad-tratamientos" height="204px"></canvas>
             </div>
 
         </div>
     </div>
 </div>
+
+
+
+
 <div class="col-md-4">
     <?php
     // Obtener la lista de productos
@@ -263,17 +256,7 @@
 
     <div class="card">
         <div class="card-header border-0">
-            <div class="card-tools">
-                <div class="btn-group ml-4">
-                    <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52" aria-expanded="true">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="dropdown-menu" role="menu" x-placement="bottom-start">
-                        <a href="?tipo=semana" class="dropdown-item">Semana</a>
-                        <a href="?tipo=mes" class="dropdown-item">Mes</a>
-                    </div>
-                </div>
-            </div>
+           
             <div class="d-flex justify-content-between">
                 <h3 class="card-title">Productos Vendidos</h3>
                 <a href="javascript:void(0);">Ver Reporte</a>
@@ -284,19 +267,19 @@
             <form method="GET" action="">
                 <label for="producto">Seleccione un producto:</label>
                 <div class="input-group mb-3">
-    <select class="custom-select" name="producto" id="producto">
-        <option value="todos">Todos</option>
-        <?php foreach ($productos as $producto) : ?>
-            <option value="<?php echo $producto['Codigo']; ?>" <?php echo ($productoSeleccionado == $producto['Codigo']) ? 'selected' : ''; ?>>
-                <?php echo $producto['nombre']; ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
-    <div class="input-group-append">
-        <label class="input-group-text" for="producto">Producto</label>
-        <button type="submit">Ver producto</button>
-    </div>
-</div>
+                    <select class="custom-select" name="producto" id="producto">
+                        <option value="todos">Todos</option>
+                        <?php foreach ($productos as $producto) : ?>
+                            <option value="<?php echo $producto['Codigo']; ?>" <?php echo ($productoSeleccionado == $producto['Codigo']) ? 'selected' : ''; ?>>
+                                <?php echo $producto['nombre']; ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </select>
+                    <div class="input-group-append">
+                        <label class="input-group-text" for="producto">Producto</label>
+                        <button type="submit">Ver producto</button>
+                    </div>
+                </div>
 
             </form>
 
@@ -307,7 +290,7 @@
     </div>
 </div>
 
-<div class="col-md-4">
+<div class="col-md-8">
     <?php
     // Obtener los valores mínimos y máximos del rango de precio
     $minPrecio = isset($_GET['minPrecio']) ? $_GET['minPrecio'] : '';
@@ -353,19 +336,8 @@
     ?>
 
 
-<div class="card">
+    <div class="card">
         <div class="card-header border-0">
-            <div class="card-tools">
-                <div class="btn-group ml-4">
-                    <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52" aria-expanded="true">
-                        <i class="fas fa-bars"></i>
-                    </button>
-                    <div class="dropdown-menu" role="menu" x-placement="bottom-start">
-                        <a href="?tipo=semana" class="dropdown-item">Semana</a>
-                        <a href="?tipo=mes" class="dropdown-item">Mes</a>
-                    </div>
-                </div>
-            </div>
             <div class="d-flex justify-content-between">
                 <h3 class="card-title">Tratamientos Vendidos</h3>
                 <a href="javascript:void(0);">Ver Reporte</a>
@@ -373,26 +345,26 @@
         </div>
         <div class="card-body">
 
-        <form id="rangoForm">
+            <form id="rangoForm">
                 <div>
                     <label class="form-label" for="minPrecio">Precio Mínimo:</label>
                     <input type="number" name="minPrecio" id="minPrecio" value="<?php echo $minPrecio; ?>" class="form-control">
 
                     <label for="maxPrecio">Precio Máximo:</label>
                     <input type="number" name="maxPrecio" id="maxPrecio" value="<?php echo $maxPrecio; ?>" class="form-control">
-                    <button type="submit"  class="btn btn-primary" >Actualizar Gráfico</button>
+                    <button type="submit" class="btn btn-primary mt-2">Actualizar Gráfico</button>
                 </div>
             </form>
 
-          <div class="position-relative mb-4">
-            <canvas id="tratamientos-vendidos-filtrados"  height="170px"></canvas>
-          </div>
+            <div class="position-relative mb-4">
+                <canvas id="tratamientos-vendidos-filtrados" height="52px"></canvas>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         // Función para obtener los datos y actualizar el gráfico
         function updateChart() {
             // Obtener los valores ingresados por el usuario
@@ -403,8 +375,11 @@
             $.ajax({
                 url: './estadistica2.php',
                 method: "GET",
-                data: { minPrecio: minPrecio, maxPrecio: maxPrecio },
-                success: function (data) {
+                data: {
+                    minPrecio: minPrecio,
+                    maxPrecio: maxPrecio
+                },
+                success: function(data) {
                     var newData = JSON.parse(data);
 
                     if (newData.labels && newData.data) {
@@ -415,7 +390,7 @@
                         console.error("Error en el formato de los datos recibidos.");
                     }
                 },
-                error: function (xhr, textStatus, errorThrown) {
+                error: function(xhr, textStatus, errorThrown) {
                     console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
                 }
             });
@@ -425,15 +400,30 @@
         updateChart();
 
         // Configuramos el evento submit para el formulario
-        $('#rangoForm').submit(function (event) {
-            event.preventDefault();  // Evitar que el formulario se envíe y recargue la página
+        $('#rangoForm').submit(function(event) {
+            event.preventDefault(); // Evitar que el formulario se envíe y recargue la página
             updateChart();
         });
     });
-
 </script>
-    
+
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+<script>
 
+function showReport(tipoReporte) {
+    // Lógica para mostrar el reporte según el tipo proporcionado
+    // Aquí puedes realizar acciones basadas en el tipo de reporte
+    console.log('Mostrar reporte:', tipoReporte);
+
+    // Si quieres descargar el reporte en lugar de solo mostrarlo, puedes utilizar el código de descarga que te mencioné anteriormente
+    var url = 'ruta/al/reporte.php?tipo=' + tipoReporte;
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = 'reporte_' + tipoReporte + '.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+</script>

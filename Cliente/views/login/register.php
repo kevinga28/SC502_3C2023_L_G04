@@ -44,7 +44,50 @@
             <form name="modulos_add" id="usuario_add" method="POST">
               <h2>Registrarse</h2>
               <div class="row">
+              <style>
+                  label {
+                    display: block;
+                    font-weight: bold;
+                  }
 
+                  select,
+                  input[type="text"] {
+                    width: 88%;
+                    padding: 8px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    font-size: 16px;
+                  }
+                  input[type="email"] {
+                    width: 88%;
+                    padding: 8px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    font-size: 16px;
+                  }
+                  input[type="number"] {
+                    width: 88%;
+                    padding: 8px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    font-size: 16px;
+                  }
+                  input[type="password"] {
+                    width: 88%;
+                    padding: 8px;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    font-size: 16px;
+                  }
+
+                  select:focus,
+                  input[type="text"]:focus {
+                    outline: none;
+                    border-color: #0056b3;
+                    box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+                  }
+                 
+                </style>
 
                 <div class="input-box">
                   <h3> <span class="aste">*</span> Campos Requeridos</h3>
@@ -67,28 +110,7 @@
                   <input type="number" name="telefono" id="telefono" required placeholder="Telefono*">
                 </div>
 
-                <style>
-                  label {
-                    display: block;
-                    font-weight: bold;
-                  }
-
-                  select,
-                  input[type="text"] {
-                    width: 88%;
-                    padding: 8px;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    font-size: 16px;
-                  }
-
-                  select:focus,
-                  input[type="text"]:focus {
-                    outline: none;
-                    border-color: #0056b3;
-                    box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
-                  }
-                </style>
+              
                 <div class="input-box">
                   <select name="pais" id="pais" data-placeholder="Seleccionar Pais"></select>
                 </div>
@@ -116,8 +138,6 @@
                 <div class="input-box">
                   <button id="btnRegistar" type="submit" class="btn" value="registrar">Registrarse</button>
                 </div>
-
-
 
 
                 <p id="parrafo">

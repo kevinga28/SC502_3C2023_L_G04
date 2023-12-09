@@ -53,7 +53,6 @@
     <!-- SWEETALERT -->
     <script src="../plugins/sweetalert2/sweetalert2.all.min.js"></script>
 
-    <script src="js/login.js"></script>
 
 </body>
 
