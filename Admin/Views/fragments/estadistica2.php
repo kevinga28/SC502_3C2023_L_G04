@@ -210,8 +210,8 @@
     <?php
     // Obtener la lista de productos
     $query_productos = "SELECT p.Codigo, p.nombre
-        FROM producto p
-        INNER JOIN detalle_factura df ON p.Codigo = df.CodigoProducto";
+    FROM producto p
+    INNER JOIN detalle_factura df ON p.Codigo = df.CodigoProducto";
 
     $stmt_productos = $conexion->prepare($query_productos);
     $stmt_productos->execute();
@@ -280,22 +280,24 @@
             </div>
         </div>
         <div class="card-body">
-            <form method="GET" action="" id="formActualizarGrafico" class="update-chart-form">
+
+            <form method="GET" action="">
                 <label for="producto">Seleccione un producto:</label>
                 <div class="input-group mb-3">
-                    <select class="custom-select" name="producto" id="producto">
-                        <option value="todos">Todos</option>
-                        <?php foreach ($productos as $producto) : ?>
-                            <option value="<?php echo $producto['Codigo']; ?>" <?php echo ($productoSeleccionado == $producto['Codigo']) ? 'selected' : ''; ?>>
-                                <?php echo $producto['nombre']; ?>
-                            </option>
-                        <?php endforeach; ?>
-                    </select>
-                    <div class="input-group-append">
-                        <label class="input-group-text" for="producto">Producto</label>
-                    </div>
-                    <button type="button" class="btn btn-primary" id="btnActualizarGrafico">Actualizar Gráfico</button>
-                </div>
+    <select class="custom-select" name="producto" id="producto">
+        <option value="todos">Todos</option>
+        <?php foreach ($productos as $producto) : ?>
+            <option value="<?php echo $producto['Codigo']; ?>" <?php echo ($productoSeleccionado == $producto['Codigo']) ? 'selected' : ''; ?>>
+                <?php echo $producto['nombre']; ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+    <div class="input-group-append">
+        <label class="input-group-text" for="producto">Producto</label>
+        <button type="submit">Ver producto</button>
+    </div>
+</div>
+
             </form>
 
             <div class="position-relative mb-4">
@@ -305,46 +307,133 @@
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    $(document).ready(function () {
-    // Función para obtener los datos y actualizar el gráfico de productos
-    function updateProductChart() {
-        // Obtener el valor seleccionado del producto
-        var productoSeleccionado = $('#producto').val();
+<div class="col-md-4">
+    <?php
+    // Obtener los valores mínimos y máximos del rango de precio
+    $minPrecio = isset($_GET['minPrecio']) ? $_GET['minPrecio'] : '';
+    $maxPrecio = isset($_GET['maxPrecio']) ? $_GET['maxPrecio'] : '';
 
-        // Realizar la solicitud AJAX
-        $.ajax({
-            url: 'estadistica2.php',
-            method: 'GET',
-            data: { producto: productoSeleccionado },
-            success: function (data) {
-                console.log("Datos recibidos:", data); // Agrega esta línea para registrar los datos recibidos
-                var newData = JSON.parse(data);
-
-                if (newData.labels && newData.data) {
-                    // Actualizar los datos del gráfico de productos
-                    myChart_productos.data.labels = newData.labels;
-                    myChart_productos.data.datasets[0].data = newData.data;
-                    myChart_productos.update();
-                } else {
-                    console.error("Error en el formato de los datos recibidos.");
-                }
-            },
-            error: function (xhr, textStatus, errorThrown) {
-                console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
-            }
-        });
+    // Construir la parte de la consulta según los valores ingresados
+    $whereRangoPrecio = '';
+    if ($minPrecio !== '' && $maxPrecio !== '') {
+        $whereRangoPrecio = " AND t.precio BETWEEN :minPrecio AND :maxPrecio";
     }
 
-    // Configuramos el evento click para el botón de actualizar gráfico de productos
-    $('#btnActualizarGrafico').click(function () {
-        updateProductChart();
+    // Consulta para obtener los tratamientos filtrados por rango de precio
+    $query_tratamientos_filtrados = "
+    SELECT 
+        t.precio AS rango_precio,
+        COUNT(ct.IdCita) AS cantidad_vendida
+    FROM tratamiento t
+    LEFT JOIN cita_tratamiento ct ON t.IdTratamiento = ct.IdTratamiento
+    LEFT JOIN cita c ON ct.IdCita = c.IdCita
+    WHERE 1 $whereRangoPrecio
+    GROUP BY t.precio
+";
+
+    $stmt_tratamientos_filtrados = $conexion->prepare($query_tratamientos_filtrados);
+
+    // Bind para el parámetro :minPrecio
+    if ($minPrecio !== '' && $maxPrecio !== '') {
+        $stmt_tratamientos_filtrados->bindParam(':minPrecio', $minPrecio, PDO::PARAM_INT);
+        $stmt_tratamientos_filtrados->bindParam(':maxPrecio', $maxPrecio, PDO::PARAM_INT);
+    }
+
+    $stmt_tratamientos_filtrados->execute();
+
+    $labels_tratamientos_filtrados = [];
+    $data_tratamientos_filtrados = [];
+
+    if ($stmt_tratamientos_filtrados->rowCount() > 0) {
+        while ($row = $stmt_tratamientos_filtrados->fetch(PDO::FETCH_ASSOC)) {
+            $labels_tratamientos_filtrados[] = $row['rango_precio'];
+            $data_tratamientos_filtrados[] = $row['cantidad_vendida'];
+        }
+    }
+    ?>
+
+
+<div class="card">
+        <div class="card-header border-0">
+            <div class="card-tools">
+                <div class="btn-group ml-4">
+                    <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-offset="-52" aria-expanded="true">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="dropdown-menu" role="menu" x-placement="bottom-start">
+                        <a href="?tipo=semana" class="dropdown-item">Semana</a>
+                        <a href="?tipo=mes" class="dropdown-item">Mes</a>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between">
+                <h3 class="card-title">Tratamientos Vendidos</h3>
+                <a href="javascript:void(0);">Ver Reporte</a>
+            </div>
+        </div>
+        <div class="card-body">
+
+        <form id="rangoForm">
+                <div>
+                    <label class="form-label" for="minPrecio">Precio Mínimo:</label>
+                    <input type="number" name="minPrecio" id="minPrecio" value="<?php echo $minPrecio; ?>" class="form-control">
+
+                    <label for="maxPrecio">Precio Máximo:</label>
+                    <input type="number" name="maxPrecio" id="maxPrecio" value="<?php echo $maxPrecio; ?>" class="form-control">
+                    <button type="submit"  class="btn btn-primary" >Actualizar Gráfico</button>
+                </div>
+            </form>
+
+          <div class="position-relative mb-4">
+            <canvas id="tratamientos-vendidos-filtrados"  height="170px"></canvas>
+          </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        // Función para obtener los datos y actualizar el gráfico
+        function updateChart() {
+            // Obtener los valores ingresados por el usuario
+            var minPrecio = $('#minPrecio').val();
+            var maxPrecio = $('#maxPrecio').val();
+
+            // Realizar la solicitud AJAX
+            $.ajax({
+                url: './estadistica2.php',
+                method: "GET",
+                data: { minPrecio: minPrecio, maxPrecio: maxPrecio },
+                success: function (data) {
+                    var newData = JSON.parse(data);
+
+                    if (newData.labels && newData.data) {
+                        myChart.data.labels = newData.labels;
+                        myChart.data.datasets[0].data = newData.data;
+                        myChart.update();
+                    } else {
+                        console.error("Error en el formato de los datos recibidos.");
+                    }
+                },
+                error: function (xhr, textStatus, errorThrown) {
+                    console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
+                }
+            });
+        }
+
+        // Llamamos a la función al cargar la página
+        updateChart();
+
+        // Configuramos el evento submit para el formulario
+        $('#rangoForm').submit(function (event) {
+            event.preventDefault();  // Evitar que el formulario se envíe y recargue la página
+            updateChart();
+        });
     });
 
-    // Llamamos a la función al cargar la página
-    updateProductChart();
-});
-
 </script>
+    
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
