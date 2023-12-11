@@ -62,25 +62,23 @@ if (isset($_GET["op"])) {
 
 
         case 'editar':
-            $IdTratamiento = isset($_POST["IdTratamiento"]) ? trim($_POST["IdTratamiento"]) : "";
-
-            
+            $IdTratamiento = isset($_POST["IdTratamiento"]) ? intval($_POST["IdTratamiento"]) : 0;
             $nombre = isset($_POST["nombre"]) ? trim($_POST["nombre"]) : "";
             $descripcion = isset($_POST["descripcion"]) ? trim($_POST["descripcion"]) : "";
             $precio = isset($_POST["precio"]) ? trim($_POST["precio"]) : "";
             $duracion = isset($_POST["duracion"]) ? trim($_POST["duracion"]) : "";
-    
+            
             $tratamiento = new Tratamiento();
-
             $tratamiento->setNombre($nombre);
             $encontrado = $tratamiento->verificarExistenciaTratamiento();
-
-            if ($encontrado == false) {
+            
+            if ($encontrado == true) {
                 $tratamiento->setIdTratamiento($IdTratamiento);
                 $tratamiento->setNombre($nombre);
                 $tratamiento->setDescripcion($descripcion);
                 $tratamiento->setPrecio($precio);
-                $tratamiento->setDuracion($$duracion);
+                $tratamiento->setDuracion($duracion);
+            
 
                 if ($tratamiento->actualizarTratamiento()) {
                     echo 1; //exito en la actualizacion

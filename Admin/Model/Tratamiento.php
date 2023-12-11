@@ -132,32 +132,33 @@ class Tratamiento extends Conexion
 
     public function verificarExistenciaTratamiento()
     {
-        $query = "SELECT nombre FROM tratamiento WHERE nombre=:nombre";
+        $query = "SELECT 1 FROM tratamiento WHERE nombre=:nombre LIMIT 1";
 
         try {
             self::getConexion();
-            $correo = $this->getNombre();
-            $resultado = self::$cnx->prepare($query);
-            $resultado->bindParam(":nombre", $correo, PDO::PARAM_STR);
-            $resultado->execute();
+          
+            $nombre = $this->getNombre();
+
+            $stmt = self::$cnx->prepare($query);
+            $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+        
+            $stmt->execute();
+
+            $existeTratamiento = $stmt->fetch(PDO::FETCH_ASSOC);
+
             self::desconectar();
 
-            $encontrado = false;
-            foreach ($resultado->fetchAll() as $reg) {
-                $encontrado = true;
-            }
-            return $encontrado;
+            return ($existeTratamiento !== false); // Devuelve true si se encontró al menos un tratamiento
         } catch (PDOException $Exception) {
             self::desconectar();
             $error = "Error " . $Exception->getCode() . ": " . $Exception->getMessage();
             return $error;
         }
     }
-
     public function actualizarTratamiento()
     {
         $query = "UPDATE tratamiento 
-                  SET nombre = :nombre, descripcion = :descripcion, precio = :precio
+                  SET nombre = :nombre, descripcion = :descripcion, precio = :precio, duracion = :duracion
                   WHERE IdTratamiento = :IdTratamiento";
     
         try {
@@ -166,6 +167,7 @@ class Tratamiento extends Conexion
             $nombre = $this->getNombre();
             $descripcion = $this->getDescripcion();
             $precio = $this->getPrecio();
+            $duracion = $this->getDuracion();
             $IdTratamiento = $this->getIdTratamiento(); 
     
             $resultado = self::$cnx->prepare($query);
@@ -173,6 +175,7 @@ class Tratamiento extends Conexion
             $resultado->bindParam(":nombre", $nombre, PDO::PARAM_STR);
             $resultado->bindParam(":descripcion", $descripcion, PDO::PARAM_STR);
             $resultado->bindParam(":precio", $precio, PDO::PARAM_STR); 
+            $resultado->bindParam(":duracion", $duracion, PDO::PARAM_STR);
             $resultado->bindParam(":IdTratamiento", $IdTratamiento, PDO::PARAM_INT);
     
             self::$cnx->beginTransaction();

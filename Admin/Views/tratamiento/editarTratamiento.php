@@ -91,6 +91,13 @@ require_once '../../Controllers/AuthController.php';
                                                 <div class="row">
                                                     <div class="col-md-12">
 
+
+                                                        <div class="form-group">
+                                                            <label for="EIdTratamiento">ID</label>
+                                                            <input type="text" class="form-control" id="EIdTratamiento" name="IdTratamiento" placeholder="ID Tratamiento" readonly>
+                                                        </div>
+
+
                                                         <div class="form-group">
                                                             <label for="Nombre">Nombre</label>
                                                             <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Nombre Tratamiento" required>
@@ -105,6 +112,14 @@ require_once '../../Controllers/AuthController.php';
                                                         <div class="form-group">
                                                             <label for="Precio">Precio</label>
                                                             <input type="text" class="form-control" id="Eprecio" name="precio" placeholder="Precio" required>
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="Duracion">Duración</label>
+                                                            <select class="select2 select2-hidden-accessible" id="Eduracion" name="duracion" data-placeholder="Seleccionar Duracion" data-dropdown-css-class="select2-danger" style="width: 100%;" aria-hidden="true">
+                                                                <option value="00:30:00">30 Min</option>
+                                                                <option value="01:00:00">1 Hora</option>
+                                                            </select>
                                                         </div>
                                                     </div>
 

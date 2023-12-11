@@ -93,19 +93,25 @@ require_once '../../Controllers/AuthController.php';
 
                                                         <div class="form-group">
                                                             <label for="Nombre">Nombre</label>
-                                                            <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Nombre Tratamiento" required>
+                                                            <input type="text" class="form-control" id="Enombre" name="nombre" placeholder="Nombre Tratamiento" readonly>
                                                         </div>
 
                                                         <div class="form-group">
                                                             <label for="Descripcion">Descripcion</label>
-                                                            <input type="text" class="form-control" id="Edescripcion" name="descripcion" placeholder="Descripcion" required>
+                                                            <input type="text" class="form-control" id="Edescripcion" name="descripcion" placeholder="Descripcion" readonly>
                                                         </div>
 
 
                                                         <div class="form-group">
                                                             <label for="Precio">Precio</label>
-                                                            <input type="number" class="form-control" id="Eprecio" name="precio" placeholder="Precio" required>
+                                                            <input type="number" class="form-control" id="Eprecio" name="precio" placeholder="Precio" readonly>
                                                         </div>
+
+                                                        <div class="form-group">
+                                                            <label for="Duracion">Duracion</label>
+                                                            <input type="text" class="form-control" id="Eduracion" name="duracion" placeholder="Duracion" readonly>
+                                                        </div>
+
                                                     </div>
 
                                                 </div>

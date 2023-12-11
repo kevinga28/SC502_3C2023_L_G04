@@ -108,6 +108,7 @@ switch ($_GET["op"]) {
         $otros = isset($_POST["otros"]) ? trim($_POST["otros"]) : "";
 
         $cliente = new Cliente();
+        $cliente->setTelefono($telefono);
         $encontrado = $cliente->verificarExistenciaCliente();
 
         if ($encontrado == false) {

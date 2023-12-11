@@ -143,8 +143,7 @@ if (isset($usuario)) {
                             <div class="row">
 
                                 <div class="form-group">
-                                    <label for="EIdCliente">Cedula:</label>
-                                    <input type="text" id="EIdCliente" name="IdCliente" value="<?php echo isset($_SESSION['usuarioCliente']) ? $_SESSION['usuarioCliente']->getIdCliente() : ''; ?>" class="form-control">
+                                    <input type="hidden" id="EIdCliente" name="IdCliente" value="<?php echo isset($_SESSION['usuarioCliente']) ? $_SESSION['usuarioCliente']->getIdCliente() : ''; ?>" class="form-control">
                                 </div>
 
                                 <div class="col-md-6">

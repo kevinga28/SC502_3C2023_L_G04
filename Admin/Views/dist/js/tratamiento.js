@@ -135,6 +135,8 @@ const rellenarFormularioTratamiento = async () => {
         $("#Enombre").val(datos.nombre);
         $("#Edescripcion").val(datos.descripcion);
         $("#Eprecio").val(datos.precio);
+        $("#Eduracion").val(datos.duracion);
+        $("#EIdTratamiento").val(datos.IdTratamiento);
       } else {
         console.error("Error en la respuesta de la solicitud AJAX:", response.statusText);
         console.error(await response.text()); // Muestra el contenido del error
@@ -148,15 +150,10 @@ const rellenarFormularioTratamiento = async () => {
 rellenarFormularioTratamiento();
 /* ---------------------------------------------------------------EDITAR DATOS DEL TRATAMIENTO--------------------------------------------------------------- */
 $('#tratamiento_update').on('submit', function (event) {
-
   event.preventDefault();
-
-  var urlParams = new URLSearchParams(window.location.search);
-  var IdTratamiento = urlParams.get('IdTratamiento');
-
   Swal.fire({
     title: 'Confirmación de Modificación',
-    text: '¿Desea modificar los datos del tratamiento?',
+    text: '¿Desea modificar los datos?',
     icon: 'warning',
     showCancelButton: true,
     confirmButtonColor: '#3085d6',
@@ -166,11 +163,11 @@ $('#tratamiento_update').on('submit', function (event) {
   }).then((result) => {
     if (result.isConfirmed) {
       var formData = new FormData($('#tratamiento_update')[0]);
-      formData.append('IdTR', IdTratamiento);
       modificarTratamiento(formData);
     }
   });
 });
+
 function modificarTratamiento(formData) {
   $.ajax({
     url: '../../../admin/Controllers/tratamientoController.php?op=editar',
@@ -188,23 +185,26 @@ function modificarTratamiento(formData) {
             showConfirmButton: false
           });
           setTimeout(function () {
-            window.location.href = 'listaTratamiento.php';
-          }, 1000);
+            window.location.href = 'listaTratamiento.php'; // Redirige a la lista después de 1 segundo
+          }, 1000)
           break;
+
         case '2':
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'Error: Cambiar los datos para actualizar'
+            text: 'Error: Cambiar los datos para Actualizar'
           });
           break;
+
         case '3':
           Swal.fire({
             icon: 'error',
             title: 'Error',
-            text: 'Error: No se pudo editar la Tratamiento.'
+            text: 'Error: No se pudo editar.'
           });
-          break; 
+          break;
+          
         default:
           Swal.fire({
             icon: 'error',

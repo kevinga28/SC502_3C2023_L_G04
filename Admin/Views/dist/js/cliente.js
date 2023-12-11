@@ -224,6 +224,8 @@ function modificarCliente(formData) {
             title: 'Error',
             text: 'Error: No se pudo editar.'
           });
+          break;
+          
         default:
           Swal.fire({
             icon: 'error',

@@ -122,7 +122,7 @@
                  <a href="#" class="nav-link active">
                      <i class="nav-icon fas fa-tree"></i>
                      <p>
-                         Productos
+                         Inventario
                          <i class="fas fa-angle-left right"></i>
                      </p>
                  </a>
