@@ -33,7 +33,6 @@
             </div>
             <div class="d-flex justify-content-between">
                 <h3 class="card-title">Clientes Frecuentes</h3>
-                <a href="javascript:void(0);">Ver Reporte</a>
             </div>
         </div>
         <div class="card-body">
@@ -117,7 +116,6 @@
             </div>
             <div class="d-flex justify-content-between">
                 <h3 class="card-title">Reporte de Pagos <?php echo ucfirst($tipoReporte); ?></h3>
-                <a href="javascript:void(0);" onclick="showReport('<?php echo $tipoReporte; ?>')">Ver Reporte</a>
             </div>
         </div>
         <div class="card-body">
@@ -177,7 +175,6 @@
         <div class="card-header border-0">
             <div class="d-flex justify-content-between">
                 <h3 class="card-title">Reporte de Rentabilidad Tratamientos </h3>
-                <a href="javascript:void(0);" onclick="showReport('<?php echo $tipoReporte; ?>')">Ver Reporte</a>
             </div>
         </div>
         <div class="card-body">
@@ -256,10 +253,9 @@
 
     <div class="card">
         <div class="card-header border-0">
-           
+
             <div class="d-flex justify-content-between">
                 <h3 class="card-title">Productos Vendidos</h3>
-                <a href="javascript:void(0);">Ver Reporte</a>
             </div>
         </div>
         <div class="card-body">
@@ -304,15 +300,15 @@
 
     // Consulta para obtener los tratamientos filtrados por rango de precio
     $query_tratamientos_filtrados = "
-    SELECT 
-        t.precio AS rango_precio,
-        COUNT(ct.IdCita) AS cantidad_vendida
-    FROM tratamiento t
-    LEFT JOIN cita_tratamiento ct ON t.IdTratamiento = ct.IdTratamiento
-    LEFT JOIN cita c ON ct.IdCita = c.IdCita
-    WHERE 1 $whereRangoPrecio
-    GROUP BY t.precio
-";
+        SELECT 
+            t.nombre AS nombre_tratamiento,
+            COUNT(ct.IdCita) AS cantidad_vendida
+        FROM tratamiento t
+        LEFT JOIN cita_tratamiento ct ON t.IdTratamiento = ct.IdTratamiento
+        LEFT JOIN cita c ON ct.IdCita = c.IdCita
+        WHERE 1 $whereRangoPrecio
+        GROUP BY t.nombre
+    ";
 
     $stmt_tratamientos_filtrados = $conexion->prepare($query_tratamientos_filtrados);
 
@@ -329,12 +325,18 @@
 
     if ($stmt_tratamientos_filtrados->rowCount() > 0) {
         while ($row = $stmt_tratamientos_filtrados->fetch(PDO::FETCH_ASSOC)) {
-            $labels_tratamientos_filtrados[] = $row['rango_precio'];
-            $data_tratamientos_filtrados[] = $row['cantidad_vendida'];
+            // Verificar si la clave 'nombre_tratamiento' existe en el array antes de intentar acceder a ella
+            if (isset($row['nombre_tratamiento'])) {
+                $labels_tratamientos_filtrados[] = $row['nombre_tratamiento'];
+            }
+
+            // Verificar si la clave 'cantidad_vendida' existe en el array antes de intentar acceder a ella
+            if (isset($row['cantidad_vendida'])) {
+                $data_tratamientos_filtrados[] = $row['cantidad_vendida'];
+            }
         }
     }
     ?>
-
 
     <div class="card">
         <div class="card-header border-0">
@@ -344,65 +346,57 @@
             </div>
         </div>
         <div class="card-body">
-
             <form id="rangoForm">
                 <div>
                     <label class="form-label" for="minPrecio">Precio Mínimo:</label>
                     <input type="number" name="minPrecio" id="minPrecio" value="<?php echo $minPrecio; ?>" class="form-control">
-
                     <label for="maxPrecio">Precio Máximo:</label>
                     <input type="number" name="maxPrecio" id="maxPrecio" value="<?php echo $maxPrecio; ?>" class="form-control">
                     <button type="submit" class="btn btn-primary mt-2">Actualizar Gráfico</button>
                 </div>
             </form>
-
             <div class="position-relative mb-4">
                 <canvas id="tratamientos-vendidos-filtrados" height="52px"></canvas>
             </div>
         </div>
     </div>
 </div>
-
 <script>
     $(document).ready(function() {
-        // Función para obtener los datos y actualizar el gráfico
-        function updateChart() {
-            // Obtener los valores ingresados por el usuario
-            var minPrecio = $('#minPrecio').val();
-            var maxPrecio = $('#maxPrecio').val();
+        // ...
 
-            // Realizar la solicitud AJAX
-            $.ajax({
-                url: './estadistica2.php',
-                method: "GET",
-                data: {
-                    minPrecio: minPrecio,
-                    maxPrecio: maxPrecio
-                },
-                success: function(data) {
-                    var newData = JSON.parse(data);
-
-                    if (newData.labels && newData.data) {
-                        myChart.data.labels = newData.labels;
-                        myChart.data.datasets[0].data = newData.data;
-                        myChart.update();
-                    } else {
-                        console.error("Error en el formato de los datos recibidos.");
+        var myChart = new Chart(ctxTratamientosVendidos, {
+            type: 'bar',
+            data: {
+                labels: <?php echo json_encode($labels_tratamientos_filtrados); ?>,
+                datasets: [{
+                    label: 'Cantidad Vendida',
+                    data: <?php echo json_encode($data_tratamientos_filtrados); ?>,
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
                     }
                 },
-                error: function(xhr, textStatus, errorThrown) {
-                    console.error("Error en la solicitud AJAX:", textStatus, errorThrown);
+                tooltips: {
+                    callbacks: {
+                        label: function(context) {
+                            // Obtener el índice del tratamiento actual
+                            var dataIndex = context.dataIndex;
+
+                            // Obtener el nombre del tratamiento correspondiente al índice
+                            var tratamientoNombre = <?php echo json_encode($labels_tratamientos_filtrados); ?>[dataIndex];
+
+                            return tratamientoNombre + ': ' + context.formattedValue;
+                        }
+                    }
                 }
-            });
-        }
-
-        // Llamamos a la función al cargar la página
-        updateChart();
-
-        // Configuramos el evento submit para el formulario
-        $('#rangoForm').submit(function(event) {
-            event.preventDefault(); // Evitar que el formulario se envíe y recargue la página
-            updateChart();
+            }
         });
     });
 </script>
@@ -411,19 +405,21 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script>
+    function showReport(tipoReporte) {
+        // Lógica para mostrar el reporte según el tipo proporcionado
+        // Aquí puedes realizar acciones basadas en el tipo de reporte
+        console.log('Mostrar reporte:', tipoReporte);
 
-function showReport(tipoReporte) {
-    // Lógica para mostrar el reporte según el tipo proporcionado
-    // Aquí puedes realizar acciones basadas en el tipo de reporte
-    console.log('Mostrar reporte:', tipoReporte);
-
-    // Si quieres descargar el reporte en lugar de solo mostrarlo, puedes utilizar el código de descarga que te mencioné anteriormente
-    var url = 'ruta/al/reporte.php?tipo=' + tipoReporte;
-    var link = document.createElement('a');
-    link.href = url;
-    link.download = 'reporte_' + tipoReporte + '.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-}
+        // Si quieres descargar el reporte en lugar de solo mostrarlo, puedes utilizar el código de descarga que te mencioné anteriormente
+        var url = 'ruta/al/reporte.php?tipo=' + tipoReporte;
+        var link = document.createElement('a');
+        link.href = url;
+        link.download = 'reporte_' + tipoReporte + '.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    }
 </script>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
